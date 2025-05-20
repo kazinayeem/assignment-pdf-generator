@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import jsPDF from "jspdf";
 import "bootstrap/dist/css/bootstrap.min.css";
+import autoTable from "jspdf-autotable";
 const courseData = [
   {
     code: "SE 224",
@@ -40,6 +41,69 @@ const courseData = [
 ];
 
 export default function App() {
+  const generateEvaluationForm = () => {
+    const doc = new jsPDF();
+
+    // Title Row
+    doc.setFontSize(12);
+    doc.text("Only for course Teacher", 80, 10);
+
+    // Table Data
+    autoTable(doc, {
+      startY: 20,
+      head: [
+        [
+          { content: "Allocate mark &\nPercentage", rowSpan: 2 },
+          { content: "Needs Improvement\n25%", colSpan: 1 },
+          { content: "Developing\n50%", colSpan: 1 },
+          { content: "Sufficient\n75%", colSpan: 1 },
+          { content: "Above Average\n100%", colSpan: 1 },
+          { content: "Total Mark\n5", rowSpan: 2 },
+        ],
+      ],
+      body: [
+        ["Clarity (1)", "", "", "", "", ""],
+        ["Content Quality (2)", "", "", "", "", ""],
+        ["Spelling & Grammar (1)", "", "", "", "", ""],
+        ["Organization and Formatting (1)", "", "", "", "", ""],
+      ],
+      theme: "grid",
+      styles: {
+        cellPadding: 3,
+        fontSize: 10,
+        valign: "middle",
+        halign: "center",
+      },
+      headStyles: {
+        fillColor: [240, 240, 240],
+        textColor: 0,
+        fontStyle: "bold",
+      },
+    });
+
+    // Total Obtained Mark Row
+    autoTable(doc, {
+      startY: doc.lastAutoTable.finalY + 5,
+      body: [["Total obtained mark", ""]],
+      theme: "grid",
+      styles: {
+        fontSize: 10,
+        halign: "left",
+      },
+      columnStyles: {
+        0: { cellWidth: 140 },
+        1: { cellWidth: 40 },
+      },
+    });
+
+    // Comments Section
+    doc.setFontSize(10);
+    doc.text("Comments", 10, doc.lastAutoTable.finalY + 15);
+    doc.rect(10, doc.lastAutoTable.finalY + 18, 190, 40); // Draw empty box for comments
+
+    doc.save("evaluation_form.pdf");
+  };
+  const dateOnly = new Date().toISOString().split("T")[0];
   const [formData, setFormData] = useState({
     courseCode: "",
     courseTitle: "",
@@ -50,7 +114,9 @@ export default function App() {
     department: "Software Engineering",
     studentName: "Mohammad Ali Nayeem",
     studentId: "232-35-022",
-    submissionDate: "",
+    submissionDate: dateOnly,
+    batch: "41",
+    semester: "Summerl-2024",
   });
 
   const handleCourseSelect = (e) => {
@@ -72,96 +138,213 @@ export default function App() {
     setFormData({ ...formData, [name]: value });
   };
 
+  // const generatePDF = () => {
+  //   const doc = new jsPDF("p", "mm", "a4");
+  //   const margin = 15;
+  //   let y = margin + 6;
+
+  //   // Border
+  //   doc.setDrawColor(0, 128, 0);
+  //   doc.setLineWidth(0.8);
+  //   doc.rect(margin, margin, 180, 267);
+
+  //   // Logo
+  //   const img = new Image();
+  //   img.src = "./diulogoside.png";
+  //   img.onload = () => {
+  //     doc.addImage(img, "PNG", 65, y, 70, 22);
+  //     y += 28;
+
+  //     doc.setFontSize(13);
+  //     doc.setFont("times", "bold");
+  //     doc.text("Department of Software Engineering", 105, y, {
+  //       align: "center",
+  //     });
+  //     y += 18;
+
+  //     doc.setFontSize(20);
+  //     doc.setFont("times", "bold");
+  //     doc.text("Assignment", 105, y, { align: "center" });
+  //     y += 15;
+
+  //     doc.setFontSize(14);
+  //     doc.setFont("times", "normal");
+  //     doc.text(`Course Code: ${formData.courseCode}`, margin + 10, y);
+  //     y += 8;
+  //     doc.text(`Course Title: ${formData.courseTitle}`, margin + 10, y);
+  //     y += 8;
+  //     doc.text(`Section: ${formData.section}`, margin + 10, y);
+  //     y += 8;
+  //     if (formData.topic) {
+  //       doc.text(`Topic: ${formData.topic}`, margin + 10, y);
+  //       y += 15;
+  //     }
+
+  //     doc.setFontSize(14);
+  //     doc.setFont("times", "bold");
+  //     doc.text("Submitted To:", margin + 10, y);
+  //     y += 10;
+
+  //     const centerX = 65;
+  //     doc.setFontSize(13);
+
+  //     // Name
+  //     doc.setFont("times", "bold");
+  //     doc.text("Name:", centerX - 30, y);
+  //     doc.setFont("times", "normal");
+  //     doc.text(formData.teacherName, centerX - 5, y);
+  //     y += 7;
+
+  //     // Designation
+  //     doc.setFont("times", "bold");
+  //     doc.text("Designation:", centerX - 30, y);
+  //     doc.setFont("times", "normal");
+  //     doc.text(formData.teacherDesignation, centerX - 5, y);
+  //     y += 7;
+
+  //     doc.setFont("times", "normal");
+  //     doc.text("Department of Software Engineering", centerX - 30, y);
+  //     y += 15;
+
+  //     doc.setFontSize(14);
+  //     doc.setFont("times", "bold");
+  //     doc.text("Submitted By:", margin + 10, y);
+  //     y += 8;
+
+  //     doc.setFontSize(13);
+  //     doc.setFont("times", "normal");
+  //     doc.text(`Student Name: ${formData.studentName}`, margin + 20, y);
+  //     y += 7;
+  //     doc.text(`ID: ${formData.studentId}`, margin + 20, y);
+  //     y += 7;
+  //     doc.text("Department of Software Engineering", margin + 20, y);
+  //     y += 12;
+
+  //     if (formData.submissionDate) {
+  //       y += 5;
+  //       doc.setFontSize(13);
+  //       doc.setFont("times", "bold");
+  //       doc.text(`Submission Date: ${formData.submissionDate}`, margin + 10, y);
+  //     }
+
+  //     // Save the file
+  //     doc.save(`${formData.courseCode}_${formData.studentName}_Assignment.pdf`);
+  //   };
+  // };
   const generatePDF = () => {
     const doc = new jsPDF("p", "mm", "a4");
-    const margin = 15;
-    let y = margin + 6;
+    let y = 15;
 
-    // Border
-    doc.setDrawColor(0, 128, 0);
-    doc.setLineWidth(0.8);
-    doc.rect(margin, margin, 180, 267);
+    const logo = new Image();
+    logo.src = "./diulogoside.png"; // Make sure path is valid in your public folder
 
-    // Logo
-    const img = new Image();
-    img.src = "./diulogoside.png";
-    img.onload = () => {
-      doc.addImage(img, "PNG", 65, y, 70, 22);
-      y += 28;
+    logo.onload = () => {
+      doc.addImage(logo, "PNG", 60, y, 90, 25);
+      y += 30;
 
-      doc.setFontSize(13);
-      doc.setFont("times", "bold");
-      doc.text("Department of Software Engineering", 105, y, {
-        align: "center",
-      });
-      y += 18;
-
-      doc.setFontSize(20);
+      doc.setFontSize(18);
       doc.setFont("times", "bold");
       doc.text("Assignment", 105, y, { align: "center" });
-      y += 15;
-
-      doc.setFontSize(14);
-      doc.setFont("times", "normal");
-      doc.text(`Course Code: ${formData.courseCode}`, margin + 10, y);
-      y += 8;
-      doc.text(`Course Title: ${formData.courseTitle}`, margin + 10, y);
-      y += 8;
-      doc.text(`Section: ${formData.section}`, margin + 10, y);
-      y += 8;
-      if (formData.topic) {
-        doc.text(`Topic: ${formData.topic}`, margin + 10, y);
-        y += 15;
-      }
-
-      doc.setFontSize(14);
-      doc.setFont("times", "bold");
-      doc.text("Submitted To:", margin + 10, y);
       y += 10;
 
-      const centerX = 65;
-      doc.setFontSize(13);
-
-      // Name
-      doc.setFont("times", "bold");
-      doc.text("Name:", centerX - 30, y);
+      doc.setFontSize(12);
       doc.setFont("times", "normal");
-      doc.text(formData.teacherName, centerX - 5, y);
-      y += 7;
+      doc.text("Only for course Teacher", 85, y);
+      y += 5;
 
-      // Designation
+      // === Evaluation Table ===
+      autoTable(doc, {
+        startY: y,
+        head: [
+          [
+            { content: "Allocate mark &\nPercentage", rowSpan: 2 },
+            "Needs Improvement\n25%",
+            "Developing\n50%",
+            "Sufficient\n75%",
+            "Above Average\n100%",
+            { content: "Total Mark\n5", rowSpan: 2 },
+          ],
+        ],
+        body: [
+          ["Clarity", "1", "", "", "", ""],
+          ["Content Quality", "2", "", "", "", ""],
+          ["Spelling & Grammar", "1", "", "", "", ""],
+          ["Organization and Formatting", "1", "", "", "", ""],
+        ],
+        theme: "grid",
+        styles: {
+          fontSize: 10,
+          valign: "middle",
+          halign: "center",
+          cellPadding: 2,
+          textColor: 0,
+          fillColor: false, // no background
+        },
+        headStyles: {
+          fillColor: false, // remove header background
+          textColor: 0,
+          fontStyle: "bold",
+        },
+      });
+
+      y = doc.lastAutoTable.finalY + 5;
+
+      autoTable(doc, {
+        startY: y,
+        body: [["Total obtained mark", ""]],
+        theme: "grid",
+        styles: { fontSize: 10 },
+        columnStyles: {
+          0: { cellWidth: 140 },
+          1: { cellWidth: 40 },
+        },
+        headStyles: {
+          fillColor: false,
+          textColor: 0,
+        },
+      });
+
+      // === Comments Box ===
+      y = doc.lastAutoTable.finalY + 5;
       doc.setFont("times", "bold");
-      doc.text("Designation:", centerX - 30, y);
-      doc.setFont("times", "normal");
-      doc.text(formData.teacherDesignation, centerX - 5, y);
-      y += 7;
+      doc.setFontSize(11);
+      doc.text("Comments", 12, y + 5);
+      doc.rect(12, y + 8, 186, 30);
+      y += 45;
 
-      doc.setFont("times", "normal");
-      doc.text("Department of Software Engineering", centerX - 30, y);
-      y += 15;
+      // === Bottom Information ===
+      const formattedDate = formData.submissionDate
+        ? formData.submissionDate.split("-").reverse().join(" / ")
+        : "";
 
-      doc.setFontSize(14);
+      doc.setFontSize(12);
       doc.setFont("times", "bold");
-      doc.text("Submitted By:", margin + 10, y);
+      doc.text(`Semester: ${formData.semester}`, 12, y);
       y += 8;
 
-      doc.setFontSize(13);
-      doc.setFont("times", "normal");
-      doc.text(`Student Name: ${formData.studentName}`, margin + 20, y);
+      doc.text(`Student Name:       ${formData.studentName}`, 12, y);
       y += 7;
-      doc.text(`ID: ${formData.studentId}`, margin + 20, y);
+      doc.text(`Student ID:         ${formData.studentId}`, 12, y);
       y += 7;
-      doc.text("Department of Software Engineering", margin + 20, y);
-      y += 12;
+      doc.text(
+        `Batch: ${formData.batch}               Section: ${formData.section}`,
+        12,
+        y
+      );
 
-      if (formData.submissionDate) {
-        y += 5;
-        doc.setFontSize(13);
-        doc.setFont("times", "bold");
-        doc.text(`Submission Date: ${formData.submissionDate}`, margin + 10, y);
-      }
+      y += 7;
+      doc.text(
+        `Course Code: ${formData.courseCode}        Course Name: ${formData.courseTitle}`,
+        12,
+        y
+      );
+      y += 7;
+      doc.text(`Course Teacher Name: ${formData.teacherName}`, 12, y);
+      y += 7;
+      doc.text(`Designation: ${formData.teacherDesignation}`, 12, y);
+      y += 7;
+      doc.text(`Submission Date:  ${formattedDate}`, 12, y);
 
-      // Save the file
       doc.save(`${formData.courseCode}_${formData.studentName}_Assignment.pdf`);
     };
   };
@@ -238,6 +421,43 @@ export default function App() {
             value={formData.studentId}
             onChange={handleChange}
           />
+        </div>
+        {/* Semester Selection */}
+        <div className="col-md-6">
+          <label className="form-label fw-semibold">Semester</label>
+          <select
+            name="semester"
+            className="form-select"
+            value={formData.semester}
+            onChange={handleChange}
+          >
+            <option value="Spring-2023">Spring-2023</option>
+            <option value="Summer-2023">Summer-2023</option>
+            <option value="Fall-2023">Fall-2023</option>
+            <option value="Spring-2024">Spring-2024</option>
+            <option value="Summer-2024">Summer-2024</option>
+            <option value="Fall-2024">Fall-2024</option>
+            <option value="Spring-2025">Spring-2025</option>
+            <option value="Summer-2025">Summer-2025</option>
+            <option value="Fall-2025">Fall-2025</option>
+          </select>
+        </div>
+
+        {/* Batch Selection */}
+        <div className="col-md-6">
+          <label className="form-label fw-semibold">Batch</label>
+          <select
+            name="batch"
+            className="form-select"
+            value={formData.batch}
+            onChange={handleChange}
+          >
+            <option value="40">40</option>
+            <option value="41">41</option>
+            <option value="42">42</option>
+            <option value="43">43</option>
+            <option value="44">44</option>
+          </select>
         </div>
 
         {/* Submission Date */}

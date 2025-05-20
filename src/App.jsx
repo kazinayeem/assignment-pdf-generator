@@ -38,6 +38,41 @@ const courseData = [
     section: "43H",
     teacher: "Maliha Bushra Hoque",
   },
+  {
+    code: "GE 235",
+    title: "Principles of Accounting, Business & Economics",
+    credit: "3",
+    section: "41A",
+    teacher: "Ms. Shahana Kabir",
+  },
+  {
+    code: "SE 234",
+    title: "Theory of Computing",
+    credit: "3",
+    section: "41_A",
+    teacher: "Ms. Fatama Binta Rafiq",
+  },
+  {
+    code: "SE 233",
+    title: "Operating System & System Programming 1 Lab",
+    credit: "1",
+    section: "41_A1",
+    teacher: "Ms. Ishrat Sultana",
+  },
+  {
+    code: "SE 232",
+    title: "Operating System & System Programming",
+    credit: "3",
+    section: "41A",
+    teacher: "Ms. Ishrat Sultana",
+  },
+  {
+    code: "SE 231",
+    title: "System Analysis & Design Capstone Project",
+    credit: "3",
+    section: "41A1",
+    teacher: "Tapushe Rabaya Toma",
+  },
 ];
 
 export default function App() {
@@ -112,11 +147,11 @@ export default function App() {
     teacherName: "",
     teacherDesignation: "Mr.",
     department: "Software Engineering",
-    studentName: "Mohammad Ali Nayeem",
-    studentId: "232-35-022",
+    studentName: "",
+    studentId: "",
     submissionDate: dateOnly,
     batch: "41",
-    semester: "Summerl-2024",
+    semester: "Summl-2024",
   });
 
   const handleCourseSelect = (e) => {

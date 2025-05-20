@@ -76,68 +76,6 @@ const courseData = [
 ];
 
 export default function App() {
-  const generateEvaluationForm = () => {
-    const doc = new jsPDF();
-
-    // Title Row
-    doc.setFontSize(12);
-    doc.text("Only for course Teacher", 80, 10);
-
-    // Table Data
-    autoTable(doc, {
-      startY: 20,
-      head: [
-        [
-          { content: "Allocate mark &\nPercentage", rowSpan: 2 },
-          { content: "Needs Improvement\n25%", colSpan: 1 },
-          { content: "Developing\n50%", colSpan: 1 },
-          { content: "Sufficient\n75%", colSpan: 1 },
-          { content: "Above Average\n100%", colSpan: 1 },
-          { content: "Total Mark\n5", rowSpan: 2 },
-        ],
-      ],
-      body: [
-        ["Clarity (1)", "", "", "", "", ""],
-        ["Content Quality (2)", "", "", "", "", ""],
-        ["Spelling & Grammar (1)", "", "", "", "", ""],
-        ["Organization and Formatting (1)", "", "", "", "", ""],
-      ],
-      theme: "grid",
-      styles: {
-        cellPadding: 3,
-        fontSize: 10,
-        valign: "middle",
-        halign: "center",
-      },
-      headStyles: {
-        fillColor: [240, 240, 240],
-        textColor: 0,
-        fontStyle: "bold",
-      },
-    });
-
-    // Total Obtained Mark Row
-    autoTable(doc, {
-      startY: doc.lastAutoTable.finalY + 5,
-      body: [["Total obtained mark", ""]],
-      theme: "grid",
-      styles: {
-        fontSize: 10,
-        halign: "left",
-      },
-      columnStyles: {
-        0: { cellWidth: 140 },
-        1: { cellWidth: 40 },
-      },
-    });
-
-    // Comments Section
-    doc.setFontSize(10);
-    doc.text("Comments", 10, doc.lastAutoTable.finalY + 15);
-    doc.rect(10, doc.lastAutoTable.finalY + 18, 190, 40); // Draw empty box for comments
-
-    doc.save("evaluation_form.pdf");
-  };
   const dateOnly = new Date().toISOString().split("T")[0];
   const [formData, setFormData] = useState({
     courseCode: "",
@@ -151,7 +89,7 @@ export default function App() {
     studentId: "",
     submissionDate: dateOnly,
     batch: "41",
-    semester: "Summl-2024",
+    semester: "Summer-2025",
   });
 
   const handleCourseSelect = (e) => {
@@ -292,7 +230,7 @@ export default function App() {
         startY: y,
         head: [
           [
-            { content: "Allocate mark &\nPercentage", rowSpan: 2 },
+            { content: "Allocate mark &\nPercentage", rowSpan: 1},
             "Needs Improvement\n25%",
             "Developing\n50%",
             "Sufficient\n75%",

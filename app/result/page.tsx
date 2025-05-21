@@ -88,7 +88,7 @@ export default function ResultPage() {
   // Fetch semesters (once on mount)
   useEffect(() => {
     axios
-      .get("http://peoplepulse.diu.edu.bd:8189/result/semesterList")
+      .get("/api/semester-list")
       .then((res) => setSemesters(res.data))
       .catch(() => setSemesters([]));
   }, []);
@@ -101,9 +101,7 @@ export default function ResultPage() {
     setAllResults({});
     setStartSemesterId(null);
     try {
-      const res = await axios.get(
-        `http://peoplepulse.diu.edu.bd:8189/result/studentInfo?studentId=${studentId}`
-      );
+      const res = await axios.get(`/api/student-info?studentId=${studentId}`);
       const info: StudentInfo = res.data;
       setStudentInfo(info);
 
@@ -134,7 +132,7 @@ export default function ResultPage() {
         filteredSemesters.map(async (semester) => {
           try {
             const { data } = await axios.get(
-              `http://peoplepulse.diu.edu.bd:8189/result?semesterId=${semester.semesterId}&studentId=${studentId}`
+              `/api/result-by-semester?semesterId=${semester.semesterId}&studentId=${studentId}`
             );
             if (data.length > 0) {
               resultsBySemester[

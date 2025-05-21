@@ -1,7 +1,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import React from "react";
-import { FileText, FlaskConical, BarChart2, Users } from "lucide-react";
+import { FileText, FlaskConical, BarChart2 } from "lucide-react";
 
 export default function Page() {
   return (

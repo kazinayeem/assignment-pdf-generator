@@ -47,10 +47,10 @@ export default function AssignmentForm() {
     teacherName: "",
     teacherDesignation: "",
     department: "",
-    studentName: "Mohammad Ali Nayeem",
-    studentId: "232-35-022",
+    studentName: "",
+    studentId: "",
     submissionDate: "",
-    batch: "41",
+    batch: "",
     semester: "",
   });
 

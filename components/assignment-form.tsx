@@ -281,7 +281,7 @@ export default function AssignmentForm() {
         {/* Topic */}
         <div>
           <label className="text-sm font-medium mb-1 block">
-            Teacher Designation
+            Assignment topic
           </label>
           <Input
             name="topic"

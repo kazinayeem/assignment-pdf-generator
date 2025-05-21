@@ -335,7 +335,7 @@ export default function ResultPage() {
         <div className="w-full max-w-md space-y-4">
           <Input
             type="text"
-            placeholder="Enter Student ID (e.g. 232-35-022)"
+            placeholder="Enter Student ID (e.g. 000-00-000)"
             className="w-full"
             value={studentId}
             onChange={(e) => setStudentId(e.target.value)}

@@ -34,7 +34,7 @@ export default function Page() {
 
         <Link href="/result">
           <h1 className="px-6 py-3 bg-green-600 text-white rounded-md shadow hover:bg-green-700 transition">
-            Result s
+            Result Generate
           </h1>
         </Link>
       </div>

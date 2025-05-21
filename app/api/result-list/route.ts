@@ -13,7 +13,7 @@ export async function GET(request: Request) {
     const response = await fetch(`http://peoplepulse.diu.edu.bd:8189/result/resultList?studentId=${studentId}`);
     const data = await response.json();
     return NextResponse.json(data);
-  } catch (error) {
+  } catch  {
     return NextResponse.json({ error: 'Failed to fetch result list' }, { status: 500 });
   }
 }

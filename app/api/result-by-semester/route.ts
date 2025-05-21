@@ -17,7 +17,7 @@ export async function GET(request: Request) {
 
     const data = await response.json();
     return NextResponse.json(data);
-  } catch (error) {
+  } catch  {
     return NextResponse.json({ error: 'Failed to fetch result data' }, { status: 500 });
   }
 }

@@ -6,7 +6,7 @@ export async function GET() {
     const response = await fetch('http://peoplepulse.diu.edu.bd:8189/result/semesterList');
     const data = await response.json();
     return NextResponse.json(data);
-  } catch (error) {
+  } catch  {
     return NextResponse.json({ error: 'Failed to fetch semester list' }, { status: 500 });
   }
 }

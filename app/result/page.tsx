@@ -27,6 +27,7 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
+import Link from "next/link";
 
 ChartJS.register(BarElement, CategoryScale, LinearScale, Tooltip, Legend);
 
@@ -162,6 +163,9 @@ export default function ResultPage() {
     );
     return totalCredit ? (totalPoints / totalCredit).toFixed(2) : "0.00";
   };
+  const calculateTotalCredit = (courses: Result[]) => {
+    return courses.reduce((sum, r) => sum + r.totalCredit, 0);
+  };
 
   const calculateTotalCGPA = (results: { [key: string]: Result[] }) => {
     let totalCredits = 0;
@@ -227,8 +231,8 @@ export default function ResultPage() {
       );
       doc.text(`Faculty: ${studentInfo.facultyName}`, leftX, infoStartY + 28);
       doc.text(`Campus: ${studentInfo.campusName}`, leftX, infoStartY + 35);
-      doc.text(`Batch: ${studentInfo.batchId}`, leftX, infoStartY + 42);
-      doc.text(`Shift: ${studentInfo.shift}`, leftX, infoStartY + 49);
+      // doc.text(`Batch: ${studentInfo.batchId}`, leftX, infoStartY + 42);
+      doc.text(`Shift: ${studentInfo.shift}`, leftX, infoStartY + 42);
 
       doc.text(
         `Generated: ${new Date().toLocaleDateString()}`,
@@ -237,7 +241,7 @@ export default function ResultPage() {
         { align: "left" }
       );
 
-      let y = infoStartY + 60;
+      let y = infoStartY + 50;
 
       // Add semester tables
       Object.entries(allResults).forEach(([semesterLabel, courses]) => {
@@ -245,7 +249,7 @@ export default function ResultPage() {
         doc.setFontSize(12);
         doc.setFont("helvetica", "bold");
         doc.text(semesterLabel, leftX, y);
-        y += 8;
+        y += 6;
 
         const semesterGPA = calculateSemesterGPA(courses);
 
@@ -283,7 +287,7 @@ export default function ResultPage() {
         doc.text(`Semester GPA: ${semesterGPA}`, pageWidth - 14, y, {
           align: "right",
         });
-        y += 10;
+        y += 12;
       });
 
       const totalCGPA = calculateTotalCGPA(allResults);
@@ -323,6 +327,12 @@ export default function ResultPage() {
 
   return (
     <div className="max-w-6xl mx-auto p-4 md:p-6 space-y-6">
+      <Link
+        href="/"
+        className="inline-block px-5 py-2 bg-blue-600 text-white text-sm font-medium rounded-lg hover:bg-blue-700 transition"
+      >
+        Go Home Page
+      </Link>
       <div className="flex flex-col items-center gap-4">
         <NextImage
           src="/diulogoside.png"
@@ -472,6 +482,9 @@ export default function ResultPage() {
               <div className="flex justify-between items-center mb-4">
                 <h3 className="text-lg font-semibold">{semesterLabel}</h3>
                 <Badge variant="secondary">
+                  Credit : {calculateTotalCredit(courses)}
+                </Badge>
+                <Badge variant="secondary">
                   GPA: {calculateSemesterGPA(courses)}
                 </Badge>
               </div>
@@ -491,8 +504,45 @@ export default function ResultPage() {
                     <TableRow key={course.customCourseId}>
                       <TableCell>{course.customCourseId}</TableCell>
                       <TableCell>{course.courseTitle}</TableCell>
-                      <TableCell>{course.gradeLetter}</TableCell>
-                      <TableCell>{course.pointEquivalent.toFixed(2)}</TableCell>
+                      <TableCell
+                        className={
+                          course.pointEquivalent < 2
+                            ? "text-red-600 font-semibold"
+                            : course.pointEquivalent < 2.5
+                            ? "text-rose-500 font-medium"
+                            : course.pointEquivalent < 3
+                            ? "text-orange-500 font-medium"
+                            : course.pointEquivalent < 3.25
+                            ? "text-yellow-600 font-medium"
+                            : course.pointEquivalent < 3.5
+                            ? "text-amber-600 font-medium"
+                            : course.pointEquivalent < 4
+                            ? "text-lime-600 font-medium"
+                            : "text-green-600 font-semibold"
+                        }
+                      >
+                        {course.gradeLetter}
+                      </TableCell>
+                      <TableCell
+                        className={
+                          course.pointEquivalent < 2
+                            ? "text-red-600 font-semibold"
+                            : course.pointEquivalent < 2.5
+                            ? "text-rose-500 font-medium"
+                            : course.pointEquivalent < 3
+                            ? "text-orange-500 font-medium"
+                            : course.pointEquivalent < 3.25
+                            ? "text-yellow-600 font-medium"
+                            : course.pointEquivalent < 3.5
+                            ? "text-amber-600 font-medium"
+                            : course.pointEquivalent < 4
+                            ? "text-lime-600 font-medium"
+                            : "text-green-600 font-semibold"
+                        }
+                      >
+                        {course.pointEquivalent.toFixed(2)}
+                      </TableCell>
+
                       <TableCell>{course.totalCredit}</TableCell>
                     </TableRow>
                   ))}

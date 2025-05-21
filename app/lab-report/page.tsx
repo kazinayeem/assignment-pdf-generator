@@ -14,6 +14,7 @@ import { courseData } from "@/app/data"; // Assuming courseData is relevant for 
 import autoTable from "jspdf-autotable";
 import jsPDF from "jspdf";
 import "jspdf-autotable";
+import Link from "next/link";
 
 type Course = {
   code: string;
@@ -86,15 +87,15 @@ export default function LabReportForm() {
     let y = 15;
 
     const logo = new Image();
-    logo.src = "./diulogoside.png"; // Make sure this path is correct for your logo
+    logo.src = "./diulogoside.png";
 
     logo.onload = () => {
-      doc.addImage(logo, "PNG", 60, y, 90, 25); // Daffodil International University logo [cite: 1]
+      doc.addImage(logo, "PNG", 60, y, 90, 25);
       y += 30;
 
       doc.setFont("times", "bold");
       doc.setFontSize(16);
-      // Dynamically display the project title
+
       doc.text("Project Report", 105, y, {
         align: "center",
       });
@@ -105,15 +106,14 @@ export default function LabReportForm() {
       });
       y += 8;
 
-      // === Teacher Evaluation Table ===
       doc.setFontSize(11);
       autoTable(doc, {
         startY: y,
         head: [
           [
             {
-              content: "Only for course Teacher", // "Only for course Teacher" [cite: 1]
-              colSpan: 6,
+              content: "Only for course Teacher",
+              colSpan: 7,
               styles: {
                 halign: "center",
                 fontStyle: "bold",
@@ -122,23 +122,32 @@ export default function LabReportForm() {
             },
           ],
           [
-            { content: "" },
-            { content: "Needs Improvement" }, // "Needs Improvement" [cite: 2]
-            { content: "Developing" }, // "Developing" [cite: 2]
-            { content: "Sufficient" }, // "Sufficient" [cite: 2]
-            { content: "Above Average" }, // "Above Average" [cite: 2]
-            { content: "Total Mark" }, // "Total Mark" [cite: 2]
+            { content: "", colSpan: 2 },
+
+            { content: "Needs Improvement" },
+            { content: "Developing" },
+            { content: "Sufficient" },
+            { content: "Above Average" },
+            { content: "Total Mark" },
           ],
-          ["Allocate mark & Percentage", "25%", "50%", "75%", "100%", "25"], // Allocate mark & Percentage, 25%, 50%, 75%, 100%, 25 [cite: 2]
+          [
+            { content: "Allocate mark & Percentage", colSpan: 2 },
+
+            "25%",
+            "50%",
+            "75%",
+            "100%",
+            "25",
+          ],
         ],
         body: [
-          ["Understanding", "", "", "", "", "3"], // Understanding, 3 [cite: 2]
-          ["Analysis", "", "", "", "", "4"], // Analysis, 4 [cite: 2]
-          ["Implementation", "", "", "", "", "8"], // Implementation, 8 [cite: 2]
-          ["Report Writing", "", "", "", "", "10"], // Report Writing, 10 [cite: 2]
+          ["Understanding", "3", "", "", "", "", ""],
+          ["Analysis", "4", "", "", "", "", ""],
+          ["Implementation", "8", "", "", "", "", ""],
+          ["Report Writing", "10", "", "", "", "", ""],
           [
             {
-              content: "Total obtained mark", // Total obtained mark [cite: 2]
+              content: "Total obtained mark",
               colSpan: 5,
               styles: {
                 halign: "left",
@@ -146,6 +155,22 @@ export default function LabReportForm() {
               },
             },
             "",
+          ],
+          [
+            {
+              content: "Comments \n \n",
+              colSpan: 2,
+
+              styles: {
+                halign: "left",
+                fontStyle: "bold",
+              },
+            },
+            {
+              content: "",
+
+              colSpan: 5,
+            },
           ],
         ],
         theme: "grid",
@@ -166,12 +191,7 @@ export default function LabReportForm() {
       });
 
       y = (doc as any).lastAutoTable.finalY + 5;
-
-      doc.setFont("times", "bold");
-      doc.setFontSize(11);
-      doc.text("Comments", 12, y + 5); // Comments [cite: 3]
-      doc.rect(12, y + 8, 186, 30);
-      y += 45;
+      y += 25;
 
       const formattedDate = formData.submissionDate
         ? formData.submissionDate.split("-").reverse().join(" / ")
@@ -183,7 +203,7 @@ export default function LabReportForm() {
       y += 8;
 
       doc.setFont("times", "bold");
-      doc.text("Semester:", 12, y); // Semester: Fall ......... [cite: 3]
+      doc.text("Semester:", 12, y);
       doc.setFont("times", "normal");
       doc.text(`${formData.semester}`, 45, y);
       y += 7;
@@ -198,39 +218,37 @@ export default function LabReportForm() {
       }
 
       doc.setFont("times", "bold");
-      doc.text("Student Name(s):", 12, y); // Names: [cite: 3]
+      doc.text("Student Name(s):", 12, y);
       doc.setFont("times", "normal");
-      // Adjusted x-coordinate for better spacing
       doc.text(`${formData.studentName}`, 60, y);
       y += 7;
 
       doc.setFont("times", "bold");
-      doc.text("Student ID(s):", 12, y); // IDs: [cite: 3]
+      doc.text("Student ID(s):", 12, y);
       doc.setFont("times", "normal");
       doc.text(`${formData.studentId}`, 45, y);
       y += 7;
 
       doc.setFont("times", "bold");
-      doc.text("Batch:", 12, y); // Batch: [cite: 3]
+      doc.text("Batch:", 12, y);
       doc.setFont("times", "normal");
       doc.text(`${formData.batch}`, 45, y);
       doc.setFont("times", "bold");
-      doc.text("Section:", 100, y); // Section: [cite: 3]
+      doc.text("Section:", 100, y);
       doc.setFont("times", "normal");
       doc.text(`${formData.section}`, 125, y);
       y += 12;
 
-      // === Teacher Info Section ===
       doc.setFont("times", "bold");
       doc.text("Course Teacher Information", 12, y);
       y += 8;
 
       doc.setFont("times", "bold");
-      doc.text("Course Code:", 12, y); // Course Code: [cite: 3]
+      doc.text("Course Code:", 12, y);
       doc.setFont("times", "normal");
       doc.text(`${formData.courseCode}`, 45, y);
       doc.setFont("times", "bold");
-      doc.text("Course Name:", 100, y); // Course Name: [cite: 3]
+      doc.text("Course Name:", 100, y);
       doc.setFont("times", "normal");
       const maxWidthCourseName = 60;
       const courseNameLines = doc.splitTextToSize(
@@ -241,10 +259,10 @@ export default function LabReportForm() {
       y += 7;
 
       doc.setFont("times", "bold");
-      doc.text("Course Teacher Name:", 12, y); // Course Teacher Name: [cite: 3]
+      doc.text("Course Teacher Name:", 12, y);
       doc.setFont("times", "normal");
-      // Adjusted x-coordinate and increased maxWidthTeacherName for better spacing
-      const maxWidthTeacherName = 120; // Adjusted for potentially longer names
+
+      const maxWidthTeacherName = 120;
       const teacherNameLines = doc.splitTextToSize(
         formData.teacherName,
         maxWidthTeacherName
@@ -253,13 +271,13 @@ export default function LabReportForm() {
       y += 7;
 
       doc.setFont("times", "bold");
-      doc.text("Designation:", 12, y); // Designation: [cite: 3]
+      doc.text("Designation:", 12, y);
       doc.setFont("times", "normal");
       doc.text(`${formData.teacherDesignation}`, 45, y);
       y += 7;
 
       doc.setFont("times", "bold");
-      doc.text("Submission Date:", 12, y); // Submission Date: /....../....... [cite: 3]
+      doc.text("Submission Date:", 12, y);
       doc.setFont("times", "normal");
       doc.text(`${formattedDate}`, 50, y);
       y += 10;
@@ -271,6 +289,13 @@ export default function LabReportForm() {
 
   return (
     <div className="max-w-2xl mx-auto px-4 py-10 space-y-8">
+      <Link
+        href="/"
+        className="inline-block px-5 py-2 bg-blue-600 text-white text-sm font-medium rounded-lg hover:bg-blue-700 transition"
+      >
+        Go Home Page
+      </Link>
+
       <h2 className="text-2xl font-semibold text-center text-gray-800">
         Lab Report PDF Generator
       </h2>
@@ -394,12 +419,14 @@ export default function LabReportForm() {
 
         {/* Group Number */}
         <div>
-          <label className="text-sm font-medium mb-1 block">Group Number</label>
+          <label className="text-sm font-medium mb-1 block">
+            Group Number (A1/A2)
+          </label>
           <Input
             name="groupNo"
             value={formData.groupNo}
             onChange={handleChange}
-            placeholder="e.g., 1, A, etc."
+            placeholder="e.g., A1,A2,B1,B2 etc."
             className="h-9 text-sm"
           />
         </div>

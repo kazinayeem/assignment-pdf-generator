@@ -14,6 +14,7 @@ import { courseData } from "@/app/data";
 import autoTable from "jspdf-autotable";
 import jsPDF from "jspdf";
 import "jspdf-autotable";
+import Link from "next/link";
 type Course = {
   code: string;
   title: string;
@@ -101,7 +102,7 @@ export default function AssignmentForm() {
           [
             {
               content: "Only for course Teacher",
-              colSpan: 6,
+              colSpan: 7,
               styles: {
                 halign: "center",
                 fontStyle: "bold",
@@ -110,27 +111,35 @@ export default function AssignmentForm() {
             },
           ],
           [
-            { content: "" },
+            { content: "", colSpan: 2 },
+
             { content: "Needs Improvement" },
             { content: "Developing" },
             { content: "Sufficient" },
             { content: "Above Average" },
             { content: "Total Mark" },
           ],
-          ["Allocate mark & Percentage", "25%", "50%", "75%", "100%", "5"],
+          [
+            { content: "Allocate mark & Percentage", colSpan: 2 },
+            "25%",
+            "50%",
+            "75%",
+            "100%",
+            "5",
+          ],
         ],
 
         body: [
-          ["Clarity", "", "", "", "", "1"],
-          ["Content Quality", "", "", "", "", "2"],
-          ["Spelling & Grammar", "", "", "", "", "1"],
-          ["Organization and Formatting", "", "", "", "", "1"],
+          ["Clarity", "1", "", "", "", "", ""],
+          ["Content Quality", "2", "", "", "", "", ""],
+          ["Spelling & Grammar", "1", "", "", "", "", ""],
+          ["Organization and Formatting", "1", "", "", "", "", ""],
           [
             {
               content: "Total obtained mark",
               colSpan: 5,
               styles: {
-                halign: "left",
+                halign: "right",
                 fontStyle: "bold",
               },
             },
@@ -140,7 +149,24 @@ export default function AssignmentForm() {
             "",
             "",
           ],
+          [
+            {
+              content: "Comments \n \n",
+              colSpan: 2,
+
+              styles: {
+                halign: "left",
+                fontStyle: "bold",
+              },
+            },
+            {
+              content: "",
+
+              colSpan: 5,
+            },
+          ],
         ],
+
         theme: "grid",
         styles: {
           fontSize: 10,
@@ -162,11 +188,11 @@ export default function AssignmentForm() {
 
       y = (doc as any).lastAutoTable.finalY + 5;
 
-      doc.setFont("times", "bold");
-      doc.setFontSize(11);
-      doc.text("Comments", 12, y + 5);
-      doc.rect(12, y + 8, 186, 30);
-      y += 45;
+      // doc.setFont("times", "bold");
+      // doc.setFontSize(11);
+      // doc.text("Comments", 12, y + 5);
+      // doc.rect(12, y + 8, 186, 30);
+      y += 25;
 
       const formattedDate = formData.submissionDate
         ? formData.submissionDate.split("-").reverse().join(" / ")
@@ -256,6 +282,12 @@ export default function AssignmentForm() {
 
   return (
     <div className="max-w-2xl mx-auto px-4 py-10 space-y-8">
+      <Link
+        href="/"
+        className="inline-block px-5 py-2 bg-blue-600 text-white text-sm font-medium rounded-lg hover:bg-blue-700 transition"
+      >
+        Go Home Page
+      </Link>
       <h2 className="text-2xl font-semibold text-center text-gray-800">
         Assignment PDF Generator
       </h2>

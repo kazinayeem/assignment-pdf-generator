@@ -17,7 +17,7 @@ export default function Page() {
         />
       </div>
 
-      <h1 className="text-2xl font-semibold mb-6">Select Cover Page</h1>
+      <h1 className="text-2xl font-semibold mb-6">Diu Service</h1>
 
       <div className="flex gap-4">
         <Link href="/assignment">

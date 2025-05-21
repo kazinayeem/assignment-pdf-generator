@@ -10,13 +10,18 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-// import { courseData } from "@/app/data"; // No longer needed here
+import { courseData } from "@/app/data";
 import autoTable from "jspdf-autotable";
 import jsPDF from "jspdf";
 import "jspdf-autotable";
 import Link from "next/link";
-
-
+type Course = {
+  code: string;
+  title: string;
+  credit: string;
+  section: string;
+  teacher: string;
+};
 
 type FormData = {
   courseCode: string;
@@ -25,7 +30,7 @@ type FormData = {
   topic: string;
   teacherName: string;
   teacherDesignation: string;
-  department: string; 
+  department: string;
   studentName: string;
   studentId: string;
   submissionDate: string;
@@ -42,20 +47,33 @@ export default function AssignmentForm() {
     teacherName: "",
     teacherDesignation: "",
     department: "",
-    studentName: "",
-    studentId: "",
+    studentName: "Mohammad Ali Nayeem",
+    studentId: "232-35-022",
     submissionDate: "",
-    batch: "",
+    batch: "41",
     semester: "",
   });
 
-  
+  const [courseList] = useState<Course[]>(courseData);
 
   const handleChange = (
     e: ChangeEvent<HTMLInputElement | HTMLSelectElement>
   ) => {
     const { name, value } = e.target;
     setFormData((prev) => ({ ...prev, [name]: value }));
+  };
+
+  const handleCourseChange = (value: string) => {
+    const course = courseList.find((c) => c.code === value);
+    if (course) {
+      setFormData((prev) => ({
+        ...prev,
+        courseCode: course.code,
+        courseTitle: course.title,
+        section: course.section,
+        teacherName: course.teacher,
+      }));
+    }
   };
 
   const generatePDF = () => {
@@ -66,7 +84,7 @@ export default function AssignmentForm() {
     let y = 15;
 
     const logo = new Image();
-    logo.src = "./diulogoside.png";
+    logo.src = "../../diulogoside.png";
     logo.onload = () => {
       doc.addImage(logo, "PNG", 60, y, 90, 25);
       y += 30;
@@ -94,6 +112,7 @@ export default function AssignmentForm() {
           ],
           [
             { content: "", colSpan: 2 },
+
             { content: "Needs Improvement" },
             { content: "Developing" },
             { content: "Sufficient" },
@@ -109,6 +128,7 @@ export default function AssignmentForm() {
             "5",
           ],
         ],
+
         body: [
           ["Clarity", "1", "", "", "", "", ""],
           ["Content Quality", "2", "", "", "", "", ""],
@@ -123,27 +143,30 @@ export default function AssignmentForm() {
                 fontStyle: "bold",
               },
             },
-            "", 
-            "", 
+            "",
+            "",
             "",
             "",
             "",
           ],
           [
             {
-              content: "Comments \n \n", 
+              content: "Comments \n \n",
               colSpan: 2,
+
               styles: {
                 halign: "left",
                 fontStyle: "bold",
               },
             },
             {
-              content: "", 
+              content: "",
+
               colSpan: 5,
             },
           ],
         ],
+
         theme: "grid",
         styles: {
           fontSize: 10,
@@ -155,15 +178,22 @@ export default function AssignmentForm() {
           lineWidth: 0.1,
         },
         headStyles: {
-          fillColor: false, // No fill color for head
+          fillColor: false,
           textColor: 0,
           fontStyle: "bold",
         },
       });
 
-      y = (doc as any).lastAutoTable.finalY + 10; // Increased gap after table
+      y = (doc as any).lastAutoTable.finalY + 5;
 
-      // Student Information Section
+      y = (doc as any).lastAutoTable.finalY + 5;
+
+      // doc.setFont("times", "bold");
+      // doc.setFontSize(11);
+      // doc.text("Comments", 12, y + 5);
+      // doc.rect(12, y + 8, 186, 30);
+      y += 25;
+
       const formattedDate = formData.submissionDate
         ? formData.submissionDate.split("-").reverse().join(" / ")
         : "";
@@ -196,42 +226,42 @@ export default function AssignmentForm() {
       doc.setFont("times", "normal");
       doc.text(`${formData.batch}`, 45, y);
       doc.setFont("times", "bold");
-      doc.text("Section:", 100, y); // Student's section
+      doc.text("Section:", 100, y);
       doc.setFont("times", "normal");
       doc.text(`${formData.section}`, 125, y);
-      y += 12;
+      y += 12; // <-- Extra gap after student section
 
-      // Course Teacher Information Section
+      // === Teacher Info Section ===
       doc.setFont("times", "bold");
-      doc.text("Course & Teacher Information", 12, y);
+      doc.text("Course Teacher Information", 12, y);
       y += 8;
 
       doc.setFont("times", "bold");
       doc.text("Course Code:", 12, y);
       doc.setFont("times", "normal");
       doc.text(`${formData.courseCode}`, 45, y);
-
       doc.setFont("times", "bold");
-      doc.text("Course Title:", 100, y);
+      doc.text("Course Name:", 100, y);
       doc.setFont("times", "normal");
-      const maxWidthCourseName = 60; // Max width for course title before wrapping
+      const maxWidthCourseName = 60;
       const courseNameLines = doc.splitTextToSize(
         formData.courseTitle,
         maxWidthCourseName
       );
-      doc.text(courseNameLines, 130, y); // Adjusted x-position for course title
-      y += Math.max(7, courseNameLines.length * 5); // Adjust y based on lines
+      doc.text(courseNameLines, 140, y);
+
+      y += 7;
 
       doc.setFont("times", "bold");
       doc.text("Teacher Name:", 12, y);
       doc.setFont("times", "normal");
-      const maxWidthTeacherName = 90; // Max width for teacher name
+      const maxWidthTeacherName = 90;
       const teacherNameLines = doc.splitTextToSize(
         formData.teacherName,
         maxWidthTeacherName
       );
       doc.text(teacherNameLines, 45, y);
-      y += Math.max(7, teacherNameLines.length * 5); // Adjust y based on lines
+      y += 7;
 
       doc.setFont("times", "bold");
       doc.text("Designation:", 12, y);
@@ -246,21 +276,7 @@ export default function AssignmentForm() {
       y += 10;
 
       const sanitizedName = formData.studentName.replace(/\s+/g, "_");
-      doc.save(
-        `${formData.studentId}_${sanitizedName}_${formData.courseCode}.pdf`
-      ); // Added course code to filename
-    };
-    // Handle image loading error
-    logo.onerror = () => {
-      console.error("Failed to load logo image.");
-      doc.setFont("times", "bold");
-      doc.setFontSize(16);
-      doc.text("Assignment", 105, y, { align: "center" });
-      y += 8;
-      const sanitizedName = formData.studentName.replace(/\s+/g, "_");
-      doc.save(
-        `${formData.studentId}_${sanitizedName}_${formData.courseCode}_no_logo.pdf`
-      );
+      doc.save(`${formData.studentId}_${sanitizedName}.pdf`);
     };
   };
 
@@ -277,50 +293,33 @@ export default function AssignmentForm() {
       </h2>
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-        {/* Course Code */}
-        <div>
-          <label className="text-sm font-medium mb-1 block">Course Code</label>
-          <Input
-            name="courseCode"
-            value={formData.courseCode}
-            onChange={handleChange}
-            placeholder="e.g., SE 224"
-            className="h-9 text-sm"
-          />
+        {/* Course */}
+        <div className="md:col-span-2">
+          <label className="text-sm font-medium mb-1 block">Course</label>
+          <Select onValueChange={handleCourseChange}>
+            <SelectTrigger className="w-full h-9 text-sm">
+              <SelectValue placeholder="Select a course" />
+            </SelectTrigger>
+            <SelectContent>
+              {courseList.map((course) => (
+                <SelectItem key={course.code} value={course.code}>
+                  {course.code} - {course.title}
+                </SelectItem>
+              ))}
+            </SelectContent>
+          </Select>
         </div>
 
-        {/* Course Title */}
+        {/* Topic */}
         <div>
-          <label className="text-sm font-medium mb-1 block">Course Title</label>
+          <label className="text-sm font-medium mb-1 block">
+            Assignment topic
+          </label>
           <Input
-            name="courseTitle"
-            value={formData.courseTitle}
+            name="topic"
+            value={formData.topic}
             onChange={handleChange}
-            placeholder="e.g., Database System Lab"
-            className="h-9 text-sm"
-          />
-        </div>
-
-        {/* Section */}
-        <div>
-          <label className="text-sm font-medium mb-1 block">Section</label>
-          <Input
-            name="section"
-            value={formData.section}
-            onChange={handleChange}
-            placeholder="e.g., 42B2"
-            className="h-9 text-sm"
-          />
-        </div>
-
-        {/* Teacher Name */}
-        <div>
-          <label className="text-sm font-medium mb-1 block">Teacher Name</label>
-          <Input
-            name="teacherName"
-            value={formData.teacherName}
-            onChange={handleChange}
-            placeholder="Enter teacher's full name"
+            placeholder="Assignment topic"
             className="h-9 text-sm"
           />
         </div>
@@ -331,7 +330,6 @@ export default function AssignmentForm() {
             Teacher Designation
           </label>
           <Select
-            value={formData.teacherDesignation} // Controlled component
             onValueChange={(value) =>
               setFormData({ ...formData, teacherDesignation: value })
             }
@@ -346,27 +344,8 @@ export default function AssignmentForm() {
               <SelectItem value="Assistant Professor">
                 Assistant Professor
               </SelectItem>
-              <SelectItem value="Associate Professor">
-                Associate Professor
-              </SelectItem>
-              {/* Add other designations as needed */}
             </SelectContent>
           </Select>
-        </div>
-
-        {/* Assignment Topic */}
-        {/* Making it full width for better topic visibility */}
-        <div className="md:col-span-2">
-          <label className="text-sm font-medium mb-1 block">
-            Assignment Topic
-          </label>
-          <Input
-            name="topic"
-            value={formData.topic}
-            onChange={handleChange}
-            placeholder="Enter assignment topic"
-            className="h-9 text-sm"
-          />
         </div>
 
         {/* Student Name */}
@@ -376,7 +355,6 @@ export default function AssignmentForm() {
           onChange={handleChange}
           placeholder="Student name"
           className="h-9 text-sm"
-          aria-label="Student Name"
         />
 
         {/* Student ID */}
@@ -386,24 +364,22 @@ export default function AssignmentForm() {
           onChange={handleChange}
           placeholder="Student ID"
           className="h-9 text-sm"
-          aria-label="Student ID"
         />
 
         {/* Batch */}
         <div>
           <label className="text-sm font-medium mb-1 block">Batch</label>
           <Select
-            value={formData.batch}
             onValueChange={(value) =>
               setFormData({ ...formData, batch: value })
             }
           >
             <SelectTrigger className="w-full h-9 text-sm">
-              <SelectValue placeholder="Select batch " />
+              <SelectValue placeholder="Select batch" />
             </SelectTrigger>
             <SelectContent>
-              {[...Array(38)].map((_, i) => {
-                const val = (37 + i).toString();
+              {[...Array(31)].map((_, i) => {
+                const val = (30 + i).toString();
                 return (
                   <SelectItem key={val} value={val}>
                     Batch {val}
@@ -418,7 +394,6 @@ export default function AssignmentForm() {
         <div>
           <label className="text-sm font-medium mb-1 block">Semester</label>
           <Select
-            value={formData.semester} // Controlled component
             onValueChange={(value) =>
               setFormData({ ...formData, semester: value })
             }
@@ -427,10 +402,6 @@ export default function AssignmentForm() {
               <SelectValue placeholder="Select semester" />
             </SelectTrigger>
             <SelectContent>
-              {/* Consider generating these dynamically for future years */}
-              <SelectItem value="Spring 2024">Spring 2024</SelectItem>
-              <SelectItem value="Summer 2024">Summer 2024</SelectItem>
-              <SelectItem value="Fall 2024">Fall 2024</SelectItem>
               <SelectItem value="Spring 2025">Spring 2025</SelectItem>
               <SelectItem value="Summer 2025">Summer 2025</SelectItem>
               <SelectItem value="Fall 2025">Fall 2025</SelectItem>

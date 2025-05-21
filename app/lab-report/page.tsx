@@ -10,34 +10,25 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import { courseData } from "@/app/data"; // Assuming courseData is relevant for lab courses as well
 import autoTable from "jspdf-autotable";
 import jsPDF from "jspdf";
 import "jspdf-autotable";
 import Link from "next/link";
 
-type Course = {
-  code: string;
-  title: string;
-  credit: string;
-  section: string;
-  teacher: string;
-};
-
 type FormData = {
   courseCode: string;
   courseTitle: string;
   section: string;
-  projectTitle: string; // Changed from topic to projectTitle
+  projectTitle: string;
   teacherName: string;
   teacherDesignation: string;
-  department: string; // Added department as it's common for lab reports
+  department: string;
   studentName: string;
   studentId: string;
   submissionDate: string;
   batch: string;
   semester: string;
-  groupNo: string; // Added group number for lab reports
+  groupNo: string;
 };
 
 export default function LabReportForm() {
@@ -45,7 +36,7 @@ export default function LabReportForm() {
     courseCode: "",
     courseTitle: "",
     section: "",
-    projectTitle: "", // Initialize with an empty string
+    projectTitle: "",
     teacherName: "",
     teacherDesignation: "",
     department: "",
@@ -57,26 +48,11 @@ export default function LabReportForm() {
     groupNo: "",
   });
 
-  const [courseList] = useState<Course[]>(courseData);
-
   const handleChange = (
     e: ChangeEvent<HTMLInputElement | HTMLSelectElement>
   ) => {
     const { name, value } = e.target;
     setFormData((prev) => ({ ...prev, [name]: value }));
-  };
-
-  const handleCourseChange = (value: string) => {
-    const course = courseList.find((c) => c.code === value);
-    if (course) {
-      setFormData((prev) => ({
-        ...prev,
-        courseCode: course.code,
-        courseTitle: course.title,
-        section: course.section,
-        teacherName: course.teacher,
-      }));
-    }
   };
 
   const generatePDF = () => {
@@ -96,14 +72,10 @@ export default function LabReportForm() {
       doc.setFont("times", "bold");
       doc.setFontSize(16);
 
-      doc.text("Project Report", 105, y, {
-        align: "center",
-      });
+      doc.text("Project Report", 105, y, { align: "center" });
       y += 8;
 
-      doc.text(formData.projectTitle, 105, y, {
-        align: "center",
-      });
+      doc.text(formData.projectTitle, 105, y, { align: "center" });
       y += 8;
 
       doc.setFontSize(11);
@@ -123,7 +95,6 @@ export default function LabReportForm() {
           ],
           [
             { content: "", colSpan: 2 },
-
             { content: "Needs Improvement" },
             { content: "Developing" },
             { content: "Sufficient" },
@@ -132,7 +103,6 @@ export default function LabReportForm() {
           ],
           [
             { content: "Allocate mark & Percentage", colSpan: 2 },
-
             "25%",
             "50%",
             "75%",
@@ -148,9 +118,9 @@ export default function LabReportForm() {
           [
             {
               content: "Total obtained mark",
-              colSpan: 5,
+              colSpan: 6,
               styles: {
-                halign: "left",
+                halign: "right",
                 fontStyle: "bold",
               },
             },
@@ -160,17 +130,12 @@ export default function LabReportForm() {
             {
               content: "Comments \n \n",
               colSpan: 2,
-
               styles: {
                 halign: "left",
                 fontStyle: "bold",
               },
             },
-            {
-              content: "",
-
-              colSpan: 5,
-            },
+            { content: "", colSpan: 5 },
           ],
         ],
         theme: "grid",
@@ -209,7 +174,6 @@ export default function LabReportForm() {
       y += 7;
 
       if (formData.groupNo) {
-        // Group No.- [cite: 3]
         doc.setFont("times", "bold");
         doc.text("Group No.:", 12, y);
         doc.setFont("times", "normal");
@@ -250,22 +214,16 @@ export default function LabReportForm() {
       doc.setFont("times", "bold");
       doc.text("Course Name:", 100, y);
       doc.setFont("times", "normal");
-      const maxWidthCourseName = 60;
-      const courseNameLines = doc.splitTextToSize(
-        formData.courseTitle,
-        maxWidthCourseName
-      );
+      const courseNameLines = doc.splitTextToSize(formData.courseTitle, 60);
       doc.text(courseNameLines, 140, y);
       y += 7;
 
       doc.setFont("times", "bold");
       doc.text("Course Teacher Name:", 12, y);
       doc.setFont("times", "normal");
-
-      const maxWidthTeacherName = 120;
       const teacherNameLines = doc.splitTextToSize(
         formData.teacherName,
-        maxWidthTeacherName
+        120
       );
       doc.text(teacherNameLines, 60, y);
       y += 7;
@@ -301,21 +259,52 @@ export default function LabReportForm() {
       </h2>
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-        {/* Course */}
-        <div className="md:col-span-2">
-          <label className="text-sm font-medium mb-1 block">Course</label>
-          <Select onValueChange={handleCourseChange}>
-            <SelectTrigger className="w-full h-9 text-sm">
-              <SelectValue placeholder="Select a course" />
-            </SelectTrigger>
-            <SelectContent>
-              {courseList.map((course) => (
-                <SelectItem key={course.code} value={course.code}>
-                  {course.code} - {course.title}
-                </SelectItem>
-              ))}
-            </SelectContent>
-          </Select>
+        {/* Course Code */}
+        <div>
+          <label className="text-sm font-medium mb-1 block">Course Code</label>
+          <Input
+            name="courseCode"
+            value={formData.courseCode}
+            onChange={handleChange}
+            placeholder="e.g., SE 224"
+            className="h-9 text-sm"
+          />
+        </div>
+
+        {/* Course Title */}
+        <div>
+          <label className="text-sm font-medium mb-1 block">Course Title</label>
+          <Input
+            name="courseTitle"
+            value={formData.courseTitle}
+            onChange={handleChange}
+            placeholder="e.g., Database System Lab"
+            className="h-9 text-sm"
+          />
+        </div>
+
+        {/* Section */}
+        <div>
+          <label className="text-sm font-medium mb-1 block">Section</label>
+          <Input
+            name="section"
+            value={formData.section}
+            onChange={handleChange}
+            placeholder="e.g., 42B2"
+            className="h-9 text-sm"
+          />
+        </div>
+
+        {/* Teacher Name */}
+        <div>
+          <label className="text-sm font-medium mb-1 block">Teacher Name</label>
+          <Input
+            name="teacherName"
+            value={formData.teacherName}
+            onChange={handleChange}
+            placeholder="e.g., Prof. Dr. A. H. M. Saifullah Sadi"
+            className="h-9 text-sm"
+          />
         </div>
 
         {/* Project Title */}
@@ -327,7 +316,7 @@ export default function LabReportForm() {
             name="projectTitle"
             value={formData.projectTitle}
             onChange={handleChange}
-            placeholder="Title of your Lab Report (e.g., Project Report)"
+            placeholder="Title of your Lab Report"
             className="h-9 text-sm"
           />
         </div>

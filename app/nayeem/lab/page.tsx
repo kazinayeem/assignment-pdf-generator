@@ -10,52 +10,73 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-// import { courseData } from "@/app/data"; // No longer needed here
+import { courseData } from "@/app/data"; // Assuming courseData is relevant for lab courses as well
 import autoTable from "jspdf-autotable";
 import jsPDF from "jspdf";
 import "jspdf-autotable";
 import Link from "next/link";
 
-
+type Course = {
+  code: string;
+  title: string;
+  credit: string;
+  section: string;
+  teacher: string;
+};
 
 type FormData = {
   courseCode: string;
   courseTitle: string;
   section: string;
-  topic: string;
+  projectTitle: string; // Changed from topic to projectTitle
   teacherName: string;
   teacherDesignation: string;
-  department: string; 
+  department: string; // Added department as it's common for lab reports
   studentName: string;
   studentId: string;
   submissionDate: string;
   batch: string;
   semester: string;
+  groupNo: string; // Added group number for lab reports
 };
 
-export default function AssignmentForm() {
+export default function LabReportForm() {
   const [formData, setFormData] = useState<FormData>({
     courseCode: "",
     courseTitle: "",
     section: "",
-    topic: "",
+    projectTitle: "", // Initialize with an empty string
     teacherName: "",
     teacherDesignation: "",
     department: "",
-    studentName: "",
-    studentId: "",
+    studentName: "Mohammad Ali Nayeem",
+    studentId: "232-35-022",
     submissionDate: "",
     batch: "",
     semester: "",
+    groupNo: "",
   });
 
-  
+  const [courseList] = useState<Course[]>(courseData);
 
   const handleChange = (
     e: ChangeEvent<HTMLInputElement | HTMLSelectElement>
   ) => {
     const { name, value } = e.target;
     setFormData((prev) => ({ ...prev, [name]: value }));
+  };
+
+  const handleCourseChange = (value: string) => {
+    const course = courseList.find((c) => c.code === value);
+    if (course) {
+      setFormData((prev) => ({
+        ...prev,
+        courseCode: course.code,
+        courseTitle: course.title,
+        section: course.section,
+        teacherName: course.teacher,
+      }));
+    }
   };
 
   const generatePDF = () => {
@@ -66,17 +87,25 @@ export default function AssignmentForm() {
     let y = 15;
 
     const logo = new Image();
-    logo.src = "./diulogoside.png";
+    logo.src = "../../diulogoside.png";
+
     logo.onload = () => {
       doc.addImage(logo, "PNG", 60, y, 90, 25);
       y += 30;
 
       doc.setFont("times", "bold");
       doc.setFontSize(16);
-      doc.text("Assignment", 105, y, { align: "center" });
+
+      doc.text("Project Report", 105, y, {
+        align: "center",
+      });
       y += 8;
 
-      // === Teacher Evaluation Table ===
+      doc.text(formData.projectTitle, 105, y, {
+        align: "center",
+      });
+      y += 8;
+
       doc.setFontSize(11);
       autoTable(doc, {
         startY: y,
@@ -94,6 +123,7 @@ export default function AssignmentForm() {
           ],
           [
             { content: "", colSpan: 2 },
+
             { content: "Needs Improvement" },
             { content: "Developing" },
             { content: "Sufficient" },
@@ -102,44 +132,43 @@ export default function AssignmentForm() {
           ],
           [
             { content: "Allocate mark & Percentage", colSpan: 2 },
+
             "25%",
             "50%",
             "75%",
             "100%",
-            "5",
+            "25",
           ],
         ],
         body: [
-          ["Clarity", "1", "", "", "", "", ""],
-          ["Content Quality", "2", "", "", "", "", ""],
-          ["Spelling & Grammar", "1", "", "", "", "", ""],
-          ["Organization and Formatting", "1", "", "", "", "", ""],
+          ["Understanding", "3", "", "", "", "", ""],
+          ["Analysis", "4", "", "", "", "", ""],
+          ["Implementation", "8", "", "", "", "", ""],
+          ["Report Writing", "10", "", "", "", "", ""],
           [
             {
               content: "Total obtained mark",
-              colSpan: 6,
+              colSpan: 5,
               styles: {
-                halign: "right",
+                halign: "left",
                 fontStyle: "bold",
               },
             },
-            "", 
-            "", 
-            "",
-            "",
             "",
           ],
           [
             {
-              content: "Comments \n \n", 
+              content: "Comments \n \n",
               colSpan: 2,
+
               styles: {
                 halign: "left",
                 fontStyle: "bold",
               },
             },
             {
-              content: "", 
+              content: "",
+
               colSpan: 5,
             },
           ],
@@ -155,15 +184,15 @@ export default function AssignmentForm() {
           lineWidth: 0.1,
         },
         headStyles: {
-          fillColor: false, // No fill color for head
+          fillColor: false,
           textColor: 0,
           fontStyle: "bold",
         },
       });
 
-      y = (doc as any).lastAutoTable.finalY + 10; // Increased gap after table
+      y = (doc as any).lastAutoTable.finalY + 5;
+      y += 25;
 
-      // Student Information Section
       const formattedDate = formData.submissionDate
         ? formData.submissionDate.split("-").reverse().join(" / ")
         : "";
@@ -179,14 +208,23 @@ export default function AssignmentForm() {
       doc.text(`${formData.semester}`, 45, y);
       y += 7;
 
+      if (formData.groupNo) {
+        // Group No.- [cite: 3]
+        doc.setFont("times", "bold");
+        doc.text("Group No.:", 12, y);
+        doc.setFont("times", "normal");
+        doc.text(`${formData.groupNo}`, 45, y);
+        y += 7;
+      }
+
       doc.setFont("times", "bold");
-      doc.text("Student Name:", 12, y);
+      doc.text("Student Name(s):", 12, y);
       doc.setFont("times", "normal");
-      doc.text(`${formData.studentName}`, 45, y);
+      doc.text(`${formData.studentName}`, 60, y);
       y += 7;
 
       doc.setFont("times", "bold");
-      doc.text("Student ID:", 12, y);
+      doc.text("Student ID(s):", 12, y);
       doc.setFont("times", "normal");
       doc.text(`${formData.studentId}`, 45, y);
       y += 7;
@@ -196,42 +234,41 @@ export default function AssignmentForm() {
       doc.setFont("times", "normal");
       doc.text(`${formData.batch}`, 45, y);
       doc.setFont("times", "bold");
-      doc.text("Section:", 100, y); // Student's section
+      doc.text("Section:", 100, y);
       doc.setFont("times", "normal");
       doc.text(`${formData.section}`, 125, y);
       y += 12;
 
-      // Course Teacher Information Section
       doc.setFont("times", "bold");
-      doc.text("Course & Teacher Information", 12, y);
+      doc.text("Course Teacher Information", 12, y);
       y += 8;
 
       doc.setFont("times", "bold");
       doc.text("Course Code:", 12, y);
       doc.setFont("times", "normal");
       doc.text(`${formData.courseCode}`, 45, y);
-
       doc.setFont("times", "bold");
-      doc.text("Course Title:", 100, y);
+      doc.text("Course Name:", 100, y);
       doc.setFont("times", "normal");
-      const maxWidthCourseName = 60; // Max width for course title before wrapping
+      const maxWidthCourseName = 60;
       const courseNameLines = doc.splitTextToSize(
         formData.courseTitle,
         maxWidthCourseName
       );
-      doc.text(courseNameLines, 130, y); // Adjusted x-position for course title
-      y += Math.max(7, courseNameLines.length * 5); // Adjust y based on lines
+      doc.text(courseNameLines, 140, y);
+      y += 7;
 
       doc.setFont("times", "bold");
-      doc.text("Teacher Name:", 12, y);
+      doc.text("Course Teacher Name:", 12, y);
       doc.setFont("times", "normal");
-      const maxWidthTeacherName = 90; // Max width for teacher name
+
+      const maxWidthTeacherName = 120;
       const teacherNameLines = doc.splitTextToSize(
         formData.teacherName,
         maxWidthTeacherName
       );
-      doc.text(teacherNameLines, 45, y);
-      y += Math.max(7, teacherNameLines.length * 5); // Adjust y based on lines
+      doc.text(teacherNameLines, 60, y);
+      y += 7;
 
       doc.setFont("times", "bold");
       doc.text("Designation:", 12, y);
@@ -246,21 +283,7 @@ export default function AssignmentForm() {
       y += 10;
 
       const sanitizedName = formData.studentName.replace(/\s+/g, "_");
-      doc.save(
-        `${formData.studentId}_${sanitizedName}_${formData.courseCode}.pdf`
-      ); // Added course code to filename
-    };
-    // Handle image loading error
-    logo.onerror = () => {
-      console.error("Failed to load logo image.");
-      doc.setFont("times", "bold");
-      doc.setFontSize(16);
-      doc.text("Assignment", 105, y, { align: "center" });
-      y += 8;
-      const sanitizedName = formData.studentName.replace(/\s+/g, "_");
-      doc.save(
-        `${formData.studentId}_${sanitizedName}_${formData.courseCode}_no_logo.pdf`
-      );
+      doc.save(`${formData.studentId}_${sanitizedName}_LabReport.pdf`);
     };
   };
 
@@ -272,55 +295,39 @@ export default function AssignmentForm() {
       >
         Go Home Page
       </Link>
+
       <h2 className="text-2xl font-semibold text-center text-gray-800">
-        Assignment PDF Generator
+        Lab Report PDF Generator
       </h2>
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-        {/* Course Code */}
-        <div>
-          <label className="text-sm font-medium mb-1 block">Course Code</label>
-          <Input
-            name="courseCode"
-            value={formData.courseCode}
-            onChange={handleChange}
-            placeholder="e.g., SE 224"
-            className="h-9 text-sm"
-          />
+        {/* Course */}
+        <div className="md:col-span-2">
+          <label className="text-sm font-medium mb-1 block">Course</label>
+          <Select onValueChange={handleCourseChange}>
+            <SelectTrigger className="w-full h-9 text-sm">
+              <SelectValue placeholder="Select a course" />
+            </SelectTrigger>
+            <SelectContent>
+              {courseList.map((course) => (
+                <SelectItem key={course.code} value={course.code}>
+                  {course.code} - {course.title}
+                </SelectItem>
+              ))}
+            </SelectContent>
+          </Select>
         </div>
 
-        {/* Course Title */}
+        {/* Project Title */}
         <div>
-          <label className="text-sm font-medium mb-1 block">Course Title</label>
+          <label className="text-sm font-medium mb-1 block">
+            Lab Report Title
+          </label>
           <Input
-            name="courseTitle"
-            value={formData.courseTitle}
+            name="projectTitle"
+            value={formData.projectTitle}
             onChange={handleChange}
-            placeholder="e.g., Database System Lab"
-            className="h-9 text-sm"
-          />
-        </div>
-
-        {/* Section */}
-        <div>
-          <label className="text-sm font-medium mb-1 block">Section</label>
-          <Input
-            name="section"
-            value={formData.section}
-            onChange={handleChange}
-            placeholder="e.g., 42B2"
-            className="h-9 text-sm"
-          />
-        </div>
-
-        {/* Teacher Name */}
-        <div>
-          <label className="text-sm font-medium mb-1 block">Teacher Name</label>
-          <Input
-            name="teacherName"
-            value={formData.teacherName}
-            onChange={handleChange}
-            placeholder="Enter teacher's full name"
+            placeholder="Title of your Lab Report (e.g., Project Report)"
             className="h-9 text-sm"
           />
         </div>
@@ -331,7 +338,6 @@ export default function AssignmentForm() {
             Teacher Designation
           </label>
           <Select
-            value={formData.teacherDesignation} // Controlled component
             onValueChange={(value) =>
               setFormData({ ...formData, teacherDesignation: value })
             }
@@ -346,27 +352,8 @@ export default function AssignmentForm() {
               <SelectItem value="Assistant Professor">
                 Assistant Professor
               </SelectItem>
-              <SelectItem value="Associate Professor">
-                Associate Professor
-              </SelectItem>
-              {/* Add other designations as needed */}
             </SelectContent>
           </Select>
-        </div>
-
-        {/* Assignment Topic */}
-        {/* Making it full width for better topic visibility */}
-        <div className="md:col-span-2">
-          <label className="text-sm font-medium mb-1 block">
-            Assignment Topic
-          </label>
-          <Input
-            name="topic"
-            value={formData.topic}
-            onChange={handleChange}
-            placeholder="Enter assignment topic"
-            className="h-9 text-sm"
-          />
         </div>
 
         {/* Student Name */}
@@ -374,9 +361,8 @@ export default function AssignmentForm() {
           name="studentName"
           value={formData.studentName}
           onChange={handleChange}
-          placeholder="Student name"
+          placeholder="Student name(s)"
           className="h-9 text-sm"
-          aria-label="Student Name"
         />
 
         {/* Student ID */}
@@ -384,26 +370,24 @@ export default function AssignmentForm() {
           name="studentId"
           value={formData.studentId}
           onChange={handleChange}
-          placeholder="Student ID"
+          placeholder="Student ID(s)"
           className="h-9 text-sm"
-          aria-label="Student ID"
         />
 
         {/* Batch */}
         <div>
           <label className="text-sm font-medium mb-1 block">Batch</label>
           <Select
-            value={formData.batch}
             onValueChange={(value) =>
               setFormData({ ...formData, batch: value })
             }
           >
             <SelectTrigger className="w-full h-9 text-sm">
-              <SelectValue placeholder="Select batch " />
+              <SelectValue placeholder="Select batch" />
             </SelectTrigger>
             <SelectContent>
-              {[...Array(38)].map((_, i) => {
-                const val = (37 + i).toString();
+              {[...Array(31)].map((_, i) => {
+                const val = (30 + i).toString();
                 return (
                   <SelectItem key={val} value={val}>
                     Batch {val}
@@ -418,7 +402,6 @@ export default function AssignmentForm() {
         <div>
           <label className="text-sm font-medium mb-1 block">Semester</label>
           <Select
-            value={formData.semester} // Controlled component
             onValueChange={(value) =>
               setFormData({ ...formData, semester: value })
             }
@@ -427,15 +410,25 @@ export default function AssignmentForm() {
               <SelectValue placeholder="Select semester" />
             </SelectTrigger>
             <SelectContent>
-              {/* Consider generating these dynamically for future years */}
-              <SelectItem value="Spring 2024">Spring 2024</SelectItem>
-              <SelectItem value="Summer 2024">Summer 2024</SelectItem>
-              <SelectItem value="Fall 2024">Fall 2024</SelectItem>
               <SelectItem value="Spring 2025">Spring 2025</SelectItem>
               <SelectItem value="Summer 2025">Summer 2025</SelectItem>
               <SelectItem value="Fall 2025">Fall 2025</SelectItem>
             </SelectContent>
           </Select>
+        </div>
+
+        {/* Group Number */}
+        <div>
+          <label className="text-sm font-medium mb-1 block">
+            Group Number (A1/A2)
+          </label>
+          <Input
+            name="groupNo"
+            value={formData.groupNo}
+            onChange={handleChange}
+            placeholder="e.g., A1,A2,B1,B2 etc."
+            className="h-9 text-sm"
+          />
         </div>
 
         {/* Submission Date */}
@@ -454,7 +447,7 @@ export default function AssignmentForm() {
       </div>
 
       <Button className="w-full h-10 text-sm mt-4" onClick={generatePDF}>
-        Generate PDF
+        Generate Lab Report PDF
       </Button>
     </div>
   );

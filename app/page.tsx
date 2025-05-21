@@ -1,12 +1,14 @@
 import Link from "next/link";
 import Image from "next/image";
 import React from "react";
+import { FileText, FlaskConical, BarChart2 } from "lucide-react";
 
 export default function Page() {
   return (
-    <div className="flex flex-col items-center justify-center min-h-screen gap-6 bg-gray-50 p-8">
+    <div className="flex flex-col items-center justify-center min-h-[85vh]
+ gap-8 bg-gray-50 p-8 text-center">
       {/* Logo */}
-      <div className="mb-6">
+      <div className="mb-4">
         <Image
           src="/diulogoside.png"
           alt="DIU Logo"
@@ -17,25 +19,28 @@ export default function Page() {
         />
       </div>
 
-      <h1 className="text-2xl font-semibold mb-6">Diu Service</h1>
+      <h1 className="text-3xl font-bold text-gray-800">DIU Service Portal</h1>
 
-      <div className="flex gap-4">
-        <Link href="/assignment">
-          <h1 className="px-6 py-3 bg-blue-600 text-white rounded-md shadow hover:bg-blue-700 transition">
-            Assignment Cover
-          </h1>
+      <div className="flex flex-wrap justify-center gap-4 mt-6">
+        <Link href="/assignment" passHref>
+          <div className="flex items-center gap-2 px-6 py-3 bg-blue-600 text-white rounded-lg shadow hover:bg-blue-700 transition cursor-pointer">
+            <FileText className="w-5 h-5" />
+            <span>Assignment Cover</span>
+          </div>
         </Link>
 
-        <Link href="/lab-report">
-          <h1 className="px-6 py-3 bg-green-600 text-white rounded-md shadow hover:bg-green-700 transition">
-            Lab Report Cover
-          </h1>
+        <Link href="/lab-report" passHref>
+          <div className="flex items-center gap-2 px-6 py-3 bg-green-600 text-white rounded-lg shadow hover:bg-green-700 transition cursor-pointer">
+            <FlaskConical className="w-5 h-5" />
+            <span>Lab Report Cover</span>
+          </div>
         </Link>
 
-        <Link href="/result">
-          <h1 className="px-6 py-3 bg-green-600 text-white rounded-md shadow hover:bg-green-700 transition">
-            Result Generate
-          </h1>
+        <Link href="/result" passHref>
+          <div className="flex items-center gap-2 px-6 py-3 bg-purple-600 text-white rounded-lg shadow hover:bg-purple-700 transition cursor-pointer">
+            <BarChart2 className="w-5 h-5" />
+            <span>Generate Result</span>
+          </div>
         </Link>
       </div>
     </div>

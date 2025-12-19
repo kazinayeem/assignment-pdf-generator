@@ -1,5 +1,49 @@
 export const courseData = [
   {
+    code: "SE 232",
+    title: "Operating System & System Programming",
+    credit: "3",
+    section: "42_B",
+    teacher: "Ishrat Sultana",
+  },
+  {
+    code: "SE 233",
+    title: "Operating System & System Programming Lab",
+    credit: "1",
+    section: "42_B2",
+    teacher: "Ishrat Sultana",
+  },
+  {
+    code: "GE 235",
+    title: "Principles of Accounting, Business & Economics",
+    credit: "3",
+    section: "42_B",
+    teacher: "Agnishwar Nath",
+  },
+  {
+    code: "GE 324",
+    title: "Business Analysis & Communication",
+    credit: "3",
+    section: "42_B",
+    teacher: "Selina Jahan",
+  },
+  {
+    code: "BNS 101",
+    title: "Bangladesh Studies",
+    credit: "3",
+    section: "46_P",
+    teacher: "M. Shahriar Islam",
+  },
+  {
+    code: "SE 222",
+    title: "Computer Architecture",
+    credit: "3",
+    section: "43_O",
+    teacher: "Fatama Binta Rafiq",
+  },
+
+  // 🔹 Previous data (kept as-is)
+  {
     code: "SE 224",
     title: "Database System Lab",
     credit: "1",

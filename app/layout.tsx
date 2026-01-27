@@ -14,8 +14,53 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "DIU Service Portal",
-  description: "DIU Assignment and Lab Report Cover Generator - Unofficial",
+  title: {
+    default: "Daffodil International University Student Portal",
+    template: "%s | DIU Student Portal",
+  },
+  description:
+    "Unofficial DIU toolkit for assignment and lab report covers — by Mohammad Ali Nayeem",
+  keywords: [
+    "Daffodil International University",
+    "DIU",
+    "DIU assignment cover",
+    "DIU lab report",
+    "DIU PDF generator",
+    "SWE",
+    "Software Engineering",
+    "Mohammad Ali Nayeem",
+  ],
+  authors: [{ name: "Mohammad Ali Nayeem" }],
+  creator: "Mohammad Ali Nayeem",
+  publisher: "Mohammad Ali Nayeem",
+  openGraph: {
+    title: "Daffodil International University Student Portal",
+    description:
+      "Unofficial DIU toolkit for assignment and lab report covers — by Mohammad Ali Nayeem",
+    type: "website",
+    locale: "en_US",
+    siteName: "DIU Student Portal",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Daffodil International University Student Portal",
+    description:
+      "Unofficial DIU toolkit for assignment and lab report covers — by Mohammad Ali Nayeem",
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      maxSnippet: -1,
+      maxImagePreview: "large",
+      maxVideoPreview: -1,
+    },
+  },
+  alternates: {
+    canonical: "/",
+  },
 };
 
 export default function RootLayout({

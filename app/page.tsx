@@ -21,8 +21,13 @@ export default function Page() {
       </div>
 
       <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-800 px-2">
-        DIU Service Portal (unofficial)
+        Daffodil International University Student Portal (unofficial)
       </h1>
+
+      <p className="text-sm sm:text-base text-gray-700 max-w-2xl px-2">
+        Built for DIU students to quickly generate assignment and lab report covers. Crafted by
+        Mohammad Ali Nayeem.
+      </p>
 
       <div className="flex flex-wrap justify-center gap-3 sm:gap-4 mt-6 max-w-2xl">
         {/* Assignment Cover */}

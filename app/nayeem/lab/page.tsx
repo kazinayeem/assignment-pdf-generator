@@ -288,19 +288,20 @@ export default function LabReportForm() {
   };
 
   return (
-    <div className="max-w-2xl mx-auto px-4 py-10 space-y-8">
-      <Link
-        href="/"
-        className="inline-block px-5 py-2 bg-blue-600 text-white text-sm font-medium rounded-lg hover:bg-blue-700 transition"
-      >
-        Go Home Page
-      </Link>
+    <div className="min-h-screen flex flex-col">
+      <div className="flex-1 max-w-4xl mx-auto px-4 sm:px-6 md:px-8 py-8 w-full">
+        <Link
+          href="/"
+          className="inline-block px-5 py-2 bg-blue-600 text-white text-sm font-medium rounded-lg hover:bg-blue-700 transition mb-6"
+        >
+          ← Go Home Page
+        </Link>
 
-      <h2 className="text-2xl font-semibold text-center text-gray-800">
-        Lab Report PDF Generator
-      </h2>
+        <h2 className="text-2xl sm:text-3xl font-semibold text-center text-gray-800 mb-8">
+          Lab Report PDF Generator
+        </h2>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
         {/* Course */}
         <div className="md:col-span-2">
           <label className="text-sm font-medium mb-1 block">Course</label>
@@ -435,7 +436,7 @@ export default function LabReportForm() {
         </div>
 
         {/* Submission Date */}
-        <div className="md:col-span-2">
+        <div className="sm:col-span-2">
           <label className="text-sm font-medium mb-1 block">
             Submission Date
           </label>
@@ -449,9 +450,10 @@ export default function LabReportForm() {
         </div>
       </div>
 
-      <Button className="w-full h-10 text-sm mt-4" onClick={generatePDF}>
+      <Button className="w-full h-10 text-sm mt-6 bg-green-600 hover:bg-green-700" onClick={generatePDF}>
         Generate Lab Report PDF
       </Button>
+      </div>
     </div>
   );
 }

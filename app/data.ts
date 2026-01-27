@@ -113,4 +113,47 @@ export const courseData = [
     section: "41A1",
     teacher: "Tapushe Rabaya Toma",
   },
+  // 🔹 New batch courses
+  {
+    code: "SE 225",
+    title: "Data Communication & Computer Networking",
+    credit: "3",
+    section: "42_E",
+    teacher: "Ahnaf Mubashshir Mobin",
+  },
+  {
+    code: "SE 226",
+    title: "Data Communication & Computer Networking Lab",
+    credit: "1",
+    section: "42_E2",
+    teacher: "Ahnaf Mubashshir Mobin",
+  },
+  {
+    code: "SE 231",
+    title: "System Analysis & Design Capstone Project",
+    credit: "3",
+    section: "42_E2",
+    teacher: "Most. Munira Tabassum Mou",
+  },
+  {
+    code: "SE 234",
+    title: "Theory of Computing",
+    credit: "3",
+    section: "42_E",
+    teacher: "Ms. Tahmina Meem",
+  },
+  {
+    code: "SE 311",
+    title: "Design Pattern",
+    credit: "3",
+    section: "42_E",
+    teacher: "Mahbubur Rahman",
+  },
+  {
+    code: "SE 211",
+    title: "Object Oriented Concepts",
+    credit: "3",
+    section: "A",
+    teacher: "Ms. Afrin Jahan Eva",
+  },
 ];

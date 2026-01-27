@@ -40,12 +40,16 @@ export default function Page() {
         </Link>
 
         {/* Result Generator */}
-        <Link href="/result" passHref>
-          <div className="flex items-center gap-2 px-6 py-3 bg-purple-600 text-white rounded-lg shadow hover:bg-purple-700 transition cursor-pointer">
-            <BarChart2 className="w-5 h-5" />
-            <span>Generate Result</span>
-          </div>
-        </Link>
+        <div 
+          onClick={(e) => {
+            e.preventDefault();
+            alert("This feature is currently not working. Please wait, we will fix it soon!");
+          }}
+          className="flex items-center gap-2 px-6 py-3 bg-purple-600 text-white rounded-lg shadow hover:bg-purple-700 transition cursor-pointer opacity-75"
+        >
+          <BarChart2 className="w-5 h-5" />
+          <span>Generate Result</span>
+        </div>
 
         {/* Personal Use for 41A, 42B2, 43H2 */}
         <Link href="/nayeem/assignment" passHref>

@@ -25,23 +25,31 @@ export function AuthInitializer() {
   const handleRedirectResult = useAuthStore((state) => state.handleRedirectResult);
 
   useEffect(() => {
+    console.log("🔍 [AUTH-INITIALIZER] Component mounted, starting auth initialization...");
     let unsubscribe: (() => void) | undefined;
 
     const init = async () => {
+      console.log("🔍 [AUTH-INITIALIZER] Step 1: Processing redirect result...");
       // Step 1: Process any pending Google redirect result FIRST.
       // This keeps loading:true until we know if a redirect just completed.
       // On normal page loads getRedirectResult() resolves immediately with null.
       await handleRedirectResult();
+      console.log("🔍 [AUTH-INITIALIZER] Step 1 complete. Starting Step 2...");
 
       // Step 2: Start the persistent auth state listener.
       // By this point the redirect result (if any) is already in Firestore,
       // so onAuthStateChanged will see the signed-in user correctly.
+      console.log("🔍 [AUTH-INITIALIZER] Step 2: Starting onAuthStateChanged listener...");
       unsubscribe = initializeAuth();
+      console.log("✅ [AUTH-INITIALIZER] Auth initialization complete!");
     };
 
     init();
 
-    return () => unsubscribe?.();
+    return () => {
+      console.log("🔍 [AUTH-INITIALIZER] Component unmounting, cleaning up listener...");
+      unsubscribe?.();
+    };
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 

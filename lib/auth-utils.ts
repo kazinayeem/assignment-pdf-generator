@@ -82,14 +82,17 @@ export async function initiateGoogleSignIn(): Promise<void> {
  * Throws with a user-friendly message on errors.
  */
 export async function handleGoogleRedirectResult(): Promise<UserDoc | null> {
+  console.log("🔍 [AUTH-UTILS] handleGoogleRedirectResult: Starting...");
   const auth = getFirebaseAuth();
   let result: UserCredential | null = null;
 
   try {
+    console.log("🔍 [AUTH-UTILS] Calling getRedirectResult...");
     result = await getRedirectResult(auth);
+    console.log("🔍 [AUTH-UTILS] getRedirectResult returned:", result ? "UserCredential" : "null");
   } catch (err) {
     const error = err as AuthError;
-    console.error("Redirect result error:", error.code, error.message);
+    console.error("❌ [AUTH-UTILS] Redirect result error:", error.code, error.message);
 
     if (error.code === "auth/unauthorized-domain") {
       throw new Error(
@@ -104,22 +107,34 @@ export async function handleGoogleRedirectResult(): Promise<UserDoc | null> {
   }
 
   // null = no redirect was pending, normal page load
-  if (!result) return null;
+  if (!result) {
+    console.log("🔍 [AUTH-UTILS] No redirect result - normal page load");
+    return null;
+  }
 
   const firebaseUser = result.user;
+  console.log("🔍 [AUTH-UTILS] Firebase user from redirect:", {
+    uid: firebaseUser.uid,
+    email: firebaseUser.email,
+    displayName: firebaseUser.displayName,
+  });
 
   // Enforce DIU email domain
   if (!firebaseUser.email?.endsWith(`@${DIU_EMAIL_DOMAIN}`)) {
+    console.log("❌ [AUTH-UTILS] Email domain check failed:", firebaseUser.email);
     await firebaseSignOut(auth);
     throw new Error("Only @diu.edu.bd email accounts are allowed.");
   }
 
-  return getOrCreateUserDoc(firebaseUser.uid, {
+  console.log("🔍 [AUTH-UTILS] Creating/fetching user doc...");
+  const userDoc = await getOrCreateUserDoc(firebaseUser.uid, {
     name: firebaseUser.displayName || "",
     email: firebaseUser.email || "",
     role: "student",
     photoURL: firebaseUser.photoURL,
   });
+  console.log("✅ [AUTH-UTILS] User doc ready:", userDoc);
+  return userDoc;
 }
 
 // ─── Email / Password Sign-In (Admin) ────────────────────────────────────────

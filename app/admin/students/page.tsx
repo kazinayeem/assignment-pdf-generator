@@ -5,13 +5,10 @@ import { useProtectedRoute } from "@/lib/use-protected-route";
 import { getAllStudents, promoteUserToAdmin, getAllDepartments } from "@/lib/firestore-service";
 import type { UserDoc, DepartmentDoc } from "@/lib/types";
 import { Card } from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
 import { Loader2, Search, Shield, ChevronLeft, ChevronRight, GraduationCap } from "lucide-react";
 import toast from "react-hot-toast";
 
 const PAGE_SIZE_OPTIONS = [10, 20, 50];
-const selectCls = "w-full px-3 py-2 border border-gray-200 rounded-lg text-sm bg-white focus:ring-1 focus:ring-blue-500 focus:border-blue-500 transition-all";
 
 export default function StudentsPage() {
   const { loading } = useProtectedRoute("super-admin");

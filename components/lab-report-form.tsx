@@ -15,7 +15,7 @@ import jsPDF from "jspdf";
 import "jspdf-autotable";
 import Link from "next/link";
 import { useAuthStore } from "@/lib/auth-store";
-import { FlaskConical, ArrowLeft, Download, Info, LayoutDashboard, ShieldCheck, Users } from "lucide-react";
+import { FlaskConical, ArrowLeft, Download, Info, ShieldCheck, Users } from "lucide-react";
 
 type FormData = {
   courseCode: string;

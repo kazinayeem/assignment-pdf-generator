@@ -24,9 +24,7 @@ import {
   FileText,
   Edit2,
   Zap,
-  ChevronRight,
   Search,
-  Filter,
   PlusCircle,
 } from "lucide-react";
 import Link from "next/link";

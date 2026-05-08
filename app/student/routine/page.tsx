@@ -7,7 +7,6 @@ import {
   MapPin, 
   User, 
   Search, 
-  ChevronRight,
   BookOpen,
   Loader2
 } from "lucide-react";

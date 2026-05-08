@@ -15,7 +15,7 @@ import jsPDF from "jspdf";
 import "jspdf-autotable";
 import Link from "next/link";
 import { useAuthStore } from "@/lib/auth-store";
-import { Zap, ArrowLeft, Download, Info, LayoutDashboard, ShieldCheck, User } from "lucide-react";
+import { Zap, ArrowLeft, Download, ShieldCheck, User } from "lucide-react";
 
 type FormData = {
   courseCode: string;

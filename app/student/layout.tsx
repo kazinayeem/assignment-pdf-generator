@@ -4,7 +4,6 @@ import { ReactNode, useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { 
-  LayoutDashboard, 
   BookOpen, 
   UserCircle, 
   LogOut, 
@@ -13,13 +12,11 @@ import {
   FileText,
   FlaskConical,
   Zap,
-  ChevronRight,
   Info,
   ShieldCheck,
   Calendar
 } from "lucide-react";
 import { useAuthStore } from "@/lib/auth-store";
-import { Button } from "@/components/ui/button";
 
 export default function StudentLayout({ children }: { children: ReactNode }) {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);

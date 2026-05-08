@@ -2,7 +2,6 @@
 import { useState } from "react";
 import { useProtectedRoute } from "@/lib/use-protected-route";
 import { addTeacher } from "@/lib/firestore-service";
-import { Button } from "@/components/ui/button";
 import { Loader2, CheckCircle } from "lucide-react";
 import toast from "react-hot-toast";
 

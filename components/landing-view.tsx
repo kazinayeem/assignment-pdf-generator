@@ -9,7 +9,6 @@ import {
   LayoutDashboard,
   LogIn,
   ArrowRight,
-  ShieldCheck,
   Globe,
   Award,
   ListChecks,

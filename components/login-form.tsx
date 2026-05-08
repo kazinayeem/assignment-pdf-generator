@@ -41,15 +41,6 @@ export default function LoginForm() {
 
   return (
     <div className="w-full max-w-[440px] space-y-8">
-      {/* Debug Info - Remove after fixing */}
-      {process.env.NODE_ENV === 'development' && (
-        <div className="p-4 bg-gray-900 text-white rounded-xl text-xs font-mono space-y-1">
-          <div>Loading: {loading ? '✅ true' : '❌ false'}</div>
-          <div>Authenticated: {isAuthenticated ? '✅ true' : '❌ false'}</div>
-          <div>User: {user ? `✅ ${user.email} (${user.role})` : '❌ null'}</div>
-        </div>
-      )}
-      
       {/* Logo & Intro */}
       <div className="text-center space-y-4">
          <div className="inline-flex items-center justify-center w-16 h-16 bg-blue-600 rounded-[1.5rem] shadow-xl shadow-blue-100 mb-2">

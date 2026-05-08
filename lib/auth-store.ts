@@ -1,7 +1,9 @@
 /**
  * auth-store.ts
  * Zustand store for authentication state.
- * Google sign-in uses redirect flow — no popups.
+ *
+ * Firebase instances are accessed via lazy getters — safe to import anywhere.
+ * Google sign-in uses redirect flow (no popups).
  */
 
 "use client";
@@ -9,7 +11,7 @@
 import { create } from "zustand";
 import { onAuthStateChanged } from "firebase/auth";
 import { doc, getDoc } from "firebase/firestore";
-import { auth, db } from "./firebase-config";
+import { getFirebaseAuth, getFirebaseDb } from "./firebase-config";
 import {
   initiateGoogleSignIn,
   handleGoogleRedirectResult,
@@ -21,16 +23,14 @@ import type { UserDoc, AuthContextType } from "./types";
 // ─── Store Interface ──────────────────────────────────────────────────────────
 
 interface AuthStore extends AuthContextType {
-  /** Call once on app mount — sets up onAuthStateChanged listener */
   initializeAuth: () => () => void;
-  /** Process the Google redirect result after returning from Google */
   handleRedirectResult: () => Promise<void>;
   setLoading: (loading: boolean) => void;
   setError: (error: string | null) => void;
   signInWithEmailPassword: (email: string, password: string) => Promise<void>;
 }
 
-// ─── Helper: apply a UserDoc to the store ────────────────────────────────────
+// ─── Helper ───────────────────────────────────────────────────────────────────
 
 function applyUser(userData: UserDoc) {
   return {
@@ -47,7 +47,7 @@ function applyUser(userData: UserDoc) {
 
 export const useAuthStore = create<AuthStore>((set) => ({
   user: null,
-  loading: true, // true until onAuthStateChanged fires
+  loading: true,
   error: null,
   isAuthenticated: false,
   isSuperAdmin: false,
@@ -56,11 +56,10 @@ export const useAuthStore = create<AuthStore>((set) => ({
   setLoading: (loading) => set({ loading }),
   setError: (error) => set({ error }),
 
-  // ── Google Sign-In (redirect) ──────────────────────────────────────────────
+  // Initiates Google redirect — page navigates away, no return value
   signInWithGoogle: async () => {
     try {
       set({ loading: true, error: null });
-      // Navigates away — execution does not continue past this line
       await initiateGoogleSignIn();
     } catch (error: any) {
       console.error("Google sign-in initiation failed:", error);
@@ -68,14 +67,11 @@ export const useAuthStore = create<AuthStore>((set) => ({
     }
   },
 
-  // ── Handle redirect result (called by AuthInitializer on every page load) ──
+  // Called by AuthInitializer on every mount to capture redirect result
   handleRedirectResult: async () => {
     try {
       const userData = await handleGoogleRedirectResult();
-
-      // null means no redirect was pending — nothing to do
-      if (!userData) return;
-
+      if (!userData) return; // No redirect pending — normal load
       set(applyUser(userData));
     } catch (error: any) {
       console.error("Redirect result error:", error);
@@ -83,7 +79,6 @@ export const useAuthStore = create<AuthStore>((set) => ({
     }
   },
 
-  // ── Email / Password (admin) ───────────────────────────────────────────────
   signInWithEmailPassword: async (email: string, password: string) => {
     try {
       set({ loading: true, error: null });
@@ -95,7 +90,6 @@ export const useAuthStore = create<AuthStore>((set) => ({
     }
   },
 
-  // ── Sign Out ───────────────────────────────────────────────────────────────
   signOut: async () => {
     try {
       set({ loading: true });
@@ -113,16 +107,10 @@ export const useAuthStore = create<AuthStore>((set) => ({
     }
   },
 
-  // ── Auth State Listener ────────────────────────────────────────────────────
   initializeAuth: () => {
-    /**
-     * onAuthStateChanged fires:
-     *   1. Immediately on mount with the persisted session (or null)
-     *   2. After every sign-in / sign-out
-     *
-     * We do NOT handle the redirect result here — that's done separately in
-     * handleRedirectResult() so we can surface errors to the UI properly.
-     */
+    const auth = getFirebaseAuth();
+    const db = getFirebaseDb();
+
     const unsubscribe = onAuthStateChanged(auth, async (firebaseUser) => {
       try {
         if (!firebaseUser) {
@@ -136,16 +124,14 @@ export const useAuthStore = create<AuthStore>((set) => ({
           return;
         }
 
-        // User is signed in — fetch their Firestore profile
+        // Fetch Firestore profile for the signed-in user
         const userRef = doc(db, "users", firebaseUser.uid);
         const snapshot = await getDoc(userRef);
 
         if (snapshot.exists()) {
-          const userData = snapshot.data() as UserDoc;
-          set(applyUser(userData));
+          set(applyUser(snapshot.data() as UserDoc));
         } else {
-          // Firestore doc missing (edge case) — keep Firebase session but mark unauthenticated
-          // The redirect result handler will create the doc when it runs
+          // Doc missing — redirect result handler will create it
           set({ loading: false });
         }
       } catch (error) {

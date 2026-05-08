@@ -1,13 +1,13 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { Suspense, useEffect, useState } from "react";
 import { useProtectedRoute } from "@/lib/use-protected-route";
 import { useSearchParams } from "next/navigation";
 import AssignmentForm from "@/components/assignment-form";
 import { Card } from "@/components/ui/card";
 import { Loader2 } from "lucide-react";
 
-export default function StudentAssignmentPage() {
+function AssignmentContent() {
   const { loading } = useProtectedRoute("student");
   const searchParams = useSearchParams();
   const [courseInfo, setCourseInfo] = useState<{
@@ -18,7 +18,6 @@ export default function StudentAssignmentPage() {
   }>({});
 
   useEffect(() => {
-    // Get course info from URL params
     const courseCode = searchParams.get("courseCode");
     const courseTitle = searchParams.get("courseTitle");
     const teacherName = searchParams.get("teacherName");
@@ -48,7 +47,6 @@ export default function StudentAssignmentPage() {
           Fill in the details below to generate your assignment cover page
         </p>
       </div>
-
       <Card className="p-6">
         <AssignmentForm
           prefilledData={{
@@ -60,5 +58,13 @@ export default function StudentAssignmentPage() {
         />
       </Card>
     </div>
+  );
+}
+
+export default function StudentAssignmentPage() {
+  return (
+    <Suspense fallback={null}>
+      <AssignmentContent />
+    </Suspense>
   );
 }

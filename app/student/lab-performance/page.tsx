@@ -1,10 +1,11 @@
 "use client";
 
+import { Suspense } from "react";
 import { useProtectedRoute } from "@/lib/use-protected-route";
 import { useSearchParams } from "next/navigation";
 import LabPerformanceForm from "@/components/lab-performance-form";
 
-export default function StudentLabPerformancePage() {
+function LabPerformanceContent() {
   const { loading } = useProtectedRoute("student");
   const searchParams = useSearchParams();
 
@@ -18,4 +19,12 @@ export default function StudentLabPerformancePage() {
   };
 
   return <LabPerformanceForm prefilledData={prefilledData} />;
+}
+
+export default function StudentLabPerformancePage() {
+  return (
+    <Suspense fallback={null}>
+      <LabPerformanceContent />
+    </Suspense>
+  );
 }

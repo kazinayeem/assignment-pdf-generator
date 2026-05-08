@@ -9,6 +9,7 @@
 
 import {
   signInWithRedirect,
+  signInWithPopup,
   getRedirectResult,
   signInWithEmailAndPassword,
   createUserWithEmailAndPassword,
@@ -63,17 +64,67 @@ export async function getOrCreateUserDoc(
   return newDoc;
 }
 
-// ─── Google Sign-In (Redirect) ────────────────────────────────────────────────
+// ─── Google Sign-In (Popup in Dev, Redirect in Prod) ─────────────────────────
 
 /**
- * Initiates Google sign-in via redirect.
- * The page navigates away to Google — execution stops here.
- * On return, call handleGoogleRedirectResult() to process the result.
+ * Initiates Google sign-in.
+ * - Development: Uses popup (avoids cross-origin storage issues)
+ * - Production: Uses redirect (better for mobile/Safari)
+ * 
+ * For popup flow: Returns UserDoc immediately
+ * For redirect flow: Returns null, call handleGoogleRedirectResult() after page reload
  */
-export async function initiateGoogleSignIn(): Promise<void> {
+export async function initiateGoogleSignIn(): Promise<UserDoc | null> {
   const auth = getFirebaseAuth();
   const provider = getGoogleProvider();
-  await signInWithRedirect(auth, provider);
+  const isDev = process.env.NODE_ENV === 'development';
+
+  console.log(`🔍 [AUTH-UTILS] initiateGoogleSignIn: Using ${isDev ? 'POPUP' : 'REDIRECT'} flow`);
+
+  if (isDev) {
+    // Development: Use popup (works reliably in localhost)
+    try {
+      console.log("🔍 [AUTH-UTILS] Calling signInWithPopup...");
+      const result = await signInWithPopup(auth, provider);
+      const firebaseUser = result.user;
+      
+      console.log("✅ [AUTH-UTILS] Popup sign-in successful:", firebaseUser.email);
+
+      // Enforce DIU email domain
+      if (!firebaseUser.email?.endsWith(`@${DIU_EMAIL_DOMAIN}`)) {
+        console.log("❌ [AUTH-UTILS] Email domain check failed:", firebaseUser.email);
+        await firebaseSignOut(auth);
+        throw new Error("Only @diu.edu.bd email accounts are allowed.");
+      }
+
+      console.log("🔍 [AUTH-UTILS] Creating/fetching user doc...");
+      const userDoc = await getOrCreateUserDoc(firebaseUser.uid, {
+        name: firebaseUser.displayName || "",
+        email: firebaseUser.email || "",
+        role: "student",
+        photoURL: firebaseUser.photoURL,
+      });
+      console.log("✅ [AUTH-UTILS] User doc ready:", userDoc);
+      return userDoc;
+    } catch (err) {
+      const error = err as AuthError;
+      console.error("❌ [AUTH-UTILS] Popup sign-in error:", error.code, error.message);
+      
+      if (error.code === "auth/popup-closed-by-user") {
+        throw new Error("Sign-in cancelled. Please try again.");
+      }
+      if (error.code === "auth/popup-blocked") {
+        throw new Error("Popup was blocked by your browser. Please allow popups for this site.");
+      }
+      throw error;
+    }
+  } else {
+    // Production: Use redirect (better for mobile browsers)
+    console.log("🔍 [AUTH-UTILS] Current URL:", window.location.href);
+    console.log("🔍 [AUTH-UTILS] Calling signInWithRedirect...");
+    await signInWithRedirect(auth, provider);
+    return null; // Redirect flow doesn't return immediately
+  }
 }
 
 /**
@@ -82,14 +133,31 @@ export async function initiateGoogleSignIn(): Promise<void> {
  * Throws with a user-friendly message on errors.
  */
 export async function handleGoogleRedirectResult(): Promise<UserDoc | null> {
+  console.log("🔍 [AUTH-UTILS] handleGoogleRedirectResult: Starting...");
+  console.log("🔍 [AUTH-UTILS] Current URL:", typeof window !== 'undefined' ? window.location.href : 'SSR');
+  console.log("🔍 [AUTH-UTILS] URL search params:", typeof window !== 'undefined' ? window.location.search : 'SSR');
+  
   const auth = getFirebaseAuth();
   let result: UserCredential | null = null;
 
   try {
+    console.log("🔍 [AUTH-UTILS] Calling getRedirectResult...");
     result = await getRedirectResult(auth);
+    console.log("🔍 [AUTH-UTILS] getRedirectResult returned:", result ? "UserCredential" : "null");
+    
+    if (result) {
+      console.log("🔍 [AUTH-UTILS] Result details:", {
+        providerId: result.providerId,
+        operationType: result.operationType,
+        user: {
+          uid: result.user.uid,
+          email: result.user.email,
+        }
+      });
+    }
   } catch (err) {
     const error = err as AuthError;
-    console.error("Redirect result error:", error.code, error.message);
+    console.error("❌ [AUTH-UTILS] Redirect result error:", error.code, error.message);
 
     if (error.code === "auth/unauthorized-domain") {
       throw new Error(
@@ -104,22 +172,34 @@ export async function handleGoogleRedirectResult(): Promise<UserDoc | null> {
   }
 
   // null = no redirect was pending, normal page load
-  if (!result) return null;
+  if (!result) {
+    console.log("🔍 [AUTH-UTILS] No redirect result - normal page load");
+    return null;
+  }
 
   const firebaseUser = result.user;
+  console.log("🔍 [AUTH-UTILS] Firebase user from redirect:", {
+    uid: firebaseUser.uid,
+    email: firebaseUser.email,
+    displayName: firebaseUser.displayName,
+  });
 
   // Enforce DIU email domain
   if (!firebaseUser.email?.endsWith(`@${DIU_EMAIL_DOMAIN}`)) {
+    console.log("❌ [AUTH-UTILS] Email domain check failed:", firebaseUser.email);
     await firebaseSignOut(auth);
     throw new Error("Only @diu.edu.bd email accounts are allowed.");
   }
 
-  return getOrCreateUserDoc(firebaseUser.uid, {
+  console.log("🔍 [AUTH-UTILS] Creating/fetching user doc...");
+  const userDoc = await getOrCreateUserDoc(firebaseUser.uid, {
     name: firebaseUser.displayName || "",
     email: firebaseUser.email || "",
     role: "student",
     photoURL: firebaseUser.photoURL,
   });
+  console.log("✅ [AUTH-UTILS] User doc ready:", userDoc);
+  return userDoc;
 }
 
 // ─── Email / Password Sign-In (Admin) ────────────────────────────────────────

@@ -13,14 +13,20 @@ export default function LoginForm() {
   const { user, loading, error, signInWithGoogle, isAuthenticated } = useAuthStore();
 
   useEffect(() => {
-    if (isAuthenticated && user) {
+    console.log("🔍 [LOGIN-FORM] Auth state changed:", { isAuthenticated, userRole: user?.role, loading });
+    
+    // Only redirect when loading is complete AND user is authenticated
+    if (!loading && isAuthenticated && user) {
+      console.log("✅ [LOGIN-FORM] User authenticated, redirecting to dashboard...");
       if (user.role === "super-admin") {
+        console.log("🔍 [LOGIN-FORM] Redirecting to /admin");
         router.push("/admin");
       } else if (user.role === "student") {
+        console.log("🔍 [LOGIN-FORM] Redirecting to /student/mycourses");
         router.push("/student/mycourses");
       }
     }
-  }, [isAuthenticated, user, router]);
+  }, [isAuthenticated, user, router, loading]);
 
   const handleGoogleSignIn = async () => {
     try {

@@ -56,33 +56,53 @@ export const useAuthStore = create<AuthStore>((set) => ({
   setLoading: (loading) => set({ loading }),
   setError: (error) => set({ error }),
 
-  // Initiates Google redirect — page navigates away, no return value
+  // Initiates Google sign-in (popup in dev, redirect in prod)
   signInWithGoogle: async () => {
     try {
       set({ loading: true, error: null });
-      await initiateGoogleSignIn();
+      console.log("🔍 [AUTH-STORE] signInWithGoogle: Starting...");
+      
+      const userData = await initiateGoogleSignIn();
+      
+      if (userData) {
+        // Popup flow (dev) - user data returned immediately
+        console.log("✅ [AUTH-STORE] Popup sign-in completed, applying user:", userData);
+        set(applyUser(userData));
+      } else {
+        // Redirect flow (prod) - page will navigate away
+        console.log("🔍 [AUTH-STORE] Redirect initiated, page will reload...");
+      }
     } catch (error: any) {
-      console.error("Google sign-in initiation failed:", error);
+      console.error("❌ [AUTH-STORE] Google sign-in failed:", error);
       set({ error: error.message || "Failed to start Google sign-in.", loading: false });
     }
   },
 
   // Called by AuthInitializer BEFORE onAuthStateChanged starts.
-  // Keeps loading:true while getRedirectResult() is in-flight so
-  // useProtectedRoute never sees a false-negative unauthenticated state.
+  // Only needed for redirect flow (production). In dev, popup returns immediately.
   handleRedirectResult: async () => {
+    const isDev = process.env.NODE_ENV === 'development';
+    
+    if (isDev) {
+      console.log("🔍 [AUTH-STORE] handleRedirectResult: Skipping (dev uses popup flow)");
+      return;
+    }
+    
+    console.log("🔍 [AUTH-STORE] handleRedirectResult: Starting (production redirect flow)...");
     try {
-      // loading is already true from initial state — keep it that way
+      console.log("🔍 [AUTH-STORE] Calling handleGoogleRedirectResult...");
       const userData = await handleGoogleRedirectResult();
 
       if (userData) {
         // Redirect just completed — apply the user immediately
+        console.log("✅ [AUTH-STORE] Redirect completed! Applying user:", userData);
         set(applyUser(userData));
+        console.log("✅ [AUTH-STORE] User applied to store. isAuthenticated should be true now.");
+      } else {
+        console.log("🔍 [AUTH-STORE] No redirect result (normal page load)");
       }
-      // If null (normal load), do nothing — onAuthStateChanged will set loading:false
     } catch (error: any) {
-      console.error("Redirect result error:", error);
-      // Only set loading:false on error — onAuthStateChanged handles the success path
+      console.error("❌ [AUTH-STORE] Redirect result error:", error);
       set({ error: error.message || "Google sign-in failed.", loading: false });
     }
   },
@@ -116,12 +136,15 @@ export const useAuthStore = create<AuthStore>((set) => ({
   },
 
   initializeAuth: () => {
+    console.log("🔍 [AUTH-STORE] initializeAuth: Setting up onAuthStateChanged listener...");
     const auth = getFirebaseAuth();
     const db = getFirebaseDb();
 
     const unsubscribe = onAuthStateChanged(auth, async (firebaseUser) => {
+      console.log("🔍 [AUTH-STORE] onAuthStateChanged fired:", firebaseUser ? `User: ${firebaseUser.email}` : "No user");
       try {
         if (!firebaseUser) {
+          console.log("🔍 [AUTH-STORE] No Firebase user - setting unauthenticated state");
           set({
             user: null,
             isAuthenticated: false,
@@ -132,18 +155,22 @@ export const useAuthStore = create<AuthStore>((set) => ({
           return;
         }
 
+        console.log("🔍 [AUTH-STORE] Firebase user exists, fetching Firestore doc...");
         // Fetch Firestore profile for the signed-in user
         const userRef = doc(db, "users", firebaseUser.uid);
         const snapshot = await getDoc(userRef);
 
         if (snapshot.exists()) {
-          set(applyUser(snapshot.data() as UserDoc));
+          const userData = snapshot.data() as UserDoc;
+          console.log("✅ [AUTH-STORE] Firestore doc found, applying user:", userData);
+          set(applyUser(userData));
         } else {
+          console.log("⚠️ [AUTH-STORE] Firestore doc missing - redirect handler should create it");
           // Doc missing — redirect result handler will create it
           set({ loading: false });
         }
       } catch (error) {
-        console.error("onAuthStateChanged error:", error);
+        console.error("❌ [AUTH-STORE] onAuthStateChanged error:", error);
         set({ loading: false });
       }
     });

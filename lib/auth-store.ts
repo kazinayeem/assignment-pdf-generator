@@ -1,45 +1,53 @@
+/**
+ * auth-store.ts
+ * Zustand store for authentication state.
+ * Google sign-in uses redirect flow — no popups.
+ */
+
+"use client";
+
 import { create } from "zustand";
+import { onAuthStateChanged } from "firebase/auth";
+import { doc, getDoc } from "firebase/firestore";
+import { auth, db } from "./firebase-config";
 import {
-  createUserWithEmailAndPassword,
-  signInWithPopup,
-  signInWithEmailAndPassword,
-  signOut as firebaseSignOut,
-  onAuthStateChanged,
-} from "firebase/auth";
-import { doc, getDoc, setDoc } from "firebase/firestore";
-import { auth, db, googleProvider } from "./firebase-config";
+  initiateGoogleSignIn,
+  handleGoogleRedirectResult,
+  signInWithEmailPassword,
+  signOutUser,
+} from "./auth-utils";
 import type { UserDoc, AuthContextType } from "./types";
 
-const DIU_EMAIL_DOMAIN = "diu.edu.bd";
-const SUPER_ADMIN_EMAIL = "admin@admin.com";
-
-function buildUserDoc(user: {
-  uid: string;
-  name: string;
-  email: string;
-  role: "student" | "super-admin";
-  photoURL?: string | null;
-}): UserDoc {
-  return {
-    uid: user.uid,
-    name: user.name,
-    email: user.email,
-    role: user.role,
-    createdAt: new Date().toISOString(),
-    ...(user.photoURL ? { photoURL: user.photoURL } : {}),
-  };
-}
+// ─── Store Interface ──────────────────────────────────────────────────────────
 
 interface AuthStore extends AuthContextType {
-  initializeAuth: () => void;
+  /** Call once on app mount — sets up onAuthStateChanged listener */
+  initializeAuth: () => () => void;
+  /** Process the Google redirect result after returning from Google */
+  handleRedirectResult: () => Promise<void>;
   setLoading: (loading: boolean) => void;
   setError: (error: string | null) => void;
   signInWithEmailPassword: (email: string, password: string) => Promise<void>;
 }
 
+// ─── Helper: apply a UserDoc to the store ────────────────────────────────────
+
+function applyUser(userData: UserDoc) {
+  return {
+    user: userData,
+    isAuthenticated: true,
+    isSuperAdmin: userData.role === "super-admin",
+    isStudent: userData.role === "student",
+    loading: false,
+    error: null,
+  };
+}
+
+// ─── Store ────────────────────────────────────────────────────────────────────
+
 export const useAuthStore = create<AuthStore>((set) => ({
   user: null,
-  loading: true,
+  loading: true, // true until onAuthStateChanged fires
   error: null,
   isAuthenticated: false,
   isSuperAdmin: false,
@@ -48,187 +56,76 @@ export const useAuthStore = create<AuthStore>((set) => ({
   setLoading: (loading) => set({ loading }),
   setError: (error) => set({ error }),
 
+  // ── Google Sign-In (redirect) ──────────────────────────────────────────────
   signInWithGoogle: async () => {
     try {
       set({ loading: true, error: null });
-
-      const result = await signInWithPopup(auth, googleProvider);
-      const firebaseUser = result.user;
-
-      // Validate email domain
-      if (!firebaseUser.email?.endsWith(`@${DIU_EMAIL_DOMAIN}`)) {
-        await firebaseSignOut(auth);
-        set({
-          error: "Only DIU student email accounts are allowed",
-          loading: false,
-        });
-        throw new Error("Only DIU student email accounts are allowed");
-      }
-
-      // Check if user exists in Firestore
-      const userRef = doc(db, "users", firebaseUser.uid);
-      const userDoc = await getDoc(userRef);
-
-      let userData: UserDoc;
-
-      if (userDoc.exists()) {
-        userData = userDoc.data() as UserDoc;
-      } else {
-        // Create new user document
-        userData = buildUserDoc({
-          uid: firebaseUser.uid,
-          name: firebaseUser.displayName || "",
-          email: firebaseUser.email || "",
-          role: "student",
-          photoURL: firebaseUser.photoURL,
-        });
-
-        await setDoc(userRef, userData);
-      }
-
-      set({
-        user: userData,
-        isAuthenticated: true,
-        isSuperAdmin: userData.role === "super-admin",
-        isStudent: userData.role === "student",
-        loading: false,
-        error: null,
-      });
+      // Navigates away — execution does not continue past this line
+      await initiateGoogleSignIn();
     } catch (error: any) {
-      console.error("Auth error:", error);
-      set({
-        error: error.message || "Authentication failed",
-        loading: false,
-        isAuthenticated: false,
-      });
+      console.error("Google sign-in initiation failed:", error);
+      set({ error: error.message || "Failed to start Google sign-in.", loading: false });
     }
   },
 
+  // ── Handle redirect result (called by AuthInitializer on every page load) ──
+  handleRedirectResult: async () => {
+    try {
+      const userData = await handleGoogleRedirectResult();
+
+      // null means no redirect was pending — nothing to do
+      if (!userData) return;
+
+      set(applyUser(userData));
+    } catch (error: any) {
+      console.error("Redirect result error:", error);
+      set({ error: error.message || "Google sign-in failed.", loading: false });
+    }
+  },
+
+  // ── Email / Password (admin) ───────────────────────────────────────────────
   signInWithEmailPassword: async (email: string, password: string) => {
     try {
       set({ loading: true, error: null });
-
-      let result;
-
-      try {
-        result = await signInWithEmailAndPassword(auth, email, password);
-      } catch (error: any) {
-        if (email.toLowerCase() !== SUPER_ADMIN_EMAIL) {
-          throw error;
-        }
-
-        if (error?.code === "auth/invalid-credential" || error?.code === "auth/user-not-found") {
-          result = await createUserWithEmailAndPassword(auth, email, password);
-        } else {
-          throw error;
-        }
-      }
-
-      const firebaseUser = result.user;
-
-      const isSuperAdminEmail = email.toLowerCase() === SUPER_ADMIN_EMAIL;
-      const isDiuEmail = email.toLowerCase().endsWith(`@${DIU_EMAIL_DOMAIN}`);
-
-      if (!isSuperAdminEmail && !isDiuEmail) {
-        await firebaseSignOut(auth);
-        set({
-          error: "Only DIU email accounts or the super admin account are allowed",
-          loading: false,
-        });
-        throw new Error("Only DIU email accounts or the super admin account are allowed");
-      }
-
-      const userRef = doc(db, "users", firebaseUser.uid);
-      const userDoc = await getDoc(userRef);
-
-      let userData: UserDoc;
-
-      if (userDoc.exists()) {
-        userData = userDoc.data() as UserDoc;
-      } else {
-        userData = buildUserDoc({
-          uid: firebaseUser.uid,
-          name: isSuperAdminEmail ? "Super Admin" : firebaseUser.displayName || "",
-          email: firebaseUser.email || email,
-          role: isSuperAdminEmail ? "super-admin" : "student",
-          photoURL: firebaseUser.photoURL,
-        });
-
-        await setDoc(userRef, userData);
-      }
-
-      set({
-        user: userData,
-        isAuthenticated: true,
-        isSuperAdmin: userData.role === "super-admin",
-        isStudent: userData.role === "student",
-        loading: false,
-        error: null,
-      });
+      const userData = await signInWithEmailPassword(email, password);
+      set(applyUser(userData));
     } catch (error: any) {
-      console.error("Auth error:", error);
-      set({
-        error: error.message || "Authentication failed",
-        loading: false,
-        isAuthenticated: false,
-      });
+      console.error("Email sign-in error:", error);
+      set({ error: error.message || "Authentication failed.", loading: false, isAuthenticated: false });
     }
   },
 
+  // ── Sign Out ───────────────────────────────────────────────────────────────
   signOut: async () => {
     try {
       set({ loading: true });
-      await firebaseSignOut(auth);
+      await signOutUser();
       set({
         user: null,
         isAuthenticated: false,
         isSuperAdmin: false,
         isStudent: false,
         loading: false,
+        error: null,
       });
     } catch (error: any) {
-      set({
-        error: error.message || "Sign out failed",
-        loading: false,
-      });
+      set({ error: error.message || "Sign out failed.", loading: false });
     }
   },
 
+  // ── Auth State Listener ────────────────────────────────────────────────────
   initializeAuth: () => {
+    /**
+     * onAuthStateChanged fires:
+     *   1. Immediately on mount with the persisted session (or null)
+     *   2. After every sign-in / sign-out
+     *
+     * We do NOT handle the redirect result here — that's done separately in
+     * handleRedirectResult() so we can surface errors to the UI properly.
+     */
     const unsubscribe = onAuthStateChanged(auth, async (firebaseUser) => {
       try {
-        if (firebaseUser) {
-          const userRef = doc(db, "users", firebaseUser.uid);
-          const userDoc = await getDoc(userRef);
-
-          if (userDoc.exists()) {
-            const userData = userDoc.data() as UserDoc;
-            set({
-              user: userData,
-              isAuthenticated: true,
-              isSuperAdmin: userData.role === "super-admin",
-              isStudent: userData.role === "student",
-              loading: false,
-            });
-          } else if (firebaseUser.email?.toLowerCase() === SUPER_ADMIN_EMAIL) {
-            const userData = buildUserDoc({
-              uid: firebaseUser.uid,
-              name: "Super Admin",
-              email: firebaseUser.email,
-              role: "super-admin",
-              photoURL: firebaseUser.photoURL,
-            });
-
-            await setDoc(userRef, userData);
-            set({
-              user: userData,
-              isAuthenticated: true,
-              isSuperAdmin: true,
-              isStudent: false,
-              loading: false,
-            });
-          }
-        } else {
+        if (!firebaseUser) {
           set({
             user: null,
             isAuthenticated: false,
@@ -236,9 +133,23 @@ export const useAuthStore = create<AuthStore>((set) => ({
             isStudent: false,
             loading: false,
           });
+          return;
+        }
+
+        // User is signed in — fetch their Firestore profile
+        const userRef = doc(db, "users", firebaseUser.uid);
+        const snapshot = await getDoc(userRef);
+
+        if (snapshot.exists()) {
+          const userData = snapshot.data() as UserDoc;
+          set(applyUser(userData));
+        } else {
+          // Firestore doc missing (edge case) — keep Firebase session but mark unauthenticated
+          // The redirect result handler will create the doc when it runs
+          set({ loading: false });
         }
       } catch (error) {
-        console.error("Error initializing auth:", error);
+        console.error("onAuthStateChanged error:", error);
         set({ loading: false });
       }
     });

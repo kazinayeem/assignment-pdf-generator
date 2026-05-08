@@ -11,14 +11,17 @@ import {
   orderBy,
   QueryConstraint,
 } from "firebase/firestore";
-import { db } from "./firebase-config";
+import { getFirebaseDb } from "./firebase-config";
 import type { UserDoc, TeacherDoc, CourseDoc, DepartmentDoc } from "./types";
+
+// Lazy db accessor — only initializes Firebase when first called in browser
+const db = () => getFirebaseDb();
 
 // ============ USERS ============
 
 export const getUserByEmail = async (email: string): Promise<UserDoc | null> => {
   try {
-    const q = query(collection(db, "users"), where("email", "==", email));
+    const q = query(collection(db(), "users"), where("email", "==", email));
     const snapshot = await getDocs(q);
     return snapshot.empty ? null : (snapshot.docs[0].data() as UserDoc);
   } catch (error) {
@@ -32,7 +35,7 @@ export const updateUserDepartment = async (
   department: string
 ): Promise<void> => {
   try {
-    await updateDoc(doc(db, "users", uid), { department });
+    await updateDoc(doc(db(), "users", uid), { department });
   } catch (error) {
     console.error("Error updating user department:", error);
     throw error;
@@ -41,7 +44,7 @@ export const updateUserDepartment = async (
 
 export const promoteUserToAdmin = async (uid: string): Promise<void> => {
   try {
-    await updateDoc(doc(db, "users", uid), { role: "super-admin" });
+    await updateDoc(doc(db(), "users", uid), { role: "super-admin" });
   } catch (error) {
     console.error("Error promoting user:", error);
     throw error;
@@ -51,7 +54,7 @@ export const promoteUserToAdmin = async (uid: string): Promise<void> => {
 export const getAllStudents = async (): Promise<UserDoc[]> => {
   try {
     const q = query(
-      collection(db, "users"),
+      collection(db(), "users"),
       where("role", "==", "student")
     );
     const snapshot = await getDocs(q);
@@ -70,7 +73,7 @@ export const getAllStudents = async (): Promise<UserDoc[]> => {
 export const getAllTeachers = async (): Promise<TeacherDoc[]> => {
   try {
     const q = query(
-      collection(db, "teachers"),
+      collection(db(), "teachers"),
       orderBy("createdAt", "desc")
     );
     const snapshot = await getDocs(q);
@@ -93,7 +96,7 @@ export const getApprovedTeachers = async (
       ...(department ? [where("department", "==", department)] : []),
     ];
 
-    const q = query(collection(db, "teachers"), ...constraints);
+    const q = query(collection(db(), "teachers"), ...constraints);
     const snapshot = await getDocs(q);
     return snapshot.docs.map((doc) => ({
       id: doc.id,
@@ -115,7 +118,7 @@ export const searchTeachers = async (
       ...(department ? [where("department", "==", department)] : []),
     ];
 
-    const q = query(collection(db, "teachers"), ...constraints);
+    const q = query(collection(db(), "teachers"), ...constraints);
     const snapshot = await getDocs(q);
 
     const searchLower = searchTerm.toLowerCase();
@@ -137,7 +140,7 @@ export const searchTeachers = async (
 
 export const addTeacher = async (teacher: Omit<TeacherDoc, "id">): Promise<string> => {
   try {
-    const docRef = doc(collection(db, "teachers"));
+    const docRef = doc(collection(db(), "teachers"));
     await setDoc(docRef, {
       ...teacher,
       createdAt: new Date().toISOString(),
@@ -155,7 +158,7 @@ export const updateTeacher = async (
   updates: Partial<TeacherDoc>
 ): Promise<void> => {
   try {
-    await updateDoc(doc(db, "teachers", id), {
+    await updateDoc(doc(db(), "teachers", id), {
       ...updates,
       updatedAt: new Date().toISOString(),
     });
@@ -167,7 +170,7 @@ export const updateTeacher = async (
 
 export const approveTeacher = async (id: string): Promise<void> => {
   try {
-    await updateDoc(doc(db, "teachers", id), {
+    await updateDoc(doc(db(), "teachers", id), {
       approved: true,
       updatedAt: new Date().toISOString(),
     });
@@ -180,13 +183,13 @@ export const approveTeacher = async (id: string): Promise<void> => {
 export const deleteTeacher = async (id: string): Promise<void> => {
   try {
     // Delete teacher
-    await deleteDoc(doc(db, "teachers", id));
+    await deleteDoc(doc(db(), "teachers", id));
 
     // Delete associated courses
-    const coursesQ = query(collection(db, "courses"), where("teacherId", "==", id));
+    const coursesQ = query(collection(db(), "courses"), where("teacherId", "==", id));
     const coursesSnapshot = await getDocs(coursesQ);
     
-    const batch = writeBatch(db);
+    const batch = writeBatch(db());
     coursesSnapshot.docs.forEach((doc) => {
       batch.delete(doc.ref);
     });
@@ -202,7 +205,7 @@ export const deleteTeacher = async (id: string): Promise<void> => {
 export const getCoursesByTeacher = async (teacherId: string): Promise<CourseDoc[]> => {
   try {
     const q = query(
-      collection(db, "courses"),
+      collection(db(), "courses"),
       where("teacherId", "==", teacherId)
     );
     const snapshot = await getDocs(q);
@@ -218,7 +221,7 @@ export const getCoursesByTeacher = async (teacherId: string): Promise<CourseDoc[
 
 export const addCourse = async (course: Omit<CourseDoc, "id">): Promise<string> => {
   try {
-    const docRef = doc(collection(db, "courses"));
+    const docRef = doc(collection(db(), "courses"));
     await setDoc(docRef, {
       ...course,
       createdAt: new Date().toISOString(),
@@ -236,7 +239,7 @@ export const updateCourse = async (
   updates: Partial<CourseDoc>
 ): Promise<void> => {
   try {
-    await updateDoc(doc(db, "courses", id), updates);
+    await updateDoc(doc(db(), "courses", id), updates);
   } catch (error) {
     console.error("Error updating course:", error);
     throw error;
@@ -245,7 +248,7 @@ export const updateCourse = async (
 
 export const deleteCourse = async (id: string): Promise<void> => {
   try {
-    await deleteDoc(doc(db, "courses", id));
+    await deleteDoc(doc(db(), "courses", id));
   } catch (error) {
     console.error("Error deleting course:", error);
     throw error;
@@ -254,7 +257,7 @@ export const deleteCourse = async (id: string): Promise<void> => {
 
 export const getAllCourses = async (): Promise<CourseDoc[]> => {
   try {
-    const snapshot = await getDocs(collection(db, "courses"));
+    const snapshot = await getDocs(collection(db(), "courses"));
     return snapshot.docs.map((doc) => ({
       id: doc.id,
       ...doc.data(),
@@ -270,7 +273,7 @@ export const addStudentMyCourse = async (
   course: Omit<CourseDoc, "id">
 ): Promise<string> => {
   try {
-    const docRef = doc(collection(db, "users", uid, "myCourses"));
+    const docRef = doc(collection(db(), "users", uid, "myCourses"));
     await setDoc(docRef, {
       ...course,
       createdAt: new Date().toISOString(),
@@ -288,7 +291,7 @@ export const updateStudentMyCourse = async (
   updates: Partial<CourseDoc>
 ): Promise<void> => {
   try {
-    const docRef = doc(db, "users", uid, "myCourses", courseId);
+    const docRef = doc(db(), "users", uid, "myCourses", courseId);
     await updateDoc(docRef, updates);
   } catch (error) {
     console.error("Error updating student my course:", error);
@@ -301,7 +304,7 @@ export const deleteStudentMyCourse = async (
   courseId: string
 ): Promise<void> => {
   try {
-    const docRef = doc(db, "users", uid, "myCourses", courseId);
+    const docRef = doc(db(), "users", uid, "myCourses", courseId);
     await deleteDoc(docRef);
   } catch (error) {
     console.error("Error deleting student my course:", error);
@@ -311,7 +314,7 @@ export const deleteStudentMyCourse = async (
 
 export const getStudentMyCourses = async (uid: string): Promise<CourseDoc[]> => {
   try {
-    const snapshot = await getDocs(collection(db, "users", uid, "myCourses"));
+    const snapshot = await getDocs(collection(db(), "users", uid, "myCourses"));
     return snapshot.docs.map((courseDoc) => ({
       id: courseDoc.id,
       ...courseDoc.data(),
@@ -336,7 +339,7 @@ export const updateUserProfile = async (
   }>
 ): Promise<void> => {
   try {
-    await updateDoc(doc(db, "users", uid), {
+    await updateDoc(doc(db(), "users", uid), {
       ...updates,
       updatedAt: new Date().toISOString(),
     });
@@ -352,7 +355,7 @@ export const batchImportTeachers = async (
   teachers: Omit<TeacherDoc, "id">[]
 ): Promise<{ success: number; failed: number; errors: string[] }> => {
   try {
-    const batch = writeBatch(db);
+    const batch = writeBatch(db());
     const errors: string[] = [];
     let success = 0;
 
@@ -360,14 +363,14 @@ export const batchImportTeachers = async (
       try {
         // Check for duplicates
         const q = query(
-          collection(db, "teachers"),
+          collection(db(), "teachers"),
           where("email", "==", teacher.email),
           where("name", "==", teacher.name)
         );
         const snapshot = await getDocs(q);
 
         if (snapshot.empty) {
-          const docRef = doc(collection(db, "teachers"));
+          const docRef = doc(collection(db(), "teachers"));
           batch.set(docRef, {
             ...teacher,
             approved: false,
@@ -393,7 +396,7 @@ export const batchImportCourses = async (
   courses: Omit<CourseDoc, "id">[]
 ): Promise<{ success: number; failed: number; errors: string[] }> => {
   try {
-    const batch = writeBatch(db);
+    const batch = writeBatch(db());
     const errors: string[] = [];
     let success = 0;
 
@@ -401,14 +404,14 @@ export const batchImportCourses = async (
       try {
         // Check for duplicates
         const q = query(
-          collection(db, "courses"),
+          collection(db(), "courses"),
           where("courseCode", "==", course.courseCode),
           where("teacherId", "==", course.teacherId)
         );
         const snapshot = await getDocs(q);
 
         if (snapshot.empty) {
-          const docRef = doc(collection(db, "courses"));
+          const docRef = doc(collection(db(), "courses"));
           batch.set(docRef, {
             ...course,
             createdAt: new Date().toISOString(),
@@ -438,13 +441,13 @@ export const getStats = async (): Promise<{
 }> => {
   try {
     const [teachersSnap, studentsSnap, coursesSnap] = await Promise.all([
-      getDocs(collection(db, "teachers")),
-      getDocs(query(collection(db, "users"), where("role", "==", "student"))),
-      getDocs(collection(db, "courses")),
+      getDocs(collection(db(), "teachers")),
+      getDocs(query(collection(db(), "users"), where("role", "==", "student"))),
+      getDocs(collection(db(), "courses")),
     ]);
 
     const approvedTeachersSnap = await getDocs(
-      query(collection(db, "teachers"), where("approved", "==", true))
+      query(collection(db(), "teachers"), where("approved", "==", true))
     );
 
     return {
@@ -467,7 +470,7 @@ export const getStats = async (): Promise<{
 
 export const addDepartment = async (dept: Omit<DepartmentDoc, "id">): Promise<string> => {
   try {
-    const docRef = doc(collection(db, "departments"));
+    const docRef = doc(collection(db(), "departments"));
     await setDoc(docRef, { ...dept, createdAt: new Date().toISOString() });
     return docRef.id;
   } catch (error) {
@@ -478,7 +481,7 @@ export const addDepartment = async (dept: Omit<DepartmentDoc, "id">): Promise<st
 
 export const updateDepartment = async (id: string, updates: Partial<DepartmentDoc>): Promise<void> => {
   try {
-    await updateDoc(doc(db, "departments", id), updates);
+    await updateDoc(doc(db(), "departments", id), updates);
   } catch (error) {
     console.error("Error updating department:", error);
     throw error;
@@ -487,7 +490,7 @@ export const updateDepartment = async (id: string, updates: Partial<DepartmentDo
 
 export const deleteDepartment = async (id: string): Promise<void> => {
   try {
-    await deleteDoc(doc(db, "departments", id));
+    await deleteDoc(doc(db(), "departments", id));
   } catch (error) {
     console.error("Error deleting department:", error);
     throw error;
@@ -496,7 +499,7 @@ export const deleteDepartment = async (id: string): Promise<void> => {
 
 export const getAllDepartments = async (): Promise<DepartmentDoc[]> => {
   try {
-    const snapshot = await getDocs(collection(db, "departments"));
+    const snapshot = await getDocs(collection(db(), "departments"));
     return snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() } as DepartmentDoc));
   } catch (error) {
     console.error("Error getting departments:", error);

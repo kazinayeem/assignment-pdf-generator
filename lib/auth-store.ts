@@ -67,14 +67,22 @@ export const useAuthStore = create<AuthStore>((set) => ({
     }
   },
 
-  // Called by AuthInitializer on every mount to capture redirect result
+  // Called by AuthInitializer BEFORE onAuthStateChanged starts.
+  // Keeps loading:true while getRedirectResult() is in-flight so
+  // useProtectedRoute never sees a false-negative unauthenticated state.
   handleRedirectResult: async () => {
     try {
+      // loading is already true from initial state — keep it that way
       const userData = await handleGoogleRedirectResult();
-      if (!userData) return; // No redirect pending — normal load
-      set(applyUser(userData));
+
+      if (userData) {
+        // Redirect just completed — apply the user immediately
+        set(applyUser(userData));
+      }
+      // If null (normal load), do nothing — onAuthStateChanged will set loading:false
     } catch (error: any) {
       console.error("Redirect result error:", error);
+      // Only set loading:false on error — onAuthStateChanged handles the success path
       set({ error: error.message || "Google sign-in failed.", loading: false });
     }
   },

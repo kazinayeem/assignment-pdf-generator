@@ -58,9 +58,9 @@ export const getAllStudents = async (): Promise<UserDoc[]> => {
       where("role", "==", "student")
     );
     const snapshot = await getDocs(q);
-    return snapshot.docs.map((doc) => ({
-      uid: doc.id,
-      ...doc.data()
+    return snapshot.docs.map((snap) => ({
+      uid: snap.id,
+      ...snap.data()
     } as UserDoc));
   } catch (error) {
     console.error("Error getting students:", error);
@@ -77,9 +77,9 @@ export const getAllTeachers = async (): Promise<TeacherDoc[]> => {
       orderBy("createdAt", "desc")
     );
     const snapshot = await getDocs(q);
-    return snapshot.docs.map((doc) => ({
-      id: doc.id,
-      ...doc.data(),
+    return snapshot.docs.map((snap) => ({
+      id: snap.id,
+      ...snap.data(),
     } as TeacherDoc));
   } catch (error) {
     console.error("Error getting teachers:", error);
@@ -98,9 +98,9 @@ export const getApprovedTeachers = async (
 
     const q = query(collection(db(), "teachers"), ...constraints);
     const snapshot = await getDocs(q);
-    return snapshot.docs.map((doc) => ({
-      id: doc.id,
-      ...doc.data(),
+    return snapshot.docs.map((snap) => ({
+      id: snap.id,
+      ...snap.data(),
     } as TeacherDoc));
   } catch (error) {
     console.error("Error getting approved teachers:", error);
@@ -123,9 +123,9 @@ export const searchTeachers = async (
 
     const searchLower = searchTerm.toLowerCase();
     return snapshot.docs
-      .map((doc) => ({
-        id: doc.id,
-        ...doc.data(),
+      .map((snap) => ({
+        id: snap.id,
+        ...snap.data(),
       } as TeacherDoc))
       .filter(
         (teacher) =>
@@ -190,8 +190,8 @@ export const deleteTeacher = async (id: string): Promise<void> => {
     const coursesSnapshot = await getDocs(coursesQ);
     
     const batch = writeBatch(db());
-    coursesSnapshot.docs.forEach((doc) => {
-      batch.delete(doc.ref);
+    coursesSnapshot.docs.forEach((snap) => {
+      batch.delete(snap.ref);
     });
     await batch.commit();
   } catch (error) {
@@ -209,9 +209,9 @@ export const getCoursesByTeacher = async (teacherId: string): Promise<CourseDoc[
       where("teacherId", "==", teacherId)
     );
     const snapshot = await getDocs(q);
-    return snapshot.docs.map((doc) => ({
-      id: doc.id,
-      ...doc.data(),
+    return snapshot.docs.map((snap) => ({
+      id: snap.id,
+      ...snap.data(),
     } as CourseDoc));
   } catch (error) {
     console.error("Error getting courses:", error);
@@ -258,9 +258,9 @@ export const deleteCourse = async (id: string): Promise<void> => {
 export const getAllCourses = async (): Promise<CourseDoc[]> => {
   try {
     const snapshot = await getDocs(collection(db(), "courses"));
-    return snapshot.docs.map((doc) => ({
-      id: doc.id,
-      ...doc.data(),
+    return snapshot.docs.map((snap) => ({
+      id: snap.id,
+      ...snap.data(),
     } as CourseDoc));
   } catch (error) {
     console.error("Error getting courses:", error);

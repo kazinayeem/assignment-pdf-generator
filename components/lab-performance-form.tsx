@@ -15,16 +15,16 @@ import jsPDF from "jspdf";
 import "jspdf-autotable";
 import Link from "next/link";
 import { useAuthStore } from "@/lib/auth-store";
-import { FileText, ArrowLeft, Download, Info, LayoutDashboard, ShieldCheck } from "lucide-react";
+import { Zap, ArrowLeft, Download, Info, LayoutDashboard, ShieldCheck, User } from "lucide-react";
 
 type FormData = {
   courseCode: string;
   courseTitle: string;
   section: string;
-  topic: string;
+  performanceNo: string;
   teacherName: string;
   teacherDesignation: string;
-  department: string; 
+  department: string;
   studentName: string;
   studentId: string;
   submissionDate: string;
@@ -32,7 +32,7 @@ type FormData = {
   semester: string;
 };
 
-interface AssignmentFormProps {
+interface LabPerformanceFormProps {
   prefilledData?: {
     courseCode?: string;
     courseTitle?: string;
@@ -53,17 +53,17 @@ const DEPT_MAP: Record<string, string> = {
   "Law": "Department of Law",
 };
 
-export default function AssignmentForm({ prefilledData }: AssignmentFormProps) {
+export default function LabPerformanceForm({ prefilledData }: LabPerformanceFormProps) {
   const { user: authUser } = useAuthStore();
 
   const [formData, setFormData] = useState<FormData>({
     courseCode: "",
     courseTitle: "",
     section: "",
-    topic: "",
+    performanceNo: "1",
     teacherName: "",
     teacherDesignation: "",
-    department: "", 
+    department: "",
     studentName: "",
     studentId: "",
     submissionDate: new Date().toISOString().split("T")[0],
@@ -83,7 +83,7 @@ export default function AssignmentForm({ prefilledData }: AssignmentFormProps) {
       department: authUser?.department || prev.department,
       batch: (authUser as any)?.batch || prev.batch,
       semester: (authUser as any)?.semester || prev.semester,
-      section: (authUser as any)?.section || prev.section,
+      section: (authUser as any)?.subSection || (authUser as any)?.section || prev.section,
     }));
   }, [prefilledData, authUser]);
 
@@ -106,21 +106,10 @@ export default function AssignmentForm({ prefilledData }: AssignmentFormProps) {
 
     const renderRest = () => {
       doc.setFont("times", "bold");
-      doc.setFontSize(16);
-      doc.text("Assignment", 105, y, { align: "center" });
-      y += 7;
+      doc.setFontSize(22);
+      doc.text(`Lab Performance ${formData.performanceNo}`, 105, y, { align: "center" });
+      y += 10;
 
-      if (formData.topic) {
-        doc.setFontSize(12);
-        doc.setFont("times", "normal");
-        const topicLines = doc.splitTextToSize(`Topic: ${formData.topic}`, 160);
-        doc.text(topicLines, 105, y, { align: "center" });
-        y += (topicLines.length * 5) + 2;
-      } else {
-        y += 2;
-      }
-
-      // === Teacher Evaluation Table ===
       doc.setFontSize(11);
       autoTable(doc, {
         startY: y,
@@ -150,14 +139,14 @@ export default function AssignmentForm({ prefilledData }: AssignmentFormProps) {
             "50%",
             "75%",
             "100%",
-            "5",
+            "40",
           ],
         ],
         body: [
-          ["Clarity", "1", "", "", "", "", ""],
-          ["Content Quality", "2", "", "", "", "", ""],
-          ["Spelling & Grammar", "1", "", "", "", "", ""],
-          ["Organization and Formatting", "1", "", "", "", "", ""],
+          ["Understanding/Analysis", "10", "", "", "", "", ""],
+          ["Implementation", "15", "", "", "", "", ""],
+          ["Accuracy", "10", "", "", "", "", ""],
+          ["Task Efficiency", "5", "", "", "", "", ""],
           [
             {
               content: "Total obtained mark",
@@ -167,25 +156,18 @@ export default function AssignmentForm({ prefilledData }: AssignmentFormProps) {
                 fontStyle: "bold",
               },
             },
-            "", 
-            "", 
-            "",
-            "",
             "",
           ],
           [
             {
-              content: "Comments \n \n", 
+              content: "Comments \n \n \n",
               colSpan: 2,
               styles: {
                 halign: "left",
                 fontStyle: "bold",
               },
             },
-            {
-              content: "", 
-              colSpan: 5,
-            },
+            { content: "", colSpan: 5 },
           ],
         ],
         theme: "grid",
@@ -199,89 +181,69 @@ export default function AssignmentForm({ prefilledData }: AssignmentFormProps) {
           lineWidth: 0.1,
         },
         headStyles: {
-          fillColor: false, // No fill color for head
+          fillColor: false,
           textColor: 0,
           fontStyle: "bold",
         },
       });
 
-      y = (doc as any).lastAutoTable.finalY + 10; // Increased gap after table
+      y = (doc as any).lastAutoTable.finalY + 15;
 
-      // Student Information Section
       const formattedDate = formData.submissionDate
         ? formData.submissionDate.split("-").reverse().join(" / ")
         : "";
 
-      doc.setFontSize(13);
+      doc.setFontSize(14);
       doc.setFont("times", "bold");
-      doc.text("Student Information", 12, y);
-      y += 8;
+      doc.text(`Semester: ${formData.semester}`, 12, y);
+      y += 10;
 
-      doc.setFont("times", "bold");
-      doc.text("Semester:", 12, y);
-      doc.setFont("times", "normal");
-      doc.text(`${formData.semester}`, 45, y);
-      y += 7;
-
-      doc.setFont("times", "bold");
+      doc.setFontSize(12);
       doc.text("Student Name:", 12, y);
       doc.setFont("times", "normal");
       doc.text(`${formData.studentName}`, 45, y);
-      y += 7;
+      y += 8;
 
       doc.setFont("times", "bold");
       doc.text("Student ID:", 12, y);
       doc.setFont("times", "normal");
       doc.text(`${formData.studentId}`, 45, y);
-      y += 7;
+      y += 8;
 
       doc.setFont("times", "bold");
       doc.text("Batch:", 12, y);
       doc.setFont("times", "normal");
       doc.text(`${formData.batch}`, 45, y);
       doc.setFont("times", "bold");
-      doc.text("Section:", 100, y); // Student's section
+      doc.text("Section:", 100, y);
       doc.setFont("times", "normal");
-      doc.text(`${formData.section}`, 125, y);
-      y += 12;
-
-      // Course Teacher Information Section
-      doc.setFont("times", "bold");
-      doc.text("Course & Teacher Information", 12, y);
-      y += 8;
+      doc.text(`${formData.section}`, 120, y);
+      y += 10;
 
       doc.setFont("times", "bold");
       doc.text("Course Code:", 12, y);
       doc.setFont("times", "normal");
       doc.text(`${formData.courseCode}`, 45, y);
+      y += 8;
 
       doc.setFont("times", "bold");
-      doc.text("Course Title:", 100, y);
+      doc.text("Course Name:", 12, y);
       doc.setFont("times", "normal");
-      const maxWidthCourseName = 60; // Max width for course title before wrapping
-      const courseNameLines = doc.splitTextToSize(
-        formData.courseTitle,
-        maxWidthCourseName
-      );
-      doc.text(courseNameLines, 130, y); // Adjusted x-position for course title
-      y += Math.max(7, courseNameLines.length * 5); // Adjust y based on lines
+      const courseNameLines = doc.splitTextToSize(formData.courseTitle, 140);
+      doc.text(courseNameLines, 45, y);
+      y += Math.max(8, courseNameLines.length * 5);
 
       doc.setFont("times", "bold");
-      doc.text("Teacher Name:", 12, y);
+      doc.text("Course Teacher Name:", 12, y);
       doc.setFont("times", "normal");
-      const maxWidthTeacherName = 90; // Max width for teacher name
-      const teacherNameLines = doc.splitTextToSize(
-        formData.teacherName,
-        maxWidthTeacherName
-      );
-      doc.text(teacherNameLines, 45, y);
-      y += Math.max(7, teacherNameLines.length * 5); // Adjust y based on lines
+      doc.text(`${formData.teacherName}`, 60, y);
+      y += 8;
 
       doc.setFont("times", "bold");
       doc.text("Designation:", 12, y);
       doc.setFont("times", "normal");
       doc.text(`${formData.teacherDesignation}`, 45, y);
-      y += 7;
+      y += 8;
 
       // Add Department here
       const fullDept = DEPT_MAP[formData.department] || formData.department;
@@ -289,18 +251,15 @@ export default function AssignmentForm({ prefilledData }: AssignmentFormProps) {
       doc.text("Department:", 12, y);
       doc.setFont("times", "normal");
       doc.text(`${fullDept}`, 45, y);
-      y += 7;
+      y += 8;
 
       doc.setFont("times", "bold");
       doc.text("Submission Date:", 12, y);
       doc.setFont("times", "normal");
       doc.text(`${formattedDate}`, 50, y);
-      y += 10;
 
       const sanitizedName = formData.studentName.replace(/\s+/g, "_");
-      doc.save(
-        `${formData.studentId}_${sanitizedName}_${formData.courseCode}.pdf`
-      ); // Added course code to filename
+      doc.save(`${formData.studentId}_${sanitizedName}_Performance_${formData.performanceNo}.pdf`);
     };
 
     logo.onload = () => {
@@ -308,15 +267,15 @@ export default function AssignmentForm({ prefilledData }: AssignmentFormProps) {
       y += 30;
       renderRest();
     };
-    // Handle image loading error
+
     logo.onerror = () => {
-      console.error("Failed to load logo image.");
+      console.error("Failed to load logo");
       renderRest();
     };
   };
 
   const labelCls = "text-[11px] font-bold uppercase tracking-wider text-gray-400 mb-1.5 block ml-1";
-  const inputCls = "h-11 rounded-xl border-gray-100 bg-gray-50/50 focus:bg-white focus:ring-2 focus:ring-blue-500/10 transition-all text-sm";
+  const inputCls = "h-11 rounded-xl border-gray-100 bg-gray-50/50 focus:bg-white focus:ring-2 focus:ring-orange-500/10 transition-all text-sm";
 
   return (
     <div className="min-h-screen bg-[#fafafa] pb-20">
@@ -324,15 +283,15 @@ export default function AssignmentForm({ prefilledData }: AssignmentFormProps) {
       <div className="bg-white border-b border-gray-100 px-6 py-4 sticky top-0 z-40">
         <div className="max-w-5xl mx-auto flex items-center justify-between">
           <Link href="/" className="p-2 hover:bg-gray-50 rounded-xl transition-colors group">
-            <ArrowLeft className="w-5 h-5 text-gray-400 group-hover:text-blue-600" />
+            <ArrowLeft className="w-5 h-5 text-gray-400 group-hover:text-orange-600" />
           </Link>
           <div className="flex items-center gap-3">
-             <div className="w-8 h-8 bg-blue-600 rounded-lg flex items-center justify-center">
-               <FileText className="w-4 h-4 text-white" />
+             <div className="w-8 h-8 bg-orange-600 rounded-lg flex items-center justify-center">
+               <Zap className="w-4 h-4 text-white" />
              </div>
-             <h1 className="font-bold text-gray-900 hidden sm:block">Assignment Generator</h1>
+             <h1 className="font-bold text-gray-900 hidden sm:block">Lab Performance Gen</h1>
           </div>
-          <Button onClick={generatePDF} className="bg-blue-600 hover:bg-blue-700 text-white rounded-xl font-bold shadow-lg shadow-blue-100 gap-2">
+          <Button onClick={generatePDF} className="bg-orange-600 hover:bg-orange-700 text-white rounded-xl font-bold shadow-lg shadow-orange-100 gap-2">
             <Download className="w-4 h-4" />
             <span className="hidden sm:inline">Generate PDF</span>
             <span className="sm:hidden">PDF</span>
@@ -346,39 +305,39 @@ export default function AssignmentForm({ prefilledData }: AssignmentFormProps) {
           {/* Main Form Area */}
           <div className="lg:col-span-2 space-y-6">
             
-            {/* Section: Course Details */}
+            {/* Section: Performance Details */}
             <div className="bg-white p-6 sm:p-8 rounded-[2rem] border border-gray-100 shadow-sm">
                <div className="flex items-center gap-3 mb-6">
-                 <div className="w-10 h-10 rounded-xl bg-blue-50 flex items-center justify-center">
-                   <Info className="w-5 h-5 text-blue-600" />
+                 <div className="w-10 h-10 rounded-xl bg-orange-50 flex items-center justify-center">
+                   <Zap className="w-5 h-5 text-orange-600" />
                  </div>
                  <div>
-                   <h2 className="font-bold text-gray-900 leading-tight">Course & Teacher</h2>
-                   <p className="text-xs text-gray-400">Essential academic details</p>
+                   <h2 className="font-bold text-gray-900 leading-tight">Session Info</h2>
+                   <p className="text-xs text-gray-400">Weekly performance identification</p>
                  </div>
                </div>
 
                <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
+                 <div className="sm:col-span-2">
+                   <label className={labelCls}>Lab Performance Number</label>
+                   <Input name="performanceNo" value={formData.performanceNo} onChange={handleChange} placeholder="e.g. 1, 2, 3..." className={inputCls} />
+                 </div>
                  <div className="sm:col-span-1">
                    <label className={labelCls}>Course Code</label>
-                   <Input name="courseCode" value={formData.courseCode} onChange={handleChange} placeholder="e.g. SE 213" className={inputCls} />
+                   <Input name="courseCode" value={formData.courseCode} onChange={handleChange} placeholder="e.g. SE 226" className={inputCls} />
                  </div>
                  <div className="sm:col-span-1">
                    <label className={labelCls}>Course Title</label>
-                   <Input name="courseTitle" value={formData.courseTitle} onChange={handleChange} placeholder="e.g. Digital Electronics" className={inputCls} />
-                 </div>
-                 <div className="sm:col-span-2">
-                   <label className={labelCls}>Assignment Topic</label>
-                   <Input name="topic" value={formData.topic} onChange={handleChange} placeholder="What is this assignment about?" className={inputCls} />
+                   <Input name="courseTitle" value={formData.courseTitle} onChange={handleChange} placeholder="e.g. Data Comm Lab" className={inputCls} />
                  </div>
                  <div>
                    <label className={labelCls}>Teacher Name</label>
-                   <Input name="teacherName" value={formData.teacherName} onChange={handleChange} placeholder="e.g. Dr. Saifullah Sadi" className={inputCls} />
+                   <Input name="teacherName" value={formData.teacherName} onChange={handleChange} placeholder="e.g. Ahnaf Mubashir Mobin" className={inputCls} />
                  </div>
                  <div>
                    <label className={labelCls}>Designation</label>
-                   <input list="desig-list" name="teacherDesignation" value={formData.teacherDesignation} onChange={handleChange} placeholder="Select or type..." className={`${inputCls} w-full px-3 border border-input`} />
-                   <datalist id="desig-list">
+                   <input list="perf-desig-list" name="teacherDesignation" value={formData.teacherDesignation} onChange={handleChange} placeholder="Select or type..." className={`${inputCls} w-full px-3 border border-input`} />
+                   <datalist id="perf-desig-list">
                      <option value="Professor" />
                      <option value="Associate Professor" />
                      <option value="Assistant Professor" />
@@ -393,11 +352,11 @@ export default function AssignmentForm({ prefilledData }: AssignmentFormProps) {
             <div className="bg-white p-6 sm:p-8 rounded-[2rem] border border-gray-100 shadow-sm">
                <div className="flex items-center gap-3 mb-6">
                  <div className="w-10 h-10 rounded-xl bg-indigo-50 flex items-center justify-center">
-                   <LayoutDashboard className="w-5 h-5 text-indigo-600" />
+                   <User className="w-5 h-5 text-indigo-600" />
                  </div>
                  <div>
-                   <h2 className="font-bold text-gray-900 leading-tight">Student Information</h2>
-                   <p className="text-xs text-gray-400">Your personal academic identity</p>
+                   <h2 className="font-bold text-gray-900 leading-tight">Student Details</h2>
+                   <p className="text-xs text-gray-400">Identification for evaluation</p>
                  </div>
                </div>
 
@@ -408,11 +367,15 @@ export default function AssignmentForm({ prefilledData }: AssignmentFormProps) {
                  </div>
                  <div>
                    <label className={labelCls}>Student ID</label>
-                   <Input name="studentId" value={formData.studentId} onChange={handleChange} placeholder="e.g. 211-15-XXX" className={inputCls} />
+                   <Input name="studentId" value={formData.studentId} onChange={handleChange} placeholder="e.g. 232-35-XXX" className={inputCls} />
                  </div>
                  <div>
                    <label className={labelCls}>Department</label>
                    <Input name="department" value={formData.department} onChange={handleChange} placeholder="e.g. SWE" className={inputCls} />
+                 </div>
+                 <div>
+                   <label className={labelCls}>Section / Sub-section</label>
+                   <Input name="section" value={formData.section} onChange={handleChange} placeholder="e.g. A2" className={inputCls} />
                  </div>
                  <div>
                    <label className={labelCls}>Batch</label>
@@ -438,12 +401,8 @@ export default function AssignmentForm({ prefilledData }: AssignmentFormProps) {
                      </SelectContent>
                    </Select>
                  </div>
-                 <div>
-                   <label className={labelCls}>Section</label>
-                   <Input name="section" value={formData.section} onChange={handleChange} placeholder="e.g. A" className={inputCls} />
-                 </div>
-                 <div>
-                   <label className={labelCls}>Submission Date</label>
+                 <div className="sm:col-span-2">
+                   <label className={labelCls}>Performance Date</label>
                    <Input type="date" name="submissionDate" value={formData.submissionDate} onChange={handleChange} className={inputCls} />
                  </div>
                </div>
@@ -452,33 +411,29 @@ export default function AssignmentForm({ prefilledData }: AssignmentFormProps) {
 
           {/* Sidebar / Info */}
           <div className="space-y-6">
-            <div className="bg-blue-600 rounded-[2rem] p-8 text-white shadow-xl shadow-blue-100">
-               <h3 className="font-bold text-xl mb-4">Pro Tip 💡</h3>
-               <p className="text-blue-100 text-sm leading-relaxed mb-6">
-                 Sign in to your account to save your profile. Your Name, ID, and Department will be pre-filled automatically next time!
+            <div className="bg-orange-600 rounded-[2rem] p-8 text-white shadow-xl shadow-orange-100">
+               <h3 className="font-bold text-xl mb-4">40 Marks Table 📈</h3>
+               <p className="text-orange-50 text-sm leading-relaxed mb-6">
+                 This format features a 40-mark evaluation grid covering Understanding (10), Implementation (15), Accuracy (10), and Efficiency (5).
                </p>
-               {!authUser && (
-                 <Link href="/login" className="block w-full py-3 bg-white text-blue-600 rounded-xl text-center font-bold text-sm hover:bg-blue-50 transition-colors">
-                   Sign In Now
-                 </Link>
-               )}
+               <div className="p-4 bg-white/10 rounded-2xl border border-white/20">
+                  <p className="text-xs font-medium">Standard Performance Format</p>
+               </div>
             </div>
 
             <div className="bg-white p-6 rounded-[2rem] border border-gray-100 shadow-sm">
                <h3 className="font-bold text-gray-900 mb-4 flex items-center gap-2">
-                 <ShieldCheck className="w-5 h-5 text-green-500" />
-                 Preview Info
+                 <ShieldCheck className="w-5 h-5 text-blue-500" />
+                 PDF Preview
                </h3>
                <div className="space-y-3">
                   <div className="p-3 bg-gray-50 rounded-xl">
-                    <p className="text-[10px] uppercase font-bold text-gray-400 mb-1">Target File</p>
-                    <p className="text-xs font-medium text-gray-600 truncate">
-                      {formData.studentId || "Student"}_{formData.courseCode || "Course"}.pdf
-                    </p>
+                    <p className="text-[10px] uppercase font-bold text-gray-400 mb-1">Paper Size</p>
+                    <p className="text-xs font-medium text-gray-600">A4 International</p>
                   </div>
                   <div className="p-3 bg-gray-50 rounded-xl">
-                    <p className="text-[10px] uppercase font-bold text-gray-400 mb-1">Marking Scheme</p>
-                    <p className="text-xs font-medium text-gray-600">Standard Theory (5 Marks)</p>
+                    <p className="text-[10px] uppercase font-bold text-gray-400 mb-1">Header</p>
+                    <p className="text-xs font-medium text-gray-600">Dynamic Title (Perf. #)</p>
                   </div>
                </div>
             </div>

@@ -1,0 +1,68 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    // Helper functions
+    function isAuthenticated() {
+      return request.auth != null;
+    }
+    
+    function isSuperAdmin() {
+      return isAuthenticated() && 
+             get(/databases/$(database)/documents/users/$(request.auth.uid)).data.role == 'super-admin';
+    }
+    
+    function isStudent() {
+      return isAuthenticated() && 
+             get(/databases/$(database)/documents/users/$(request.auth.uid)).data.role == 'student';
+    }
+    
+    function isOwnUser(userId) {
+      return request.auth.uid == userId;
+    }
+
+    // USERS Collection
+    match /users/{userId} {
+      // Allow users to read their own document
+      allow read: if isAuthenticated() && isOwnUser(userId);
+      
+      // Allow authenticated users to read other users (for admin purposes)
+      allow read: if isSuperAdmin();
+      
+      // Allow creating own user document on signup
+      allow create: if isAuthenticated() && isOwnUser(userId);
+      
+      // Allow users to update their own profile (but not role)
+      allow update: if isOwnUser(userId) && 
+                       (!request.resource.data.diff(resource.data).affectedKeys().hasAny(['role']));
+      
+      // Only super admin can update user roles or delete users
+      allow update, delete: if isSuperAdmin();
+
+      // Student-owned my courses
+      match /myCourses/{courseId} {
+        allow read, create, update, delete: if isAuthenticated() && isOwnUser(userId);
+      }
+    }
+
+    // TEACHERS Collection
+    match /teachers/{teacherId} {
+      // Students can read approved teachers
+      allow read: if isStudent() && resource.data.approved == true;
+      
+      // Super admin can read all teachers
+      allow read: if isSuperAdmin();
+      
+      // Only super admin can write/update/delete teachers
+      allow create, update, delete: if isSuperAdmin();
+    }
+
+    // COURSES Collection
+    match /courses/{courseId} {
+      // Students can read all courses
+      allow read: if isAuthenticated();
+      
+      // Only super admin can write/update/delete courses
+      allow create, update, delete: if isSuperAdmin();
+    }
+  }
+}

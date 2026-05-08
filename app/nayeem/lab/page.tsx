@@ -51,7 +51,7 @@ export default function LabReportForm() {
     department: "",
     studentName: "",
     studentId: "",
-    submissionDate: "",
+    submissionDate: new Date().toISOString().split("T")[0],
     batch: "",
     semester: "",
     groupNo: "",
@@ -87,7 +87,7 @@ export default function LabReportForm() {
     let y = 15;
 
     const logo = new Image();
-    logo.src = "../../diulogoside.png";
+    logo.src = "/diulogoside.png";
 
     logo.onload = () => {
       doc.addImage(logo, "PNG", 60, y, 90, 25);
@@ -99,12 +99,17 @@ export default function LabReportForm() {
       doc.text("Project Report", 105, y, {
         align: "center",
       });
-      y += 8;
+      y += 7;
 
-      doc.text(formData.projectTitle, 105, y, {
-        align: "center",
-      });
-      y += 8;
+      if (formData.projectTitle) {
+        doc.setFontSize(12);
+        doc.setFont("times", "normal");
+        const titleLines = doc.splitTextToSize(`Topic: ${formData.projectTitle}`, 160);
+        doc.text(titleLines, 105, y, { align: "center" });
+        y += (titleLines.length * 5) + 2;
+      } else {
+        y += 2;
+      }
 
       doc.setFontSize(11);
       autoTable(doc, {
@@ -411,12 +416,11 @@ export default function LabReportForm() {
               <SelectValue placeholder="Select semester" />
             </SelectTrigger>
             <SelectContent>
-              <SelectItem value="Spring 2025">Spring 2025</SelectItem>
-              <SelectItem value="Summer 2025">Summer 2025</SelectItem>
-              <SelectItem value="Fall 2025">Fall 2025</SelectItem>
-              <SelectItem value="Spring 2026">Spring 2026</SelectItem>
-              <SelectItem value="Summer 2026">Summer 2026</SelectItem>
-              <SelectItem value="Fall 2026">Fall 2026</SelectItem>
+              {Array.from({ length: 7 }, (_, i) => 2024 + i).flatMap((year) => [
+                <SelectItem key={`Spring ${year}`} value={`Spring ${year}`}>Spring {year}</SelectItem>,
+                <SelectItem key={`Summer ${year}`} value={`Summer ${year}`}>Summer {year}</SelectItem>,
+                <SelectItem key={`Fall ${year}`} value={`Fall ${year}`}>Fall {year}</SelectItem>,
+              ])}
             </SelectContent>
           </Select>
         </div>

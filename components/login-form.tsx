@@ -24,6 +24,9 @@ export default function LoginForm() {
 
   const handleGoogleSignIn = async () => {
     try {
+      // Initiates redirect — page will navigate away to Google
+      // After user signs in, they'll return to this app and AuthInitializer
+      // will process the result via handleRedirectResult()
       await signInWithGoogle();
     } catch (error) {
       console.error("Sign in failed:", error);
@@ -59,7 +62,10 @@ export default function LoginForm() {
             className="w-full h-14 bg-white border border-gray-100 hover:bg-gray-50 text-gray-900 font-bold rounded-2xl flex items-center justify-center gap-3 transition-all shadow-sm group"
           >
             {loading ? (
-              <Loader2 className="w-5 h-5 animate-spin text-blue-600" />
+              <div className="flex items-center gap-2">
+                <Loader2 className="w-5 h-5 animate-spin text-blue-600" />
+                <span className="text-sm text-gray-500">Redirecting to Google…</span>
+              </div>
             ) : (
               <>
                 <Image src="/google.svg" alt="Google" width={20} height={20} className="group-hover:scale-110 transition-transform" />

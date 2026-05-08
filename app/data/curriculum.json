@@ -1,0 +1,538 @@
+{
+  "program": "Bachelor of Science in Software Engineering (BSSE)",
+  "curriculum_type": "OBE Curriculum",
+  "department": "SWE",
+  "course_categories": {
+    "GED": "General Education Courses",
+    "PGC": "Preparatory General Core",
+    "CORE": "Software Engineering Core",
+    "LAB": "Laboratory Courses",
+    "LAB-P": "Lab Based Project Courses",
+    "MAJOR": "Major Courses (All Majors)",
+    "MAJOR-L": "Major Laboratory Courses (All Majors)",
+    "PRO-THE": "Final Year Project / Thesis"
+  },
+  "total_credit": "116-120 (Theory) + 25-29 (Lab) = 145",
+  "semesters": [
+    {
+      "semester": "1st",
+      "year_session": "1-1",
+      "semester_credit": 16,
+      "courses": [
+        {
+          "code": "SE 111",
+          "title": "Computer Fundamentals",
+          "prerequisite": null,
+          "category": "CORE",
+          "theory_credit": 3,
+          "lab_credit": null
+        },
+        {
+          "code": "SE 112",
+          "title": "Computer Fundamentals Lab",
+          "prerequisite": null,
+          "category": "LAB",
+          "theory_credit": null,
+          "lab_credit": 1
+        },
+        {
+          "code": "SE 113",
+          "title": "Introduction to Software Engineering",
+          "prerequisite": null,
+          "category": "CORE",
+          "theory_credit": 3,
+          "lab_credit": null
+        },
+        {
+          "code": "ENG 114",
+          "title": "English Reading, Writing Skills & Public Speaking",
+          "prerequisite": null,
+          "category": "GED",
+          "theory_credit": 3,
+          "lab_credit": null
+        },
+        {
+          "code": "GE 115",
+          "title": "Art of Living",
+          "prerequisite": null,
+          "category": "GED",
+          "theory_credit": 3,
+          "lab_credit": null
+        },
+        {
+          "code": "MAT 124",
+          "title": "Math-I: Calculus & Geometry",
+          "prerequisite": null,
+          "category": "GED",
+          "theory_credit": 3,
+          "lab_credit": null
+        }
+      ]
+    },
+    {
+      "semester": "2nd",
+      "year_session": "1-2",
+      "semester_credit": 19,
+      "courses": [
+        {
+          "code": "SE 121",
+          "title": "Structured Programming",
+          "prerequisite": ["SE111", "SE112"],
+          "category": "CORE",
+          "theory_credit": 3,
+          "lab_credit": null
+        },
+        {
+          "code": "SE 122",
+          "title": "Structured Programming Lab",
+          "prerequisite": ["SE111", "SE112"],
+          "category": "LAB",
+          "theory_credit": null,
+          "lab_credit": 1
+        },
+        {
+          "code": "SE 123",
+          "title": "Discrete Mathematics",
+          "prerequisite": null,
+          "category": "GED",
+          "theory_credit": 3,
+          "lab_credit": null
+        },
+        {
+          "code": "SE 212",
+          "title": "Software Requirement Specifications & Analysis",
+          "prerequisite": ["SE113"],
+          "category": "CORE",
+          "theory_credit": 3,
+          "lab_credit": null
+        },
+        {
+          "code": "SE 213",
+          "title": "Digital Electronics & Logic Design",
+          "prerequisite": ["SE111", "SE112"],
+          "category": "GED",
+          "theory_credit": 3,
+          "lab_credit": null
+        },
+        {
+          "code": "PHY 125",
+          "title": "Physics: Mechanics, Electromagnetism & Waves",
+          "prerequisite": null,
+          "category": "GED",
+          "theory_credit": 3,
+          "lab_credit": null
+        },
+        {
+          "code": "MAT 134",
+          "title": "Math-II: Linear Algebra & Fourier Analysis",
+          "prerequisite": ["MAT124"],
+          "category": "GED",
+          "theory_credit": 3,
+          "lab_credit": null
+        }
+      ]
+    },
+    {
+      "semester": "3rd",
+      "year_session": "2-1",
+      "semester_credit": 19,
+      "courses": [
+        {
+          "code": "SE 131",
+          "title": "Data Structure",
+          "prerequisite": ["SE121", "SE122", "SE123"],
+          "category": "PGC",
+          "theory_credit": 3,
+          "lab_credit": null
+        },
+        {
+          "code": "SE 132",
+          "title": "Data Structure Lab",
+          "prerequisite": ["SE121", "SE122", "SE123"],
+          "category": "LAB",
+          "theory_credit": null,
+          "lab_credit": 1
+        },
+        {
+          "code": "SE 133",
+          "title": "Software Development Capstone Project",
+          "prerequisite": ["SE121", "SE122"],
+          "category": "LAB-P",
+          "theory_credit": null,
+          "lab_credit": 3
+        },
+        {
+          "code": "SE 211",
+          "title": "Object Oriented Concepts",
+          "prerequisite": ["SE121", "SE122"],
+          "category": "CORE",
+          "theory_credit": 3,
+          "lab_credit": null
+        },
+        {
+          "code": "SE 222",
+          "title": "Computer Architecture",
+          "prerequisite": ["SE213"],
+          "category": "PGC",
+          "theory_credit": 3,
+          "lab_credit": null
+        },
+        {
+          "code": "STA 135",
+          "title": "Probability & Statistics in Software Engineering",
+          "prerequisite": null,
+          "category": "GED",
+          "theory_credit": 3,
+          "lab_credit": null
+        },
+        {
+          "code": "GE 314",
+          "title": "Bangladesh Studies",
+          "prerequisite": null,
+          "category": "GED",
+          "theory_credit": 3,
+          "lab_credit": null
+        }
+      ]
+    },
+    {
+      "semester": "4th",
+      "year_session": "2-2",
+      "semester_credit": 21,
+      "courses": [
+        {
+          "code": "SE 214",
+          "title": "Algorithms Design & Analysis",
+          "prerequisite": ["SE131", "SE132"],
+          "category": "PGC",
+          "theory_credit": 3,
+          "lab_credit": null
+        },
+        {
+          "code": "SE 215",
+          "title": "Algorithms Design & Analysis Lab",
+          "prerequisite": ["SE131", "SE132"],
+          "category": "LAB",
+          "theory_credit": null,
+          "lab_credit": 1
+        },
+        {
+          "code": "SE 221",
+          "title": "Object Oriented Design",
+          "prerequisite": ["SE211"],
+          "category": "CORE",
+          "theory_credit": 3,
+          "lab_credit": null
+        },
+        {
+          "code": "SE 223",
+          "title": "Database System",
+          "prerequisite": null,
+          "category": "CORE",
+          "theory_credit": 3,
+          "lab_credit": null
+        },
+        {
+          "code": "SE 224",
+          "title": "Database System Lab",
+          "prerequisite": null,
+          "category": "LAB",
+          "theory_credit": null,
+          "lab_credit": 1
+        },
+        {
+          "code": "SE 232",
+          "title": "Operating System & System Programming",
+          "prerequisite": ["SE222"],
+          "category": "PGC",
+          "theory_credit": 3,
+          "lab_credit": null
+        },
+        {
+          "code": "SE 233",
+          "title": "Operating System & System Programming Lab",
+          "prerequisite": ["SE222"],
+          "category": "LAB",
+          "theory_credit": null,
+          "lab_credit": 1
+        },
+        {
+          "code": "GE 235",
+          "title": "Principles of Accounting, Business & Economics",
+          "prerequisite": null,
+          "category": "GED",
+          "theory_credit": 3,
+          "lab_credit": null
+        },
+        {
+          "code": "SE 532",
+          "title": "Introduction to Robotics",
+          "prerequisite": ["SE213"],
+          "category": "PGC",
+          "theory_credit": 3,
+          "lab_credit": null
+        }
+      ]
+    },
+    {
+      "semester": "5th",
+      "year_session": "3-1",
+      "semester_credit": 20,
+      "courses": [
+        {
+          "code": "SE 225",
+          "title": "Data Communication & Computer Networking",
+          "prerequisite": null,
+          "category": "PGC",
+          "theory_credit": 3,
+          "lab_credit": null
+        },
+        {
+          "code": "SE 226",
+          "title": "Data Communication & Computer Networking Lab",
+          "prerequisite": null,
+          "category": "LAB",
+          "theory_credit": null,
+          "lab_credit": 1
+        },
+        {
+          "code": "SE 231",
+          "title": "System Analysis & Design Capstone Project",
+          "prerequisite": ["SE133", "SE212", "SE221"],
+          "category": "LAB-P",
+          "theory_credit": null,
+          "lab_credit": 3
+        },
+        {
+          "code": "SE 234",
+          "title": "Theory of Computing",
+          "prerequisite": null,
+          "category": "PGC",
+          "theory_credit": 3,
+          "lab_credit": null
+        },
+        {
+          "code": "SE 311",
+          "title": "Design Pattern",
+          "prerequisite": ["SE221"],
+          "category": "CORE",
+          "theory_credit": 3,
+          "lab_credit": null
+        },
+        {
+          "code": "SE 312",
+          "title": "Software Quality Assurance & Testing",
+          "prerequisite": ["SE212", "SE221"],
+          "category": "CORE",
+          "theory_credit": 3,
+          "lab_credit": null
+        },
+        {
+          "code": "SE 313",
+          "title": "Software Quality Assurance & Testing Lab",
+          "prerequisite": ["SE212", "SE221"],
+          "category": "LAB",
+          "theory_credit": null,
+          "lab_credit": 1
+        },
+        {
+          "code": "GE 324",
+          "title": "Business Analysis & Communication",
+          "prerequisite": ["ENG114", "SE212"],
+          "category": "GED",
+          "theory_credit": 3,
+          "lab_credit": null
+        }
+      ]
+    },
+    {
+      "semester": "6th",
+      "year_session": "3-2",
+      "semester_credit": 20,
+      "courses": [
+        {
+          "code": "SE 321",
+          "title": "Software Engineering Web Application",
+          "prerequisite": ["SE121", "SE122"],
+          "category": "CORE",
+          "theory_credit": 3,
+          "lab_credit": null
+        },
+        {
+          "code": "SE 322",
+          "title": "Software Engineering Web Application Lab",
+          "prerequisite": ["SE121", "SE122"],
+          "category": "LAB",
+          "theory_credit": null,
+          "lab_credit": 1
+        },
+        {
+          "code": "SE 323",
+          "title": "Software Architecture & Design",
+          "prerequisite": ["SE212", "SE221", "SE223", "SE311"],
+          "category": "CORE",
+          "theory_credit": 3,
+          "lab_credit": null
+        },
+        {
+          "code": "SE 332",
+          "title": "Information System Security",
+          "prerequisite": null,
+          "category": "CORE",
+          "theory_credit": 3,
+          "lab_credit": null
+        },
+        {
+          "code": "SE 411",
+          "title": "Software Project Management & Documentation",
+          "prerequisite": ["SE312"],
+          "category": "CORE",
+          "theory_credit": 3,
+          "lab_credit": null
+        },
+        {
+          "code": "SE 333",
+          "title": "Artificial Intelligence",
+          "prerequisite": ["SE214", "SE234"],
+          "category": "CORE",
+          "theory_credit": 3,
+          "lab_credit": null
+        },
+        {
+          "code": "SE 334",
+          "title": "Artificial Intelligence Lab",
+          "prerequisite": ["SE214", "SE234"],
+          "category": "LAB",
+          "theory_credit": null,
+          "lab_credit": 1
+        },
+        {
+          "code": "SE 544",
+          "title": "Introduction to Machine Learning",
+          "prerequisite": ["MAT124", "MAT134", "STA135", "SE121"],
+          "category": "PGC",
+          "theory_credit": 3,
+          "lab_credit": null
+        }
+      ]
+    },
+    {
+      "semester": "7th",
+      "year_session": "4-1",
+      "semester_credit": 21,
+      "courses": [
+        {
+          "code": "SE 331",
+          "title": "Software Engineering Design Capstone Project",
+          "prerequisite": ["SE231", "SE312", "SE321", "SE323"],
+          "category": "LAB-P",
+          "theory_credit": null,
+          "lab_credit": 3
+        },
+        {
+          "code": "GE 557",
+          "title": "Employability 360 Non-Major Only",
+          "prerequisite": null,
+          "category": "GED",
+          "theory_credit": 3,
+          "lab_credit": null
+        },
+        {
+          "code": "SE 599",
+          "title": "Research Methodology & Scientific Writing",
+          "prerequisite": null,
+          "category": "PGC",
+          "theory_credit": 3,
+          "lab_credit": null
+        },
+        {
+          "code": "SE 442",
+          "title": "Management Information System",
+          "prerequisite": null,
+          "category": "PGC",
+          "theory_credit": 3,
+          "lab_credit": null
+        },
+        {
+          "code": "SE 535",
+          "title": "Data Warehouse & Data Mining",
+          "prerequisite": null,
+          "category": "PGC",
+          "theory_credit": 3,
+          "lab_credit": null
+        },
+        {
+          "code": "RE 411",
+          "title": "Embedded Systems Design & Development",
+          "prerequisite": ["RE331", "RE332"],
+          "category": "MAJOR",
+          "theory_credit": 2,
+          "lab_credit": null
+        },
+        {
+          "code": "RE 412",
+          "title": "Embedded Systems Design & Development Lab",
+          "prerequisite": ["RE331", "RE332"],
+          "category": "MAJOR-L",
+          "theory_credit": null,
+          "lab_credit": 1
+        },
+        {
+          "code": "CS 211",
+          "title": "Cyber Security Fundamentals",
+          "prerequisite": ["SE332"],
+          "category": "MAJOR",
+          "theory_credit": 3,
+          "lab_credit": null
+        },
+        {
+          "code": "DS 331",
+          "title": "Introduction To Data Science and Data Management & Analysis",
+          "prerequisite": ["STA135", "SE121"],
+          "category": "MAJOR",
+          "theory_credit": 2,
+          "lab_credit": null
+        },
+        {
+          "code": "SE 431",
+          "title": "Final Year Project / Thesis / Internship",
+          "prerequisite": null,
+          "category": "PRO-THE",
+          "theory_credit": null,
+          "lab_credit": 6
+        }
+      ]
+    },
+    {
+      "semester": "8th",
+      "year_session": "4-2",
+      "semester_credit": 9,
+      "courses": [
+        {
+          "code": "SE 441",
+          "title": "Software Engineering Professional Ethics",
+          "prerequisite": null,
+          "category": "PGC",
+          "theory_credit": 3,
+          "lab_credit": null
+        },
+        {
+          "code": "SE 341",
+          "title": "Numerical Analysis",
+          "prerequisite": null,
+          "category": "PGC",
+          "theory_credit": 3,
+          "lab_credit": null
+        },
+        {
+          "code": "SE 447",
+          "title": "Human Computer Interaction",
+          "prerequisite": null,
+          "category": "PGC",
+          "theory_credit": 3,
+          "lab_credit": null
+        }
+      ]
+    }
+  ]
+}

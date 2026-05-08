@@ -49,7 +49,7 @@ export default function AssignmentForm() {
     department: "",
     studentName: "",
     studentId: "",
-    submissionDate: "",
+    submissionDate: new Date().toISOString().split("T")[0],
     batch: "",
     semester: "",
   });
@@ -84,7 +84,7 @@ export default function AssignmentForm() {
     let y = 15;
 
     const logo = new Image();
-    logo.src = "../../diulogoside.png";
+    logo.src = "/diulogoside.png";
     logo.onload = () => {
       doc.addImage(logo, "PNG", 60, y, 90, 25);
       y += 30;
@@ -92,7 +92,17 @@ export default function AssignmentForm() {
       doc.setFont("times", "bold");
       doc.setFontSize(16);
       doc.text("Assignment", 105, y, { align: "center" });
-      y += 8;
+      y += 7;
+
+      if (formData.topic) {
+        doc.setFontSize(12);
+        doc.setFont("times", "normal");
+        const topicLines = doc.splitTextToSize(`Topic: ${formData.topic}`, 160);
+        doc.text(topicLines, 105, y, { align: "center" });
+        y += (topicLines.length * 5) + 2;
+      } else {
+        y += 2;
+      }
 
       // === Teacher Evaluation Table ===
       doc.setFontSize(11);
@@ -403,12 +413,11 @@ export default function AssignmentForm() {
               <SelectValue placeholder="Select semester" />
             </SelectTrigger>
             <SelectContent>
-              <SelectItem value="Spring 2025">Spring 2025</SelectItem>
-              <SelectItem value="Summer 2025">Summer 2025</SelectItem>
-              <SelectItem value="Fall 2025">Fall 2025</SelectItem>
-              <SelectItem value="Spring 2026">Spring 2026</SelectItem>
-              <SelectItem value="Summer 2026">Summer 2026</SelectItem>
-              <SelectItem value="Fall 2026">Fall 2026</SelectItem>
+              {Array.from({ length: 7 }, (_, i) => 2024 + i).flatMap((year) => [
+                <SelectItem key={`Spring ${year}`} value={`Spring ${year}`}>Spring {year}</SelectItem>,
+                <SelectItem key={`Summer ${year}`} value={`Summer ${year}`}>Summer {year}</SelectItem>,
+                <SelectItem key={`Fall ${year}`} value={`Fall ${year}`}>Fall {year}</SelectItem>,
+              ])}
             </SelectContent>
           </Select>
         </div>

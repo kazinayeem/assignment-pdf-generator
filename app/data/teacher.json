@@ -1,0 +1,1162 @@
+[
+  {
+    "initial": "IM",
+    "name": "Dr. Imran Mahmud",
+    "designation": "Professor & Head",
+    "dep": "SWE",
+    "emp_id": "710000934",
+    "email": "imranmahmud@daffodilvarsity.edu.bd",
+    "phone": "01711370502",
+    "room": "607"
+  },
+  {
+    "initial": "FE",
+    "name": "Dr. Md Fazla Elahe",
+    "designation": "Assistant Professor & Associate Head",
+    "dep": "SWE",
+    "emp_id": "710001114",
+    "email": "elahe.se@daffodilvarsity.edu.bd",
+    "phone": "01891866411",
+    "room": "607"
+  },
+  {
+    "initial": "SS",
+    "name": "DR. A. H. M. SAIFULLAH SADI",
+    "designation": "Professor",
+    "dep": "SWE",
+    "emp_id": "710003717",
+    "email": "sadi.swe@diu.edu.bd",
+    "phone": "01795379956",
+    "room": "607"
+  },
+  {
+    "initial": "SP",
+    "name": "A.H.M Shahariar Parvez",
+    "designation": "Associate Professor",
+    "dep": "SWE",
+    "emp_id": "710003253",
+    "email": "shahariar.swe@diu.edu.bd",
+    "phone": "01718642878",
+    "room": "724"
+  },
+  {
+    "initial": "HM",
+    "name": "Dr. S. M. Hasan Mahmud",
+    "designation": "Associate Professor",
+    "dep": "SWE",
+    "emp_id": "710003800",
+    "email": "drhasan.swe@diu.edu.bd",
+    "phone": "01722418230",
+    "room": "605"
+  },
+  {
+    "initial": "RI",
+    "name": "DR. RUBAIYAT ISLAM",
+    "designation": "Associate Professor",
+    "dep": "SWE",
+    "emp_id": "710003716",
+    "email": "islam.swe@diu.edu.bd",
+    "phone": "01711593262",
+    "room": "907"
+  },
+  {
+    "initial": "MAK",
+    "name": "Dr. MD ABDUL KADER",
+    "designation": "Associate Professor",
+    "dep": "SWE",
+    "emp_id": "710003877",
+    "email": "abdulkader.swe@diu.edu.bd",
+    "phone": "01722241303",
+    "room": "907"
+  },
+  {
+    "initial": "DKS",
+    "name": "Dr. Kamrul I. Shahin",
+    "designation": "Associate Professor",
+    "dep": "SWE",
+    "emp_id": null,
+    "email": "kamrul.isbd@gmail.com",
+    "phone": null,
+    "room": null
+  },
+  {
+    "initial": "THZ",
+    "name": "Tanvir Hasan Zoha",
+    "designation": "Associate Professor",
+    "dep": "SWE",
+    "emp_id": "723500212",
+    "email": "tanvirzoha@gmail.com",
+    "phone": "01755555560",
+    "room": null
+  },
+  {
+    "initial": "MKS",
+    "name": "Khaled Sohel",
+    "designation": "Assistant Professor",
+    "dep": "SWE",
+    "emp_id": "710000795",
+    "email": "khaledsohel@daffodilvarsity.edu.bd",
+    "phone": "01713493251",
+    "room": "605"
+  },
+  {
+    "initial": "AB",
+    "name": "Afsana Begum",
+    "designation": "Assistant Professor",
+    "dep": "SWE",
+    "emp_id": "710001535",
+    "email": "afsana.swe@diu.edu.bd",
+    "phone": "01717545414",
+    "room": "607"
+  },
+  {
+    "initial": "MSA",
+    "name": "Md. Shohel Arman",
+    "designation": "Assistant Professor",
+    "dep": "SWE",
+    "emp_id": "710002084",
+    "email": "arman.swe@diu.edu.bd",
+    "phone": "01673383289",
+    "room": "601"
+  },
+  {
+    "initial": "TRT",
+    "name": "Tapushe Rabaya Toma",
+    "designation": "Assistant Professor",
+    "dep": "SWE",
+    "emp_id": "710001911",
+    "email": "toma.swe@diu.edu.bd",
+    "phone": "01676078744",
+    "room": "605"
+  },
+  {
+    "initial": "SH",
+    "name": "Shahina Haque",
+    "designation": "Assistant Professor",
+    "dep": "SWE",
+    "emp_id": "710000359",
+    "email": "shahina@daffodilvarsity.edu.bd",
+    "phone": "01856059153",
+    "room": "805"
+  },
+  {
+    "initial": "DMA",
+    "name": "Dr. Marzia Ahmed",
+    "designation": "Assistant Professor",
+    "dep": "SWE",
+    "emp_id": "710002501",
+    "email": "marzia.swe@diu.edu.bd",
+    "phone": "01745482644",
+    "room": "908"
+  },
+  {
+    "initial": "NIR",
+    "name": "Nadira Islam",
+    "designation": "Assistant Professor",
+    "dep": "SWE",
+    "emp_id": "710002891",
+    "email": "nadira.swe@diu.edu.bd",
+    "phone": "01759339422",
+    "room": "605"
+  },
+  {
+    "initial": "HI",
+    "name": "Hafizul Imran",
+    "designation": "Assistant Professor",
+    "dep": "SWE",
+    "emp_id": "710002755",
+    "email": "hafizul.swe@daffodilvarsity.edu.bd",
+    "phone": "01740064708",
+    "room": "605"
+  },
+  {
+    "initial": "DSM",
+    "name": "Dr. Shabnom Mustary",
+    "designation": "Assistant Professor",
+    "dep": "SWE",
+    "emp_id": "710003879",
+    "email": "shabnom.swe@diu.edu.bd",
+    "phone": "01795951569",
+    "room": "608"
+  },
+  {
+    "initial": "SR",
+    "name": "Md. Selim Reza",
+    "designation": "Assistant Professor",
+    "dep": "SWE",
+    "emp_id": "710003747",
+    "email": "selim.swe0161.c@diu.edu.bd",
+    "phone": "01719310512",
+    "room": "805"
+  },
+  {
+    "initial": "AS",
+    "name": "Ayesha Siddika",
+    "designation": "Assistant Professor",
+    "dep": "SWE",
+    "emp_id": "710003971",
+    "email": "ayesha.swe@diu.edu.bd",
+    "phone": "01794113665",
+    "room": null
+  },
+  {
+    "initial": "MKH",
+    "name": "Dr. Mohammad Kamal Hossain Foraji",
+    "designation": "Assistant Professor",
+    "dep": "SWE",
+    "emp_id": "710003974",
+    "email": "kamal.swe@diu.edu.bd",
+    "phone": "01782779977",
+    "room": null
+  },
+  {
+    "initial": "MTK",
+    "name": "DR. MST. TASKIA KHATUN",
+    "designation": "Assistant Professor",
+    "dep": "SWE",
+    "emp_id": "710003700",
+    "email": "khatun.swe@diu.edu.bd",
+    "phone": "01701564663",
+    "room": null
+  },
+  {
+    "initial": "UKD",
+    "name": "Uttam Kumar Dey",
+    "designation": "Assistant Professor",
+    "dep": "SWE",
+    "emp_id": "710004035",
+    "email": "ukdey2050@gmail.com",
+    "phone": "01685055737",
+    "room": null
+  },
+  {
+    "initial": "MSM",
+    "name": "Mohammad Sultan Mahmud",
+    "designation": "Assistant Professor",
+    "dep": "SWE",
+    "emp_id": null,
+    "email": "m.smahmud@yahoo.com",
+    "phone": "01977295641",
+    "room": null
+  },
+  {
+    "initial": "KBB",
+    "name": "Khalid Been Badruzzaman",
+    "designation": "Lecturer (Senior Scale)",
+    "dep": "SWE",
+    "emp_id": "710001009",
+    "email": "khalid@daffodilvarsity.edu.bd",
+    "phone": "01673290848",
+    "room": "605"
+  },
+  {
+    "initial": "FBR",
+    "name": "Fatama Binta Rafiq",
+    "designation": "Lecturer (Senior Scale)",
+    "dep": "SWE",
+    "emp_id": "710002083",
+    "email": "fatama.swe@diu.edu.bd",
+    "phone": "01516187007",
+    "room": "605"
+  },
+  {
+    "initial": "RM",
+    "name": "Mr. Md. Rajib Mia",
+    "designation": "Lecturer (Senior Scale)",
+    "dep": "SWE",
+    "emp_id": "710002801",
+    "email": "rajib.swe@diu.edu.bd",
+    "phone": "01796679434",
+    "room": "605"
+  },
+  {
+    "initial": "SA",
+    "name": "Md. Suhag Ali",
+    "designation": "Lecturer (Senior Scale)",
+    "dep": "SWE",
+    "emp_id": "710003972",
+    "email": "suhag.swe@diu.edu.bd",
+    "phone": "01303382828",
+    "room": null
+  },
+  {
+    "initial": "KRA",
+    "name": "Kazi Rifat Ahmed",
+    "designation": "Lecturer (Senior Scale)",
+    "dep": "SWE",
+    "emp_id": "710003360",
+    "email": "rifat.swe@diu.edu.bd",
+    "phone": "01521259962",
+    "room": null
+  },
+  {
+    "initial": "RMS",
+    "name": "Ms. Rakhi Moni Saha",
+    "designation": "Lecturer (Senior Scale)",
+    "dep": "SWE",
+    "emp_id": "710003067",
+    "email": "rakhi.swe@diu.edu.bd",
+    "phone": "01754347750",
+    "room": "605"
+  },
+  {
+    "initial": "IS",
+    "name": "Ishrat Sultana",
+    "designation": "Lecturer (Senior Scale)",
+    "dep": "SWE",
+    "emp_id": "710003368",
+    "email": "ishrat.swe@diu.edu.bd",
+    "phone": "01684531230",
+    "room": null
+  },
+  {
+    "initial": "FH",
+    "name": "Md. Fahad Hossain",
+    "designation": "Lecturer (Senior Scale)",
+    "dep": "SWE",
+    "emp_id": "710004038",
+    "email": "fahadhossain.cs@gmail.com",
+    "phone": "01946704373",
+    "room": null
+  },
+  {
+    "initial": "MH",
+    "name": "Md. Mahedi Hassan",
+    "designation": "Lecturer (Senior Scale)",
+    "dep": "SWE",
+    "emp_id": "710004034",
+    "email": "mahedi7171@gmail.com",
+    "phone": "01758097971",
+    "room": null
+  },
+  {
+    "initial": "DMR",
+    "name": "Dr. Md Mahbubur Rahman",
+    "designation": "Lecturer (Senior Scale)",
+    "dep": "SWE",
+    "emp_id": "723500201",
+    "email": "mahbubur.swe0201.c@diu.edu.bd",
+    "phone": "01755508971",
+    "room": null
+  },
+  {
+    "initial": "DEH",
+    "name": "Dr. Ehteshamul Haque",
+    "designation": "Lecturer (Senior Scale)",
+    "dep": "SWE",
+    "emp_id": "723500151",
+    "email": "ehteshamul.swe0151.c@diu.edu.bd",
+    "phone": "01784020038",
+    "room": null
+  },
+  {
+    "initial": "DK",
+    "name": "Debasis Kumar",
+    "designation": "Lecturer (Senior Scale)",
+    "dep": "SWE",
+    "emp_id": "721500572",
+    "email": "debasis.cse0572.c@diu.edu.bd",
+    "phone": "01710589096",
+    "room": null
+  },
+  {
+    "initial": "FC",
+    "name": "Fayazunnesa Chowdhury",
+    "designation": "Lecturer (Senior Scale)",
+    "dep": "SWE",
+    "emp_id": "721500405",
+    "email": "fayazunnesa.cse0405.c@diu.edu.bd",
+    "phone": "01737216620",
+    "room": null
+  },
+  {
+    "initial": "ABK",
+    "name": "Abdullah Bin Kasem Bhuiya",
+    "designation": "Lecturer (Senior Scale)",
+    "dep": "SWE",
+    "emp_id": "721600022",
+    "email": "abkbhuiyanjehad@gmail.com",
+    "phone": "01831661534",
+    "room": null
+  },
+  {
+    "initial": null,
+    "name": "Nahida Akther",
+    "designation": "Lecturer (Senior Scale)",
+    "dep": "SWE",
+    "emp_id": "723500144",
+    "email": "nahida1710@gmail.com",
+    "phone": "01730370365",
+    "room": null
+  },
+  {
+    "initial": "RJM",
+    "name": "Ms. Raiyan Janik Monir",
+    "designation": "Lecturer",
+    "dep": "SWE",
+    "emp_id": "710003068",
+    "email": "raiyanjanik.swe@diu.edu.bd",
+    "phone": "01776314653",
+    "room": "907"
+  },
+  {
+    "initial": "MTM",
+    "name": "Munira Tabassum Mou",
+    "designation": "Lecturer",
+    "dep": "SWE",
+    "emp_id": "710003256",
+    "email": "munira.swe@diu.edu.bd",
+    "phone": "01319396567",
+    "room": "605"
+  },
+  {
+    "initial": "SCS",
+    "name": "Suprove Chandra Sarkar",
+    "designation": "Lecturer",
+    "dep": "SWE",
+    "emp_id": "710003346",
+    "email": "suprove.swe@diu.edu.bd",
+    "phone": "01521539046",
+    "room": "907"
+  },
+  {
+    "initial": "MMH",
+    "name": "Md Mozammelul Haque",
+    "designation": "Lecturer",
+    "dep": "SWE",
+    "emp_id": "710003382",
+    "email": "mozammelul.swe@diu.edu.bd",
+    "phone": "01794190171",
+    "room": "907"
+  },
+  {
+    "initial": "AHZ",
+    "name": "Abdul Hye Zebon",
+    "designation": "Lecturer",
+    "dep": "SWE",
+    "emp_id": "710003367",
+    "email": "zebon.swe@diu.edu.bd",
+    "phone": "01521438443",
+    "room": null
+  },
+  {
+    "initial": "AE",
+    "name": "Ashrafia Esha",
+    "designation": "Lecturer",
+    "dep": "SWE",
+    "emp_id": "710003437",
+    "email": "ashrafiaesha.swe@diu.edu.bd",
+    "phone": "01316711223",
+    "room": null
+  },
+  {
+    "initial": "MTE",
+    "name": "Masrufa Tasnim Esha",
+    "designation": "Lecturer",
+    "dep": "SWE",
+    "emp_id": "710003366",
+    "email": "tasnim.swe@diu.edu.bd",
+    "phone": "01553081243",
+    "room": null
+  },
+  {
+    "initial": "MR",
+    "name": "MD. MAZBAUR RASHID",
+    "designation": "Lecturer",
+    "dep": "SWE",
+    "emp_id": "710003362",
+    "email": "mazba.swe@diu.edu.bd",
+    "phone": "01796228391",
+    "room": null
+  },
+  {
+    "initial": "AG",
+    "name": "Akash Gosh",
+    "designation": "Lecturer",
+    "dep": "SWE",
+    "emp_id": "710003710",
+    "email": "akash.swe@diu.edu.bd",
+    "phone": "01761822321",
+    "room": null
+  },
+  {
+    "initial": "RT",
+    "name": "Rifa Tasfia",
+    "designation": "Lecturer",
+    "dep": "SWE",
+    "emp_id": "710003702",
+    "email": "rifa.swe@diu.edu.bd",
+    "phone": "01737869274",
+    "room": null
+  },
+  {
+    "initial": "MSS",
+    "name": "MS. SYEDA SUMAIA SULTANA",
+    "designation": "Lecturer",
+    "dep": "SWE",
+    "emp_id": "710003711",
+    "email": "sultana.swe@diu.edu.bd",
+    "phone": "01864646749",
+    "room": null
+  },
+  {
+    "initial": "PC",
+    "name": "MR. PARTHO CHANDA",
+    "designation": "Lecturer",
+    "dep": "SWE",
+    "emp_id": "710003720",
+    "email": "chanda.swe@diu.edu.bd",
+    "phone": "01556628930",
+    "room": null
+  },
+  {
+    "initial": "CP",
+    "name": "MR. BIBHAS ROY CHOWDHURY PIYAS",
+    "designation": "Lecturer",
+    "dep": "SWE",
+    "emp_id": "710003699",
+    "email": "piyas.swe@diu.edu.bd",
+    "phone": "01703428672",
+    "room": null
+  },
+  {
+    "initial": "JIC",
+    "name": "Jafrin Iqbal Chowdhury",
+    "designation": "Lecturer",
+    "dep": "SWE",
+    "emp_id": "710003713",
+    "email": "jafrin.swe@diu.edu.bd",
+    "phone": "01842208940",
+    "room": null
+  },
+  {
+    "initial": "MHN",
+    "name": "MR. MD MONIR HOSSAIN",
+    "designation": "Lecturer",
+    "dep": "SWE",
+    "emp_id": "710003705",
+    "email": "monirhossain.swe@diu.edu.bd",
+    "phone": "01704909244",
+    "room": null
+  },
+  {
+    "initial": "FRR",
+    "name": "Fazla Rabby Raihan",
+    "designation": "Lecturer",
+    "dep": "SWE",
+    "emp_id": "710003707",
+    "email": "fraihan.swe@diu.edu.bd",
+    "phone": "01956249285",
+    "room": null
+  },
+  {
+    "initial": "MBH",
+    "name": "Maliha Bushra Hoque",
+    "designation": "Lecturer",
+    "dep": "SWE",
+    "emp_id": "710003714",
+    "email": "maliha.swe@diu.edu.bd",
+    "phone": "01797088600",
+    "room": null
+  },
+  {
+    "initial": "MMSI",
+    "name": "MS. SHAHRIN ISLAM",
+    "designation": "Lecturer",
+    "dep": "SWE",
+    "emp_id": "710003712",
+    "email": "shahrinislam.swe@diu.edu.bd",
+    "phone": "01779448961",
+    "room": null
+  },
+  {
+    "initial": "FJT",
+    "name": "MS. FATAMA JANNAT TISHA",
+    "designation": "Lecturer",
+    "dep": "SWE",
+    "emp_id": "710003718",
+    "email": "tisha.swe@diu.edu.bd",
+    "phone": "01881638899",
+    "room": null
+  },
+  {
+    "initial": "AR",
+    "name": "Md. Ashikur Rahman",
+    "designation": "Lecturer",
+    "dep": "SWE",
+    "emp_id": "710003706",
+    "email": "ashikur.swe@diu.edu.bd",
+    "phone": "01617277969",
+    "room": null
+  },
+  {
+    "initial": "HKN",
+    "name": "Humayun Kabir Nayem",
+    "designation": "Lecturer",
+    "dep": "SWE",
+    "emp_id": "710003719",
+    "email": "nayem.swe@diu.edu.bd",
+    "phone": "01737329184",
+    "room": null
+  },
+  {
+    "initial": "SI",
+    "name": "K. M. Shahriar Islam",
+    "designation": "Lecturer",
+    "dep": "SWE",
+    "emp_id": "710003697",
+    "email": "shahriar.swe@diu.edu.bd",
+    "phone": "01723021777",
+    "room": null
+  },
+  {
+    "initial": "MRN",
+    "name": "Mahbubur Rahman",
+    "designation": "Lecturer",
+    "dep": "SWE",
+    "emp_id": "710003912",
+    "email": "mahbubur.swe@diu.edu.bd",
+    "phone": "01797368331",
+    "room": null
+  },
+  {
+    "initial": "SHN",
+    "name": "Shazzad Hossain",
+    "designation": "Lecturer",
+    "dep": "SWE",
+    "emp_id": "710003964",
+    "email": "shazzad.swe.0199.c@diu.edu.bd",
+    "phone": "01521558897",
+    "room": null
+  },
+  {
+    "initial": "MJM",
+    "name": "Md Jaodun Muntasir",
+    "designation": "Lecturer",
+    "dep": "SWE",
+    "emp_id": "710003916",
+    "email": "jaodun.swe@diu.edu.bd",
+    "phone": "01873372428",
+    "room": null
+  },
+  {
+    "initial": "IAT",
+    "name": "Izaz Ahmmed Tuhin",
+    "designation": "Lecturer",
+    "dep": "SWE",
+    "emp_id": "710003934",
+    "email": "izaz.swe@diu.edu.bd",
+    "phone": "01918267179",
+    "room": null
+  },
+  {
+    "initial": "KM",
+    "name": "Khalid Masum",
+    "designation": "Lecturer",
+    "dep": "SWE",
+    "emp_id": "710003937",
+    "email": "khalid.swe@diu.edu.bd",
+    "phone": "01533519531",
+    "room": null
+  },
+  {
+    "initial": "SSI",
+    "name": "Syed Shams Islam",
+    "designation": "Lecturer",
+    "dep": "SWE",
+    "emp_id": "710003911",
+    "email": "shams.swe@diu.edu.bd",
+    "phone": "01704427800",
+    "room": null
+  },
+  {
+    "initial": "JJS",
+    "name": "Jul Jalal Al-Mamur Sayor",
+    "designation": "Lecturer",
+    "dep": "SWE",
+    "emp_id": "710003910",
+    "email": "mamur.swe@diu.edu.bd",
+    "phone": "01787054914",
+    "room": null
+  },
+  {
+    "initial": "QFF",
+    "name": "Quazi Fariha Fairooz",
+    "designation": "Lecturer",
+    "dep": "SWE",
+    "emp_id": "710003947",
+    "email": "fariha.swe@diu.edu.bd",
+    "phone": "01534816747",
+    "room": null
+  },
+  {
+    "initial": "AMR",
+    "name": "Ahnaf Mubashshir Mobin",
+    "designation": "Lecturer",
+    "dep": "SWE",
+    "emp_id": "710003946",
+    "email": "ahnaf.swe.0200.c@diu.edu.bd",
+    "phone": "01612563383",
+    "room": null
+  },
+  {
+    "initial": "AF",
+    "name": "Arif Faisal",
+    "designation": "Lecturer",
+    "dep": "SWE",
+    "emp_id": "710003915",
+    "email": "arif.swe@diu.edu.bd",
+    "phone": "01723465155",
+    "room": null
+  },
+  {
+    "initial": "RHH",
+    "name": "Rashidul Hasan Hridoy",
+    "designation": "Lecturer",
+    "dep": "SWE",
+    "emp_id": "710003913",
+    "email": "hasan.swe@diu.edu.bd",
+    "phone": "01714969317",
+    "room": null
+  },
+  {
+    "initial": "FA",
+    "name": "Faruk Ahmed",
+    "designation": "Lecturer",
+    "dep": "SWE",
+    "emp_id": "710003917",
+    "email": "faruk.swe@diu.edu.bd",
+    "phone": "01611193974",
+    "room": null
+  },
+  {
+    "initial": "MMN",
+    "name": "Mohseu Minhaj Niloy",
+    "designation": "Lecturer",
+    "dep": "SWE",
+    "emp_id": "710003963",
+    "email": "mohseu.swe@diu.edu.bd",
+    "phone": "01760479092",
+    "room": null
+  },
+  {
+    "initial": "NJN",
+    "name": "Nusrat Jahan",
+    "designation": "Lecturer",
+    "dep": "SWE",
+    "emp_id": "710003973",
+    "email": "nusrattazin.swe@diu.edu.bd",
+    "phone": "01779749972",
+    "room": null
+  },
+  {
+    "initial": "TBH",
+    "name": "Tahmid Bin Haque",
+    "designation": "Lecturer",
+    "dep": "SWE",
+    "emp_id": "710004032",
+    "email": "tahmidbinamit@gmail.com",
+    "phone": "01521754083",
+    "room": null
+  },
+  {
+    "initial": "ZH",
+    "name": "Zarif Hoque",
+    "designation": "Lecturer",
+    "dep": "SWE",
+    "emp_id": "710004039",
+    "email": "zarif.swe@diu.edu.bd",
+    "phone": "01317080908",
+    "room": null
+  },
+  {
+    "initial": "SSS",
+    "name": "Syed Samin Sadaf",
+    "designation": "Lecturer",
+    "dep": "SWE",
+    "emp_id": "710004037",
+    "email": "saminsadaf7@gmail.com",
+    "phone": "01302869890",
+    "room": null
+  },
+  {
+    "initial": "RUA",
+    "name": "Rahat Uddin Azad",
+    "designation": "Lecturer",
+    "dep": "SWE",
+    "emp_id": "710004041",
+    "email": "rahatuddin786@gmail.com",
+    "phone": "01878517664",
+    "room": null
+  },
+  {
+    "initial": "HT",
+    "name": "Himika Tasnim",
+    "designation": "Lecturer",
+    "dep": "SWE",
+    "emp_id": "710004033",
+    "email": "himikatasnim2002@gmail.com",
+    "phone": "01993808525",
+    "room": null
+  },
+  {
+    "initial": "RA",
+    "name": "Md. Rashedul Alam",
+    "designation": "Lecturer",
+    "dep": "SWE",
+    "emp_id": "710004040",
+    "email": "rashedulalam711@gmail.com",
+    "phone": "01771087871",
+    "room": null
+  },
+  {
+    "initial": "SSR",
+    "name": "S. M. SAIDUR RAHMAN",
+    "designation": "Lecturer",
+    "dep": "SWE",
+    "emp_id": "710004031",
+    "email": "sm.saidur.rahman25@gmail.com",
+    "phone": "01324194133",
+    "room": null
+  },
+  {
+    "initial": "SSA",
+    "name": "Sadia Sultana",
+    "designation": "Lecturer",
+    "dep": "SWE",
+    "emp_id": "710004036",
+    "email": "sadiasultana.swe@diu.edu.bd",
+    "phone": "01797579591",
+    "room": null
+  },
+  {
+    "initial": "SIM",
+    "name": "Samiul Islam Mugdha",
+    "designation": "Lecturer",
+    "dep": "SWE",
+    "emp_id": "710004048",
+    "email": "samiul.swe0225.c@diu.edu.bd",
+    "phone": "01962353752",
+    "room": null
+  },
+  {
+    "initial": "MI",
+    "name": "Mirajul Islam",
+    "designation": "Lecturer",
+    "dep": "SWE",
+    "emp_id": "723500223",
+    "email": "mirajul.swe0223.c@diu.edu.bd",
+    "phone": "01768531490",
+    "room": null
+  },
+  {
+    "initial": "RH",
+    "name": "Rony Hoissain",
+    "designation": "Lecturer",
+    "dep": "SWE",
+    "emp_id": "723500224",
+    "email": "rony.swe0224.c@diu.edu.bd",
+    "phone": "01968744591",
+    "room": null
+  },
+  {
+    "initial": "JC",
+    "name": "Joya Chakraborty",
+    "designation": "Lecturer",
+    "dep": "SWE",
+    "emp_id": "721000183",
+    "email": "joya.eng0183.c@diu.edu.bd",
+    "phone": "01700968224",
+    "room": null
+  },
+  {
+    "initial": "ZT",
+    "name": "Zarin Tusnim",
+    "designation": "Lecturer",
+    "dep": "SWE",
+    "emp_id": "721500551",
+    "email": "zarin.cse0551.c@diu.edu.bd",
+    "phone": "01613094472",
+    "room": null
+  },
+  {
+    "initial": "HSA",
+    "name": "Hafsa Sultana",
+    "designation": "Lecturer",
+    "dep": "SWE",
+    "emp_id": "721500565",
+    "email": "hafsa.cse0565.c@diu.edu.bd",
+    "phone": "01742649596",
+    "room": null
+  },
+  {
+    "initial": "ST",
+    "name": "Sheikh Tonmoy",
+    "designation": "Lecturer",
+    "dep": "SWE",
+    "emp_id": "721500463",
+    "email": "tonmoy.swe0463.c@diu.edu.bd",
+    "phone": "01989388418",
+    "room": null
+  },
+  {
+    "initial": "MNA",
+    "name": "Muskan Ahmed",
+    "designation": "Lecturer",
+    "dep": "SWE",
+    "emp_id": "723500202",
+    "email": "muskan.swe.0202.c@diu.edu.bd",
+    "phone": "01626817647",
+    "room": null
+  },
+  {
+    "initial": "HBM",
+    "name": "Humira Bentay Mahmud",
+    "designation": "Lecturer",
+    "dep": "SWE",
+    "emp_id": "723500209",
+    "email": "humira.swe0209.c@diu.edu.bd",
+    "phone": "01521719473",
+    "room": null
+  },
+  {
+    "initial": "TM",
+    "name": "Tahmina Meem",
+    "designation": "Lecturer",
+    "dep": "SWE",
+    "emp_id": "723500177",
+    "email": "meem.swe0177.c@diu.edu.bd",
+    "phone": "01858014587",
+    "room": null
+  },
+  {
+    "initial": "SD",
+    "name": "Sayone Dey",
+    "designation": "Lecturer",
+    "dep": "SWE",
+    "emp_id": null,
+    "email": "sayoneedtroyee@gmail.com",
+    "phone": "01771138861",
+    "room": null
+  },
+  {
+    "initial": "TT",
+    "name": "Tahsin Tasnim",
+    "designation": "Lecturer",
+    "dep": "SWE",
+    "emp_id": null,
+    "email": "tahsintasnim01@gmail.com",
+    "phone": "01779696468",
+    "room": null
+  },
+  {
+    "initial": "MAB",
+    "name": "Maria Afrin Bindu",
+    "designation": "Lecturer",
+    "dep": "SWE",
+    "emp_id": "723500219",
+    "email": "maria.swe0219.c@diu.edu.bd",
+    "phone": "01617374700",
+    "room": null
+  },
+  {
+    "initial": "NML",
+    "name": "Nasim Mahmud Likhon",
+    "designation": "Lecturer",
+    "dep": "SWE",
+    "emp_id": "723500170",
+    "email": "nasimmahmud819@gmail.com",
+    "phone": "01755132180",
+    "room": null
+  },
+  {
+    "initial": "FTJ",
+    "name": "Fatema Tuz Johora",
+    "designation": "Lecturer",
+    "dep": "SWE",
+    "emp_id": null,
+    "email": "meem8494@gmail.com",
+    "phone": "01764277119",
+    "room": null
+  },
+  {
+    "initial": "DDK",
+    "name": "Dipta Dipayan Kar",
+    "designation": "Lecturer",
+    "dep": "SWE",
+    "emp_id": "723500203",
+    "email": "dipta.swe.0203.c@diu.edu.bd",
+    "phone": "01741117857",
+    "room": null
+  },
+  {
+    "initial": "ASM",
+    "name": "Ayesha Siddika Moon",
+    "designation": "Lecturer",
+    "dep": "SWE",
+    "emp_id": "721500603",
+    "email": "ayesha.cse0603.c@diu.edu.bd",
+    "phone": "01798458271",
+    "room": null
+  },
+  {
+    "initial": "SMM",
+    "name": "SADIKATUL MAWA MOMO",
+    "designation": "Lecturer",
+    "dep": "SWE",
+    "emp_id": null,
+    "email": "mawamomo0@gmail.com",
+    "phone": "01952088152",
+    "room": null
+  },
+  {
+    "initial": "MSP",
+    "name": "Md. Shahriar Parvez",
+    "designation": "Lecturer",
+    "dep": "SWE",
+    "emp_id": "723500141",
+    "email": "parvez.swe0141.c@diu.edu.bd",
+    "phone": "01944829693",
+    "room": null
+  },
+  {
+    "initial": "SAM",
+    "name": "Md. Sakib Ali Mazumder",
+    "designation": "Lecturer",
+    "dep": "SWE",
+    "emp_id": "723500165",
+    "email": "sakib.swe0165.c@diu.edu.bd",
+    "phone": "01623072047",
+    "room": null
+  },
+  {
+    "initial": "SAS",
+    "name": "Sampa Saha",
+    "designation": "Lecturer",
+    "dep": "SWE",
+    "emp_id": "721100153",
+    "email": "sampa.ba@diu.edu.bd",
+    "phone": "01627553431",
+    "room": null
+  },
+  {
+    "initial": "MSH",
+    "name": "Md Shahadat Hossain",
+    "designation": "Lecturer",
+    "dep": "SWE",
+    "emp_id": "723500228",
+    "email": "shahdat.se@gmail.com",
+    "phone": "01777481417",
+    "room": null
+  },
+  {
+    "initial": "TRK",
+    "name": "Tanjeer Rahee Khan",
+    "designation": "Lecturer",
+    "dep": "SWE",
+    "emp_id": "723500214",
+    "email": "rahee.trk@gmail.com",
+    "phone": "01870828258",
+    "room": null
+  },
+  {
+    "initial": "JR",
+    "name": "Jeba Raisa",
+    "designation": "Lecturer",
+    "dep": "SWE",
+    "emp_id": "723500227",
+    "email": "maksurathussain@gmail.com",
+    "phone": "01954816959",
+    "room": null
+  },
+  {
+    "initial": "MSI",
+    "name": "Dr Md Shafikul Islam",
+    "designation": null,
+    "dep": "SWE",
+    "emp_id": null,
+    "email": "shafik.cse@gmail.com",
+    "phone": "01987300260",
+    "room": null
+  },
+  {
+    "initial": "MHB",
+    "name": "MD Mahmudul Hasan Biplob",
+    "designation": null,
+    "dep": "SWE",
+    "emp_id": null,
+    "email": "mhbiplob57@gmail.com",
+    "phone": "01784264684",
+    "room": null
+  },
+  {
+    "initial": "AHB",
+    "name": "Abid Hossain Biswas",
+    "designation": null,
+    "dep": "SWE",
+    "emp_id": null,
+    "email": "abid.hossainsadat@gmail.com",
+    "phone": "01760028266",
+    "room": null
+  },
+  {
+    "initial": "RAR",
+    "name": "Riya Akter",
+    "designation": null,
+    "dep": "SWE",
+    "emp_id": null,
+    "email": "akteriya15@gmail.com",
+    "phone": "01993746501",
+    "room": null
+  },
+  {
+    "initial": "MSR",
+    "name": "Md. Shahinur Rahman",
+    "designation": null,
+    "dep": "SWE",
+    "emp_id": "723500233",
+    "email": "msrahk@gmail.com",
+    "phone": "01976550550",
+    "room": null
+  },
+  {
+    "initial": "MAR",
+    "name": "Mahzabin Alamgir",
+    "designation": null,
+    "dep": "SWE",
+    "emp_id": "723500229",
+    "email": "mahzabin5054@gmail.com",
+    "phone": "01777798154",
+    "room": null
+  },
+  {
+    "initial": "AHN",
+    "name": "Arafat Hosain Neloy",
+    "designation": null,
+    "dep": "SWE",
+    "emp_id": null,
+    "email": "arafat390ahn@gmail.com",
+    "phone": "01772020634",
+    "room": null
+  },
+  {
+    "initial": "HMI",
+    "name": "Himi",
+    "designation": null,
+    "dep": "SWE",
+    "emp_id": null,
+    "email": "farzana.bba0242.c@diu.edu.bd",
+    "phone": "1843000028",
+    "room": null
+  },
+  {
+    "initial": "MSIM",
+    "name": "Md saeedul Islam",
+    "designation": null,
+    "dep": "SWE",
+    "emp_id": null,
+    "email": "Syeedul.577@gmail.com",
+    "phone": "01776963182",
+    "room": null
+  }
+]

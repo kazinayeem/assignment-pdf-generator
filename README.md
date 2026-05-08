@@ -54,7 +54,44 @@ npm install
 # or
 yarn install
 
+# Copy environment variables
+cp .env.local.example .env.local
+
+# Add your Firebase credentials to .env.local
 
 npm run dev
 
 ```
+
+## 🔐 Firebase Authentication & Admin Panel
+
+### New Features
+
+- ✅ Google OAuth 2.0 with DIU email validation (@diu.edu.bd)
+- ✅ Role-based access control (Super Admin, Student)
+- ✅ Complete admin dashboard (teachers, courses, students management)
+- ✅ Student dashboard with department selection & teacher search
+- ✅ Firestore database with security rules
+- ✅ Firebase seeding script for batch data import
+- ✅ Protected routes and loading states
+
+### Quick Setup
+
+1. **Set up Firebase**: See [FIREBASE_SETUP.md](./FIREBASE_SETUP.md) for detailed instructions
+2. **Configure environment**: Copy `.env.local.example` to `.env.local` and add Firebase credentials
+3. **Deploy security rules**: `firebase deploy --only firestore:rules`
+4. **Seed database** (optional): `npm run seed`
+5. **Run app**: `npm run dev`
+
+### User Roles
+
+- **Student**: Can select department, search teachers, and generate PDFs
+- **Super Admin**: Can manage teachers, courses, and students
+
+### Quick Links
+
+- 📖 [Full Firebase Setup Guide](./FIREBASE_SETUP.md)
+- 🔑 `.env.local.example` — Template for environment variables
+- 📁 `lib/firestore-service.ts` — All database operations
+- 🛡️ `firestore.rules` — Security rules (deploy with Firebase CLI)
+- 🌱 `scripts/seed-firebase.ts` — Data import script

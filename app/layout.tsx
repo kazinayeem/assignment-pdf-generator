@@ -2,6 +2,9 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import Footer from "@/components/footer";
+import { AuthInitializer } from "@/components/auth-initializer";
+import { Toaster } from "react-hot-toast";
+import { Analytics } from "@vercel/analytics/next";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -15,48 +18,47 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   title: {
-    default: "Daffodil International University Student Portal",
-    template: "%s | DIU Student Portal",
+    default: "CoverGen | DIU Student Portal by Bornosoft",
+    template: "%s | CoverGen",
   },
   description:
-    "Unofficial DIU toolkit for assignment and lab report covers — by Mohammad Ali Nayeem",
+    "The ultimate student toolkit for Daffodil International University. Generate professional assignment and lab report covers automatically. Developed by Bornosoft.",
   keywords: [
     "Daffodil International University",
     "DIU",
-    "DIU assignment cover",
-    "DIU lab report",
-    "DIU PDF generator",
+    "DIU Student Portal",
+    "Bornosoft",
+    "CoverGen",
+    "DIU Assignment Cover",
+    "DIU Lab Report",
+    "DIU PDF Generator",
     "SWE",
+    "CSE",
     "Software Engineering",
     "Mohammad Ali Nayeem",
+    "bornosoftnr.com",
   ],
   authors: [{ name: "Mohammad Ali Nayeem" }],
   creator: "Mohammad Ali Nayeem",
-  publisher: "Mohammad Ali Nayeem",
+  publisher: "Bornosoft",
   openGraph: {
-    title: "Daffodil International University Student Portal",
+    title: "CoverGen | DIU Student Portal by Bornosoft",
     description:
-      "Unofficial DIU toolkit for assignment and lab report covers — by Mohammad Ali Nayeem",
+      "Automate your academic covers with precision. The ultimate toolkit for DIU students.",
     type: "website",
     locale: "en_US",
-    siteName: "DIU Student Portal",
+    siteName: "CoverGen",
+    url: "https://bornosoftnr.com",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Daffodil International University Student Portal",
+    title: "CoverGen | DIU Student Portal",
     description:
-      "Unofficial DIU toolkit for assignment and lab report covers — by Mohammad Ali Nayeem",
+      "Generate DIU assignment and lab report covers in seconds. Built by Bornosoft.",
   },
   robots: {
     index: true,
     follow: true,
-    googleBot: {
-      index: true,
-      follow: true,
-      "max-snippet": -1,
-      "max-image-preview": "large",
-      "max-video-preview": -1,
-    },
   },
   alternates: {
     canonical: "/",
@@ -73,8 +75,11 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
+        <AuthInitializer />
+        <Toaster position="top-right" />
         {children}
         <Footer/>
+        <Analytics />
       </body>
     </html>
   );

@@ -1,0 +1,1426 @@
+[
+  {
+    "name": "Chinmoy Kumar Sarker",
+    "batch": 38,
+    "section": "A",
+    "student_id": "222-35-1175",
+    "email": "sarker35-1175@s.diu.edu.bd",
+    "phone": "01643844549"
+  },
+  {
+    "name": "Jakaria Kollol",
+    "batch": 38,
+    "section": "B",
+    "student_id": "222-35-1184",
+    "email": "kollol35-1184@s.diu.edu.bd",
+    "phone": "01613201738"
+  },
+  {
+    "name": "Md. Rasel Hossain",
+    "batch": 39,
+    "section": "A",
+    "student_id": "0242220005341013",
+    "email": "hossain22205341013@diu.edu.bd",
+    "phone": "01834710071"
+  },
+  {
+    "name": "Fahim Sahriar",
+    "batch": 39,
+    "section": "B",
+    "student_id": "0242220005341019",
+    "email": "sahriar22205341019@diu.edu.bd",
+    "phone": "01408954840"
+  },
+  {
+    "name": "Md. Nur Abdullah",
+    "batch": 39,
+    "section": "B",
+    "student_id": "0242220005341160",
+    "email": "abdullah22205341160@diu.edu.bd",
+    "phone": "01934956228"
+  },
+  {
+    "name": "Md. Akib Riad",
+    "batch": 39,
+    "section": "C",
+    "student_id": "0242220005341123",
+    "email": "riad22205341123@diu.edu.bd",
+    "phone": "01708105492"
+  },
+  {
+    "name": "Tansen Mahmud Ealham",
+    "batch": 39,
+    "section": "D",
+    "student_id": "0242220005341065",
+    "email": "ealham22205341065@diu.edu.bd",
+    "phone": "01750094846"
+  },
+  {
+    "name": "Fariha Bintay Mujahid Noma",
+    "batch": 39,
+    "section": "Former CS Major - A",
+    "student_id": "0242220005341032",
+    "email": "noma22205341032@diu.edu.bd",
+    "phone": "01980234553"
+  },
+  {
+    "name": "Md. Rasel Hossain",
+    "batch": 39,
+    "section": "Former DS Major - A",
+    "student_id": "0242220005341013",
+    "email": "hossain22205341013@diu.edu.bd",
+    "phone": "01834710071"
+  },
+  {
+    "name": "Fahim Sahriar",
+    "batch": 39,
+    "section": "Former DS Major - A",
+    "student_id": "0242220005341019",
+    "email": "sahriar22205341019@diu.edu.bd",
+    "phone": "01408954840"
+  },
+  {
+    "name": "Md. Shakib Hossen",
+    "batch": 39,
+    "section": "Former DS Major - B",
+    "student_id": "0242220005341174",
+    "email": "hossen22205341174@diu.edu.bd",
+    "phone": "01630328132"
+  },
+  {
+    "name": "Tanvir Ahmed",
+    "batch": 40,
+    "section": "Non Major - A",
+    "student_id": "0242310005341015",
+    "email": "ahmed23105341015@diu.edu.bd",
+    "phone": "01790723275"
+  },
+  {
+    "name": "Chowdhury Nabil Ahmed",
+    "batch": 40,
+    "section": "Non Major - B",
+    "student_id": "0242310005341011",
+    "email": "ahmed23105341011@diu.edu.bd",
+    "phone": "01709548627"
+  },
+  {
+    "name": "Nohzat Tabassum",
+    "batch": 40,
+    "section": "Non Major - B",
+    "student_id": "0242310005341109",
+    "email": "tabassum23105341109@diu.edu.bd",
+    "phone": "01820547102"
+  },
+  {
+    "name": "Simanta Kumer Pundori",
+    "batch": 40,
+    "section": "Non Major - C",
+    "student_id": "0242310005341335",
+    "email": "pundori2305341335@diu.edu.bd",
+    "phone": "01917441287"
+  },
+  {
+    "name": "Shrabony Sarker",
+    "batch": 40,
+    "section": "Non Major - C",
+    "student_id": "0242310005341457",
+    "email": "shrabony2305341457@diu.edu.bd",
+    "phone": "01327231864"
+  },
+  {
+    "name": "Md. Fardin Hasan",
+    "batch": 40,
+    "section": "Non Major - D",
+    "student_id": "0242310005341393",
+    "email": "hasan2305341393@diu.edu.bd",
+    "phone": "01872078807"
+  },
+  {
+    "name": "Amit Paul",
+    "batch": 40,
+    "section": "Non Major - E",
+    "student_id": "0242310005341442",
+    "email": "paul2305341442@diu.edu.bd",
+    "phone": "01838930640"
+  },
+  {
+    "name": "Masuma Akter Akhi",
+    "batch": 40,
+    "section": "DS Major - A",
+    "student_id": "0242310005341250",
+    "email": "akhi2305341250@diu.edu.bd",
+    "phone": "01571300265"
+  },
+  {
+    "name": "Afrin Jeba",
+    "batch": 40,
+    "section": "DS Major - B",
+    "student_id": "0242310005341155",
+    "email": "jeba23105341155@diu.edu.bd",
+    "phone": "01836019136"
+  },
+  {
+    "name": "S.M. Rakib",
+    "batch": 40,
+    "section": "DS Major - C",
+    "student_id": "0242310005341181",
+    "email": "rakib2305341181@diu.edu.bd",
+    "phone": "01618075847"
+  },
+  {
+    "name": "Junayet Mithu",
+    "batch": 40,
+    "section": "CS Major - A",
+    "student_id": "0242310005341400",
+    "email": "mithu2305341400@diu.edu.bd",
+    "phone": "01827340454"
+  },
+  {
+    "name": "Mohammad Sayem Uddin",
+    "batch": 40,
+    "section": "Robotics Major - A",
+    "student_id": "0242310005341008",
+    "email": "uddin23105341008@diu.edu.bd",
+    "phone": "01626562935"
+  },
+  {
+    "name": "Md. Tasve Al Samir",
+    "batch": 41,
+    "section": "A",
+    "student_id": "232-35-315",
+    "email": "samir3205341315@diu.edu.bd",
+    "phone": "01839929921"
+  },
+  {
+    "name": "Reduan Ahmad",
+    "batch": 41,
+    "section": "A",
+    "student_id": "232-35-016",
+    "email": "ahmad2305341016@diu.edu.bd",
+    "phone": "1538363737"
+  },
+  {
+    "name": "Nazmus Sakib",
+    "batch": 41,
+    "section": "B",
+    "student_id": "232-35-116",
+    "email": "sakib2305341116@diu.edu.bd",
+    "phone": "1303735397"
+  },
+  {
+    "name": "Hasiful Alam Leion",
+    "batch": 41,
+    "section": "C",
+    "student_id": "232-35-059",
+    "email": "leion2305341059@diu.edu.bd",
+    "phone": "1945766695"
+  },
+  {
+    "name": "Nadia Sultana Bushra",
+    "batch": 41,
+    "section": "C",
+    "student_id": "232-35-010",
+    "email": "bushra2305341010@diu.edu.bd",
+    "phone": "1903181039"
+  },
+  {
+    "name": "Tanima Akter Tonni",
+    "batch": 41,
+    "section": "D",
+    "student_id": "232-35-350",
+    "email": "tonni2305341350@diu.edu.bd",
+    "phone": "1305434696"
+  },
+  {
+    "name": "Pabitro Chandra Shil",
+    "batch": 41,
+    "section": "D",
+    "student_id": "232-35-467",
+    "email": "pabitro2305341467@diu.edu.bd",
+    "phone": "1533805226"
+  },
+  {
+    "name": "Md Jubaidul Islam Rimon",
+    "batch": 41,
+    "section": "E",
+    "student_id": "232-35-154",
+    "email": "rimon2305341154@diu.edu.bd",
+    "phone": "1962838662"
+  },
+  {
+    "name": "Md Yeamin Mondol",
+    "batch": 41,
+    "section": "F",
+    "student_id": "232-35-265",
+    "email": "mondol2305341265@diu.edu.bd",
+    "phone": "1723342435"
+  },
+  {
+    "name": "Md Arifur Rahman Rahad",
+    "batch": 41,
+    "section": "G",
+    "student_id": "232-35-293",
+    "email": "rahad2305341293@diu.edu.bd",
+    "phone": "1617736493"
+  },
+  {
+    "name": "Yea Hasib Piyas",
+    "batch": 41,
+    "section": "G",
+    "student_id": "232-35-728",
+    "email": "piyas2305341728@diu.edu.bd",
+    "phone": "1816496233"
+  },
+  {
+    "name": "MD. Abu Nayem",
+    "batch": 41,
+    "section": "H",
+    "student_id": "232-35-332",
+    "email": "nayem2305341332@diu.edu.bd",
+    "phone": "1830226050"
+  },
+  {
+    "name": "Ummay Arifun Nahar Jani",
+    "batch": 41,
+    "section": "H",
+    "student_id": "232-35-528",
+    "email": "nahar2305341528@diu.edu.bd",
+    "phone": "1997508847"
+  },
+  {
+    "name": "Neuton Sikder",
+    "batch": 41,
+    "section": "I",
+    "student_id": "232-35-161",
+    "email": "sikder2305341161@diu.edu.bd",
+    "phone": "1935469773"
+  },
+  {
+    "name": "Omeo Rahman Munna",
+    "batch": 41,
+    "section": "I",
+    "student_id": "232-35-533",
+    "email": "munna2305341533@diu.edu.bd",
+    "phone": "1890436772"
+  },
+  {
+    "name": "Masrafi Rahman Efti",
+    "batch": 41,
+    "section": "J",
+    "student_id": "232-35-575",
+    "email": "efti2305341575@diu.edu.bd",
+    "phone": "01805997514"
+  },
+  {
+    "name": "Md Sameul Hasan",
+    "batch": 41,
+    "section": "J",
+    "student_id": "232-35-334",
+    "email": "hasan2305341334@diu.edu.bd",
+    "phone": "1707654740"
+  },
+  {
+    "name": "Niloy Roy",
+    "batch": 41,
+    "section": "K",
+    "student_id": "232-35-458",
+    "email": "niloy2305341458@diu.edu.bd",
+    "phone": "01748620359"
+  },
+  {
+    "name": "Sabreena Jahan Heema",
+    "batch": 41,
+    "section": "L",
+    "student_id": "232-35-385",
+    "email": "heema2305341385@diu.edu.bd",
+    "phone": "1960916071"
+  },
+  {
+    "name": "Md. Muntasir Hossain",
+    "batch": 41,
+    "section": "M",
+    "student_id": "232-35-689",
+    "email": "muntasir2305341689@diu.edu.bd",
+    "phone": "1994587266"
+  },
+  {
+    "name": "Arshed Tahmid",
+    "batch": 41,
+    "section": "M",
+    "student_id": "232-35-751",
+    "email": "tahmid2305341751@diu.edu.bd",
+    "phone": "1887355964"
+  },
+  {
+    "name": "Adiba Sultana Setu",
+    "batch": 41,
+    "section": "N",
+    "student_id": "232-35-656",
+    "email": "setu2305341656@diu.edu.bd",
+    "phone": "1787708802"
+  },
+  {
+    "name": "SUJON AHMED",
+    "batch": 42,
+    "section": "A",
+    "student_id": "0242410005341320",
+    "email": "sujon241-35-320@diu.edu.bd",
+    "phone": "01845300477"
+  },
+  {
+    "name": "Meherun Necha Borsha",
+    "batch": 42,
+    "section": "A",
+    "student_id": "0242410005341009",
+    "email": "necha241-35-009@diu.edu.bd",
+    "phone": "01736720027"
+  },
+  {
+    "name": "Muhammad Khaled Saifullah",
+    "batch": 42,
+    "section": "B",
+    "student_id": "0242410005341212",
+    "email": "khaled241-35-212@diu.edu.bd",
+    "phone": "01707831835"
+  },
+  {
+    "name": "Sabiha Hossain Farin",
+    "batch": 42,
+    "section": "B",
+    "student_id": "0242410005341133",
+    "email": "hossain241-35-133@diu.edu.bd",
+    "phone": "01983515376"
+  },
+  {
+    "name": "Md. Minhaz Chowdhury",
+    "batch": 42,
+    "section": "C",
+    "student_id": "0242410005341166",
+    "email": "minhaz241-35-166@diu.edu.bd",
+    "phone": "01585841380"
+  },
+  {
+    "name": "JOUSITA JAHAN SETU",
+    "batch": 42,
+    "section": "C",
+    "student_id": "0242410005341159",
+    "email": "jahan241-35-159@diu.edu.bd",
+    "phone": "01759406995"
+  },
+  {
+    "name": "Anika Bushra Imam Bela",
+    "batch": 42,
+    "section": "D",
+    "student_id": "0242410005341298",
+    "email": "imam241-35-298@diu.edu.bd",
+    "phone": "01403188294"
+  },
+  {
+    "name": "Md. Nahidul Islam",
+    "batch": 42,
+    "section": "D",
+    "student_id": "0242410005341423",
+    "email": "islam241-35-423@diu.edu.bd",
+    "phone": "01985911292"
+  },
+  {
+    "name": "SM Ashraful Hoque",
+    "batch": 42,
+    "section": "E",
+    "student_id": "0242410005341378",
+    "email": "hoque241-35-378@diu.edu.bd",
+    "phone": "01828035599"
+  },
+  {
+    "name": "Mohammad Walid Rahman",
+    "batch": 42,
+    "section": "E",
+    "student_id": "0242410005341435",
+    "email": "rahman241-35-435@diu.edu.bd",
+    "phone": "01648177033"
+  },
+  {
+    "name": "Shahariar Sadik",
+    "batch": 42,
+    "section": "F",
+    "student_id": "0242410005341233",
+    "email": "shahariar241-35-233@diu.edu.bd",
+    "phone": "01521778870"
+  },
+  {
+    "name": "Tanvir Hasan Sifat",
+    "batch": 42,
+    "section": "F",
+    "student_id": "0242410005341030",
+    "email": "hasan241-35-030@diu.edu.bd",
+    "phone": "01846003625"
+  },
+  {
+    "name": "Abu Jakaria Hasu",
+    "batch": 42,
+    "section": "G",
+    "student_id": "0242410005341096",
+    "email": "jakaria241-35-096@diu.edu.bd",
+    "phone": "01701901383"
+  },
+  {
+    "name": "Maksudul Islam",
+    "batch": 42,
+    "section": "H",
+    "student_id": "242410005341537",
+    "email": "maksudul241-35-537@diu.edu.bd",
+    "phone": "01400040219"
+  },
+  {
+    "name": "Rahat Sahriar Rafi",
+    "batch": 42,
+    "section": "H",
+    "student_id": "0242410005341517",
+    "email": "rafi241-35-517@diu.edu.bd",
+    "phone": "01737171098"
+  },
+  {
+    "name": "Fatin Noor Hoque",
+    "batch": 42,
+    "section": "I",
+    "student_id": "0242410005341288",
+    "email": "noor241-35-288@diu.edu.bd",
+    "phone": "01538150563"
+  },
+  {
+    "name": "MD. RATAN MIA",
+    "batch": 42,
+    "section": "J",
+    "student_id": "0242410005341440",
+    "email": "mia241-35-440@diu.edu.bd",
+    "phone": "01642592262"
+  },
+  {
+    "name": "Shaid Mia",
+    "batch": 42,
+    "section": "J",
+    "student_id": "242410005341260",
+    "email": "Shaid241-35-260@diu.edu.bd",
+    "phone": "01950886037"
+  },
+  {
+    "name": "Md Kaida Azam Bhuiyan Tanvir",
+    "batch": 43,
+    "section": "A",
+    "student_id": "242-35-212",
+    "email": "kaida242-35-212@diu.edu.bd",
+    "phone": "01828351221"
+  },
+  {
+    "name": "Sraya Gharami",
+    "batch": 43,
+    "section": "A",
+    "student_id": "242-35-850",
+    "email": "gharami242-35-850@diu.edu.bd",
+    "phone": "01713966806"
+  },
+  {
+    "name": "Mrittika Ahmed Nazah",
+    "batch": 43,
+    "section": "B",
+    "student_id": "242-35-173",
+    "email": "nazah242-35-173@diu.edu.bd",
+    "phone": "01781713353"
+  },
+  {
+    "name": "Nafis Sahriar Redwan",
+    "batch": 43,
+    "section": "B",
+    "student_id": "242-35-011",
+    "email": "redwan242-35-011@diu.edu.bd",
+    "phone": "01618965833"
+  },
+  {
+    "name": "Md. Abidur Rahman",
+    "batch": 43,
+    "section": "C",
+    "student_id": "242-35-359",
+    "email": "rahman242-35-359@diu.edu.bd",
+    "phone": "01967344149"
+  },
+  {
+    "name": "Gazi Tasnim Hasan",
+    "batch": 43,
+    "section": "C",
+    "student_id": "242-35-176",
+    "email": "hasan242-35-176@diu.edu.bd",
+    "phone": "01836026276"
+  },
+  {
+    "name": "Nurjahan Afrose",
+    "batch": 43,
+    "section": "D",
+    "student_id": "242-35-775",
+    "email": "afrose242-35-775@diu.edu.bd",
+    "phone": "01752728881"
+  },
+  {
+    "name": "Shafiur Rahman",
+    "batch": 43,
+    "section": "D",
+    "student_id": "242-35-792",
+    "email": "rahman242-35-792@diu.edu.bd",
+    "phone": "01944023602"
+  },
+  {
+    "name": "Md. Mohimenul Islam (Sadaf)",
+    "batch": 43,
+    "section": "E",
+    "student_id": "242-35-837",
+    "email": "mohimenul242-35-837@diu.edu.bd",
+    "phone": "01643781006"
+  },
+  {
+    "name": "Jannatun Ferdous Falguny (Jannati)",
+    "batch": 43,
+    "section": "E",
+    "student_id": "242-35-836",
+    "email": "falguny242-35-836@diu.edu.bd",
+    "phone": "01882596905"
+  },
+  {
+    "name": "Abdullah AL Mahmud Raihan",
+    "batch": 43,
+    "section": "F",
+    "student_id": "242-35-468",
+    "email": "raihan242-35-468@diu.edu.bd",
+    "phone": "01845409400"
+  },
+  {
+    "name": "Afrin Jahan Shorna",
+    "batch": 43,
+    "section": "F",
+    "student_id": "242-35-242",
+    "email": "shorna242-35-242@diu.edu.bd",
+    "phone": "01841489859"
+  },
+  {
+    "name": "Thamed Ahmed",
+    "batch": 43,
+    "section": "G",
+    "student_id": "242-35-348",
+    "email": "thamed242-35-348@diu.edu.bd",
+    "phone": "01315648924"
+  },
+  {
+    "name": "MD Jobayer Rahman (Shammo)",
+    "batch": 43,
+    "section": "H",
+    "student_id": "242-35-162",
+    "email": "jobayer242-35-162@diu.edu.bd",
+    "phone": "01719141966"
+  },
+  {
+    "name": "Shahnaj Aman Ritu",
+    "batch": 43,
+    "section": "H",
+    "student_id": "242-35-334",
+    "email": "ritu242-35-334@diu.edu.bd",
+    "phone": "01611617796"
+  },
+  {
+    "name": "MD Simum Arefin",
+    "batch": 43,
+    "section": "I",
+    "student_id": "242-35-771",
+    "email": "aredin242-35-771@diu.edu.bd",
+    "phone": "01816262036"
+  },
+  {
+    "name": "Alif Uddin Nobin",
+    "batch": 43,
+    "section": "I",
+    "student_id": "242-35-201",
+    "email": "nobin242-35-201@diu.edu.bd",
+    "phone": "01976601004"
+  },
+  {
+    "name": "Muhammad Zakaria",
+    "batch": 43,
+    "section": "J",
+    "student_id": "242-35-141",
+    "email": "zakaria242-35-141@diu.edu.bd",
+    "phone": "01929382225"
+  },
+  {
+    "name": "Puja Mandal",
+    "batch": 43,
+    "section": "J",
+    "student_id": "242-35-686",
+    "email": "puja242-35-686@diu.edu.bd",
+    "phone": "01540094028"
+  },
+  {
+    "name": "Md. Hridoy Hasan Apon",
+    "batch": 43,
+    "section": "K",
+    "student_id": "242-35-386",
+    "email": "apon242-35-386@diu.edu.bd",
+    "phone": "01771415621"
+  },
+  {
+    "name": "S.M. Riasijtur Rahman",
+    "batch": 43,
+    "section": "K",
+    "student_id": "242-35-803",
+    "email": "riasijtur242-35-803@diu.edu.bd",
+    "phone": "01945400755"
+  },
+  {
+    "name": "Dyuti Hikary Mrong",
+    "batch": 43,
+    "section": "L",
+    "student_id": "242-35-457",
+    "email": "mrong242-35-457@diu.edu.bd",
+    "phone": "01403378921"
+  },
+  {
+    "name": "Mahe Siddiquee",
+    "batch": 43,
+    "section": "L",
+    "student_id": "242-35-121",
+    "email": "mamun242-35-121@diu.edu.bd",
+    "phone": "01755064382"
+  },
+  {
+    "name": "Shadman Hussain Shahib",
+    "batch": 43,
+    "section": "M",
+    "student_id": "242-35-430",
+    "email": "shahib242-35-430@diu.edu.bd",
+    "phone": "01576954998"
+  },
+  {
+    "name": "Shafayet Ullah Khan",
+    "batch": 43,
+    "section": "M",
+    "student_id": "242-35-555",
+    "email": "ullah242-35-555@diu.edu.bd",
+    "phone": "01614161485"
+  },
+  {
+    "name": "Galiba Zannat Shuchi",
+    "batch": 43,
+    "section": "N",
+    "student_id": "242-35-852",
+    "email": "shuchi242-35-852@diu.edu.bd",
+    "phone": "01789946931"
+  },
+  {
+    "name": "Shabab Al Israq",
+    "batch": 43,
+    "section": "N",
+    "student_id": "242-35-655",
+    "email": "al242-35-655@diu.edu.bd",
+    "phone": "01609208698"
+  },
+  {
+    "name": "Shahriar Zadid Apurba",
+    "batch": 43,
+    "section": "O",
+    "student_id": "242-35-756",
+    "email": "apurba242-35-756@diu.edu.bd",
+    "phone": "01836000353"
+  },
+  {
+    "name": "Nahin Ahmed",
+    "batch": 43,
+    "section": "O",
+    "student_id": "242-35-616",
+    "email": "nahin242-35-616@diu.edu.bd",
+    "phone": "01626750305"
+  },
+  {
+    "name": "Md. Asif Iqbal",
+    "batch": 44,
+    "section": "A",
+    "student_id": "251-35-323",
+    "email": "251-35-323@diu.edu.bd",
+    "phone": "01581623761"
+  },
+  {
+    "name": "Md Tanvir Rahman Bappy",
+    "batch": 44,
+    "section": "A",
+    "student_id": "251-35-435",
+    "email": "251-35-435@diu.edu.bd",
+    "phone": "01521703563"
+  },
+  {
+    "name": "Abu Hasnat Md Rubaiyat Islam",
+    "batch": 44,
+    "section": "B",
+    "student_id": "251-35-153",
+    "email": "251-35-153@diu.edu.bd",
+    "phone": "01326771640"
+  },
+  {
+    "name": "Sumaia Parvin",
+    "batch": 44,
+    "section": "B",
+    "student_id": "251-35-026",
+    "email": "251-35-026@diu.edu.bd",
+    "phone": "01642850895"
+  },
+  {
+    "name": "A.K.M. Fahim Anis Jim",
+    "batch": 44,
+    "section": "C",
+    "student_id": "251-35-218",
+    "email": "251-35-218@diu.edu.bd",
+    "phone": "01568194354"
+  },
+  {
+    "name": "Shanzida Akter",
+    "batch": 44,
+    "section": "C",
+    "student_id": "251-35-369",
+    "email": "251-35-369@diu.edu.bd",
+    "phone": "01913072727"
+  },
+  {
+    "name": "Raisul Islam Likhon",
+    "batch": 44,
+    "section": "D",
+    "student_id": "251-35-508",
+    "email": "251-35-508@diu.edu.bd",
+    "phone": "01756898630"
+  },
+  {
+    "name": "Md Ohi Alam",
+    "batch": 44,
+    "section": "D",
+    "student_id": "251-35-353",
+    "email": "251-35-353@diu.edu.bd",
+    "phone": "01339634310"
+  },
+  {
+    "name": "Srabonti Dutta",
+    "batch": 44,
+    "section": "E",
+    "student_id": "251-35-177",
+    "email": "251-35-177@diu.edu.bd",
+    "phone": "01793981519"
+  },
+  {
+    "name": "Ovi Basu",
+    "batch": 44,
+    "section": "E",
+    "student_id": "251-35-086",
+    "email": "251-35-086@diu.edu.bd",
+    "phone": "01906368402"
+  },
+  {
+    "name": "Md. Rayhan Sheikh Raj",
+    "batch": 44,
+    "section": "F",
+    "student_id": "251-35-131",
+    "email": "251-35-131@diu.edu.bd",
+    "phone": "01884355639"
+  },
+  {
+    "name": "MD Akhlak Zobaer",
+    "batch": 44,
+    "section": "F",
+    "student_id": "251-35-242",
+    "email": "251-35-242@diu.edu.bd",
+    "phone": "01888083585"
+  },
+  {
+    "name": "Sadman Habij Saim",
+    "batch": 44,
+    "section": "G",
+    "student_id": "251-35-354",
+    "email": "251-35-354@diu.edu.bd",
+    "phone": "01988597644"
+  },
+  {
+    "name": "Samiun Ahmed Khan Hemal",
+    "batch": 44,
+    "section": "G",
+    "student_id": "251-35-515",
+    "email": "251-35-517@diu.edu.bd",
+    "phone": "01617262595"
+  },
+  {
+    "name": "Abdullahel Baki",
+    "batch": 44,
+    "section": "H",
+    "student_id": "251-35-028",
+    "email": "251-35-028@diu.edu.bd",
+    "phone": "01307057704"
+  },
+  {
+    "name": "Al Amin Hossain",
+    "batch": 44,
+    "section": "H",
+    "student_id": "251-35-447",
+    "email": "251-35-447@diu.edu.bd",
+    "phone": "01332640546"
+  },
+  {
+    "name": "Ibrahim Khalil Manik",
+    "batch": 44,
+    "section": "I",
+    "student_id": "251-35-236",
+    "email": "251-35-236@diu.edu.bd",
+    "phone": "01706-236891"
+  },
+  {
+    "name": "Madhurza Majumder Utsha",
+    "batch": 44,
+    "section": "I",
+    "student_id": "251-35-114",
+    "email": "251-35-114@diu.edu.bd",
+    "phone": "01744115186"
+  },
+  {
+    "name": "MD. Atiqur Rahaman",
+    "batch": 44,
+    "section": "J",
+    "student_id": "251-35-102",
+    "email": "251-35-102@diu.edu.bd",
+    "phone": "01581769249"
+  },
+  {
+    "name": "MD Nafiz Ahmed Shohan",
+    "batch": 44,
+    "section": "J",
+    "student_id": "251-35-052",
+    "email": "251-35-052@diu.edu.bd",
+    "phone": "01303930187"
+  },
+  {
+    "name": "Shariar Ahmmed Anuvob",
+    "batch": 45,
+    "section": "A",
+    "student_id": "252-35-229",
+    "email": "252-35-229@diu.edu.bd",
+    "phone": "01308022471"
+  },
+  {
+    "name": "Fabiha Tahiat Nowar",
+    "batch": 45,
+    "section": "A",
+    "student_id": "252-35-084",
+    "email": "252-35-084@diu.edu.bd",
+    "phone": "01933393626"
+  },
+  {
+    "name": "Safwan Ibn Jannat Mahi",
+    "batch": 45,
+    "section": "B",
+    "student_id": "252-35-255",
+    "email": "252-35-255@diu.edu.bd",
+    "phone": "01793068689"
+  },
+  {
+    "name": "Nusrat Jahan Methila",
+    "batch": 45,
+    "section": "B",
+    "student_id": "252-35-051",
+    "email": "252-35-051@diu.edu.bd",
+    "phone": "01980052575"
+  },
+  {
+    "name": "Saiful Islam Bhuiyan",
+    "batch": 45,
+    "section": "C",
+    "student_id": "252-35-033",
+    "email": "252-35-033@diu.edu.bd",
+    "phone": "01978247886"
+  },
+  {
+    "name": "Humaira Akter Era",
+    "batch": 45,
+    "section": "C",
+    "student_id": "252-35-231",
+    "email": "252-35-231@diu.edu.bd",
+    "phone": "01400826200"
+  },
+  {
+    "name": "Md. Rokanuddin Sarker Rohan",
+    "batch": 45,
+    "section": "D",
+    "student_id": "252-35-183",
+    "email": "252-35-183@diu.edu.bd",
+    "phone": "01797515047"
+  },
+  {
+    "name": "Ispita Israt Epty",
+    "batch": 45,
+    "section": "D",
+    "student_id": "252-35-030",
+    "email": "252-35-030@diu.edu.bd",
+    "phone": "01775581640"
+  },
+  {
+    "name": "Md Riad Hossen Akash",
+    "batch": 45,
+    "section": "E",
+    "student_id": "252-35-292",
+    "email": "252-35-292@diu.edu.bd",
+    "phone": "01941050835"
+  },
+  {
+    "name": "Tasmen Anam Geet",
+    "batch": 45,
+    "section": "E",
+    "student_id": "252-35-174",
+    "email": "252-35-174@diu.edu.bd",
+    "phone": "01959526122"
+  },
+  {
+    "name": "Md. Abirul Karim Sarkar",
+    "batch": 45,
+    "section": "F",
+    "student_id": "252-35-558",
+    "email": "252-35-558@diu.edu.bd",
+    "phone": "01317972363"
+  },
+  {
+    "name": "Bijukta Saha",
+    "batch": 45,
+    "section": "F",
+    "student_id": "252-35-647",
+    "email": "252-35-647@diu.edu.bd",
+    "phone": "01798409540"
+  },
+  {
+    "name": "Ahnaf Shahriar Tasin",
+    "batch": 45,
+    "section": "G",
+    "student_id": "252-35-123",
+    "email": "252-35-123@diu.edu.bd",
+    "phone": "01756496292"
+  },
+  {
+    "name": "Golam Morshed Eashan",
+    "batch": 45,
+    "section": "H",
+    "student_id": "252-35-242",
+    "email": "252-35-242@diu.edu.bd",
+    "phone": "01511961401"
+  },
+  {
+    "name": "Sayma Ferdousi Fariha",
+    "batch": 45,
+    "section": "H",
+    "student_id": "252-35-103",
+    "email": "252-35-103@diu.edu.bd",
+    "phone": "01591171777"
+  },
+  {
+    "name": "Pratik Barua",
+    "batch": 45,
+    "section": "I",
+    "student_id": "252-35-226",
+    "email": "252-35-226@diu.edu.bd",
+    "phone": "01851407301"
+  },
+  {
+    "name": "Umme Habiba",
+    "batch": 45,
+    "section": "I",
+    "student_id": "252-35-298",
+    "email": "252-35-298@diu.edu.bd",
+    "phone": "01595076277"
+  },
+  {
+    "name": "MD. Sazid Hasan",
+    "batch": 45,
+    "section": "J",
+    "student_id": "252-35-514",
+    "email": "252-35-514@diu.edu.bd",
+    "phone": "01873765624"
+  },
+  {
+    "name": "Umme Rafia Binte Jamal",
+    "batch": 45,
+    "section": "J",
+    "student_id": "252-35-338",
+    "email": "252-35-338@diu.edu.bd",
+    "phone": "01870205242"
+  },
+  {
+    "name": "MD. Mehedi Hasan",
+    "batch": 45,
+    "section": "K",
+    "student_id": "252-35-646",
+    "email": "252-35-646@diu.edu.bd",
+    "phone": "01609814096"
+  },
+  {
+    "name": "MD Shivab Noyon",
+    "batch": 45,
+    "section": "K",
+    "student_id": "242-35-644",
+    "email": "shivab242-35-644@diu.edi.bd",
+    "phone": "01955103203"
+  },
+  {
+    "name": "Dipu Ahmed Rony",
+    "batch": 45,
+    "section": "L",
+    "student_id": "252-35-566",
+    "email": "252-35-566@diu.edu.bd",
+    "phone": "01772601222"
+  },
+  {
+    "name": "Md. Ridoan Ahmed Sakib",
+    "batch": 46,
+    "section": "A",
+    "student_id": "253-35-549",
+    "email": "253-35-549@diu.edu.bd",
+    "phone": "01819758865"
+  },
+  {
+    "name": "Riditha Rahman",
+    "batch": 46,
+    "section": "A",
+    "student_id": "253-35-052",
+    "email": "253-35-052@diu.edu.bd",
+    "phone": "01965667428"
+  },
+  {
+    "name": "Md. Abir Hasan Khan",
+    "batch": 46,
+    "section": "B",
+    "student_id": "253-35-313",
+    "email": "253-35-313@diu.edu.bd",
+    "phone": "01727902297"
+  },
+  {
+    "name": "Khairunnahar Parthee",
+    "batch": 46,
+    "section": "B",
+    "student_id": "253-35-140",
+    "email": "253-35-140@diu.edu.bd",
+    "phone": "01344299693"
+  },
+  {
+    "name": "MARUF AHMED",
+    "batch": 46,
+    "section": "C",
+    "student_id": "253-35-232",
+    "email": "253-35-232@diu.edu.bd",
+    "phone": "01924740262"
+  },
+  {
+    "name": "Nowshin Jahan Shuchi",
+    "batch": 46,
+    "section": "C",
+    "student_id": "253-35-159",
+    "email": "253-35-159@diu.edu.com",
+    "phone": "01327214469"
+  },
+  {
+    "name": "Mostofa Tanzid",
+    "batch": 46,
+    "section": "D",
+    "student_id": "253-35-540",
+    "email": "253-35-540@diu.edu.bd",
+    "phone": "01883910739"
+  },
+  {
+    "name": "Meherunnesa Rimi",
+    "batch": 46,
+    "section": "D",
+    "student_id": "253-35-472",
+    "email": "253-35-472@diu.edu.bd",
+    "phone": "01611768901"
+  },
+  {
+    "name": "MD. IFTA KHIRUL HAQUE ABIR",
+    "batch": 46,
+    "section": "E",
+    "student_id": "253-35-500",
+    "email": "253-35-500@diu.edu.bd",
+    "phone": "01610049750"
+  },
+  {
+    "name": "LAMIA AKTER MEEM",
+    "batch": 46,
+    "section": "E",
+    "student_id": "253-35-301",
+    "email": "253-35-301@diu.edu.bd",
+    "phone": "01751438394"
+  },
+  {
+    "name": "Mahim Hasan",
+    "batch": 46,
+    "section": "F",
+    "student_id": "253-35-129",
+    "email": "253-35-129@diu.edu.bd",
+    "phone": "01965279755"
+  },
+  {
+    "name": "Nuzhath Tabassum",
+    "batch": 46,
+    "section": "F",
+    "student_id": "253-35-064",
+    "email": "253-35-064@diu.edu.bd",
+    "phone": "01731837877"
+  },
+  {
+    "name": "Tahsin Rahman Tanisha",
+    "batch": 46,
+    "section": "G",
+    "student_id": "253-35-229",
+    "email": "253-35-229@diu.edu.bd",
+    "phone": "01886688169"
+  },
+  {
+    "name": "Fardin Islam",
+    "batch": 46,
+    "section": "G",
+    "student_id": "253-35-386",
+    "email": "253-35-386@diu.edu.bd",
+    "phone": "01621948549"
+  },
+  {
+    "name": "Yeasir Emtiaj Nafi",
+    "batch": 46,
+    "section": "H",
+    "student_id": "253-35-384",
+    "email": "253-35-384@diu.edu.bd",
+    "phone": "01642303679"
+  },
+  {
+    "name": "Nabila Rahman Rodela",
+    "batch": 46,
+    "section": "H",
+    "student_id": "253-35-572",
+    "email": "253-35-572@diu.edu.bd",
+    "phone": "01715538684"
+  },
+  {
+    "name": "Md Nafis Islam",
+    "batch": 46,
+    "section": "I",
+    "student_id": "253-35-395",
+    "email": "253-35-395@diu.edu.bd",
+    "phone": "01302830827"
+  },
+  {
+    "name": "Nusrat Jahan Mim",
+    "batch": 46,
+    "section": "I",
+    "student_id": "253-35-104",
+    "email": "253-35-104@diu.edu.bd",
+    "phone": "01753032095"
+  },
+  {
+    "name": "Mahin Hossain",
+    "batch": 46,
+    "section": "J",
+    "student_id": "253-35-520",
+    "email": "253-35-520@diu.edu.bd",
+    "phone": "01869365718"
+  },
+  {
+    "name": "Mohema Akter",
+    "batch": 46,
+    "section": "J",
+    "student_id": "253-35-524",
+    "email": "253-35-524@diu.edu.bd",
+    "phone": "0185728731"
+  },
+  {
+    "name": "Arpita Chowdhury Putul",
+    "batch": 46,
+    "section": "K",
+    "student_id": "253-35-079",
+    "email": "253-35-079@diu.edu.bd",
+    "phone": "01994685888"
+  },
+  {
+    "name": "Md. Fayam Alam",
+    "batch": 46,
+    "section": "K",
+    "student_id": "253-35-640",
+    "email": "253-35-640@diu.edu.bd",
+    "phone": "01759037674"
+  },
+  {
+    "name": "Md. Mia Rifat",
+    "batch": 46,
+    "section": "L",
+    "student_id": "253-35-219",
+    "email": "253-35-219@diu.edu.bd",
+    "phone": "01618666158"
+  },
+  {
+    "name": "Tasnem Sultana Rahma",
+    "batch": 46,
+    "section": "L",
+    "student_id": "253-35-665",
+    "email": "253-35-665@diu.edu.bd",
+    "phone": "01957237823"
+  },
+  {
+    "name": "Samiul Islam Tumon",
+    "batch": 46,
+    "section": "M",
+    "student_id": "253-35-436",
+    "email": "253-35-436@diu.edu.bd",
+    "phone": "01746606659"
+  },
+  {
+    "name": "Mahanaj Akter Parvin",
+    "batch": 46,
+    "section": "M",
+    "student_id": "253-35-143",
+    "email": "253-35-143@diu.edu.bd",
+    "phone": "01343493440"
+  },
+  {
+    "name": "Niloy Chakraborty",
+    "batch": 46,
+    "section": "N",
+    "student_id": "253-35-349",
+    "email": "253-35-349@diu.edu.bd",
+    "phone": "01793535686"
+  },
+  {
+    "name": "Durjoy Chandra Ghosh",
+    "batch": 46,
+    "section": "N",
+    "student_id": "253-35-649",
+    "email": "253-35-649@diu.edu.bd",
+    "phone": "01918409214"
+  },
+  {
+    "name": "Sanjana Mahmud",
+    "batch": 46,
+    "section": "O",
+    "student_id": "253-35-470",
+    "email": "253-35-470@diu.edu.bd",
+    "phone": "01618566616"
+  },
+  {
+    "name": "Fardin Ehsan Sakib (Sadaf)",
+    "batch": 46,
+    "section": "O",
+    "student_id": "253-35-761",
+    "email": "253-35-761@diu.edu.bd",
+    "phone": "01725150671"
+  },
+  {
+    "name": "Farhana Akter (Jesi)",
+    "batch": 47,
+    "section": "A",
+    "student_id": "261-35-211",
+    "email": "261-35-211@diu.edu.bd",
+    "phone": "01623766051"
+  },
+  {
+    "name": "Khalid Hassan",
+    "batch": 47,
+    "section": "A",
+    "student_id": "261-35-059",
+    "email": "261-35-059@diu.edu.bd",
+    "phone": "01735833878"
+  },
+  {
+    "name": "Saudia",
+    "batch": 47,
+    "section": "B",
+    "student_id": "261-35-034",
+    "email": "261-35-034@diu.edu.bd",
+    "phone": "01764637698"
+  },
+  {
+    "name": "Mehedi Islam Mubeen",
+    "batch": 47,
+    "section": "B",
+    "student_id": "261-35-043",
+    "email": "261-35-043@diu.edu.bd",
+    "phone": "01832874132"
+  },
+  {
+    "name": "MD Abdul Hakim",
+    "batch": 47,
+    "section": "C",
+    "student_id": "261-35-158",
+    "email": "261-35-158@diu.edu.bd",
+    "phone": "01820885192"
+  },
+  {
+    "name": "Sadika Sharif",
+    "batch": 47,
+    "section": "C",
+    "student_id": "261-35-227",
+    "email": "261-35-227@diu.edu.bd",
+    "phone": "01893229338"
+  },
+  {
+    "name": "Mohammad Abidul Islam Safat",
+    "batch": 47,
+    "section": "D",
+    "student_id": "261-35-186",
+    "email": "261-35-186@diu.edu.bd",
+    "phone": "01874278012"
+  },
+  {
+    "name": "Adrita Rahman",
+    "batch": 47,
+    "section": "D",
+    "student_id": "261-35-089",
+    "email": "261-35-089@diu.edu.bd",
+    "phone": "01633190102"
+  },
+  {
+    "name": "Aszak Ahmed Fahim",
+    "batch": 47,
+    "section": "E",
+    "student_id": "261-35-055",
+    "email": "261-35-055@diu.edu.bd",
+    "phone": "01820876289"
+  },
+  {
+    "name": "Jannatul Islam Joya",
+    "batch": 47,
+    "section": "E",
+    "student_id": "261-35-184",
+    "email": "261-35-184@diu.edu.bd",
+    "phone": "01910946892"
+  },
+  {
+    "name": "Arian Rahman Samir",
+    "batch": 47,
+    "section": "F",
+    "student_id": "261-35-196",
+    "email": "261-35-196@diu.edu.bd",
+    "phone": "01308211234"
+  },
+  {
+    "name": "Lily Islam (Diya)",
+    "batch": 47,
+    "section": "F",
+    "student_id": "261-35-174",
+    "email": "261-35-174@diu.edu.bd",
+    "phone": "01715092160"
+  },
+  {
+    "name": "Ariba Siddique",
+    "batch": 47,
+    "section": "G",
+    "student_id": "261-35-337",
+    "email": "261-35-337@diu.edu.bd",
+    "phone": "01631935295"
+  },
+  {
+    "name": "Mahafuz Hasan Mahid",
+    "batch": 47,
+    "section": "G",
+    "student_id": "261-35-299",
+    "email": "261-35-299@diu.edu.bd",
+    "phone": "01314208777"
+  }
+]

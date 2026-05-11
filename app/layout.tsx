@@ -3,6 +3,7 @@ import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import AppFooter from "@/components/app-footer";
 import { AuthInitializer } from "@/components/auth-initializer";
+import AppSessionProvider from "@/components/session-provider";
 import { Toaster } from "react-hot-toast";
 import { Analytics } from "@vercel/analytics/next";
 
@@ -75,11 +76,13 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        <AuthInitializer />
+        <AppSessionProvider>
+          <AuthInitializer />
           <Toaster position="top-right" />
           {children}
           <AppFooter />
           <Analytics />
+        </AppSessionProvider>
       </body>
     </html>
   );

@@ -339,10 +339,11 @@ export const updateUserProfile = async (
   }>
 ): Promise<void> => {
   try {
-    await updateDoc(doc(db(), "users", uid), {
+    // Use setDoc with merge:true so it works even if the doc doesn't exist yet
+    await setDoc(doc(db(), "users", uid), {
       ...updates,
       updatedAt: new Date().toISOString(),
-    });
+    }, { merge: true });
   } catch (error) {
     console.error("Error updating user profile:", error);
     throw error;

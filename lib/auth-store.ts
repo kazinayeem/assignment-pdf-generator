@@ -2,28 +2,23 @@
 
 /**
  * auth-store.ts
- * Zustand store for Firebase authentication state — no NextAuth.
+ *
+ * Zustand store that syncs from the NextAuth session.
+ * NextAuth handles Google OAuth. Firebase Firestore stores user profile data.
+ * No Firebase Auth is used.
  */
 
 import { create } from "zustand";
-import { doc, getDoc } from "firebase/firestore";
-import { getFirebaseDb } from "./firebase-config";
-import {
-  initiateGoogleSignIn,
-  handleGoogleRedirectResult,
-  signInWithEmailPassword,
-  signOutUser,
-  subscribeToAuthState,
-  getOrCreateUserDoc,
-} from "./auth-utils";
+import { signIn, signOut } from "next-auth/react";
+import type { Session } from "next-auth";
+import { getOrCreateUserDoc, resolveRole } from "./auth-utils";
 import type { UserDoc, AuthContextType } from "./types";
 
 // ─── Store Interface ──────────────────────────────────────────────────────────
 
 interface AuthStore extends AuthContextType {
-  initializeAuth: () => () => void;
-  handleRedirectResult: () => Promise<void>;
-  setLoading: (loading: boolean) => void;
+  /** Called by AuthInitializer whenever the NextAuth session changes */
+  syncSession: (session: Session | null, status: string) => Promise<void>;
   setError: (error: string | null) => void;
   signInWithEmailPassword: (email: string, password: string) => Promise<void>;
 }
@@ -51,48 +46,32 @@ export const useAuthStore = create<AuthStore>((set) => ({
   isSuperAdmin: false,
   isStudent: false,
 
-  setLoading: (loading) => set({ loading }),
   setError: (error) => set({ error }),
 
-  // ── Google Sign-In ──────────────────────────────────────────────────────────
-  // Dev:  popup  → userData returned immediately → apply to store
-  // Prod: redirect → null returned → page navigates away → handleRedirectResult on return
+  // ── Google Sign-In via NextAuth ─────────────────────────────────────────────
   signInWithGoogle: async () => {
     try {
       set({ loading: true, error: null });
-      const userData = await initiateGoogleSignIn();
-      if (userData) {
-        // Popup flow (dev) — result is immediate
-        set(applyUser(userData));
-      }
-      // Redirect flow (prod) — page navigates away, nothing to do here
+      // NextAuth handles the full OAuth redirect flow
+      await signIn("google", { callbackUrl: "/login" });
     } catch (error: any) {
       set({ error: error.message || "Google sign-in failed.", loading: false });
     }
   },
 
-  // ── Redirect Result (production only) ──────────────────────────────────────
-  // Called by AuthInitializer BEFORE onAuthStateChanged so protected routes
-  // don't see a false unauthenticated state while the redirect is processing.
-  handleRedirectResult: async () => {
-    if (process.env.NODE_ENV === "development") return;
-
-    try {
-      const userData = await handleGoogleRedirectResult();
-      if (userData) {
-        set(applyUser(userData));
-      }
-    } catch (error: any) {
-      set({ error: error.message || "Google sign-in failed.", loading: false });
-    }
-  },
-
-  // ── Email / Password ────────────────────────────────────────────────────────
+  // ── Email / Password (super-admin only via NextAuth credentials) ────────────
   signInWithEmailPassword: async (email: string, password: string) => {
     try {
       set({ loading: true, error: null });
-      const userData = await signInWithEmailPassword(email, password);
-      set(applyUser(userData));
+      const result = await signIn("credentials", {
+        email,
+        password,
+        redirect: false,
+      });
+      if (result?.error) {
+        set({ error: "Invalid credentials.", loading: false, isAuthenticated: false });
+      }
+      // On success, useSession will update → AuthInitializer → syncSession will fire
     } catch (error: any) {
       set({ error: error.message || "Authentication failed.", loading: false, isAuthenticated: false });
     }
@@ -102,7 +81,24 @@ export const useAuthStore = create<AuthStore>((set) => ({
   signOut: async () => {
     try {
       set({ loading: true });
-      await signOutUser();
+      await signOut({ callbackUrl: "/" });
+    } catch (error: any) {
+      set({ error: error.message || "Sign out failed.", loading: false });
+    }
+  },
+
+  // ── Sync from NextAuth session ──────────────────────────────────────────────
+  // Called by AuthInitializer on every session change.
+  // Fetches/creates the Firestore user doc and applies it to the store.
+  syncSession: async (session, status) => {
+    // Still loading NextAuth session — keep loading:true
+    if (status === "loading") {
+      set({ loading: true });
+      return;
+    }
+
+    // No session — user is not signed in
+    if (!session?.user?.email || !session.user.id) {
       set({
         user: null,
         isAuthenticated: false,
@@ -111,52 +107,25 @@ export const useAuthStore = create<AuthStore>((set) => ({
         loading: false,
         error: null,
       });
-    } catch (error: any) {
-      set({ error: error.message || "Sign out failed.", loading: false });
+      return;
     }
-  },
 
-  // ── Auth State Listener ─────────────────────────────────────────────────────
-  // Subscribes to Firebase onAuthStateChanged.
-  // On every page load this fires once with the persisted Firebase user (if any),
-  // so the session is restored automatically without re-logging in.
-  initializeAuth: () => {
-    const unsubscribe = subscribeToAuthState(async (firebaseUser) => {
-      try {
-        if (!firebaseUser) {
-          set({
-            user: null,
-            isAuthenticated: false,
-            isSuperAdmin: false,
-            isStudent: false,
-            loading: false,
-          });
-          return;
-        }
+    try {
+      const email = session.user.email.toLowerCase();
+      const role = session.user.role || resolveRole(email);
 
-        // Firebase user exists — fetch or create their Firestore profile
-        const db = getFirebaseDb();
-        const userRef = doc(db, "users", firebaseUser.uid);
-        const snapshot = await getDoc(userRef);
+      // Fetch or create the Firestore user document
+      const userData = await getOrCreateUserDoc(session.user.id, {
+        name: session.user.name || "",
+        email,
+        role,
+        photoURL: session.user.image ?? undefined,
+      });
 
-        if (snapshot.exists()) {
-          set(applyUser(snapshot.data() as UserDoc));
-        } else {
-          // Doc missing (e.g. first sign-in via redirect) — create it now
-          const userData = await getOrCreateUserDoc(firebaseUser.uid, {
-            name: firebaseUser.displayName || "",
-            email: firebaseUser.email || "",
-            role: "student",
-            photoURL: firebaseUser.photoURL || undefined,
-          });
-          set(applyUser(userData));
-        }
-      } catch (error) {
-        console.error("onAuthStateChanged error:", error);
-        set({ loading: false });
-      }
-    });
-
-    return unsubscribe;
+      set(applyUser(userData));
+    } catch (error: any) {
+      console.error("syncSession error:", error);
+      set({ error: error.message || "Failed to load user data.", loading: false });
+    }
   },
 }));

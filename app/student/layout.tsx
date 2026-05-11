@@ -1,5 +1,7 @@
 "use client";
 
+import Image from "next/image";
+
 import { ReactNode, useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
@@ -43,10 +45,7 @@ export default function StudentLayout({ children }: { children: ReactNode }) {
       {/* Mobile Header */}
       <div className="lg:hidden fixed top-0 left-0 right-0 h-16 bg-white dark:bg-gray-900 border-b border-gray-100 dark:border-gray-800 z-50 flex items-center justify-between px-6">
         <div className="flex items-center gap-2">
-           <div className="w-8 h-8 bg-blue-600 rounded-lg flex items-center justify-center">
-             <FileText className="w-4 h-4 text-white" />
-           </div>
-           <span className="font-bold text-gray-900 dark:text-white">CoverGen</span>
+           <Image src="/logo_navbar.png" alt="CampusFlow" width={100} height={24} style={{ height: 24, width: "auto" }} />
         </div>
         <div className="flex items-center gap-2">
           <button
@@ -79,10 +78,13 @@ export default function StudentLayout({ children }: { children: ReactNode }) {
           {/* Logo */}
           <div className="flex items-center justify-between mb-10 px-2">
             <Link href="/" className="flex items-center gap-3">
-              <div className="w-10 h-10 bg-blue-600 rounded-xl flex items-center justify-center shadow-lg shadow-blue-200">
-                <FileText className="w-6 h-6 text-white" />
-              </div>
-              <span className="font-black text-xl tracking-tight text-gray-900 dark:text-white italic">CoverGen</span>
+              <Image
+                src="/logo_navbar.png"
+                alt="CampusFlow"
+                width={120}
+                height={28}
+                style={{ height: 28, width: "auto" }}
+              />
             </Link>
             <button onClick={() => setIsSidebarOpen(false)} className="lg:hidden p-2 hover:bg-gray-50 dark:hover:bg-gray-800 rounded-xl">
               <X className="w-5 h-5 text-gray-400" />

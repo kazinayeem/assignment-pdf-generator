@@ -43,9 +43,9 @@ export default function StudentLayout({ children }: { children: ReactNode }) {
   return (
     <div className="min-h-screen bg-[#fafafa] dark:bg-gray-950 flex">
       {/* Mobile Header */}
-      <div className="lg:hidden fixed top-0 left-0 right-0 h-16 bg-white dark:bg-gray-900 border-b border-gray-100 dark:border-gray-800 z-50 flex items-center justify-between px-6">
+      <div className="lg:hidden fixed top-0 left-0 right-0 bg-white dark:bg-gray-900 border-b border-gray-100 dark:border-gray-800 z-50 flex items-center justify-between px-6">
         <div className="flex items-center gap-2">
-           <Image src="/logo_navbar.png" alt="CampusFlow" width={120} height={30} style={{ height: 30, width: "auto" }} />
+           <Image src="/logo_navbar.png" alt="CampusFlow" width={200} height={40} style={{ height: 30, width: "auto" }} />
         </div>
         <div className="flex items-center gap-2">
           <button

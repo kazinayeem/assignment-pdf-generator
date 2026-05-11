@@ -82,7 +82,17 @@ export interface CVSection {
   order: number;
 }
 
-export type CVTemplate = "classic" | "modern" | "minimal";
+export type CVTemplate =
+  | "modern"
+  | "classic"
+  | "minimal"
+  | "executive"
+  | "creative"
+  | "tech"
+  | "elegant"
+  | "bold"
+  | "compact"
+  | "timeline";
 
 export interface CVData {
   personal: PersonalInfo;

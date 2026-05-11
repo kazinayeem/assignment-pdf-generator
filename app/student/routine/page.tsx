@@ -1,7 +1,7 @@
 "use client";
 
-import React, { useState, useMemo, useEffect, useRef, useCallback } from "react";
-import { Calendar, Clock, MapPin, User, Loader2, RefreshCw, Download, ImageIcon } from "lucide-react";
+import React, { useState, useMemo, useEffect, useRef } from "react";
+import { Calendar, Clock, MapPin, User, Loader2, RefreshCw, Download } from "lucide-react";
 import { useAuthStore } from "@/lib/auth-store";
 import { useProtectedRoute } from "@/lib/use-protected-route";
 import { Input } from "@/components/ui/input";
@@ -64,6 +64,8 @@ export default function StudentRoutinePage() {
   const [sectionFilter, setSectionFilter] = useState("");
   const [batchFilter, setBatchFilter] = useState("");
   const [selectedDay, setSelectedDay] = useState<string | null>(null);
+  const [exporting, setExporting] = useState(false);
+  const exportRef = useRef<HTMLDivElement>(null);
 
   const today = getTodayName();
   const colorMap = useMemo(() => new Map<string, number>(), []);
@@ -107,6 +109,29 @@ export default function StudentRoutinePage() {
 
   // Active day for mobile tab view
   const activeDay = selectedDay || (DAYS.includes(today) ? today : DAYS[0]);
+
+  // ── Export to PNG ──────────────────────────────────────────────────────────
+  const handleExport = async () => {
+    if (!exportRef.current) return;
+    setExporting(true);
+    try {
+      const { toPng } = await import("html-to-image");
+      const dataUrl = await toPng(exportRef.current, {
+        cacheBust: true,
+        pixelRatio: 2,
+        backgroundColor: "#ffffff",
+        style: { borderRadius: "0" },
+      });
+      const link = document.createElement("a");
+      link.download = `routine-batch${batchFilter}-sec${sectionFilter}-spring2026.png`;
+      link.href = dataUrl;
+      link.click();
+    } catch (e) {
+      console.error("Export failed:", e);
+    } finally {
+      setExporting(false);
+    }
+  };
 
   if (loading) {
     return (
@@ -168,6 +193,19 @@ export default function StudentRoutinePage() {
                 className="w-24 h-10 rounded-xl bg-white/10 border-white/10 text-white placeholder:text-white/30 font-bold text-sm focus:bg-white/20"
               />
             </div>
+            {/* Export Button */}
+            <button
+              onClick={handleExport}
+              disabled={exporting || filtered.length === 0}
+              className="flex items-center gap-2 h-10 px-4 bg-white/10 hover:bg-white/20 disabled:opacity-40 disabled:cursor-not-allowed text-white font-bold text-sm rounded-xl border border-white/10 transition-all"
+            >
+              {exporting ? (
+                <Loader2 className="w-4 h-4 animate-spin" />
+              ) : (
+                <Download className="w-4 h-4" />
+              )}
+              <span className="hidden sm:inline">{exporting ? "Exporting…" : "Export PNG"}</span>
+            </button>
           </div>
         </div>
       </div>

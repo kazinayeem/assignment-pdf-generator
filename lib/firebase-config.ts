@@ -13,7 +13,15 @@
  */
 
 import { FirebaseApp, getApps, initializeApp, getApp } from "firebase/app";
-import { Auth, getAuth, GoogleAuthProvider } from "firebase/auth";
+import {
+  Auth,
+  getAuth,
+  GoogleAuthProvider,
+  initializeAuth,
+  browserPopupRedirectResolver,
+  indexedDBLocalPersistence,
+  browserLocalPersistence,
+} from "firebase/auth";
 import { Firestore, getFirestore } from "firebase/firestore";
 
 // Cached singleton instances
@@ -50,7 +58,21 @@ function getFirebaseApp(): FirebaseApp {
 
 /** Lazy Firebase Auth — safe to import anywhere, only initializes in browser */
 export function getFirebaseAuth(): Auth {
-  if (!_auth) _auth = getAuth(getFirebaseApp());
+  if (!_auth) {
+    const app = getFirebaseApp();
+
+    try {
+      // Explicit auth initialization improves redirect reliability across browsers.
+      _auth = initializeAuth(app, {
+        persistence: [indexedDBLocalPersistence, browserLocalPersistence],
+        popupRedirectResolver: browserPopupRedirectResolver,
+      });
+    } catch {
+      // If Auth is already initialized elsewhere, fall back to the existing instance.
+      _auth = getAuth(app);
+    }
+  }
+
   return _auth;
 }
 

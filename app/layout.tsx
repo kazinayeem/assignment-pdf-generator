@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
-import Footer from "@/components/footer";
+import AppFooter from "@/components/app-footer";
 import { AuthInitializer } from "@/components/auth-initializer";
 import { Toaster } from "react-hot-toast";
 import { Analytics } from "@vercel/analytics/next";
@@ -78,7 +78,7 @@ export default function RootLayout({
         <AuthInitializer />
         <Toaster position="top-right" />
         {children}
-        <Footer/>
+        <AppFooter />
         <Analytics />
       </body>
     </html>

@@ -3,7 +3,7 @@
  * Zustand store for authentication state.
  *
  * Firebase instances are accessed via lazy getters — safe to import anywhere.
- * Google sign-in uses redirect flow (no popups).
+ * Google sign-in uses redirect flow only (100% redirect, no popups).
  */
 
 "use client";
@@ -14,7 +14,6 @@ import { doc, getDoc } from "firebase/firestore";
 import { getFirebaseAuth, getFirebaseDb } from "./firebase-config";
 import {
   initiateGoogleSignIn,
-  handleGoogleRedirectResult,
   signInWithEmailPassword,
   signOutUser,
 } from "./auth-utils";
@@ -24,7 +23,6 @@ import type { UserDoc, AuthContextType } from "./types";
 
 interface AuthStore extends AuthContextType {
   initializeAuth: () => () => void;
-  handleRedirectResult: () => Promise<void>;
   setLoading: (loading: boolean) => void;
   setError: (error: string | null) => void;
   signInWithEmailPassword: (email: string, password: string) => Promise<void>;
@@ -56,54 +54,22 @@ export const useAuthStore = create<AuthStore>((set) => ({
   setLoading: (loading) => set({ loading }),
   setError: (error) => set({ error }),
 
-  // Initiates Google sign-in (popup in dev, redirect in prod)
+  // Google sign-in using popup
   signInWithGoogle: async () => {
     try {
       set({ loading: true, error: null });
-      console.log("🔍 [AUTH-STORE] signInWithGoogle: Starting...");
-      
+      console.log("🔍 [AUTH-STORE] signInWithGoogle: Starting popup...");
+
       const userData = await initiateGoogleSignIn();
-      
       if (userData) {
-        // Popup flow (dev) - user data returned immediately
-        console.log("✅ [AUTH-STORE] Popup sign-in completed, applying user:", userData);
+        console.log("✅ [AUTH-STORE] Popup sign-in completed. Applying user:", userData);
         set(applyUser(userData));
       } else {
-        // Redirect flow (prod) - page will navigate away
-        console.log("🔍 [AUTH-STORE] Redirect initiated, page will reload...");
+        set({ loading: false });
       }
     } catch (error: any) {
       console.error("❌ [AUTH-STORE] Google sign-in failed:", error);
       set({ error: error.message || "Failed to start Google sign-in.", loading: false });
-    }
-  },
-
-  // Called by AuthInitializer BEFORE onAuthStateChanged starts.
-  // Only needed for redirect flow (production). In dev, popup returns immediately.
-  handleRedirectResult: async () => {
-    const isDev = process.env.NODE_ENV === 'development';
-    
-    if (isDev) {
-      console.log("🔍 [AUTH-STORE] handleRedirectResult: Skipping (dev uses popup flow)");
-      return;
-    }
-    
-    console.log("🔍 [AUTH-STORE] handleRedirectResult: Starting (production redirect flow)...");
-    try {
-      console.log("🔍 [AUTH-STORE] Calling handleGoogleRedirectResult...");
-      const userData = await handleGoogleRedirectResult();
-
-      if (userData) {
-        // Redirect just completed — apply the user immediately
-        console.log("✅ [AUTH-STORE] Redirect completed! Applying user:", userData);
-        set(applyUser(userData));
-        console.log("✅ [AUTH-STORE] User applied to store. isAuthenticated should be true now.");
-      } else {
-        console.log("🔍 [AUTH-STORE] No redirect result (normal page load)");
-      }
-    } catch (error: any) {
-      console.error("❌ [AUTH-STORE] Redirect result error:", error);
-      set({ error: error.message || "Google sign-in failed.", loading: false });
     }
   },
 

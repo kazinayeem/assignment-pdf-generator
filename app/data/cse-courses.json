@@ -1,0 +1,632 @@
+[
+  {
+    "courseCode": "CSE-112",
+    "courseTitle": "Computer Fundamentals",
+    "credit": 3,
+    "category": "Core",
+    "department": "CSE"
+  },
+  {
+    "courseCode": "CSE-113",
+    "courseTitle": "Programming and Problem Solving",
+    "credit": 3,
+    "category": "Core",
+    "department": "CSE"
+  },
+  {
+    "courseCode": "CSE-114",
+    "courseTitle": "Programming and Problem Solving Lab",
+    "credit": 1.5,
+    "category": "Core",
+    "department": "CSE"
+  },
+  {
+    "courseCode": "CSE-115",
+    "courseTitle": "Introduction to Biology & Chemistry for Computation",
+    "credit": 3,
+    "category": "Core",
+    "department": "CSE"
+  },
+  {
+    "courseCode": "CSE-121",
+    "courseTitle": "Electrical Circuits",
+    "credit": 3,
+    "category": "Core",
+    "department": "CSE"
+  },
+  {
+    "courseCode": "CSE-122",
+    "courseTitle": "Electrical Circuits Lab",
+    "credit": 1.5,
+    "category": "Core",
+    "department": "CSE"
+  },
+  {
+    "courseCode": "CSE-123",
+    "courseTitle": "Data Structure",
+    "credit": 3,
+    "category": "Core",
+    "department": "CSE"
+  },
+  {
+    "courseCode": "CSE-124",
+    "courseTitle": "Data Structure Lab",
+    "credit": 1.5,
+    "category": "Core",
+    "department": "CSE"
+  },
+  {
+    "courseCode": "CSE-212",
+    "courseTitle": "Discrete Mathematics",
+    "credit": 3,
+    "category": "Core",
+    "department": "CSE"
+  },
+  {
+    "courseCode": "CSE-213",
+    "courseTitle": "Algorithms",
+    "credit": 3,
+    "category": "Core",
+    "department": "CSE"
+  },
+  {
+    "courseCode": "CSE-214",
+    "courseTitle": "Algorithms Lab",
+    "credit": 1.5,
+    "category": "Core",
+    "department": "CSE"
+  },
+  {
+    "courseCode": "CSE-215",
+    "courseTitle": "Electronic Devices and Circuits",
+    "credit": 3,
+    "category": "Core",
+    "department": "CSE"
+  },
+  {
+    "courseCode": "CSE-216",
+    "courseTitle": "Electronic Devices and Circuits Lab",
+    "credit": 1.5,
+    "category": "Core",
+    "department": "CSE"
+  },
+  {
+    "courseCode": "CSE-221",
+    "courseTitle": "Object Oriented Programming",
+    "credit": 3,
+    "category": "Core",
+    "department": "CSE"
+  },
+  {
+    "courseCode": "CSE-222",
+    "courseTitle": "Object Oriented Programming Lab",
+    "credit": 1.5,
+    "category": "Core",
+    "department": "CSE"
+  },
+  {
+    "courseCode": "CSE-223",
+    "courseTitle": "Digital Logic Design",
+    "credit": 3,
+    "category": "Core",
+    "department": "CSE"
+  },
+  {
+    "courseCode": "CSE-224",
+    "courseTitle": "Digital Logic Design Lab",
+    "credit": 1.5,
+    "category": "Core",
+    "department": "CSE"
+  },
+  {
+    "courseCode": "CSE-225",
+    "courseTitle": "Data Communication",
+    "credit": 3,
+    "category": "Core",
+    "department": "CSE"
+  },
+  {
+    "courseCode": "CSE-226",
+    "courseTitle": "Numerical Methods",
+    "credit": 3,
+    "category": "Core",
+    "department": "CSE"
+  },
+  {
+    "courseCode": "CSE-227",
+    "courseTitle": "Systems Analysis and Design",
+    "credit": 3,
+    "category": "Core",
+    "department": "CSE"
+  },
+  {
+    "courseCode": "CSE-228",
+    "courseTitle": "Theory of Computation",
+    "credit": 3,
+    "category": "Core",
+    "department": "CSE"
+  },
+  {
+    "courseCode": "CSE-311",
+    "courseTitle": "Database Management System",
+    "credit": 3,
+    "category": "Core",
+    "department": "CSE"
+  },
+  {
+    "courseCode": "CSE-312",
+    "courseTitle": "Database Management System Lab",
+    "credit": 1.5,
+    "category": "Core",
+    "department": "CSE"
+  },
+  {
+    "courseCode": "CSE-313",
+    "courseTitle": "Compiler Design",
+    "credit": 3,
+    "category": "Core",
+    "department": "CSE"
+  },
+  {
+    "courseCode": "CSE-314",
+    "courseTitle": "Compiler Design Lab",
+    "credit": 1.5,
+    "category": "Core",
+    "department": "CSE"
+  },
+  {
+    "courseCode": "CSE-315",
+    "courseTitle": "Software Engineering",
+    "credit": 3,
+    "category": "Core",
+    "department": "CSE"
+  },
+  {
+    "courseCode": "CSE-316",
+    "courseTitle": "Artificial Intelligence",
+    "credit": 3,
+    "category": "Core",
+    "department": "CSE"
+  },
+  {
+    "courseCode": "CSE-317",
+    "courseTitle": "Microprocessor and Microcontrollers",
+    "credit": 3,
+    "category": "Core",
+    "department": "CSE"
+  },
+  {
+    "courseCode": "CSE-321",
+    "courseTitle": "Computer Networks",
+    "credit": 3,
+    "category": "Core",
+    "department": "CSE"
+  },
+  {
+    "courseCode": "CSE-322",
+    "courseTitle": "Computer Networks Lab",
+    "credit": 1.5,
+    "category": "Core",
+    "department": "CSE"
+  },
+  {
+    "courseCode": "CSE-323",
+    "courseTitle": "Operating Systems",
+    "credit": 3,
+    "category": "Core",
+    "department": "CSE"
+  },
+  {
+    "courseCode": "CSE-324",
+    "courseTitle": "Operating Systems Lab",
+    "credit": 1.5,
+    "category": "Core",
+    "department": "CSE"
+  },
+  {
+    "courseCode": "CSE-325",
+    "courseTitle": "Instrumentation and Control",
+    "credit": 3,
+    "category": "Core",
+    "department": "CSE"
+  },
+  {
+    "courseCode": "CSE-326",
+    "courseTitle": "Social and Professional Issues in Computing",
+    "credit": 3,
+    "category": "Core",
+    "department": "CSE"
+  },
+  {
+    "courseCode": "CSE-411",
+    "courseTitle": "Computer Graphics",
+    "credit": 3,
+    "category": "Core",
+    "department": "CSE"
+  },
+  {
+    "courseCode": "CSE-412",
+    "courseTitle": "Computer Graphics Lab",
+    "credit": 1.5,
+    "category": "Core",
+    "department": "CSE"
+  },
+  {
+    "courseCode": "CSE-413",
+    "courseTitle": "Computer Architecture and Organization",
+    "credit": 3,
+    "category": "Core",
+    "department": "CSE"
+  },
+  {
+    "courseCode": "ENG-101",
+    "courseTitle": "Basic Functional English and English Spoken",
+    "credit": 3,
+    "category": "General Education",
+    "department": "CSE"
+  },
+  {
+    "courseCode": "ENG-102",
+    "courseTitle": "Writing and Comprehension",
+    "credit": 3,
+    "category": "General Education",
+    "department": "CSE"
+  },
+  {
+    "courseCode": "MAT-101",
+    "courseTitle": "Mathematics-I",
+    "credit": 3,
+    "category": "General Education",
+    "department": "CSE"
+  },
+  {
+    "courseCode": "MAT-102",
+    "courseTitle": "Mathematics-II: Calculus, Complex Variables & Linear Algebra",
+    "credit": 3,
+    "category": "General Education",
+    "department": "CSE"
+  },
+  {
+    "courseCode": "MAT-211",
+    "courseTitle": "Engineering Mathematics",
+    "credit": 3,
+    "category": "General Education",
+    "department": "CSE"
+  },
+  {
+    "courseCode": "PHY-101",
+    "courseTitle": "Physics-I",
+    "credit": 3,
+    "category": "General Education",
+    "department": "CSE"
+  },
+  {
+    "courseCode": "PHY-102",
+    "courseTitle": "Physics-II",
+    "credit": 3,
+    "category": "General Education",
+    "department": "CSE"
+  },
+  {
+    "courseCode": "PHY-103",
+    "courseTitle": "Physics-II Lab",
+    "credit": 1.5,
+    "category": "General Education",
+    "department": "CSE"
+  },
+  {
+    "courseCode": "BNS-101",
+    "courseTitle": "Bangladesh Studies",
+    "credit": 3,
+    "category": "General Education",
+    "department": "CSE"
+  },
+  {
+    "courseCode": "AOL-101",
+    "courseTitle": "Art of Living",
+    "credit": 3,
+    "category": "General Education",
+    "department": "CSE"
+  },
+  {
+    "courseCode": "STA-101",
+    "courseTitle": "Statistics and Probability",
+    "credit": 3,
+    "category": "General Education",
+    "department": "CSE"
+  },
+  {
+    "courseCode": "ACT-327",
+    "courseTitle": "Financial and Managerial Accounting",
+    "credit": 3,
+    "category": "General Education",
+    "department": "CSE"
+  },
+  {
+    "courseCode": "ECO-426",
+    "courseTitle": "Engineering Economics",
+    "credit": 3,
+    "category": "General Education",
+    "department": "CSE"
+  },
+  {
+    "courseCode": "CSE-498",
+    "courseTitle": "FYDP/Capstone Project (Phase-I)",
+    "credit": 3,
+    "category": "Project",
+    "department": "CSE"
+  },
+  {
+    "courseCode": "CSE-499",
+    "courseTitle": "FYDP/Capstone Project (Phase-II)",
+    "credit": 3,
+    "category": "Project",
+    "department": "CSE"
+  },
+  {
+    "courseCode": "CSE-431",
+    "courseTitle": "Machine Learning",
+    "credit": 3,
+    "category": "Artificial Intelligence",
+    "department": "CSE"
+  },
+  {
+    "courseCode": "CSE-432",
+    "courseTitle": "Natural Language Processing",
+    "credit": 3,
+    "category": "Artificial Intelligence",
+    "department": "CSE"
+  },
+  {
+    "courseCode": "CSE-433",
+    "courseTitle": "Artificial Neural Networks",
+    "credit": 3,
+    "category": "Artificial Intelligence",
+    "department": "CSE"
+  },
+  {
+    "courseCode": "CSE-434",
+    "courseTitle": "Pattern Recognition",
+    "credit": 3,
+    "category": "Artificial Intelligence",
+    "department": "CSE"
+  },
+  {
+    "courseCode": "CSE-435",
+    "courseTitle": "Soft Computing",
+    "credit": 3,
+    "category": "Artificial Intelligence",
+    "department": "CSE"
+  },
+  {
+    "courseCode": "CSE-436",
+    "courseTitle": "Digital Image Processing",
+    "credit": 3,
+    "category": "Artificial Intelligence",
+    "department": "CSE"
+  },
+  {
+    "courseCode": "CSE-437",
+    "courseTitle": "Computer Vision",
+    "credit": 3,
+    "category": "Artificial Intelligence",
+    "department": "CSE"
+  },
+  {
+    "courseCode": "CSE-438",
+    "courseTitle": "Business Intelligence",
+    "credit": 3,
+    "category": "Artificial Intelligence",
+    "department": "CSE"
+  },
+  {
+    "courseCode": "CSE-441",
+    "courseTitle": "UI and UX Design",
+    "credit": 3,
+    "category": "Software Development",
+    "department": "CSE"
+  },
+  {
+    "courseCode": "CSE-442",
+    "courseTitle": "Software Quality Assurance",
+    "credit": 3,
+    "category": "Software Development",
+    "department": "CSE"
+  },
+  {
+    "courseCode": "CSE-443",
+    "courseTitle": "Web Computing",
+    "credit": 3,
+    "category": "Software Development",
+    "department": "CSE"
+  },
+  {
+    "courseCode": "CSE-444",
+    "courseTitle": "Software Architecture and Design Pattern",
+    "credit": 3,
+    "category": "Software Development",
+    "department": "CSE"
+  },
+  {
+    "courseCode": "CSE-445",
+    "courseTitle": "Intellectual Property and Contract Law",
+    "credit": 3,
+    "category": "Software Development",
+    "department": "CSE"
+  },
+  {
+    "courseCode": "CSE-446",
+    "courseTitle": "Mobile Applications Development",
+    "credit": 3,
+    "category": "Software Development",
+    "department": "CSE"
+  },
+  {
+    "courseCode": "CSE-447",
+    "courseTitle": "Concurrent and Distributed Programming",
+    "credit": 3,
+    "category": "Software Development",
+    "department": "CSE"
+  },
+  {
+    "courseCode": "CSE-448",
+    "courseTitle": "Virtual Reality and 3D Games",
+    "credit": 3,
+    "category": "Software Development",
+    "department": "CSE"
+  },
+  {
+    "courseCode": "CSE-451",
+    "courseTitle": "Cloud Computing and Services",
+    "credit": 3,
+    "category": "Network and Communication",
+    "department": "CSE"
+  },
+  {
+    "courseCode": "CSE-452",
+    "courseTitle": "Optical Fiber Communication",
+    "credit": 3,
+    "category": "Network and Communication",
+    "department": "CSE"
+  },
+  {
+    "courseCode": "CSE-453",
+    "courseTitle": "Wireless Sensor Network",
+    "credit": 3,
+    "category": "Network and Communication",
+    "department": "CSE"
+  },
+  {
+    "courseCode": "CSE-454",
+    "courseTitle": "Cyber Security and Forensics",
+    "credit": 3,
+    "category": "Network and Communication",
+    "department": "CSE"
+  },
+  {
+    "courseCode": "CSE-455",
+    "courseTitle": "High Performance Computing",
+    "credit": 3,
+    "category": "Network and Communication",
+    "department": "CSE"
+  },
+  {
+    "courseCode": "CSE-456",
+    "courseTitle": "Network Programming",
+    "credit": 3,
+    "category": "Network and Communication",
+    "department": "CSE"
+  },
+  {
+    "courseCode": "CSE-457",
+    "courseTitle": "Wireless and Cellular Communication",
+    "credit": 3,
+    "category": "Network and Communication",
+    "department": "CSE"
+  },
+  {
+    "courseCode": "CSE-461",
+    "courseTitle": "Algorithm Engineering",
+    "credit": 3,
+    "category": "Algorithms",
+    "department": "CSE"
+  },
+  {
+    "courseCode": "CSE-462",
+    "courseTitle": "Computational Complexity",
+    "credit": 3,
+    "category": "Algorithms",
+    "department": "CSE"
+  },
+  {
+    "courseCode": "CSE-463",
+    "courseTitle": "Advanced Algorithms",
+    "credit": 3,
+    "category": "Algorithms",
+    "department": "CSE"
+  },
+  {
+    "courseCode": "CSE-464",
+    "courseTitle": "Basic Graph Theory",
+    "credit": 3,
+    "category": "Algorithms",
+    "department": "CSE"
+  },
+  {
+    "courseCode": "CSE-465",
+    "courseTitle": "Algorithmic Game Theory",
+    "credit": 3,
+    "category": "Algorithms",
+    "department": "CSE"
+  },
+  {
+    "courseCode": "CSE-466",
+    "courseTitle": "Bioinformatics Algorithm",
+    "credit": 3,
+    "category": "Algorithms",
+    "department": "CSE"
+  },
+  {
+    "courseCode": "CSE-467",
+    "courseTitle": "Algorithm for Distributed Computation",
+    "credit": 3,
+    "category": "Algorithms",
+    "department": "CSE"
+  },
+  {
+    "courseCode": "CSE-471",
+    "courseTitle": "Introduction to Embedded Systems",
+    "credit": 3,
+    "category": "Embedded Systems and Robotics",
+    "department": "CSE"
+  },
+  {
+    "courseCode": "CSE-472",
+    "courseTitle": "Internet of Things (IoT)",
+    "credit": 3,
+    "category": "Embedded Systems and Robotics",
+    "department": "CSE"
+  },
+  {
+    "courseCode": "CSE-473",
+    "courseTitle": "Robotics",
+    "credit": 3,
+    "category": "Embedded Systems and Robotics",
+    "department": "CSE"
+  },
+  {
+    "courseCode": "CSE-474",
+    "courseTitle": "VLSI Design",
+    "credit": 3,
+    "category": "Embedded Systems and Robotics",
+    "department": "CSE"
+  },
+  {
+    "courseCode": "CSE-475",
+    "courseTitle": "Micro-sensors",
+    "credit": 3,
+    "category": "Embedded Systems and Robotics",
+    "department": "CSE"
+  },
+  {
+    "courseCode": "CSE-476",
+    "courseTitle": "Sensor Manufacturing and Process Control",
+    "credit": 3,
+    "category": "Embedded Systems and Robotics",
+    "department": "CSE"
+  },
+  {
+    "courseCode": "CSE-477",
+    "courseTitle": "Introduction to Nanotechnology and Nanodevices",
+    "credit": 3,
+    "category": "Embedded Systems and Robotics",
+    "department": "CSE"
+  },
+  {
+    "courseCode": "CSE-478",
+    "courseTitle": "Additive Manufacturing Engineering",
+    "credit": 3,
+    "category": "Embedded Systems and Robotics",
+    "department": "CSE"
+  }
+]

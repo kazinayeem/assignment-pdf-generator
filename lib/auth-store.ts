@@ -109,16 +109,12 @@ export const useAuthStore = create<AuthStore>((set) => ({
   },
 
   // ── Sync from NextAuth session ──────────────────────────────────────────────
-  // Called by AuthInitializer on every session change.
-  // Fetches/creates the Firestore user doc and applies it to the store.
   syncSession: async (session, status) => {
-    // Still loading NextAuth session — keep loading:true
     if (status === "loading") {
       set({ loading: true });
       return;
     }
 
-    // No session — user is not signed in
     if (!session?.user?.email || !session.user.id) {
       set({
         user: null,
@@ -132,20 +128,37 @@ export const useAuthStore = create<AuthStore>((set) => ({
     }
 
     try {
+      const uid = session.user.id;
       const email = session.user.email.toLowerCase();
       const role = session.user.role || resolveRole(email);
 
-      // Fetch or create the Firestore user document
-      const userData = await getOrCreateUserDoc(session.user.id, {
+      console.log("🔍 [syncSession] uid:", uid, "email:", email);
+
+      // Try to fetch by UID first (fast path — works after first login)
+      const db = getFirebaseDb();
+      const snap = await getDoc(doc(db, "users", uid));
+
+      if (snap.exists()) {
+        // Doc found by UID — return it directly (all profile fields preserved)
+        console.log("✅ [syncSession] Found doc by UID:", snap.data());
+        set(applyUser(snap.data() as UserDoc));
+        return;
+      }
+
+      // Doc not found by UID — could be first login or UID mismatch
+      // Fall back to getOrCreateUserDoc which will create it
+      console.log("🔍 [syncSession] No doc by UID, creating...");
+      const userData = await getOrCreateUserDoc(uid, {
         name: session.user.name || "",
         email,
         role,
         photoURL: session.user.image ?? undefined,
       });
 
+      console.log("✅ [syncSession] User doc ready:", userData);
       set(applyUser(userData));
     } catch (error: any) {
-      console.error("syncSession error:", error);
+      console.error("❌ [syncSession] error:", error);
       set({ error: error.message || "Failed to load user data.", loading: false });
     }
   },

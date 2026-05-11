@@ -30,13 +30,10 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
     error: "/login",
   },
   providers: [
-    // ── Google OAuth (for students with @diu.edu.bd) ──────────────────────────
     Google({
       clientId: googleClientId,
       clientSecret: googleClientSecret,
     }),
-
-    // ── Credentials (for super-admin email/password login) ────────────────────
     Credentials({
       name: "Credentials",
       credentials: {
@@ -46,13 +43,9 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
       async authorize(credentials) {
         const email = (credentials?.email as string)?.toLowerCase().trim();
         const password = credentials?.password as string;
-
         if (!email || !password) return null;
-
-        // Only super-admin can use credentials login
         if (email !== SUPER_ADMIN_EMAIL) return null;
         if (password !== SUPER_ADMIN_PASSWORD) return null;
-
         return {
           id: "super-admin",
           email: SUPER_ADMIN_EMAIL,
@@ -63,26 +56,25 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
     }),
   ],
   callbacks: {
-    // Block Google sign-in for non-DIU emails
     async signIn({ account, profile }) {
       if (account?.provider === "google") {
         const email = (profile as { email?: string } | undefined)?.email;
         return isAllowedEmail(email);
       }
-      // Credentials provider — already validated in authorize()
       return true;
     },
 
     async jwt({ token, account, profile, user }) {
-      // On initial sign-in, enrich the token
+      // ── First sign-in: account + profile are present ──────────────────────
       if (account?.provider === "google" && profile) {
-        const profileData = profile as { email?: string; name?: string; picture?: string };
-        const email = profileData.email?.toLowerCase() || "";
-        token.uid = token.sub || account.providerAccountId || email;
+        const p = profile as { sub?: string; email?: string; name?: string; picture?: string };
+        const email = p.email?.toLowerCase() || "";
+        // Use Google's stable `sub` as the UID — this is the same every login
+        token.uid = p.sub || token.sub || "";
         token.role = resolveRole(email);
-        token.name = profileData.name || token.name;
-        token.picture = profileData.picture || token.picture;
         token.email = email;
+        token.name = p.name || token.name;
+        token.picture = p.picture || token.picture;
       }
       if (account?.provider === "credentials" && user) {
         token.uid = "super-admin";
@@ -90,13 +82,17 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
         token.email = SUPER_ADMIN_EMAIL;
         token.name = "Super Admin";
       }
+      // ── Subsequent requests: token already has uid from above ─────────────
+      // token.uid persists in the JWT cookie across sessions
       return token;
     },
 
     async session({ session, token }) {
       if (session.user) {
-        session.user.id = (token.uid as string) || token.sub || session.user.email || "";
-        session.user.role = (token.role as "student" | "super-admin") || resolveRole(session.user.email);
+        // uid is stored in the JWT and survives logout/re-login
+        session.user.id = (token.uid as string) || token.sub || "";
+        session.user.role =
+          (token.role as "student" | "super-admin") || resolveRole(session.user.email);
       }
       return session;
     },

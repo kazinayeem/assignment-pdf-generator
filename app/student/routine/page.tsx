@@ -1,19 +1,10 @@
 "use client";
 
 import React, { useState, useMemo, useEffect } from "react";
-import { 
-  Calendar, 
-  Clock, 
-  MapPin, 
-  User, 
-  Search, 
-  BookOpen,
-  Loader2
-} from "lucide-react";
-import { Card } from "@/components/ui/card";
-import { Input } from "@/components/ui/input";
+import { Calendar, Clock, MapPin, User, Loader2, RefreshCw } from "lucide-react";
 import { useAuthStore } from "@/lib/auth-store";
 import { useProtectedRoute } from "@/lib/use-protected-route";
+import { Input } from "@/components/ui/input";
 
 interface RoutineEntry {
   day: string;
@@ -26,209 +17,366 @@ interface RoutineEntry {
   fullCourse: string;
 }
 
-const DAYS = ["Saturday", "Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday"];
+const DAYS = ["Saturday", "Sunday", "Monday", "Tuesday", "Wednesday", "Thursday"];
+const DAY_SHORT = ["Sat", "Sun", "Mon", "Tue", "Wed", "Thu"];
+
+const TIME_SLOTS = [
+  "08:30-10:00",
+  "10:00-11:30",
+  "11:30-01:00",
+  "01:00-02:30",
+  "02:30-04:00",
+  "04:00-05:30",
+];
+
+// Color palette per course code (consistent colors)
+const COURSE_COLORS = [
+  { bg: "bg-blue-50", border: "border-blue-200", text: "text-blue-700", dot: "bg-blue-500", header: "bg-blue-500" },
+  { bg: "bg-violet-50", border: "border-violet-200", text: "text-violet-700", dot: "bg-violet-500", header: "bg-violet-500" },
+  { bg: "bg-emerald-50", border: "border-emerald-200", text: "text-emerald-700", dot: "bg-emerald-500", header: "bg-emerald-500" },
+  { bg: "bg-orange-50", border: "border-orange-200", text: "text-orange-700", dot: "bg-orange-500", header: "bg-orange-500" },
+  { bg: "bg-pink-50", border: "border-pink-200", text: "text-pink-700", dot: "bg-pink-500", header: "bg-pink-500" },
+  { bg: "bg-cyan-50", border: "border-cyan-200", text: "text-cyan-700", dot: "bg-cyan-500", header: "bg-cyan-500" },
+  { bg: "bg-amber-50", border: "border-amber-200", text: "text-amber-700", dot: "bg-amber-500", header: "bg-amber-500" },
+  { bg: "bg-indigo-50", border: "border-indigo-200", text: "text-indigo-700", dot: "bg-indigo-500", header: "bg-indigo-500" },
+];
+
+function getCourseColor(courseCode: string, colorMap: Map<string, number>) {
+  if (!colorMap.has(courseCode)) {
+    colorMap.set(courseCode, colorMap.size % COURSE_COLORS.length);
+  }
+  return COURSE_COLORS[colorMap.get(courseCode)!];
+}
+
+// Get today's day name (Bangladesh uses Sat–Thu work week)
+function getTodayName(): string {
+  const days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+  return days[new Date().getDay()];
+}
 
 export default function StudentRoutinePage() {
   useProtectedRoute();
   const { user } = useAuthStore();
-  
+
   const [routineData, setRoutineData] = useState<RoutineEntry[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
-
   const [sectionFilter, setSectionFilter] = useState("");
   const [batchFilter, setBatchFilter] = useState("");
+  const [selectedDay, setSelectedDay] = useState<string | null>(null);
 
-  // Fetch routine from API on load
+  const today = getTodayName();
+  const colorMap = useMemo(() => new Map<string, number>(), []);
+
   useEffect(() => {
-    const fetchRoutine = async () => {
-      try {
-        setLoading(true);
-        const res = await fetch("/api/routine");
-        if (!res.ok) throw new Error("Failed to fetch routine data");
-        const data = await res.json();
-        setRoutineData(data);
-      } catch (err: any) {
-        setError(err.message);
-      } finally {
-        setLoading(false);
-      }
-    };
-
-    fetchRoutine();
+    fetch("/api/routine")
+      .then((r) => r.json())
+      .then((data) => { setRoutineData(data); setLoading(false); })
+      .catch((e) => { setError(e.message); setLoading(false); });
   }, []);
 
-  // Sync with user profile once loaded
   useEffect(() => {
     if (user) {
-      setSectionFilter(user.section || "B");
+      setSectionFilter(user.section || "");
       setBatchFilter(user.batch || "");
     }
   }, [user]);
 
-  const filteredRoutine = useMemo(() => {
-    return routineData.filter(entry => {
-      const studentSec = sectionFilter?.toUpperCase() || "";
-      const entrySec = entry.section?.toUpperCase() || "";
-      
-      const matchSection = !studentSec || 
-        entrySec === studentSec || 
-        (studentSec.length > 1 && entrySec === studentSec.charAt(0));
-
-      const matchBatch = !batchFilter || entry.batch?.includes(batchFilter);
-      return matchSection && matchBatch;
+  const filtered = useMemo(() => {
+    return routineData.filter((e) => {
+      const sec = sectionFilter.toUpperCase();
+      const entrySec = e.section?.toUpperCase() || "";
+      const matchSec = !sec || entrySec === sec || (sec.length > 1 && entrySec === sec[0]);
+      const matchBatch = !batchFilter || e.batch?.includes(batchFilter);
+      return matchSec && matchBatch;
     });
   }, [routineData, sectionFilter, batchFilter]);
 
-  const groupedRoutine = useMemo(() => {
-    const grouped: Record<string, RoutineEntry[]> = {};
-    filteredRoutine.forEach(entry => {
-      if (!grouped[entry.day]) grouped[entry.day] = [];
-      grouped[entry.day].push(entry);
+  // Build lookup: day → time → entry[]
+  const grid = useMemo(() => {
+    const map: Record<string, Record<string, RoutineEntry[]>> = {};
+    DAYS.forEach((d) => {
+      map[d] = {};
+      TIME_SLOTS.forEach((t) => { map[d][t] = []; });
     });
-    Object.keys(grouped).forEach(day => {
-      grouped[day].sort((a, b) => a.time.localeCompare(b.time));
+    filtered.forEach((e) => {
+      if (map[e.day]?.[e.time]) map[e.day][e.time].push(e);
     });
-    return grouped;
-  }, [filteredRoutine]);
+    return map;
+  }, [filtered]);
+
+  // Active day for mobile tab view
+  const activeDay = selectedDay || (DAYS.includes(today) ? today : DAYS[0]);
 
   if (loading) {
     return (
-      <div className="flex flex-col items-center justify-center min-h-[60vh] space-y-4">
-        <Loader2 className="w-12 h-12 text-blue-600 animate-spin" />
-        <p className="text-gray-500 font-bold animate-pulse">Loading Live Routine...</p>
+      <div className="flex flex-col items-center justify-center min-h-[60vh] gap-4">
+        <Loader2 className="w-10 h-10 animate-spin text-blue-600" />
+        <p className="text-gray-400 font-medium text-sm animate-pulse">Loading routine...</p>
       </div>
     );
   }
 
   if (error) {
     return (
-      <div className="flex flex-col items-center justify-center min-h-[60vh] space-y-6">
-        <div className="w-20 h-20 bg-red-50 rounded-full flex items-center justify-center">
-           <Calendar className="w-10 h-10 text-red-500" />
-        </div>
-        <div className="text-center space-y-2">
-           <h3 className="text-xl font-black text-gray-900">Unable to load routine</h3>
-           <p className="text-gray-400 text-sm">{error}</p>
-        </div>
+      <div className="flex flex-col items-center justify-center min-h-[60vh] gap-4">
+        <Calendar className="w-12 h-12 text-red-400" />
+        <p className="text-gray-500 font-medium">{error}</p>
+        <button onClick={() => window.location.reload()} className="flex items-center gap-2 text-sm text-blue-600 font-bold hover:underline">
+          <RefreshCw className="w-4 h-4" /> Retry
+        </button>
       </div>
     );
   }
 
   return (
-    <div className="space-y-10 pb-20">
-      {/* Header Section */}
-      <div className="relative p-10 rounded-[3rem] bg-white border border-gray-100 shadow-2xl shadow-gray-200/50 overflow-hidden">
-         <div className="absolute top-0 right-0 w-64 h-64 bg-blue-50/50 rounded-full blur-3xl -mr-20 -mt-20"></div>
-         
-         <div className="relative z-10 flex flex-col md:flex-row md:items-end justify-between gap-8">
-            <div className="space-y-4">
-               <div className="inline-flex items-center gap-2 px-3 py-1 bg-blue-50 text-blue-600 rounded-full text-[10px] font-black uppercase tracking-widest border border-blue-100">
-                  Spring 2026 Live Routine
-               </div>
-               <h1 className="text-4xl md:text-5xl font-black text-gray-900 tracking-tight">Class Schedule</h1>
-               <p className="text-gray-500 font-medium max-w-xl">
-                  Automatically synced with the latest SWE routine. Filtered for your profile.
-               </p>
-            </div>
+    <div className="space-y-6 pb-16">
 
-            <div className="flex flex-wrap items-center gap-4">
-               <div className="space-y-2">
-                  <label className="text-[10px] font-black text-gray-400 uppercase tracking-widest px-1">Batch</label>
-                  <Input 
-                    placeholder="e.g. 43" 
-                    value={batchFilter}
-                    onChange={(e) => setBatchFilter(e.target.value)}
-                    className="w-32 h-12 rounded-2xl border-gray-100 bg-gray-50 focus:bg-white transition-all font-bold"
-                  />
-               </div>
-               <div className="space-y-2">
-                  <label className="text-[10px] font-black text-gray-400 uppercase tracking-widest px-1">Section</label>
-                  <Input 
-                    placeholder="e.g. B" 
-                    value={sectionFilter}
-                    onChange={(e) => setSectionFilter(e.target.value)}
-                    className="w-32 h-12 rounded-2xl border-gray-100 bg-gray-50 focus:bg-white transition-all font-bold"
-                  />
-               </div>
+      {/* ── Header ─────────────────────────────────────────────────────────── */}
+      <div className="relative p-6 md:p-8 rounded-2xl bg-gradient-to-br from-gray-900 via-blue-950 to-gray-900 overflow-hidden shadow-xl">
+        <div className="absolute inset-0 opacity-10"
+          style={{ backgroundImage: "radial-gradient(circle at 20% 50%, #3b82f6 0%, transparent 50%), radial-gradient(circle at 80% 20%, #6366f1 0%, transparent 50%)" }} />
+        <div className="relative z-10 flex flex-col md:flex-row md:items-center justify-between gap-5">
+          <div>
+            <div className="flex items-center gap-2 mb-2">
+              <Calendar className="w-5 h-5 text-blue-400" />
+              <span className="text-[10px] font-black uppercase tracking-widest text-blue-400">Spring 2026</span>
             </div>
-         </div>
+            <h1 className="text-2xl md:text-3xl font-black text-white tracking-tight">Class Routine</h1>
+            <p className="text-blue-200/60 text-sm mt-1">
+              {user?.department || "SWE"} · Batch {batchFilter || "—"} · Section {sectionFilter || "—"}
+            </p>
+          </div>
+
+          {/* Filters */}
+          <div className="flex items-end gap-3">
+            <div>
+              <label className="block text-[9px] font-black uppercase tracking-widest text-blue-300/60 mb-1.5 ml-1">Batch</label>
+              <Input
+                placeholder="e.g. 43"
+                value={batchFilter}
+                onChange={(e) => setBatchFilter(e.target.value)}
+                className="w-24 h-10 rounded-xl bg-white/10 border-white/10 text-white placeholder:text-white/30 font-bold text-sm focus:bg-white/20"
+              />
+            </div>
+            <div>
+              <label className="block text-[9px] font-black uppercase tracking-widest text-blue-300/60 mb-1.5 ml-1">Section</label>
+              <Input
+                placeholder="e.g. B"
+                value={sectionFilter}
+                onChange={(e) => setSectionFilter(e.target.value)}
+                className="w-24 h-10 rounded-xl bg-white/10 border-white/10 text-white placeholder:text-white/30 font-bold text-sm focus:bg-white/20"
+              />
+            </div>
+          </div>
+        </div>
       </div>
 
-      {/* Routine Grid */}
-      <div className="grid grid-cols-1 gap-12">
-        {DAYS.map(day => {
-          const dayClasses = groupedRoutine[day] || [];
-          if (dayClasses.length === 0 && (sectionFilter || batchFilter)) return null;
+      {/* ── Today Banner ───────────────────────────────────────────────────── */}
+      {DAYS.includes(today) && (
+        <div className="flex items-center gap-3 px-4 py-3 bg-blue-50 border border-blue-100 rounded-xl">
+          <span className="w-2 h-2 rounded-full bg-blue-500 animate-pulse" />
+          <p className="text-sm font-bold text-blue-700">
+            Today is <span className="font-black">{today}</span>
+            {grid[today] && Object.values(grid[today]).flat().length > 0
+              ? ` — ${Object.values(grid[today]).flat().length} class${Object.values(grid[today]).flat().length > 1 ? "es" : ""} scheduled`
+              : " — No classes today"}
+          </p>
+        </div>
+      )}
 
-          return (
-            <section key={day} className="space-y-6">
-              <div className="flex items-center gap-4">
-                 <div className="w-12 h-12 bg-gray-900 rounded-2xl flex items-center justify-center shadow-lg">
-                    <Calendar className="w-6 h-6 text-white" />
-                 </div>
-                 <h2 className="text-2xl font-black text-gray-900 tracking-tight">{day}</h2>
-                 <div className="flex-1 h-px bg-gray-100"></div>
-                 <span className="text-xs font-black text-gray-300 uppercase tracking-widest">
-                    {dayClasses.length} Classes
-                 </span>
+      {/* ── Mobile: Day Tabs + Single Day View ─────────────────────────────── */}
+      <div className="block xl:hidden">
+        {/* Day tabs */}
+        <div className="flex gap-2 overflow-x-auto pb-2 scrollbar-hide">
+          {DAYS.map((day, i) => {
+            const count = Object.values(grid[day]).flat().length;
+            const isToday = day === today;
+            const isActive = day === activeDay;
+            return (
+              <button
+                key={day}
+                onClick={() => setSelectedDay(day)}
+                className={`flex-shrink-0 flex flex-col items-center px-4 py-2.5 rounded-xl font-bold text-sm transition-all border
+                  ${isActive
+                    ? "bg-blue-600 text-white border-blue-600 shadow-lg shadow-blue-200"
+                    : isToday
+                    ? "bg-blue-50 text-blue-600 border-blue-200"
+                    : "bg-white text-gray-500 border-gray-100 hover:border-blue-200 hover:text-blue-600"
+                  }`}
+              >
+                <span className="text-[10px] font-black uppercase tracking-wider">{DAY_SHORT[i]}</span>
+                <span className={`text-[9px] mt-0.5 font-bold ${isActive ? "text-blue-200" : "text-gray-400"}`}>
+                  {count} cls
+                </span>
+              </button>
+            );
+          })}
+        </div>
+
+        {/* Single day schedule */}
+        <div className="mt-4 space-y-3">
+          {TIME_SLOTS.map((slot) => {
+            const classes = grid[activeDay]?.[slot] || [];
+            return (
+              <div key={slot} className="flex gap-3">
+                {/* Time label */}
+                <div className="w-20 shrink-0 flex flex-col items-end justify-start pt-1">
+                  <span className="text-[10px] font-black text-gray-400 leading-tight">{slot.split("-")[0]}</span>
+                  <span className="text-[9px] text-gray-300">–{slot.split("-")[1]}</span>
+                </div>
+                {/* Classes */}
+                <div className="flex-1 min-h-[60px]">
+                  {classes.length === 0 ? (
+                    <div className="h-full min-h-[56px] border border-dashed border-gray-100 rounded-xl flex items-center justify-center">
+                      <span className="text-[10px] text-gray-300 font-medium">Free</span>
+                    </div>
+                  ) : (
+                    <div className="space-y-2">
+                      {classes.map((cls, idx) => {
+                        const color = getCourseColor(cls.courseCode, colorMap);
+                        return (
+                          <div key={idx} className={`p-3 rounded-xl border ${color.bg} ${color.border}`}>
+                            <div className="flex items-center justify-between mb-1">
+                              <span className={`text-xs font-black ${color.text}`}>{cls.courseCode}</span>
+                              <span className="text-[9px] font-bold text-gray-400 bg-white/70 px-2 py-0.5 rounded-full">
+                                Sec {cls.section}
+                              </span>
+                            </div>
+                            <div className="flex items-center gap-3 text-[10px] text-gray-500 font-medium">
+                              <span className="flex items-center gap-1"><MapPin className="w-3 h-3" /> {cls.room}</span>
+                              <span className="flex items-center gap-1"><User className="w-3 h-3" /> {cls.teacher || "TBA"}</span>
+                            </div>
+                          </div>
+                        );
+                      })}
+                    </div>
+                  )}
+                </div>
+              </div>
+            );
+          })}
+        </div>
+      </div>
+
+      {/* ── Desktop: Full Weekly Grid ───────────────────────────────────────── */}
+      <div className="hidden xl:block">
+        <div className="bg-white rounded-2xl border border-gray-100 shadow-sm overflow-hidden">
+          {/* Grid header — days */}
+          <div className="grid border-b border-gray-100" style={{ gridTemplateColumns: "80px repeat(6, 1fr)" }}>
+            <div className="p-4 bg-gray-50 border-r border-gray-100" />
+            {DAYS.map((day, i) => {
+              const isToday = day === today;
+              const count = Object.values(grid[day]).flat().length;
+              return (
+                <div
+                  key={day}
+                  className={`p-4 text-center border-r border-gray-100 last:border-r-0 ${isToday ? "bg-blue-600" : "bg-gray-50"}`}
+                >
+                  <p className={`text-[10px] font-black uppercase tracking-widest ${isToday ? "text-blue-200" : "text-gray-400"}`}>
+                    {DAY_SHORT[i]}
+                  </p>
+                  <p className={`text-sm font-black mt-0.5 ${isToday ? "text-white" : "text-gray-700"}`}>{day}</p>
+                  <p className={`text-[9px] font-bold mt-1 ${isToday ? "text-blue-200" : "text-gray-400"}`}>
+                    {count} class{count !== 1 ? "es" : ""}
+                  </p>
+                </div>
+              );
+            })}
+          </div>
+
+          {/* Grid rows — time slots */}
+          {TIME_SLOTS.map((slot, slotIdx) => (
+            <div
+              key={slot}
+              className={`grid border-b border-gray-50 last:border-b-0 ${slotIdx % 2 === 0 ? "bg-white" : "bg-gray-50/30"}`}
+              style={{ gridTemplateColumns: "80px repeat(6, 1fr)" }}
+            >
+              {/* Time label */}
+              <div className="p-3 border-r border-gray-100 flex flex-col items-center justify-center bg-gray-50/50">
+                <Clock className="w-3 h-3 text-gray-300 mb-1" />
+                <span className="text-[9px] font-black text-gray-400 text-center leading-tight">
+                  {slot.split("-")[0]}
+                </span>
+                <span className="text-[8px] text-gray-300 text-center">
+                  {slot.split("-")[1]}
+                </span>
               </div>
 
-              {dayClasses.length > 0 ? (
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                  {dayClasses.map((entry, idx) => (
-                    <Card key={idx} className="group p-6 rounded-[2.5rem] border-gray-100 hover:border-blue-200 hover:shadow-2xl hover:shadow-blue-100/50 transition-all duration-500 bg-white">
-                       <div className="flex items-start justify-between mb-6">
-                          <div className="p-3 bg-blue-50 rounded-2xl text-blue-600 group-hover:scale-110 group-hover:rotate-6 transition-transform">
-                             <BookOpen className="w-6 h-6" />
-                          </div>
-                          <div className="px-3 py-1 bg-gray-50 rounded-full border border-gray-100 text-[10px] font-black text-gray-400 uppercase tracking-widest">
-                             Batch {entry.batch} • Sec {entry.section}
-                          </div>
-                       </div>
-
-                       <div className="space-y-4">
-                          <h3 className="text-xl font-black text-gray-900 group-hover:text-blue-600 transition-colors">
-                             {entry.courseCode}
-                          </h3>
-                          
-                          <div className="space-y-3">
-                             <div className="flex items-center gap-3 text-sm font-bold text-gray-500">
-                                <Clock className="w-4 h-4 text-gray-400" />
-                                <span>{entry.time}</span>
-                             </div>
-                             <div className="flex items-center gap-3 text-sm font-bold text-gray-500">
-                                <MapPin className="w-4 h-4 text-gray-400" />
-                                <span>Room {entry.room}</span>
-                             </div>
-                             <div className="flex items-center gap-3 text-sm font-bold text-blue-600/80">
-                                <User className="w-4 h-4" />
-                                <span>{entry.teacher || "TBA"}</span>
-                             </div>
-                          </div>
-                       </div>
-                    </Card>
-                  ))}
-                </div>
-              ) : (
-                <div className="p-12 text-center bg-gray-50 rounded-[3rem] border border-dashed border-gray-200">
-                   <p className="text-gray-400 font-bold italic">No classes scheduled for this day.</p>
-                </div>
-              )}
-            </section>
-          );
-        })}
+              {/* Day cells */}
+              {DAYS.map((day) => {
+                const classes = grid[day]?.[slot] || [];
+                const isToday = day === today;
+                return (
+                  <div
+                    key={day}
+                    className={`p-2 border-r border-gray-100 last:border-r-0 min-h-[90px] ${isToday ? "bg-blue-50/20" : ""}`}
+                  >
+                    {classes.length === 0 ? (
+                      <div className="h-full flex items-center justify-center">
+                        <span className="text-[9px] text-gray-200">—</span>
+                      </div>
+                    ) : (
+                      <div className="space-y-1.5 h-full">
+                        {classes.map((cls, idx) => {
+                          const color = getCourseColor(cls.courseCode, colorMap);
+                          return (
+                            <div
+                              key={idx}
+                              className={`p-2 rounded-lg border ${color.bg} ${color.border} group cursor-default`}
+                            >
+                              <div className="flex items-center gap-1.5 mb-1">
+                                <span className={`w-1.5 h-1.5 rounded-full shrink-0 ${color.dot}`} />
+                                <span className={`text-[11px] font-black truncate ${color.text}`}>
+                                  {cls.courseCode}
+                                </span>
+                              </div>
+                              <div className="space-y-0.5">
+                                <div className="flex items-center gap-1 text-[9px] text-gray-500">
+                                  <MapPin className="w-2.5 h-2.5 shrink-0" />
+                                  <span className="truncate">{cls.room}</span>
+                                </div>
+                                <div className="flex items-center gap-1 text-[9px] text-gray-500">
+                                  <User className="w-2.5 h-2.5 shrink-0" />
+                                  <span className="truncate">{cls.teacher || "TBA"}</span>
+                                </div>
+                                <div className="text-[8px] font-bold text-gray-400">
+                                  Sec {cls.section} · Batch {cls.batch}
+                                </div>
+                              </div>
+                            </div>
+                          );
+                        })}
+                      </div>
+                    )}
+                  </div>
+                );
+              })}
+            </div>
+          ))}
+        </div>
       </div>
 
-      {filteredRoutine.length === 0 && (
-        <div className="flex flex-col items-center justify-center py-32 text-center space-y-6">
-           <div className="w-20 h-20 bg-gray-50 rounded-full flex items-center justify-center">
-              <Search className="w-10 h-10 text-gray-200" />
-           </div>
-           <div className="space-y-2">
-              <h3 className="text-xl font-black text-gray-900">No results found</h3>
-              <p className="text-gray-400 text-sm font-medium">Try adjusting your section or batch filter.</p>
-           </div>
+      {/* ── Legend ─────────────────────────────────────────────────────────── */}
+      {filtered.length > 0 && (
+        <div className="flex flex-wrap gap-2 pt-2">
+          {Array.from(new Set(filtered.map((e) => e.courseCode))).map((code) => {
+            const color = getCourseColor(code, colorMap);
+            return (
+              <div key={code} className={`flex items-center gap-1.5 px-3 py-1.5 rounded-full border text-xs font-bold ${color.bg} ${color.border} ${color.text}`}>
+                <span className={`w-2 h-2 rounded-full ${color.dot}`} />
+                {code}
+              </div>
+            );
+          })}
+        </div>
+      )}
+
+      {filtered.length === 0 && !loading && (
+        <div className="flex flex-col items-center justify-center py-20 gap-4">
+          <Calendar className="w-12 h-12 text-gray-200" />
+          <p className="text-gray-400 font-bold">No classes found for this filter.</p>
+          <p className="text-gray-300 text-sm">Try changing your batch or section.</p>
         </div>
       )}
     </div>

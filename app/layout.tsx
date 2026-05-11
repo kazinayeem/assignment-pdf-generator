@@ -4,6 +4,7 @@ import "./globals.css";
 import AppFooter from "@/components/app-footer";
 import { AuthInitializer } from "@/components/auth-initializer";
 import AppSessionProvider from "@/components/session-provider";
+import { ThemeProvider } from "@/components/theme-provider";
 import { Toaster } from "react-hot-toast";
 import { Analytics } from "@vercel/analytics/next";
 
@@ -76,13 +77,15 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        <AppSessionProvider>
-          <AuthInitializer />
-          <Toaster position="top-right" />
-          {children}
-          <AppFooter />
-          <Analytics />
-        </AppSessionProvider>
+        <ThemeProvider>
+          <AppSessionProvider>
+            <AuthInitializer />
+            <Toaster position="top-right" />
+            {children}
+            <AppFooter />
+            <Analytics />
+          </AppSessionProvider>
+        </ThemeProvider>
       </body>
     </html>
   );

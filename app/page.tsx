@@ -3,16 +3,20 @@ import LandingView from "@/components/landing-view";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "DIU CoverGen | Automate Your Academic Covers",
-  description: "The ultimate student portal for Daffodil International University. Generate professional assignment and lab report covers in seconds. Built by Bornosoft.",
+  title: "CampusFlow | Your Complete Academic Productivity Platform",
+  description: "CampusFlow is the complete academic toolkit for Daffodil International University students. Generate assignment covers, lab reports, CVs, and class routines in seconds. Built by Bornosoft.",
   keywords: [
+    "CampusFlow",
     "Daffodil International University",
     "DIU",
     "DIU Student Portal",
     "Bornosoft",
-    "CoverGen",
-    "DIU Assignment",
-    "Lab Report Generator"
+    "DIU Assignment Cover",
+    "Lab Report Generator",
+    "CV Builder",
+    "Class Routine",
+    "ATS CV",
+    "DIU PDF Generator",
   ],
 };
 

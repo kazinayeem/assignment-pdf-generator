@@ -4,6 +4,7 @@ import "./globals.css";
 import AppFooter from "@/components/app-footer";
 import { AuthInitializer } from "@/components/auth-initializer";
 import AppSessionProvider from "@/components/session-provider";
+import { ThemeProvider } from "@/components/theme-provider";
 import { Toaster } from "react-hot-toast";
 import { Analytics } from "@vercel/analytics/next";
 
@@ -19,20 +20,24 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   title: {
-    default: "CoverGen | DIU Student Portal by Bornosoft",
-    template: "%s | CoverGen",
+    default: "CampusFlow | Academic Productivity Platform for DIU",
+    template: "%s | CampusFlow",
   },
   description:
-    "The ultimate student toolkit for Daffodil International University. Generate professional assignment and lab report covers automatically. Developed by Bornosoft.",
+    "CampusFlow is the complete academic productivity platform for Daffodil International University students. Generate assignment covers, lab reports, CVs, and class routines instantly. Built by Bornosoft.",
   keywords: [
+    "CampusFlow",
     "Daffodil International University",
     "DIU",
     "DIU Student Portal",
     "Bornosoft",
-    "CoverGen",
+    "CampusFlow DIU",
     "DIU Assignment Cover",
     "DIU Lab Report",
     "DIU PDF Generator",
+    "CV Builder",
+    "ATS CV",
+    "Class Routine",
     "SWE",
     "CSE",
     "Software Engineering",
@@ -43,19 +48,19 @@ export const metadata: Metadata = {
   creator: "Mohammad Ali Nayeem",
   publisher: "Bornosoft",
   openGraph: {
-    title: "CoverGen | DIU Student Portal by Bornosoft",
+    title: "CampusFlow | Academic Productivity Platform for DIU",
     description:
-      "Automate your academic covers with precision. The ultimate toolkit for DIU students.",
+      "Generate assignment covers, lab reports, CVs, and class routines in seconds. The complete academic toolkit for DIU students.",
     type: "website",
     locale: "en_US",
-    siteName: "CoverGen",
-    url: "https://bornosoftnr.com",
+    siteName: "CampusFlow",
+    url: "https://bornosoft-cover.vercel.app",
   },
   twitter: {
     card: "summary_large_image",
-    title: "CoverGen | DIU Student Portal",
+    title: "CampusFlow | DIU Student Platform",
     description:
-      "Generate DIU assignment and lab report covers in seconds. Built by Bornosoft.",
+      "Generate DIU assignment covers, lab reports, and CVs in seconds. Built by Bornosoft.",
   },
   robots: {
     index: true,
@@ -72,17 +77,19 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        <AppSessionProvider>
-          <AuthInitializer />
-          <Toaster position="top-right" />
-          {children}
-          <AppFooter />
-          <Analytics />
-        </AppSessionProvider>
+        <ThemeProvider>
+          <AppSessionProvider>
+            <AuthInitializer />
+            <Toaster position="top-right" />
+            {children}
+            <AppFooter />
+            <Analytics />
+          </AppSessionProvider>
+        </ThemeProvider>
       </body>
     </html>
   );

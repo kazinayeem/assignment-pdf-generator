@@ -32,7 +32,8 @@ export function buildUserDoc(user: {
 
 /**
  * Fetch existing UserDoc from Firestore, or create one if missing.
- * Called after NextAuth session is established.
+ * On every login, merges fresh session data (name, photoURL) without
+ * overwriting profile fields the user has set (studentId, department, etc.)
  */
 export async function getOrCreateUserDoc(
   uid: string,
@@ -43,9 +44,25 @@ export async function getOrCreateUserDoc(
   const snapshot = await getDoc(userRef);
 
   if (snapshot.exists()) {
-    return snapshot.data() as UserDoc;
+    const existing = snapshot.data() as UserDoc;
+    // Merge only non-profile fields from the session (name, photoURL)
+    // so we don't overwrite studentId, department, batch, etc.
+    const updates: Partial<UserDoc> = {};
+    if (fallback.name && fallback.name !== existing.name && !existing.studentId) {
+      // Only update name if user hasn't set their own name via profile
+      updates.name = fallback.name;
+    }
+    if (fallback.photoURL && fallback.photoURL !== existing.photoURL) {
+      updates.photoURL = fallback.photoURL;
+    }
+    if (Object.keys(updates).length > 0) {
+      await setDoc(userRef, { ...existing, ...updates }, { merge: true });
+      return { ...existing, ...updates };
+    }
+    return existing;
   }
 
+  // First login — create the document
   const newDoc = buildUserDoc({ uid, ...fallback });
   await setDoc(userRef, newDoc);
   return newDoc;

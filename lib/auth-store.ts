@@ -10,6 +10,8 @@
 
 import { create } from "zustand";
 import { signIn, signOut } from "next-auth/react";
+import { doc, getDoc } from "firebase/firestore";
+import { getFirebaseDb } from "./firebase-config";
 import type { Session } from "next-auth";
 import { getOrCreateUserDoc, resolveRole } from "./auth-utils";
 import type { UserDoc, AuthContextType } from "./types";
@@ -19,6 +21,8 @@ import type { UserDoc, AuthContextType } from "./types";
 interface AuthStore extends AuthContextType {
   /** Called by AuthInitializer whenever the NextAuth session changes */
   syncSession: (session: Session | null, status: string) => Promise<void>;
+  /** Re-fetches the user doc from Firestore and updates the store — call after profile save */
+  refreshUser: () => Promise<void>;
   setError: (error: string | null) => void;
   signInWithEmailPassword: (email: string, password: string) => Promise<void>;
 }
@@ -47,6 +51,23 @@ export const useAuthStore = create<AuthStore>((set) => ({
   isStudent: false,
 
   setError: (error) => set({ error }),
+
+  // ── Refresh user from Firestore ─────────────────────────────────────────────
+  // Call this after saving profile to update the Zustand store immediately
+  // without waiting for a full page reload or session re-sync.
+  refreshUser: async () => {
+    const { user } = useAuthStore.getState();
+    if (!user?.uid) return;
+    try {
+      const db = getFirebaseDb();
+      const snap = await getDoc(doc(db, "users", user.uid));
+      if (snap.exists()) {
+        set(applyUser(snap.data() as UserDoc));
+      }
+    } catch (error) {
+      console.error("refreshUser error:", error);
+    }
+  },
 
   // ── Google Sign-In via NextAuth ─────────────────────────────────────────────
   signInWithGoogle: async () => {

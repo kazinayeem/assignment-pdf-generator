@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { useRouter } from "next/navigation";
 import { useAuthStore } from "@/lib/auth-store";
 import { useProtectedRoute } from "@/lib/use-protected-route";
 import { updateUserProfile, getAllDepartments } from "@/lib/firestore-service";
@@ -11,12 +12,13 @@ import { Loader2, UserCircle } from "lucide-react";
 import toast from "react-hot-toast";
 
 export default function StudentProfilePage() {
+  const router = useRouter();
   const { loading } = useProtectedRoute("student");
-  const { user: authUser } = useAuthStore();
+  const { user: authUser, refreshUser } = useAuthStore();
   const [saving, setSaving] = useState(false);
   const [departments, setDepartments] = useState<DepartmentDoc[]>([]);
 
-  // Form State
+  // Form state — pre-filled from Firestore user doc
   const [name, setName] = useState("");
   const [studentId, setStudentId] = useState("");
   const [department, setDepartment] = useState("");
@@ -29,15 +31,16 @@ export default function StudentProfilePage() {
     getAllDepartments().then(setDepartments).catch(() => {});
   }, []);
 
+  // Pre-fill form from the Firestore user doc (loaded via auth store)
   useEffect(() => {
     if (authUser) {
       setName(authUser.name || "");
-      setStudentId((authUser as any).studentId || "");
+      setStudentId(authUser.studentId || "");
       setDepartment(authUser.department || "");
-      setBatch((authUser as any).batch || "");
-      setSemester((authUser as any).semester || "");
-      setSection((authUser as any).section || "");
-      setSubSection((authUser as any).subSection || "");
+      setBatch(authUser.batch || "");
+      setSemester(authUser.semester || "");
+      setSection(authUser.section || "");
+      setSubSection(authUser.subSection || "");
     }
   }, [authUser]);
 
@@ -53,19 +56,22 @@ export default function StudentProfilePage() {
 
     try {
       setSaving(true);
+      // Save to Firestore
       await updateUserProfile(authUser!.uid, {
         name: name.trim(),
         studentId: studentId.trim(),
-        department: department,
+        department,
         batch: batch.trim(),
         semester: semester.trim(),
         section: section.trim(),
         subSection: subSection.trim(),
-      } as any);
-      toast.success("Profile updated successfully!");
-      window.location.href = "/student/mycourses";
+      });
+      // Refresh Zustand store so all pages see updated data immediately
+      await refreshUser();
+      toast.success("Profile saved!");
+      router.push("/student/mycourses");
     } catch (error) {
-      toast.error("Failed to update profile");
+      toast.error("Failed to save profile");
       console.error(error);
     } finally {
       setSaving(false);
@@ -80,9 +86,9 @@ export default function StudentProfilePage() {
     );
   }
 
-  const isProfileComplete = !!(authUser as any).studentId && !!authUser.name && !!authUser.department;
-
-  const inputCls = "w-full px-4 py-3 bg-gray-50 border border-gray-200 focus:border-blue-500 focus:ring-1 focus:ring-blue-500 rounded-xl transition-all text-sm";
+  const isProfileComplete = !!authUser.studentId && !!authUser.name && !!authUser.department;
+  const inputCls =
+    "w-full px-4 py-3 bg-gray-50 border border-gray-200 focus:border-blue-500 focus:ring-1 focus:ring-blue-500 rounded-xl transition-all text-sm";
 
   return (
     <div className="max-w-3xl mx-auto py-8">
@@ -91,7 +97,7 @@ export default function StudentProfilePage() {
           <div className="flex items-center gap-3">
             <UserCircle className="h-5 w-5 text-amber-500 shrink-0" />
             <p className="text-sm text-amber-800 font-medium">
-              Please complete your profile first — Student ID and Department are required.
+              Please complete your profile — Student ID and Department are required to use all features.
             </p>
           </div>
         </div>
@@ -107,7 +113,7 @@ export default function StudentProfilePage() {
             <div>
               <h1 className="text-3xl font-bold">Your Profile</h1>
               <p className="text-blue-100 mt-1 opacity-90">
-                Manage your student details for auto-filling assignments
+                Saved data auto-fills your assignments and lab reports
               </p>
             </div>
           </div>
@@ -160,7 +166,6 @@ export default function StudentProfilePage() {
                     {d.code} — {d.name}
                   </option>
                 ))}
-                {/* Fallback if no departments seeded yet */}
                 {departments.length === 0 && (
                   <>
                     <option value="SWE">SWE — Software Engineering</option>
@@ -196,9 +201,15 @@ export default function StudentProfilePage() {
               <select value={semester} onChange={(e) => setSemester(e.target.value)} className={inputCls}>
                 <option value="">Select Semester</option>
                 {Array.from({ length: 7 }, (_, i) => 2024 + i).flatMap((year) => [
-                  <option key={`Spring ${year}`} value={`Spring ${year}`}>Spring {year}</option>,
-                  <option key={`Summer ${year}`} value={`Summer ${year}`}>Summer {year}</option>,
-                  <option key={`Fall ${year}`} value={`Fall ${year}`}>Fall {year}</option>,
+                  <option key={`Spring ${year}`} value={`Spring ${year}`}>
+                    Spring {year}
+                  </option>,
+                  <option key={`Summer ${year}`} value={`Summer ${year}`}>
+                    Summer {year}
+                  </option>,
+                  <option key={`Fall ${year}`} value={`Fall ${year}`}>
+                    Fall {year}
+                  </option>,
                 ])}
               </select>
             </div>
@@ -217,7 +228,9 @@ export default function StudentProfilePage() {
 
             {/* Lab Sub-section */}
             <div>
-              <label className="block text-sm font-semibold text-gray-700 mb-2">Lab Sub-section</label>
+              <label className="block text-sm font-semibold text-gray-700 mb-2">
+                Lab Sub-section
+              </label>
               <input
                 type="text"
                 value={subSection}
@@ -227,7 +240,6 @@ export default function StudentProfilePage() {
               />
               <p className="text-xs text-gray-500 mt-1.5">Required for lab reports.</p>
             </div>
-
           </div>
 
           <div className="pt-6 border-t border-gray-100 flex justify-end">

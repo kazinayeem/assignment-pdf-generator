@@ -1,7 +1,7 @@
 "use client";
 
-import React, { useState, useMemo, useEffect } from "react";
-import { Calendar, Clock, MapPin, User, Loader2, RefreshCw } from "lucide-react";
+import React, { useState, useMemo, useEffect, useRef, useCallback } from "react";
+import { Calendar, Clock, MapPin, User, Loader2, RefreshCw, Download, ImageIcon } from "lucide-react";
 import { useAuthStore } from "@/lib/auth-store";
 import { useProtectedRoute } from "@/lib/use-protected-route";
 import { Input } from "@/components/ui/input";

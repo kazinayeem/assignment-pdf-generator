@@ -8,7 +8,8 @@
  */
 
 import {
-  signInWithPopup,
+  signInWithRedirect,
+  getRedirectResult,
   signInWithEmailAndPassword,
   createUserWithEmailAndPassword,
   signOut as firebaseSignOut,
@@ -62,41 +63,80 @@ export async function getOrCreateUserDoc(
   return newDoc;
 }
 
-// ─── Google Sign-In (Popup) ───────────────────────────────────────────────────
+// ─── Google Sign-In (Redirect) ────────────────────────────────────────────────
 
 /**
- * Initiates Google sign-in using popup flow.
- * Returns the normalized UserDoc when sign-in succeeds.
+ * Initiates Google sign-in using redirect flow.
+ * Returns null immediately; the user is redirected and the result is handled
+ * by handleGoogleRedirectResult() on the next page load.
  */
 export async function initiateGoogleSignIn(): Promise<UserDoc | null> {
   const auth = getFirebaseAuth();
   const provider = getGoogleProvider();
 
-  console.log("🔍 [AUTH-UTILS] Initiating Google sign-in (popup flow)...");
+  console.log("🔍 [AUTH-UTILS] Initiating Google sign-in (redirect flow)...");
   console.log("🔍 [AUTH-UTILS] Current URL:", window.location.href);
 
-  let credential: UserCredential;
-
   try {
-    credential = await signInWithPopup(auth, provider);
+    await signInWithRedirect(auth, provider);
   } catch (err) {
     const error = err as AuthError;
-    console.error("❌ [AUTH-UTILS] Popup sign-in error:", error.code, error.message);
+    console.error("❌ [AUTH-UTILS] Redirect sign-in error:", error.code, error.message);
 
-    if (error.code === "auth/popup-closed-by-user") {
-      throw new Error("Google sign-in was canceled.");
-    }
-    if (error.code === "auth/popup-blocked") {
-      throw new Error("Popup was blocked by the browser. Please allow popups and try again.");
-    }
     if (error.code === "auth/account-exists-with-different-credential") {
       throw new Error("An account already exists with a different sign-in method.");
     }
 
-    throw error;
+    if (error.code === "auth/unauthorized-domain") {
+      throw new Error(
+        "This domain is not authorized in Firebase. Add it under Firebase Console → Authentication → Settings → Authorized domains."
+      );
+    }
+
+    throw new Error(error.message || "Google sign-in failed. Please try again.");
   }
-  const firebaseUser = credential.user;
-  console.log("🔍 [AUTH-UTILS] Firebase user from popup:", {
+
+  return null;
+}
+
+/**
+ * Call on every page load to capture the Google redirect result.
+ * Returns UserDoc if a redirect just completed, or null on normal loads.
+ */
+export async function handleGoogleRedirectResult(): Promise<UserDoc | null> {
+  console.log("🔍 [AUTH-UTILS] handleGoogleRedirectResult: Starting...");
+  console.log("🔍 [AUTH-UTILS] Current URL:", typeof window !== 'undefined' ? window.location.href : 'SSR');
+  console.log("🔍 [AUTH-UTILS] URL search params:", typeof window !== 'undefined' ? window.location.search : 'SSR');
+
+  const auth = getFirebaseAuth();
+  let result: UserCredential | null = null;
+
+  try {
+    console.log("🔍 [AUTH-UTILS] Calling getRedirectResult...");
+    result = await getRedirectResult(auth);
+    console.log("🔍 [AUTH-UTILS] getRedirectResult returned:", result ? "UserCredential" : "null");
+  } catch (err) {
+    const error = err as AuthError;
+    console.error("❌ [AUTH-UTILS] Redirect result error:", error.code, error.message);
+
+    if (error.code === "auth/unauthorized-domain") {
+      throw new Error(
+        "This domain is not authorized in Firebase. Add it under Firebase Console → Authentication → Settings → Authorized domains."
+      );
+    }
+    if (error.code === "auth/account-exists-with-different-credential") {
+      throw new Error("An account already exists with a different sign-in method.");
+    }
+    throw new Error(error.message || "Google sign-in failed. Please try again.");
+  }
+
+  if (!result) {
+    console.log("🔍 [AUTH-UTILS] No redirect result - normal page load");
+    return null;
+  }
+
+  const firebaseUser = result.user;
+  console.log("🔍 [AUTH-UTILS] Firebase user from redirect:", {
     uid: firebaseUser.uid,
     email: firebaseUser.email,
     displayName: firebaseUser.displayName,

@@ -14,6 +14,7 @@ import { doc, getDoc } from "firebase/firestore";
 import { getFirebaseAuth, getFirebaseDb } from "./firebase-config";
 import {
   initiateGoogleSignIn,
+  handleGoogleRedirectResult,
   signInWithEmailPassword,
   signOutUser,
 } from "./auth-utils";
@@ -23,6 +24,7 @@ import type { UserDoc, AuthContextType } from "./types";
 
 interface AuthStore extends AuthContextType {
   initializeAuth: () => () => void;
+  handleRedirectResult: () => Promise<void>;
   setLoading: (loading: boolean) => void;
   setError: (error: string | null) => void;
   signInWithEmailPassword: (email: string, password: string) => Promise<void>;
@@ -54,22 +56,38 @@ export const useAuthStore = create<AuthStore>((set) => ({
   setLoading: (loading) => set({ loading }),
   setError: (error) => set({ error }),
 
-  // Google sign-in using popup
+  // Google sign-in using redirect
   signInWithGoogle: async () => {
     try {
       set({ loading: true, error: null });
-      console.log("🔍 [AUTH-STORE] signInWithGoogle: Starting popup...");
+      console.log("🔍 [AUTH-STORE] signInWithGoogle: Starting redirect...");
 
-      const userData = await initiateGoogleSignIn();
-      if (userData) {
-        console.log("✅ [AUTH-STORE] Popup sign-in completed. Applying user:", userData);
-        set(applyUser(userData));
-      } else {
-        set({ loading: false });
-      }
+      await initiateGoogleSignIn();
+
+      console.log("🔍 [AUTH-STORE] Redirect initiated, page will reload...");
     } catch (error: any) {
       console.error("❌ [AUTH-STORE] Google sign-in failed:", error);
       set({ error: error.message || "Failed to start Google sign-in.", loading: false });
+    }
+  },
+
+  // Called by AuthInitializer to handle Google redirect result.
+  handleRedirectResult: async () => {
+    console.log("🔍 [AUTH-STORE] handleRedirectResult: Starting (redirect flow)...");
+    try {
+      console.log("🔍 [AUTH-STORE] Calling handleGoogleRedirectResult...");
+      const userData = await handleGoogleRedirectResult();
+
+      if (userData) {
+        console.log("✅ [AUTH-STORE] Redirect completed! Applying user:", userData);
+        set(applyUser(userData));
+        console.log("✅ [AUTH-STORE] User applied to store. isAuthenticated = true, ready to redirect");
+      } else {
+        console.log("🔍 [AUTH-STORE] No redirect result (normal page load)");
+      }
+    } catch (error: any) {
+      console.error("❌ [AUTH-STORE] Redirect result error:", error);
+      set({ error: error.message || "Google sign-in failed.", loading: false });
     }
   },
 

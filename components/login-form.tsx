@@ -13,26 +13,46 @@ export default function LoginForm() {
   const { user, loading, error, signInWithGoogle, isAuthenticated } = useAuthStore();
 
   useEffect(() => {
-    console.log("🔍 [LOGIN-FORM] Auth state changed:", { isAuthenticated, userRole: user?.role, loading });
+    console.log("🔍 [LOGIN-FORM] useEffect triggered:", { 
+      loading,
+      isAuthenticated, 
+      hasUser: !!user,
+      userRole: user?.role 
+    });
     
     // Only redirect when loading is complete AND user is authenticated
     if (!loading && isAuthenticated && user) {
-      console.log("✅ [LOGIN-FORM] User authenticated, redirecting to dashboard...");
-      if (user.role === "super-admin") {
-        console.log("🔍 [LOGIN-FORM] Redirecting to /admin");
-        router.push("/admin");
-      } else if (user.role === "student") {
-        console.log("🔍 [LOGIN-FORM] Redirecting to /student/mycourses");
-        router.push("/student/mycourses");
-      }
+      console.log("✅ [LOGIN-FORM] Auth state ready! User:", user.email, "Role:", user.role);
+      
+      // Small delay to ensure routing is ready
+      const timer = setTimeout(() => {
+        console.log("🔍 [LOGIN-FORM] Initiating redirect...");
+        try {
+          if (user.role === "super-admin") {
+            console.log("→ Redirecting to /admin");
+            router.push("/admin");
+          } else if (user.role === "student") {
+            console.log("→ Redirecting to /student/mycourses");
+            router.push("/student/mycourses");
+          } else {
+            console.warn("⚠️ Unknown user role:", user.role);
+          }
+        } catch (err) {
+          console.error("❌ Router push failed:", err);
+        }
+      }, 50);
+      
+      return () => clearTimeout(timer);
     }
-  }, [isAuthenticated, user, router, loading]);
+    
+    if (!loading && isAuthenticated && !user) {
+      console.warn("⚠️ [LOGIN-FORM] Authenticated but user doc missing!");
+    }
+  }, [isAuthenticated, user?.role, user?.uid, loading, router]);
 
   const handleGoogleSignIn = async () => {
     try {
-      // Initiates redirect — page will navigate away to Google
-      // After user signs in, they'll return to this app and AuthInitializer
-      // will process the result via handleRedirectResult()
+      // Opens Google sign-in popup and resolves immediately on completion.
       await signInWithGoogle();
     } catch (error) {
       console.error("Sign in failed:", error);
@@ -70,7 +90,7 @@ export default function LoginForm() {
             {loading ? (
               <div className="flex items-center gap-2">
                 <Loader2 className="w-5 h-5 animate-spin text-blue-600" />
-                <span className="text-sm text-gray-500">Redirecting to Google…</span>
+                <span className="text-sm text-gray-500">Signing in with Google…</span>
               </div>
             ) : (
               <>

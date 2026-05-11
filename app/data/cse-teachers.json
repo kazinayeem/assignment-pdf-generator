@@ -1,0 +1,303 @@
+[
+    {
+        "name": "Professor Dr. Md. Fokhray Hossain",
+        "department": "CSE",
+        "designation": "Dean & Professor",
+        "profile_url": "https://faculty.daffodilvarsity.edu.bd/profile/cse/fokhray.html",
+        "image_url": "https://faculty.daffodilvarsity.edu.bd/images/teacher/b520b602c379adcac0e08070ed19cae3.png"
+    },
+    {
+        "name": "Prof. Dr. Bimal Chandra Das",
+        "department": "CSE",
+        "designation": "Associate Dean & Professor",
+        "profile_url": "https://faculty.daffodilvarsity.edu.bd/profile/cse/bimal.html",
+        "image_url": "https://faculty.daffodilvarsity.edu.bd/images/teacher/f507a54dd5ad461bc08a181335de0d51.jpg"
+    },
+    {
+        "name": "Professor Dr. Sheak Rashed Haider Noori",
+        "department": "CSE",
+        "designation": "Professor & Head",
+        "profile_url": "https://faculty.daffodilvarsity.edu.bd/profile/cse/rashed-haider-noori.html",
+        "image_url": "https://faculty.daffodilvarsity.edu.bd/images/teacher/d2fa4f64a74aaad05bcc6a01caf1e42a.jpg"
+    },
+    {
+        "name": "Dr. Bibhuti Roy",
+        "department": "CSE",
+        "designation": "Visiting Professor",
+        "profile_url": "https://faculty.daffodilvarsity.edu.bd/profile/cse/bibhuti-roy.html",
+        "image_url": "https://faculty.daffodilvarsity.edu.bd/images/teacher/8e89c862b7e4ab4f1ad6d34f1118de38.png"
+    },
+    {
+        "name": "Dr. Neil Perez Balba",
+        "department": "CSE",
+        "designation": "Visiting Professor",
+        "profile_url": "https://faculty.daffodilvarsity.edu.bd/profile/cse/balba.html",
+        "image_url": "https://faculty.daffodilvarsity.edu.bd/images/teacher/11cc8af4166117abe65e937afdf62610.png"
+    },
+    {
+        "name": "Dr. S.R.Subramanya",
+        "department": "CSE",
+        "designation": "Visiting Professor",
+        "profile_url": "https://faculty.daffodilvarsity.edu.bd/profile/cse/subramanya.html",
+        "image_url": "https://faculty.daffodilvarsity.edu.bd/images/teacher/1b752e73e676d3bc9a78fe722a83db28.png"
+    },
+    {
+        "name": "Dr. Ruslan Isaev",
+        "department": "CSE",
+        "designation": "Visiting Professor",
+        "profile_url": "https://faculty.daffodilvarsity.edu.bd/profile/cse/ruslan.html",
+        "image_url": "https://faculty.daffodilvarsity.edu.bd/images/teacher/fd62aafb768de7ddc4d081b51d81a225.jpg"
+    },
+    {
+        "name": "Dr. Zhyldyzbek Zhakshylykov",
+        "department": "CSE",
+        "designation": "Visiting Professor",
+        "profile_url": "https://faculty.daffodilvarsity.edu.bd/profile/cse/zhyldyzbek.html",
+        "image_url": "https://faculty.daffodilvarsity.edu.bd/images/teacher/b218f9f82f884382d36c0f422168be90.jpg"
+    },
+    {
+        "name": "Professor Dr. Mohammad Ali Moni",
+        "department": "CSE",
+        "designation": "Visiting Professor",
+        "profile_url": "https://faculty.daffodilvarsity.edu.bd/profile/cse/alimoni.html",
+        "image_url": "https://faculty.daffodilvarsity.edu.bd/images/teacher/24f41b404f1a436a36f9cc8911014495.jpg"
+    },
+    {
+        "name": "Professor Dr. M. Lutfar Rahman",
+        "department": "CSE",
+        "designation": "Emeritus Professor",
+        "profile_url": "https://faculty.daffodilvarsity.edu.bd/profile/cse/drmlutfar.html",
+        "image_url": "https://faculty.daffodilvarsity.edu.bd/images/teacher/c32369b28a3215da5cee4385194ef46e.jpg"
+    },
+    {
+        "name": "Dr. Jamal Uddin",
+        "department": "CSE",
+        "designation": "Advisor",
+        "profile_url": "https://faculty.daffodilvarsity.edu.bd/profile/cse/drjamal.html",
+        "image_url": "https://faculty.daffodilvarsity.edu.bd/images/teacher/pic.jpg"
+    },
+    {
+        "name": "Professor Md. Monzur Morshed, PhD",
+        "department": "CSE",
+        "designation": "Professor",
+        "profile_url": "https://faculty.daffodilvarsity.edu.bd/profile/cse/monzurmorshed.html",
+        "image_url": "https://faculty.daffodilvarsity.edu.bd/images/teacher/63b44da12bfc8465d02758b63c9acc6e.png"
+    },
+    {
+        "name": "Professor Dr. Md. Adnan Kiber",
+        "department": "CSE",
+        "designation": "Professor & Advisor",
+        "profile_url": "https://faculty.daffodilvarsity.edu.bd/profile/cse/dradnan.html",
+        "image_url": "https://faculty.daffodilvarsity.edu.bd/images/teacher/bdb9c5e1e51edde92085cffb57453963.jpg"
+    },
+    {
+        "name": "Professor Dr. Touhid Bhuiyan",
+        "department": "CSE",
+        "designation": "Professor",
+        "profile_url": "https://faculty.daffodilvarsity.edu.bd/profile/cse/touhid.html",
+        "image_url": "https://faculty.daffodilvarsity.edu.bd/images/teacher/4383d374442e6e72ad12a0bb79c36aab.JPG"
+    },
+    {
+        "name": "Dr. S. M. Aminul Haque",
+        "department": "CSE",
+        "designation": "Professor & Associate Head",
+        "profile_url": "https://faculty.daffodilvarsity.edu.bd/profile/cse/aminul.html",
+        "image_url": "https://faculty.daffodilvarsity.edu.bd/images/teacher/c05d1e45e5b13dfda27f31641ead6085.JPG"
+    },
+    {
+        "name": "Dr. Ajit Kumar Majumder",
+        "department": "CSE",
+        "designation": "Professor",
+        "profile_url": "https://faculty.daffodilvarsity.edu.bd/profile/cse/ajit.html",
+        "image_url": "https://faculty.daffodilvarsity.edu.bd/images/teacher/pic.jpg"
+    },
+    {
+        "name": "Dr. Fernaz Narin Nur",
+        "department": "CSE",
+        "designation": "Professor",
+        "profile_url": "https://faculty.daffodilvarsity.edu.bd/profile/cse/fernaz.html",
+        "image_url": "https://faculty.daffodilvarsity.edu.bd/images/teacher/411e845a800103976927cd00e182f722.jpg"
+    },
+    {
+        "name": "Dr. Md. Kamrul Hossain",
+        "department": "CSE",
+        "designation": "Associate Professor",
+        "profile_url": "https://faculty.daffodilvarsity.edu.bd/profile/cse/kamrul.html",
+        "image_url": "https://faculty.daffodilvarsity.edu.bd/images/teacher/4b71e94163ac1dfcaaef606265f9c83e.JPG"
+    },
+    {
+        "name": "Dr. Md  Zahid Hasan",
+        "department": "CSE",
+        "designation": "Associate Professor",
+        "profile_url": "https://faculty.daffodilvarsity.edu.bd/profile/cse/zahid-hasan.html",
+        "image_url": "https://faculty.daffodilvarsity.edu.bd/images/teacher/71bddf7c7c0a55f10d63b60c7d73de4e.jpg"
+    },
+    {
+        "name": "Ms. Nazmun Nessa Moon",
+        "department": "CSE",
+        "designation": "Associate Professor",
+        "profile_url": "https://faculty.daffodilvarsity.edu.bd/profile/cse/nazmun-nessa-moon.html",
+        "image_url": "https://faculty.daffodilvarsity.edu.bd/images/teacher/8a0ecb2301d94830f09d8e900fbf1cba.JPG"
+    },
+    {
+        "name": "Dr. Fizar Ahmed",
+        "department": "CSE",
+        "designation": "Associate Professor",
+        "profile_url": "https://faculty.daffodilvarsity.edu.bd/profile/cse/fizar.html",
+        "image_url": "https://faculty.daffodilvarsity.edu.bd/images/teacher/631e8d536fa11cd62514ea2d1041e41b.jpg"
+    },
+    {
+        "name": "Mr. Narayan Ranjan Chakraborty",
+        "department": "CSE",
+        "designation": "Associate Professor and Associate Head",
+        "profile_url": "https://faculty.daffodilvarsity.edu.bd/profile/cse/narayan.html",
+        "image_url": "https://faculty.daffodilvarsity.edu.bd/images/teacher/dd39c67c90c18b9a102bc56d0a9119ca.JPG"
+    },
+    {
+        "name": "Dr. Naznin Sultana",
+        "department": "CSE",
+        "designation": "Associate Professor",
+        "profile_url": "https://faculty.daffodilvarsity.edu.bd/profile/cse/naznin.html",
+        "image_url": "https://faculty.daffodilvarsity.edu.bd/images/teacher/1d18c09b51ff0cbc74a7454761f9f900.JPG"
+    },
+    {
+        "name": "Dr. Arif Mahmud",
+        "department": "CSE",
+        "designation": "Associate Professor and Associate Head",
+        "profile_url": "https://faculty.daffodilvarsity.edu.bd/profile/cse/arif-mahmud.html",
+        "image_url": "https://faculty.daffodilvarsity.edu.bd/images/teacher/d375cd51d4bfd14f5c7953f5fc92aac7.JPG"
+    },
+    {
+        "name": "Dr. Md. Sohidul Islam",
+        "department": "CSE",
+        "designation": "Associate Professor",
+        "profile_url": "https://faculty.daffodilvarsity.edu.bd/profile/cse/drsohidul.html",
+        "image_url": "https://faculty.daffodilvarsity.edu.bd/images/teacher/4433c259cac4c9152bc066e4d9e12423.jpg"
+    },
+    {
+        "name": "Mr. M Mahmudur Rahman",
+        "department": "CSE",
+        "designation": "Associate Professor",
+        "profile_url": "https://faculty.daffodilvarsity.edu.bd/profile/cse/mahmudurcse.html",
+        "image_url": "https://faculty.daffodilvarsity.edu.bd/images/teacher/pic.jpg"
+    },
+    {
+        "name": "Dr. Abdus Sattar",
+        "department": "CSE",
+        "designation": "Associate Professor & Director, M.Sc in CSE",
+        "profile_url": "https://faculty.daffodilvarsity.edu.bd/profile/cse/sattar_cse.html",
+        "image_url": "https://faculty.daffodilvarsity.edu.bd/images/teacher/e15f3a445cf8a07fe3aebe8d4e823bad.jpg"
+    },
+    {
+        "name": "Dr. Md. Ali Hossain",
+        "department": "CSE",
+        "designation": "Associate Professor",
+        "profile_url": "https://faculty.daffodilvarsity.edu.bd/profile/cse/alihossain.html",
+        "image_url": "https://faculty.daffodilvarsity.edu.bd/images/teacher/bfb92f5fbc40c5aaad0c676b2439f2be.png"
+    },
+    {
+        "name": "Mr. Anuz Kumar Chakrabarty",
+        "department": "CSE",
+        "designation": "Associate Professor",
+        "profile_url": "https://faculty.daffodilvarsity.edu.bd/profile/cse/anuz.html",
+        "image_url": "https://faculty.daffodilvarsity.edu.bd/images/teacher/117914effadacaed3eb0896a6bee7dbd.JPG"
+    },
+    {
+        "name": "Dr. Mohammad Nuruzzaman Bhuiyan",
+        "department": "CSE",
+        "designation": "Associate Professor",
+        "profile_url": "https://faculty.daffodilvarsity.edu.bd/profile/cse/nuruzzaman.html",
+        "image_url": "https://faculty.daffodilvarsity.edu.bd/images/teacher/28adb5f63c7186f98f4ee42b2debd62e.jpg"
+    },
+    {
+        "name": "Dr. Md. Akhtaruzzaman",
+        "department": "CSE",
+        "designation": "Associate Professor",
+        "profile_url": "https://faculty.daffodilvarsity.edu.bd/profile/cse/akhtaruzzaman.html",
+        "image_url": "https://faculty.daffodilvarsity.edu.bd/images/teacher/db4f56fa91ad68479a39f33538abd45d.jpg"
+    },
+    {
+        "name": "Mr. Mohammad  Salek  Parvez",
+        "department": "CSE",
+        "designation": "Assistant Professor",
+        "profile_url": "https://faculty.daffodilvarsity.edu.bd/profile/cse/salekparvez.html",
+        "image_url": "https://faculty.daffodilvarsity.edu.bd/images/teacher/3ce51a75dedfd9666ba2c67df2cbc8a9.JPG"
+    },
+    {
+        "name": "Mr. Anisur Rahman",
+        "department": "CSE",
+        "designation": "Assistant Professor",
+        "profile_url": "https://faculty.daffodilvarsity.edu.bd/profile/cse/anisur.html",
+        "image_url": "https://faculty.daffodilvarsity.edu.bd/images/teacher/093c395f1d8aadd73545035d050e2011.jpg"
+    },
+    {
+        "name": "Ms. Fariha Tasmin Jaigirdar",
+        "department": "CSE",
+        "designation": "Assistant Professor",
+        "profile_url": "https://faculty.daffodilvarsity.edu.bd/profile/cse/fariha.html",
+        "image_url": "https://faculty.daffodilvarsity.edu.bd/images/teacher/34b140f0bd8ff9ac10ca4424010740eb.JPG"
+    },
+    {
+        "name": "Ms. Masuma Parvin",
+        "department": "CSE",
+        "designation": "Assistant Professor",
+        "profile_url": "https://faculty.daffodilvarsity.edu.bd/profile/cse/masuma.html",
+        "image_url": "https://faculty.daffodilvarsity.edu.bd/images/teacher/47a0b79963225ea41a6448d6b4f38514.jpg"
+    },
+    {
+        "name": "Ms. Shirin Sultana",
+        "department": "CSE",
+        "designation": "Assistant Professor",
+        "profile_url": "https://faculty.daffodilvarsity.edu.bd/profile/cse/shirin.html",
+        "image_url": "https://faculty.daffodilvarsity.edu.bd/images/teacher/6d7817de244c4545e95fa914e543c68c.JPG"
+    },
+    {
+        "name": "Ms. Rifat Ara Shams",
+        "department": "CSE",
+        "designation": "Assistant Professor",
+        "profile_url": "https://faculty.daffodilvarsity.edu.bd/profile/cse/rifat.html",
+        "image_url": "https://faculty.daffodilvarsity.edu.bd/images/teacher/54506b1a781f9eeee278df7f59fccef0.JPG"
+    },
+    {
+        "name": "Mr. Md. Sadekur Rahman",
+        "department": "CSE",
+        "designation": "Assistant Professor",
+        "profile_url": "https://faculty.daffodilvarsity.edu.bd/profile/cse/sadek.html",
+        "image_url": "https://faculty.daffodilvarsity.edu.bd/images/teacher/b04632cba44f0c60bdb45411c3873c33.JPG"
+    },
+    {
+        "name": "Ms. Protima Dash.",
+        "department": "CSE",
+        "designation": "Assistant Professor",
+        "profile_url": "https://faculty.daffodilvarsity.edu.bd/profile/cse/protima.html",
+        "image_url": "https://faculty.daffodilvarsity.edu.bd/images/teacher/fb613da969d7575ebb478d1a2c945356.JPG"
+    },
+    {
+        "name": "Mr. Mohammad Abdul Halim",
+        "department": "CSE",
+        "designation": "Assistant Professor",
+        "profile_url": "https://faculty.daffodilvarsity.edu.bd/profile/cse/halim.html",
+        "image_url": "https://faculty.daffodilvarsity.edu.bd/images/teacher/66e039fac9527909c3da4c82cda7bace.JPG"
+    },
+    {
+        "name": "Ms. Fatema Tuz - Zohora",
+        "department": "CSE",
+        "designation": "Assistant Professor",
+        "profile_url": "https://faculty.daffodilvarsity.edu.bd/profile/cse/zohora.html",
+        "image_url": "https://faculty.daffodilvarsity.edu.bd/images/teacher/9a63d8c20919aff6bf8294d352411de8.JPG"
+    },
+    {
+        "name": "Dr. Masud Rana Rashel",
+        "department": "CSE",
+        "designation": "Assistant Professor",
+        "profile_url": "https://faculty.daffodilvarsity.edu.bd/profile/cse/drmasud.html",
+        "image_url": "https://faculty.daffodilvarsity.edu.bd/images/teacher/d38a977c284c188b0cbd56f7981cf04c.gif"
+    },
+    {
+        "name": "Mr. Fahad Faisal",
+        "department": "CSE",
+        "designation": "Assistant Professor",
+        "profile_url": "https://faculty.daffodilvarsity.edu.bd/profile/cse/Fahad.html",
+        "image_url": "https://faculty.daffodilvarsity.edu.bd/images/teacher/145a2f56e03cb0e69ee4c861cde82524.JPG"
+    }
+]

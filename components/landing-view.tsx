@@ -134,58 +134,80 @@ export default function LandingView() {
 
       <main>
         {/* ── Hero ── */}
-        <section className="relative pt-16 pb-16 px-4 sm:px-6 overflow-hidden">
-          {/* Soft blobs */}
+        <section className="relative pt-8 sm:pt-12 pb-14 px-4 sm:px-6 overflow-hidden">
           <div className="absolute inset-0 -z-10 pointer-events-none">
-            <div className="absolute top-0 left-1/4 w-72 h-72 bg-blue-50 rounded-full blur-[80px] opacity-70" />
-            <div className="absolute top-10 right-1/4 w-72 h-72 bg-indigo-50 rounded-full blur-[80px] opacity-70" />
+            <div className="absolute -top-24 -left-10 w-80 h-80 bg-blue-50 rounded-full blur-[100px] opacity-80" />
+            <div className="absolute top-0 right-0 w-[28rem] h-[28rem] bg-gradient-to-bl from-blue-100/70 to-indigo-100/40 rounded-full blur-[110px]" />
           </div>
 
-          <div className="max-w-4xl mx-auto flex flex-col items-center text-center">
-            {/* Badge */}
-            <div className="mb-6 inline-flex items-center gap-2 px-3 py-1.5 bg-white rounded-full shadow border border-gray-100">
-              <Sparkles className="w-3.5 h-3.5 text-amber-500 fill-amber-500" />
-              <span className="text-[10px] font-black uppercase tracking-widest text-gray-500">Trusted by 12,000+ DIU Students</span>
+          <div className="max-w-7xl mx-auto grid grid-cols-1 xl:grid-cols-[1fr_1.15fr] gap-8 lg:gap-10 items-center">
+            {/* Left Column */}
+            <div className="space-y-6 lg:space-y-7 text-center xl:text-left order-2 xl:order-1">
+              <div className="inline-flex items-center gap-2.5 px-4 py-2 bg-blue-100/80 text-blue-700 rounded-full border border-blue-200">
+                <Sparkles className="w-4 h-4" />
+                <span className="text-xs font-black tracking-wide">Trusted by 12,000+ DIU Students</span>
+              </div>
+
+              <div className="space-y-4">
+                <h1 className="text-4xl sm:text-5xl lg:text-6xl font-black text-gray-900 tracking-tight leading-[1.04]">
+                  Automate your
+                  <br className="hidden sm:block" />
+                  <span className="text-blue-600"> academic covers.</span>
+                </h1>
+                <p className="text-base sm:text-lg text-gray-500 font-medium max-w-xl mx-auto xl:mx-0 leading-relaxed">
+                  The professional academic toolkit for Daffodil International University.
+                  Zero effort formatting. Perfect results every time.
+                </p>
+              </div>
+
+              <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center xl:justify-start">
+                <Link
+                  href="/login"
+                  className="flex items-center justify-center gap-2 px-7 py-3.5 bg-blue-600 text-white rounded-2xl font-black text-base hover:bg-blue-700 transition-all shadow-lg shadow-blue-200 active:scale-95 group"
+                >
+                  Get Started Free
+                  <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                </Link>
+                <a
+                  href="#tools"
+                  className="flex items-center justify-center gap-2 px-7 py-3.5 bg-white text-gray-700 border border-gray-200 rounded-2xl font-bold text-base hover:bg-gray-50 transition-all active:scale-95"
+                >
+                  Try Without Account
+                </a>
+              </div>
+
+              <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 sm:gap-4 pt-1">
+                {stats.map((s) => (
+                  <div key={s.label} className="bg-white border border-gray-100 rounded-2xl px-4 py-3 text-center shadow-sm">
+                    <p className="text-xl font-black text-gray-900 tracking-tight">{s.value}</p>
+                    <p className="text-[10px] font-bold uppercase tracking-wider text-gray-400">{s.label}</p>
+                  </div>
+                ))}
+              </div>
             </div>
 
-            {/* Headline */}
-            <h1 className="text-4xl sm:text-5xl md:text-6xl font-black text-gray-900 tracking-tight leading-[1.05] mb-5">
-              Automate your <br className="hidden sm:block" />
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 via-indigo-500 to-blue-600">
-                academic covers.
-              </span>
-            </h1>
-
-            <p className="text-base sm:text-lg text-gray-500 max-w-xl mb-8 leading-relaxed font-medium">
-              The professional academic toolkit for Daffodil International University.
-              Zero effort formatting. Perfect results every time.
-            </p>
-
-            {/* CTAs */}
-            <div className="flex flex-col sm:flex-row items-center gap-3 mb-12 w-full sm:w-auto">
-              <Link
-                href="/login"
-                className="w-full sm:w-auto flex items-center justify-center gap-2 px-7 py-3.5 bg-blue-600 text-white rounded-2xl font-black text-base hover:bg-blue-700 transition-all shadow-lg shadow-blue-100 active:scale-95 group"
-              >
-                Get Started Free
-                <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-              </Link>
-              <a
-                href="#tools"
-                className="w-full sm:w-auto flex items-center justify-center gap-2 px-7 py-3.5 bg-white text-gray-700 border border-gray-200 rounded-2xl font-bold text-base hover:bg-gray-50 transition-all active:scale-95"
-              >
-                Try Without Account
-              </a>
-            </div>
-
-            {/* Stats row */}
-            <div className="grid grid-cols-4 gap-4 sm:gap-8 w-full max-w-lg pt-8 border-t border-gray-100">
-              {stats.map((s) => (
-                <div key={s.label} className="flex flex-col items-center gap-1">
-                  <span className="text-xl sm:text-2xl font-black text-gray-900 tracking-tight">{s.value}</span>
-                  <span className="text-[9px] sm:text-[10px] font-bold text-gray-400 uppercase tracking-widest">{s.label}</span>
+            {/* Right Column */}
+            <div className="order-1 xl:order-2">
+              <div className="relative rounded-[2rem] border border-blue-100 bg-gradient-to-br from-blue-600 via-blue-700 to-indigo-700 p-2 sm:p-3 shadow-2xl shadow-blue-200/80 overflow-hidden">
+                <div className="absolute top-6 right-6 w-20 h-20 border border-white/20 rounded-full" />
+                <div className="absolute bottom-6 left-6 w-2 h-2 rounded-full bg-lime-300" />
+                <div className="absolute top-12 left-1/2 -translate-x-1/2 grid grid-cols-6 gap-1.5 opacity-35">
+                  {Array.from({ length: 18 }).map((_, i) => (
+                    <span key={i} className="w-1 h-1 bg-white rounded-full" />
+                  ))}
                 </div>
-              ))}
+
+                <div className="relative rounded-[1.5rem] overflow-hidden border border-white/20 bg-white/95">
+                  <Image
+                    src="/heroimage.png"
+                    alt="CoverGen hero preview"
+                    width={1400}
+                    height={800}
+                    priority
+                    className="w-full h-auto object-cover"
+                  />
+                </div>
+              </div>
             </div>
           </div>
         </section>
@@ -308,10 +330,9 @@ export default function LandingView() {
               className="mx-auto opacity-25 grayscale hover:grayscale-0 hover:opacity-80 transition-all duration-500"
             />
             <div className="space-y-1.5">
-              <p className="text-sm font-bold text-gray-800">Developed by Mohammad Ali Nayeem</p>
+              <p className="text-sm font-bold text-gray-800">Keep showing up. Great results follow consistency.</p>
               <p className="text-gray-400 text-xs font-medium leading-relaxed">
-                A productivity ecosystem by{" "}
-                <span className="text-blue-600 font-bold">Bornosoft</span>, dedicated to DIU students.
+                One focused study session today can change your semester tomorrow.
               </p>
             </div>
             <div className="flex items-center justify-center gap-2">

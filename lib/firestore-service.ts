@@ -373,7 +373,7 @@ export const batchImportTeachers = async (
           const docRef = doc(collection(db(), "teachers"));
           batch.set(docRef, {
             ...teacher,
-            approved: false,
+            approved: teacher.approved ?? false,
             createdAt: new Date().toISOString(),
             updatedAt: new Date().toISOString(),
           });
@@ -427,6 +427,87 @@ export const batchImportCourses = async (
     return { success, failed: courses.length - success, errors };
   } catch (error: any) {
     console.error("Error batch importing courses:", error);
+    throw error;
+  }
+};
+
+// ============ ADMIN UTILITIES ============
+
+// Delete all documents in `teachers` collection in batched commits (chunks of 500)
+export const deleteAllTeachers = async (): Promise<number> => {
+  try {
+    const snapshot = await getDocs(collection(db(), "teachers"));
+    const docs = snapshot.docs;
+    let deleted = 0;
+    const chunkSize = 500;
+
+    for (let i = 0; i < docs.length; i += chunkSize) {
+      const batch = writeBatch(db());
+      const chunk = docs.slice(i, i + chunkSize);
+      chunk.forEach((docSnap) => batch.delete(doc(db(), "teachers", docSnap.id)));
+      await batch.commit();
+      deleted += chunk.length;
+    }
+
+    return deleted;
+  } catch (error) {
+    console.error("Error deleting all teachers:", error);
+    throw error;
+  }
+};
+
+export const deleteAllDepartments = async (): Promise<number> => {
+  try {
+    const snapshot = await getDocs(collection(db(), "departments"));
+    const docs = snapshot.docs;
+    let deleted = 0;
+    const chunkSize = 500;
+
+    for (let i = 0; i < docs.length; i += chunkSize) {
+      const batch = writeBatch(db());
+      const chunk = docs.slice(i, i + chunkSize);
+      chunk.forEach((docSnap) => batch.delete(doc(db(), "departments", docSnap.id)));
+      await batch.commit();
+      deleted += chunk.length;
+    }
+
+    return deleted;
+  } catch (error) {
+    console.error("Error deleting all departments:", error);
+    throw error;
+  }
+};
+
+export const batchImportDepartments = async (
+  departments: Omit<DepartmentDoc, "id">[]
+): Promise<{ success: number; failed: number; errors: string[] }> => {
+  try {
+    const batch = writeBatch(db());
+    const errors: string[] = [];
+    let success = 0;
+
+    for (const dept of departments) {
+      try {
+        // naive duplicate check by name
+        const q = query(collection(db(), "departments"), where("name", "==", dept.name));
+        const snapshot = await getDocs(q);
+        if (snapshot.empty) {
+          const docRef = doc(collection(db(), "departments"));
+          batch.set(docRef, {
+            ...dept,
+            createdAt: new Date().toISOString(),
+          });
+          success++;
+        }
+      } catch (error: any) {
+        errors.push(`Error processing department ${dept.name}: ${error.message}`);
+      }
+    }
+
+    await batch.commit();
+    return { success, failed: departments.length - success, errors };
+  } catch (error: any) {
+    console.error("Error batch importing departments:", error);
     throw error;
   }
 };

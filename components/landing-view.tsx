@@ -257,9 +257,9 @@ export default function LandingView() {
               <Image
                 src="/logo_navbar.png"
                 alt="CampusFlow"
-                width={120}
-                height={32}
-                style={{ height: 32, width: "auto" }}
+                width={160}
+                height={44}
+                style={{ height: 44, width: "auto" }}
                 priority
               />
             </Link>

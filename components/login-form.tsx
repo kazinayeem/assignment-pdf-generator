@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect } from "react";
-import { useRouter } from "next/navigation";
+import { useRouter, useSearchParams } from "next/navigation";
 import { useAuthStore } from "@/lib/auth-store";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
@@ -10,7 +10,20 @@ import Image from "next/image";
 
 export default function LoginForm() {
   const router = useRouter();
-  const { user, loading, error, signInWithGoogle, isAuthenticated } = useAuthStore();
+  const searchParams = useSearchParams();
+  const { user, loading, error, signInWithGoogle, isAuthenticated, setError } = useAuthStore();
+
+  useEffect(() => {
+    const nextAuthError = searchParams.get("error");
+    if (!nextAuthError) return;
+
+    if (nextAuthError === "AccessDenied") {
+      setError("Only @diu.edu.bd email accounts are allowed.");
+      return;
+    }
+
+    setError("Google sign-in failed. Please try again.");
+  }, [searchParams, setError]);
 
   useEffect(() => {
     console.log("🔍 [LOGIN-FORM] useEffect triggered:", { 
@@ -52,7 +65,7 @@ export default function LoginForm() {
 
   const handleGoogleSignIn = async () => {
     try {
-      // Opens Google sign-in popup and resolves immediately on completion.
+      // Starts the NextAuth Google redirect flow.
       await signInWithGoogle();
     } catch (error) {
       console.error("Sign in failed:", error);

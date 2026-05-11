@@ -1,20 +1,23 @@
 /**
  * auth-utils.ts
- * Reusable Firebase Auth utility functions.
+ * Pure Firebase Auth utility functions — no NextAuth.
  *
- * All Firebase instances are accessed via lazy getters (getFirebaseAuth etc.)
- * so this module is safe to import in any file — Firebase only initializes
- * when these functions are actually called in the browser.
+ * Google sign-in:
+ *   - Development (localhost): signInWithPopup  (avoids cross-origin storage issues)
+ *   - Production (Vercel):     signInWithRedirect (better for mobile/Safari)
  */
 
 import {
+  signInWithPopup,
   signInWithRedirect,
   getRedirectResult,
   signInWithEmailAndPassword,
   createUserWithEmailAndPassword,
   signOut as firebaseSignOut,
+  onAuthStateChanged,
   UserCredential,
   AuthError,
+  User,
 } from "firebase/auth";
 import { doc, getDoc, setDoc } from "firebase/firestore";
 import { getFirebaseAuth, getFirebaseDb, getGoogleProvider } from "./firebase-config";
@@ -25,7 +28,6 @@ const SUPER_ADMIN_EMAIL = "admin@admin.com";
 
 // ─── User Document Helpers ────────────────────────────────────────────────────
 
-/** Build a Firestore UserDoc from a Firebase user object */
 export function buildUserDoc(user: {
   uid: string;
   name: string;
@@ -44,7 +46,7 @@ export function buildUserDoc(user: {
 }
 
 /**
- * Fetch an existing UserDoc from Firestore, or create one if it doesn't exist.
+ * Fetch existing UserDoc from Firestore, or create one if missing.
  */
 export async function getOrCreateUserDoc(
   uid: string,
@@ -63,109 +65,88 @@ export async function getOrCreateUserDoc(
   return newDoc;
 }
 
-// ─── Google Sign-In (Redirect) ────────────────────────────────────────────────
+// ─── Google Sign-In ───────────────────────────────────────────────────────────
 
 /**
- * Initiates Google sign-in using redirect flow.
- * Returns null immediately; the user is redirected and the result is handled
- * by handleGoogleRedirectResult() on the next page load.
+ * Sign in with Google.
+ * - Dev:  popup  → returns UserDoc immediately
+ * - Prod: redirect → returns null, page reloads, call handleGoogleRedirectResult()
  */
 export async function initiateGoogleSignIn(): Promise<UserDoc | null> {
   const auth = getFirebaseAuth();
   const provider = getGoogleProvider();
+  const isDev = process.env.NODE_ENV === "development";
 
-  console.log("🔍 [AUTH-UTILS] Initiating Google sign-in (redirect flow)...");
-  console.log("🔍 [AUTH-UTILS] Current URL:", window.location.href);
+  if (isDev) {
+    // ── Popup (development) ──────────────────────────────────────────────────
+    let result: UserCredential;
+    try {
+      result = await signInWithPopup(auth, provider);
+    } catch (err) {
+      const error = err as AuthError;
+      if (error.code === "auth/popup-closed-by-user" || error.code === "auth/cancelled-popup-request") {
+        throw new Error("Sign-in cancelled. Please try again.");
+      }
+      throw new Error(error.message || "Google sign-in failed.");
+    }
 
-  try {
+    const firebaseUser = result.user;
+
+    if (!firebaseUser.email?.endsWith(`@${DIU_EMAIL_DOMAIN}`)) {
+      await firebaseSignOut(auth);
+      throw new Error("Only @diu.edu.bd email accounts are allowed.");
+    }
+
+    return getOrCreateUserDoc(firebaseUser.uid, {
+      name: firebaseUser.displayName || "",
+      email: firebaseUser.email,
+      role: "student",
+      photoURL: firebaseUser.photoURL || undefined,
+    });
+  } else {
+    // ── Redirect (production) ────────────────────────────────────────────────
     await signInWithRedirect(auth, provider);
-  } catch (err) {
-    const error = err as AuthError;
-    console.error("❌ [AUTH-UTILS] Redirect sign-in error:", error.code, error.message);
-
-    if (error.code === "auth/account-exists-with-different-credential") {
-      throw new Error("An account already exists with a different sign-in method.");
-    }
-
-    if (error.code === "auth/unauthorized-domain") {
-      throw new Error(
-        "This domain is not authorized in Firebase. Add it under Firebase Console → Authentication → Settings → Authorized domains."
-      );
-    }
-
-    throw new Error(error.message || "Google sign-in failed. Please try again.");
+    return null; // page navigates away
   }
-
-  return null;
 }
 
 /**
- * Call on every page load to capture the Google redirect result.
- * Returns UserDoc if a redirect just completed, or null on normal loads.
+ * Call on every page load in production to capture the Google redirect result.
+ * Returns UserDoc if a redirect just completed, null on normal loads.
  */
 export async function handleGoogleRedirectResult(): Promise<UserDoc | null> {
-  console.log("🔍 [AUTH-UTILS] handleGoogleRedirectResult: Starting...");
-  console.log("🔍 [AUTH-UTILS] Current URL:", typeof window !== 'undefined' ? window.location.href : 'SSR');
-  console.log("🔍 [AUTH-UTILS] URL search params:", typeof window !== 'undefined' ? window.location.search : 'SSR');
-
   const auth = getFirebaseAuth();
   let result: UserCredential | null = null;
 
   try {
-    console.log("🔍 [AUTH-UTILS] Calling getRedirectResult...");
     result = await getRedirectResult(auth);
-    console.log("🔍 [AUTH-UTILS] getRedirectResult returned:", result ? "UserCredential" : "null");
   } catch (err) {
     const error = err as AuthError;
-    console.error("❌ [AUTH-UTILS] Redirect result error:", error.code, error.message);
-
     if (error.code === "auth/unauthorized-domain") {
-      throw new Error(
-        "This domain is not authorized in Firebase. Add it under Firebase Console → Authentication → Settings → Authorized domains."
-      );
-    }
-    if (error.code === "auth/account-exists-with-different-credential") {
-      throw new Error("An account already exists with a different sign-in method.");
+      throw new Error("This domain is not authorized in Firebase Console → Authentication → Authorized domains.");
     }
     throw new Error(error.message || "Google sign-in failed. Please try again.");
   }
 
-  if (!result) {
-    console.log("🔍 [AUTH-UTILS] No redirect result - normal page load");
-    return null;
-  }
+  if (!result) return null;
 
   const firebaseUser = result.user;
-  console.log("🔍 [AUTH-UTILS] Firebase user from redirect:", {
-    uid: firebaseUser.uid,
-    email: firebaseUser.email,
-    displayName: firebaseUser.displayName,
-  });
 
-  // Enforce DIU email domain
   if (!firebaseUser.email?.endsWith(`@${DIU_EMAIL_DOMAIN}`)) {
-    console.log("❌ [AUTH-UTILS] Email domain check failed:", firebaseUser.email);
     await firebaseSignOut(auth);
     throw new Error("Only @diu.edu.bd email accounts are allowed.");
   }
 
-  console.log("🔍 [AUTH-UTILS] Creating/fetching user doc...");
-  const userDoc = await getOrCreateUserDoc(firebaseUser.uid, {
+  return getOrCreateUserDoc(firebaseUser.uid, {
     name: firebaseUser.displayName || "",
-    email: firebaseUser.email || "",
+    email: firebaseUser.email,
     role: "student",
-    photoURL: firebaseUser.photoURL,
+    photoURL: firebaseUser.photoURL || undefined,
   });
-  console.log("✅ [AUTH-UTILS] User doc ready:", userDoc);
-  return userDoc;
 }
 
 // ─── Email / Password Sign-In (Admin) ────────────────────────────────────────
 
-/**
- * Sign in with email + password.
- * Auto-creates the super-admin account on first use.
- */
 export async function signInWithEmailPassword(
   email: string,
   password: string
@@ -185,11 +166,7 @@ export async function signInWithEmailPassword(
     credential = await signInWithEmailAndPassword(auth, normalizedEmail, password);
   } catch (err) {
     const error = err as AuthError;
-    // Auto-create super-admin on first run
-    if (
-      isSuperAdmin &&
-      (error.code === "auth/invalid-credential" || error.code === "auth/user-not-found")
-    ) {
+    if (isSuperAdmin && (error.code === "auth/invalid-credential" || error.code === "auth/user-not-found")) {
       credential = await createUserWithEmailAndPassword(auth, normalizedEmail, password);
     } else {
       throw new Error(error.message || "Sign-in failed. Check your credentials.");
@@ -202,7 +179,7 @@ export async function signInWithEmailPassword(
     name: isSuperAdmin ? "Super Admin" : firebaseUser.displayName || "",
     email: firebaseUser.email || normalizedEmail,
     role: isSuperAdmin ? "super-admin" : "student",
-    photoURL: firebaseUser.photoURL,
+    photoURL: firebaseUser.photoURL || undefined,
   });
 }
 
@@ -210,4 +187,16 @@ export async function signInWithEmailPassword(
 
 export async function signOutUser(): Promise<void> {
   await firebaseSignOut(getFirebaseAuth());
+}
+
+// ─── Auth State Listener ──────────────────────────────────────────────────────
+
+/**
+ * Subscribe to Firebase auth state changes.
+ * Returns the unsubscribe function.
+ */
+export function subscribeToAuthState(
+  callback: (user: User | null) => void
+): () => void {
+  return onAuthStateChanged(getFirebaseAuth(), callback);
 }

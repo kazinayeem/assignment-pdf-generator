@@ -76,10 +76,10 @@ export default function RootLayout({
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
         <AuthInitializer />
-        <Toaster position="top-right" />
-        {children}
-        <AppFooter />
-        <Analytics />
+          <Toaster position="top-right" />
+          {children}
+          <AppFooter />
+          <Analytics />
       </body>
     </html>
   );

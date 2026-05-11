@@ -3,9 +3,15 @@
 /**
  * AuthInitializer
  *
- * CRITICAL ORDER — must be:
- *   1. getRedirectResult() FIRST  — captures the Google redirect before anything else
- *   2. onAuthStateChanged AFTER   — only starts listening once redirect is resolved
+ * Bootstraps Firebase auth on every page load.
+ *
+ * Order matters:
+ *   1. handleRedirectResult() — captures Google redirect result (prod only).
+ *      Keeps loading:true so protected routes don't flash a redirect to /login.
+ *   2. initializeAuth()       — starts onAuthStateChanged listener.
+ *      Firebase persists the session in IndexedDB/localStorage, so this fires
+ *      immediately with the signed-in user on every subsequent page load.
+ *      This is what keeps the user logged in across refreshes.
  */
 
 import { useEffect } from "react";
@@ -16,27 +22,21 @@ export function AuthInitializer() {
   const handleRedirectResult = useAuthStore((state) => state.handleRedirectResult);
 
   useEffect(() => {
-    console.log("🔍 [AUTH-INITIALIZER] Component mounted, starting auth initialization...");
     let unsubscribe: (() => void) | undefined;
 
     const init = async () => {
-      console.log("🔍 [AUTH-INITIALIZER] Step 1: Processing redirect result...");
+      // Step 1: Process any pending Google redirect result (production only).
       await handleRedirectResult();
-      console.log("🔍 [AUTH-INITIALIZER] Step 1 complete. Waiting briefly for state to settle...");
 
-      await new Promise((resolve) => setTimeout(resolve, 100));
-
-      console.log("🔍 [AUTH-INITIALIZER] Step 2: Starting onAuthStateChanged listener...");
+      // Step 2: Start the persistent Firebase auth state listener.
+      // Firebase automatically restores the session from local storage,
+      // so onAuthStateChanged fires with the user on every page load.
       unsubscribe = initializeAuth();
-      console.log("✅ [AUTH-INITIALIZER] Auth initialization complete!");
     };
 
     init();
 
-    return () => {
-      console.log("🔍 [AUTH-INITIALIZER] Component unmounting, cleaning up listener...");
-      unsubscribe?.();
-    };
+    return () => unsubscribe?.();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 

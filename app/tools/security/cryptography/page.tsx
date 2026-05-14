@@ -76,11 +76,11 @@ function simulateSHA256(text: string): string {
 }
 
 function simulateSHA512(text: string): string {
-  let h = 0x6A09E667F3BCC908n;
+  let h = BigInt("0x6A09E667F3BCC908");
   for (let i = 0; i < text.length; i++) {
-    h = ((h << 23n) | (h >> 41n)) ^ BigInt(text.charCodeAt(i));
-    h = (h * 0x9E3779B97F4A7C15n) ^ (h >> 17n);
-    h = (h * 0x85EBCA6BC6B1D3C7n) ^ (h >> 13n);
+    h = ((h << BigInt(23)) | (h >> BigInt(41))) ^ BigInt(text.charCodeAt(i));
+    h = (h * BigInt("0x9E3779B97F4A7C15")) ^ (h >> BigInt(17));
+    h = (h * BigInt("0x85EBCA6BC6B1D3C7")) ^ (h >> BigInt(13));
   }
   return h.toString(16).padStart(128, "0").slice(0, 128);
 }

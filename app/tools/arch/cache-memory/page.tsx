@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { Home, ChevronRight } from "lucide-react";
-import { Section, InfoCard, CodeBlock, Diagram, MemoryBlock, AnimatedFlow, InterviewQuestion } from "../components";
+import { Section, InfoCard, CodeBlock, MemoryBlock, AnimatedFlow, InterviewQuestion } from "../components";
 
 export default function CacheMemoryPage() {
   return (

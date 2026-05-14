@@ -4,7 +4,7 @@ import { usePathname } from "next/navigation";
 import Footer from "@/components/footer";
 
 // Pages that have their own built-in footer — don't render the global one
-const PAGES_WITH_OWN_FOOTER = ["/", "/cv-builder", "/routine-builder"];
+const PAGES_WITH_OWN_FOOTER = ["/cv-builder", "/routine-builder"];
 
 export default function AppFooter() {
   const pathname = usePathname();

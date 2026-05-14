@@ -11,6 +11,8 @@ import {
   Network,
   Blocks,
   Globe,
+  Microchip,
+  GitFork,
 } from "lucide-react";
 
 const topics = [
@@ -49,6 +51,18 @@ const topics = [
     desc: "Encryption, authentication and security basics.",
     icon: ShieldAlert,
     href: "/tools/security",
+  },
+  {
+    title: "Computer Architecture",
+    desc: "CPU design, memory hierarchy, pipelining, ISA.",
+    icon: Microchip,
+    href: "/tools/arch",
+  },
+  {
+    title: "Theory of Computing",
+    desc: "DFA, NFA, regex, Turing machines, automata.",
+    icon: GitFork,
+    href: "/tools/theory-of-computing",
   },
   {
     title: "Software Engineering",

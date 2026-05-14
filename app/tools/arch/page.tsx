@@ -2,194 +2,282 @@
 
 import { useState } from "react";
 import Link from "next/link";
-import { ArrowRight, Zap, BookOpen, Target, TrendingUp, Cpu, Database } from "lucide-react";
+import { motion } from "framer-motion";
+import {
+  ArrowRight, Cpu, Zap, BookOpen, Target, TrendingUp, Database,
+  Binary, GitBranch, Monitor, ChevronRight, Activity,
+  BarChart3, Sigma, Variable, Radio, Gauge, Layout,
+} from "lucide-react";
 
-const MAIN_TOPICS = [
-  { id: "fundamentals", label: "Fundamentals", icon: "📚", desc: "Von Neumann, Harvard, Components", color: "cyan" },
-  { id: "cpu-organization", label: "CPU Organization", icon: "⚙️", desc: "Registers, ALU, Control Unit", color: "emerald" },
-  { id: "instruction-set", label: "Instruction Set", icon: "💻", desc: "Formats, Addressing, RISC/CISC", color: "pink" },
-  { id: "memory-hierarchy", label: "Memory Hierarchy", icon: "🗂️", desc: "Cache, RAM, Virtual Memory", color: "amber" },
-  { id: "cache-memory", label: "Cache Memory", icon: "⚡", desc: "Direct, Associative, Set Mapping", color: "orange" },
-  { id: "virtual-memory", label: "Virtual Memory", icon: "🔄", desc: "Paging, Segmentation, TLB", color: "purple" },
-  { id: "arithmetic-logic", label: "Arithmetic & Logic", icon: "🔢", desc: "Booth's, Floating Point, Signed", color: "blue" },
-  { id: "io-organization", label: "I/O Organization", icon: "🔌", desc: "Interrupts, DMA, Bus Architecture", color: "rose" },
-  { id: "parallel-processing", label: "Parallel Processing", icon: "🚀", desc: "SIMD, MIMD, Multiprocessors", color: "teal" },
+const TOPICS = [
+  { id: "fundamentals", label: "Fundamentals", icon: BookOpen, desc: "Von Neumann, Harvard, CPU components, instruction cycle", color: "cyan", diff: "Beginner", cnt: 8 },
+  { id: "cpu-organization", label: "CPU Organization", icon: Cpu, desc: "ALU, control unit, registers, bus architecture", color: "emerald", diff: "Beginner", cnt: 6 },
+  { id: "register-organization", label: "Register Organization", icon: Layout, desc: "CPU registers, flags, stack pointer, program counter", color: "blue", diff: "Beginner", cnt: 5 },
+  { id: "instruction-formats", label: "Instruction Formats", icon: Binary, desc: "R-type, I-type, J-type, opcode, operand encoding", color: "violet", diff: "Intermediate", cnt: 6 },
+  { id: "addressing-modes", label: "Addressing Modes", icon: Target, desc: "Immediate, direct, indirect, indexed, register", color: "pink", diff: "Intermediate", cnt: 7 },
+  { id: "memory-hierarchy", label: "Memory Hierarchy", icon: Database, desc: "Cache, RAM, disk, registers, speed vs size", color: "amber", diff: "Intermediate", cnt: 6 },
+  { id: "cache-memory", label: "Cache Memory", icon: Zap, desc: "L1/L2/L3, mapping, hit/miss, write policies", color: "orange", diff: "Intermediate", cnt: 8 },
+  { id: "pipelining", label: "Pipelining", icon: GitBranch, desc: "Fetch/decode/execute, hazards, forwarding", color: "purple", diff: "Advanced", cnt: 7 },
+  { id: "booths-algorithm", label: "Booth's Algorithm", icon: Sigma, desc: "Signed multiplication, bit shifting, optimization", color: "rose", diff: "Advanced", cnt: 5 },
+  { id: "floating-point", label: "Floating Point", icon: Variable, desc: "IEEE 754, precision, rounding, arithmetic", color: "teal", diff: "Advanced", cnt: 6 },
+  { id: "io-organization", label: "I/O Organization", icon: Radio, desc: "Interrupts, DMA, polling, device controllers", color: "sky", diff: "Intermediate", cnt: 6 },
+  { id: "parallel-processing", label: "Parallel Computing", icon: Monitor, desc: "SIMD, MIMD, GPU, multiprocessors, Flynn", color: "indigo", diff: "Advanced", cnt: 7 },
+  { id: "risc-vs-cisc", label: "RISC vs CISC", icon: Gauge, desc: "Instruction set philosophies, tradeoffs, examples", color: "cyan", diff: "Intermediate", cnt: 5 },
+  { id: "virtual-memory", label: "Virtual Memory", icon: Database, desc: "Paging, segmentation, TLB, address translation", color: "emerald", diff: "Advanced", cnt: 6 },
 ];
 
-const colorMap: Record<string, { border: string; hover: string; text: string; light: string }> = {
-  cyan: { border: "border-cyan-500", hover: "hover:border-cyan-500", text: "text-cyan-600", light: "bg-cyan-50" },
-  emerald: { border: "border-emerald-500", hover: "hover:border-emerald-500", text: "text-emerald-600", light: "bg-emerald-50" },
-  pink: { border: "border-pink-500", hover: "hover:border-pink-500", text: "text-pink-600", light: "bg-pink-50" },
-  amber: { border: "border-amber-500", hover: "hover:border-amber-500", text: "text-amber-600", light: "bg-amber-50" },
-  orange: { border: "border-orange-500", hover: "hover:border-orange-500", text: "text-orange-600", light: "bg-orange-50" },
-  purple: { border: "border-purple-500", hover: "hover:border-purple-500", text: "text-purple-600", light: "bg-purple-50" },
-  blue: { border: "border-blue-500", hover: "hover:border-blue-500", text: "text-blue-600", light: "bg-blue-50" },
-  rose: { border: "border-rose-500", hover: "hover:border-rose-500", text: "text-rose-600", light: "bg-rose-50" },
-  teal: { border: "border-teal-500", hover: "hover:border-teal-500", text: "text-teal-600", light: "bg-teal-50" },
+const colorConfig: Record<string, { border: string; hover: string; text: string; light: string; gradient: string }> = {
+  cyan: { border: "border-cyan-300", hover: "hover:border-cyan-400", text: "text-cyan-600", light: "bg-cyan-50", gradient: "from-cyan-500 to-blue-600" },
+  emerald: { border: "border-emerald-300", hover: "hover:border-emerald-400", text: "text-emerald-600", light: "bg-emerald-50", gradient: "from-emerald-500 to-teal-600" },
+  blue: { border: "border-blue-300", hover: "hover:border-blue-400", text: "text-blue-600", light: "bg-blue-50", gradient: "from-blue-500 to-cyan-600" },
+  violet: { border: "border-violet-300", hover: "hover:border-violet-400", text: "text-violet-600", light: "bg-violet-50", gradient: "from-violet-500 to-purple-600" },
+  pink: { border: "border-pink-300", hover: "hover:border-pink-400", text: "text-pink-600", light: "bg-pink-50", gradient: "from-pink-500 to-rose-600" },
+  amber: { border: "border-amber-300", hover: "hover:border-amber-400", text: "text-amber-600", light: "bg-amber-50", gradient: "from-amber-500 to-orange-600" },
+  orange: { border: "border-orange-300", hover: "hover:border-orange-400", text: "text-orange-600", light: "bg-orange-50", gradient: "from-orange-500 to-red-600" },
+  purple: { border: "border-purple-300", hover: "hover:border-purple-400", text: "text-purple-600", light: "bg-purple-50", gradient: "from-purple-500 to-violet-600" },
+  rose: { border: "border-rose-300", hover: "hover:border-rose-400", text: "text-rose-600", light: "bg-rose-50", gradient: "from-rose-500 to-pink-600" },
+  teal: { border: "border-teal-300", hover: "hover:border-teal-400", text: "text-teal-600", light: "bg-teal-50", gradient: "from-teal-500 to-emerald-600" },
+  sky: { border: "border-sky-300", hover: "hover:border-sky-400", text: "text-sky-600", light: "bg-sky-50", gradient: "from-sky-500 to-blue-600" },
+  indigo: { border: "border-indigo-300", hover: "hover:border-indigo-400", text: "text-indigo-600", light: "bg-indigo-50", gradient: "from-indigo-500 to-purple-600" },
 };
 
 const STATS = [
-  { label: "Topics", value: "50+", icon: <BookOpen size={20} /> },
-  { label: "Simulators", value: "12+", icon: <Cpu size={20} /> },
-  { label: "Interview Qs", value: "200+", icon: <Target size={20} /> },
-  { label: "Real Examples", value: "100+", icon: <TrendingUp size={20} /> },
+  { label: "Topics", value: "50+", icon: BookOpen },
+  { label: "Simulators", value: "12+", icon: Cpu },
+  { label: "Interactive Demos", value: "8", icon: Zap },
+  { label: "Interview Qs", value: "200+", icon: Target },
 ];
 
 const SIMULATORS = [
-  { title: "Cache Mapping Simulator", desc: "Visualize direct, associative, and set-associative cache mapping", icon: "⚡" },
-  { title: "Booth's Algorithm", desc: "Step-by-step binary multiplication with bit shifting", icon: "🔢" },
-  { title: "Pipeline Visualizer", desc: "See how instructions flow through CPU pipeline stages", icon: "📊" },
-  { title: "Addressing Modes", desc: "Interactive addressing mode demonstrations", icon: "🎯" },
-  { title: "Memory Hierarchy", desc: "Explore cache → RAM → Disk access patterns", icon: "🗂️" },
-  { title: "CPU Execution", desc: "Fetch-Decode-Execute-Write cycle visualization", icon: "⚙️" },
+  { title: "Cache Mapping Simulator", desc: "Direct, associative & set-associative mapping with live visualization", icon: Zap, color: "cyan", href: "/tools/arch/cache-mapping" },
+  { title: "Booth's Algorithm", desc: "Step-by-step signed multiplication with register visualization", icon: Sigma, color: "violet", href: "/tools/arch/booths-algorithm" },
+  { title: "Pipeline Visualizer", desc: "Instruction flow through fetch/decode/execute stages", icon: GitBranch, color: "emerald", href: "/tools/arch/pipelining" },
+  { title: "Instruction Decoder", desc: "Decode opcode, registers, and immediate values", icon: Binary, color: "pink", href: "/tools/arch/instruction-execution" },
+  { title: "Memory Hierarchy Viz", desc: "Cache to RAM to Disk with latency visualization", icon: Database, color: "amber", href: "/tools/arch/memory-hierarchy" },
+  { title: "Addressing Mode Demo", desc: "Interactive addressing mode demonstrations", icon: Target, color: "orange", href: "/tools/arch/addressing-modes" },
 ];
 
-const PHASES = [
-  { phase: "Phase 1", title: "Fundamentals", topics: ["Von Neumann", "Components", "Performance"], progress: 90 },
-  { phase: "Phase 2", title: "CPU & Memory", topics: ["CPU Organization", "Memory Hierarchy", "Cache"], progress: 60 },
-  { phase: "Phase 3", title: "Advanced", topics: ["Virtual Memory", "I/O System", "Parallel"], progress: 30 },
-  { phase: "Phase 4", title: "Mastery", topics: ["Modern CPUs", "GPU Basics", "Interview Prep"], progress: 0 },
+const CALCULATORS = [
+  { title: "Binary Calculator", desc: "Add, subtract, multiply & divide binary numbers", icon: Binary, color: "cyan" },
+  { title: "Cache Hit Ratio", desc: "Calculate AMAT and performance impact", icon: BarChart3, color: "emerald" },
+  { title: "CPI Calculator", desc: "Cycles Per Instruction analysis tool", icon: Activity, color: "violet" },
+  { title: "Performance Analyzer", desc: "Speedup, efficiency and throughput", icon: TrendingUp, color: "amber" },
 ];
 
-const RESOURCES = [
-  { title: "Cheat Sheet", desc: "Quick reference for all concepts", icon: "📋" },
-  { title: "Interview Questions", desc: "100+ Q&A for placements", icon: "🎯" },
-  { title: "Practice MCQs", desc: "Test your knowledge daily", icon: "📝" },
-  { title: "Real CPU Examples", desc: "Intel, AMD, ARM architectures", icon: "💾" },
+const LEARNING_PATHS = [
+  { title: "Architecture Foundations", items: ["Fundamentals", "CPU Organization", "Register Organization", "Performance Metrics"], badge: "Beginner" },
+  { title: "Memory & Instructions", items: ["Memory Hierarchy", "Cache Memory", "Virtual Memory", "Instruction Formats", "Addressing Modes"], badge: "Intermediate" },
+  { title: "Advanced Architecture", items: ["Pipelining", "Booth's Algorithm", "Floating Point", "Parallel Computing", "I/O Systems"], badge: "Advanced" },
 ];
+
+const badgeStyles: Record<string, string> = {
+  Beginner: "bg-emerald-50 text-emerald-700 border border-emerald-200",
+  Intermediate: "bg-blue-50 text-blue-700 border border-blue-200",
+  Advanced: "bg-purple-50 text-purple-700 border border-purple-200",
+};
 
 export default function ArchPage() {
   const [hoveredCard, setHoveredCard] = useState<string | null>(null);
 
   return (
-    <div className="bg-slate-50 min-h-screen">
-      {/* Hero Section */}
-      <div className="bg-gradient-to-br from-cyan-600 via-blue-600 to-indigo-700 px-6 py-16 text-white text-center relative overflow-hidden">
-        <div className="absolute w-52 h-52 bg-white/5 rounded-full -top-10 -right-10" />
-        <div className="absolute w-52 h-52 bg-white/5 rounded-full -bottom-10 -left-10" />
-        <div className="max-w-3xl mx-auto relative z-10">
-          <div className="text-3xl mb-4">⚙️</div>
-          <h1 className="text-4xl md:text-5xl font-extrabold mb-4 tracking-tight">
-            Computer Architecture
-          </h1>
-          <p className="text-lg mb-8 text-white/90 leading-relaxed">
-            Master CPU design, memory systems, instruction sets, and advanced computing concepts. From Von Neumann to modern GPUs.
-          </p>
-          <div className="flex gap-4 justify-center flex-wrap mb-12">
-            <Link href="/tools/arch/fundamentals" className="no-underline">
-              <button className="bg-white text-cyan-600 border-none px-8 py-3 rounded-xl font-semibold cursor-pointer text-sm flex items-center gap-2 hover:shadow-lg transition">
-                Start Learning <ArrowRight size={16} />
-              </button>
-            </Link>
-            <button className="bg-white/20 text-white border-2 border-white px-7 py-3 rounded-xl font-semibold cursor-pointer text-sm hover:bg-white/30 transition">
-              View Roadmap
-            </button>
-          </div>
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-5">
-            {STATS.map((stat) => (
-              <div key={stat.label} className="bg-white/15 backdrop-blur-md p-5 rounded-xl border border-white/20">
-                <div className="flex justify-center mb-2 text-white/90">{stat.icon}</div>
-                <div className="text-2xl font-bold mb-1">{stat.value}</div>
-                <div className="text-xs text-white/80">{stat.label}</div>
-              </div>
-            ))}
-          </div>
+    <div className="min-h-screen bg-gradient-to-b from-slate-50 to-slate-100">
+      <style>{`
+        @keyframes gradientShift { 0%,100% { background-position: 0% 50%; } 50% { background-position: 100% 50%; } }
+        .arch-hero { background: linear-gradient(135deg, #0f172a 0%, #1e3a5f 30%, #155e75 60%, #0f766e 100%); background-size: 300% 300%; animation: gradientShift 10s ease infinite; }
+        .grid-bg { background-image: radial-gradient(rgba(255,255,255,0.04) 1px, transparent 1px); background-size: 24px 24px; }
+      `}</style>
+
+      {/* Hero */}
+      <div className="arch-hero text-white px-4 sm:px-6 py-16 sm:py-20 text-center relative overflow-hidden">
+        <div className="grid-bg absolute inset-0" />
+        <div className="absolute top-10 left-10 w-64 h-64 bg-cyan-500/10 rounded-full blur-3xl" />
+        <div className="absolute bottom-10 right-10 w-80 h-80 bg-blue-500/10 rounded-full blur-3xl" />
+        <div className="max-w-5xl mx-auto relative z-10">
+          <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }}>
+            <div className="inline-flex items-center gap-2 px-4 py-1.5 bg-white/10 backdrop-blur-md rounded-full text-xs font-semibold mb-6 border border-white/20">
+              <Cpu className="w-3.5 h-3.5 text-cyan-300" />
+              Computer Architecture Learning Platform
+            </div>
+            <h1 className="text-4xl sm:text-5xl md:text-7xl font-black mb-4 leading-[1.1] tracking-tight">
+              <span className="bg-gradient-to-r from-cyan-300 via-blue-300 to-teal-300 bg-clip-text text-transparent">
+                Computer Architecture
+              </span>
+            </h1>
+            <p className="text-base sm:text-lg md:text-xl mb-8 text-slate-300 max-w-3xl mx-auto leading-relaxed">
+              Master CPU design, memory systems, instruction sets, and parallel computing through interactive simulations and hands-on learning.
+            </p>
+            <div className="flex gap-3 sm:gap-4 justify-center flex-wrap mb-12 sm:mb-16">
+              <Link href="/tools/arch/fundamentals">
+                <motion.button whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.97 }}
+                  className="bg-white text-slate-900 px-7 sm:px-9 py-3 rounded-xl font-bold text-sm sm:text-base hover:bg-slate-100 transition flex items-center gap-2 shadow-xl cursor-pointer">
+                  Start Learning <ArrowRight size={18} />
+                </motion.button>
+              </Link>
+              <Link href="/tools/arch/cache-mapping">
+                <motion.button whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.97 }}
+                  className="bg-white/10 text-white border-2 border-white/30 px-7 sm:px-9 py-3 rounded-xl font-bold text-sm sm:text-base hover:bg-white/20 transition flex items-center gap-2 backdrop-blur-md cursor-pointer">
+                  <Zap size={18} /> Try Cache Simulator
+                </motion.button>
+              </Link>
+            </div>
+          </motion.div>
+
+          <motion.div initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, delay: 0.2 }}
+            className="grid grid-cols-2 sm:grid-cols-4 gap-3 sm:gap-4 max-w-3xl mx-auto">
+            {STATS.map((stat) => {
+              const Icon = stat.icon;
+              return (
+                <div key={stat.label} className="bg-white/10 backdrop-blur-md rounded-2xl p-4 sm:p-5 border border-white/20">
+                  <Icon className="w-5 h-5 mx-auto mb-2 text-cyan-300" />
+                  <div className="text-xl sm:text-2xl font-black">{stat.value}</div>
+                  <div className="text-[10px] sm:text-xs text-slate-400 mt-0.5">{stat.label}</div>
+                </div>
+              );
+            })}
+          </motion.div>
         </div>
       </div>
 
-      {/* Main Content */}
-      <div className="max-w-7xl mx-auto px-6 py-10">
-        {/* Learning Topics */}
-        <div className="mb-14">
-          <h2 className="text-2xl font-extrabold text-slate-900 mb-6">Learning Topics</h2>
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5">
-            {MAIN_TOPICS.map((topic) => {
-              const c = colorMap[topic.color] || colorMap.cyan;
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 py-12 sm:py-16 space-y-16">
+        {/* All Topics Grid */}
+        <motion.section initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }}>
+          <div className="flex items-center justify-between mb-8">
+            <div>
+              <h2 className="text-2xl sm:text-3xl font-black text-slate-900">All Architecture Topics</h2>
+              <p className="text-sm text-slate-500 mt-1">Comprehensive coverage from fundamentals to advanced</p>
+            </div>
+            <span className="hidden sm:inline-block text-xs text-slate-400 bg-white px-3 py-1.5 rounded-full border border-slate-200">{TOPICS.length} topics</span>
+          </div>
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
+            {TOPICS.map((topic) => {
+              const Icon = topic.icon;
+              const c = colorConfig[topic.color] || colorConfig.cyan;
               return (
-                <Link key={topic.id} href={`/tools/arch/${topic.id}`} className="no-underline">
-                  <div
-                    className={`bg-white rounded-2xl p-6 border-2 h-full flex flex-col cursor-pointer transition-all duration-300 ${
+                <Link key={topic.id} href={`/tools/arch/${topic.id}`}>
+                  <div onMouseEnter={() => setHoveredCard(topic.id)} onMouseLeave={() => setHoveredCard(null)}
+                    className={`p-5 rounded-2xl border-2 transition-all h-full cursor-pointer ${
                       hoveredCard === topic.id
-                        ? `${c.border} shadow-xl -translate-y-2`
-                        : "border-slate-200 shadow-sm"
-                    }`}
-                    onMouseEnter={() => setHoveredCard(topic.id)}
-                    onMouseLeave={() => setHoveredCard(null)}
-                  >
-                    <div className="text-3xl mb-3">{topic.icon}</div>
-                    <h3 className="text-base font-bold text-slate-900 mb-2">{topic.label}</h3>
-                    <p className="text-xs text-slate-500 mb-4 flex-1">{topic.desc}</p>
-                    <div className="flex items-center gap-2 pt-3 border-t border-slate-200 text-xs font-semibold">
-                      <span className={c.text}>Explore</span>
-                      <ArrowRight size={14} className={c.text} />
+                        ? `${c.border} ${c.light} shadow-lg`
+                        : "border-slate-200 bg-white hover:border-slate-300 shadow-sm"
+                    }`}>
+                    <div className={`w-10 h-10 rounded-xl flex items-center justify-center mb-3 bg-gradient-to-br ${c.gradient} shadow-sm`}>
+                      <Icon className="w-5 h-5 text-white" />
+                    </div>
+                    <h3 className="font-bold text-sm sm:text-base text-slate-900 mb-1.5">{topic.label}</h3>
+                    <p className="text-xs sm:text-sm text-slate-500 mb-3 leading-relaxed">{topic.desc}</p>
+                    <div className="flex items-center justify-between text-[11px]">
+                      <span className={c.text + " font-semibold"}>{topic.cnt} topics</span>
+                      <span className={`px-2 py-0.5 rounded-full font-bold ${badgeStyles[topic.diff]}`}>{topic.diff}</span>
                     </div>
                   </div>
                 </Link>
               );
             })}
           </div>
-        </div>
+        </motion.section>
 
         {/* Interactive Simulators */}
-        <div className="mb-14">
-          <h2 className="text-2xl font-extrabold text-slate-900 mb-6">Interactive Simulators</h2>
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
-            {SIMULATORS.map((sim, i) => (
-              <div key={i} className="bg-white rounded-2xl p-6 border border-slate-200 cursor-pointer transition-all hover:border-cyan-500 hover:shadow-lg shadow-sm">
-                <div className="text-3xl mb-3">{sim.icon}</div>
-                <h3 className="text-base font-bold text-slate-900 mb-2">{sim.title}</h3>
-                <p className="text-xs text-slate-500 mb-4">{sim.desc}</p>
-                <button className="w-full bg-cyan-50 border border-cyan-500 text-cyan-600 py-2.5 rounded-lg font-semibold text-xs cursor-pointer hover:bg-cyan-100 transition">
-                  Launch Simulator
-                </button>
-              </div>
-            ))}
+        <motion.section initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }}>
+          <div className="mb-8">
+            <h2 className="text-2xl sm:text-3xl font-black text-slate-900">Interactive Simulators</h2>
+            <p className="text-sm text-slate-500 mt-1">Hands-on tools to visualize and experiment with architecture concepts</p>
           </div>
-        </div>
-
-        {/* Recommended Learning Path */}
-        <div className="mb-14">
-          <h2 className="text-2xl font-extrabold text-slate-900 mb-6">Recommended Learning Path</h2>
-          <div className="bg-white rounded-2xl border border-slate-200 p-6 shadow-sm">
-            <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
-              {PHASES.map((phase, i) => (
-                <div key={i} className="bg-cyan-50 rounded-xl p-4 border border-slate-200">
-                  <h4 className="text-[10px] font-bold text-cyan-700 mb-2 uppercase tracking-wider">{phase.phase}</h4>
-                  <h3 className="text-base font-bold text-slate-900 mb-3">{phase.title}</h3>
-                  <ul className="flex flex-col gap-1.5 mb-3">
-                    {phase.topics.map((topic, j) => (
-                      <li key={j} className="text-[11px] text-slate-500 flex items-center gap-2">
-                        <span className="w-1 h-1 bg-cyan-500 rounded-full shrink-0" />
-                        {topic}
-                      </li>
-                    ))}
-                  </ul>
-                  <div className="bg-white h-1.5 rounded-full overflow-hidden mb-1.5">
-                    <div className="bg-gradient-to-r from-cyan-500 to-blue-500 h-full rounded-full transition-all" style={{ width: `${phase.progress}%` }} />
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-5">
+            {SIMULATORS.map((sim, i) => {
+              const c = colorConfig[sim.color] || colorConfig.cyan;
+              const Icon = sim.icon;
+              return (
+                <Link key={i} href={sim.href}>
+                  <div className="bg-white rounded-2xl p-5 sm:p-6 border border-slate-200 hover:border-slate-300 shadow-sm hover:shadow-lg transition-all h-full cursor-pointer">
+                    <div className={`w-11 h-11 rounded-xl flex items-center justify-center mb-4 bg-gradient-to-br ${c.gradient} shadow-sm`}>
+                      <Icon className="w-5 h-5 text-white" />
+                    </div>
+                    <h3 className="font-bold text-sm sm:text-base text-slate-900 mb-2">{sim.title}</h3>
+                    <p className="text-xs sm:text-sm text-slate-500 mb-4 leading-relaxed">{sim.desc}</p>
+                    <div className="flex items-center gap-1.5 text-xs font-semibold text-cyan-600">
+                      Launch Simulator <ChevronRight size={14} />
+                    </div>
                   </div>
-                  <p className="text-[10px] text-slate-400">{phase.progress}% Complete</p>
-                </div>
-              ))}
-            </div>
+                </Link>
+              );
+            })}
           </div>
-        </div>
+        </motion.section>
 
-        {/* Quick Resources */}
-        <div className="mb-10">
-          <h2 className="text-2xl font-extrabold text-slate-900 mb-6">Quick Resources</h2>
-          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
-            {RESOURCES.map((resource, i) => (
-              <div key={i} className="bg-white rounded-2xl p-6 border border-slate-200 cursor-pointer transition-all hover:border-emerald-500 shadow-sm">
-                <div className="text-3xl mb-3">{resource.icon}</div>
-                <h3 className="text-base font-bold text-slate-900 mb-2">{resource.title}</h3>
-                <p className="text-xs text-slate-500 mb-4">{resource.desc}</p>
-                <button className="w-full bg-emerald-50 border border-emerald-500 text-emerald-600 py-2.5 rounded-lg font-semibold text-xs cursor-pointer hover:bg-emerald-100 transition">
-                  Explore
-                </button>
+        {/* Calculators */}
+        <motion.section initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }}>
+          <div className="mb-8">
+            <h2 className="text-2xl sm:text-3xl font-black text-slate-900">Calculators & Tools</h2>
+            <p className="text-sm text-slate-500 mt-1">Quick computation tools for architecture problems</p>
+          </div>
+          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
+            {CALCULATORS.map((calc, i) => {
+              const c = colorConfig[calc.color] || colorConfig.cyan;
+              const Icon = calc.icon;
+              return (
+                <div key={i} className="bg-white rounded-2xl p-5 border border-slate-200 hover:border-slate-300 shadow-sm hover:shadow-lg transition-all cursor-pointer group">
+                  <div className={`w-10 h-10 rounded-xl flex items-center justify-center mb-3 bg-gradient-to-br ${c.gradient} shadow-sm`}>
+                    <Icon className="w-5 h-5 text-white" />
+                  </div>
+                  <h3 className="font-bold text-sm text-slate-900 mb-1.5">{calc.title}</h3>
+                  <p className="text-xs text-slate-500 mb-3">{calc.desc}</p>
+                  <span className="text-xs font-semibold text-cyan-600 group-hover:underline">Use tool →</span>
+                </div>
+              );
+            })}
+          </div>
+        </motion.section>
+
+        {/* Learning Roadmap */}
+        <motion.section initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }}>
+          <div className="mb-8">
+            <h2 className="text-2xl sm:text-3xl font-black text-slate-900">Learning Roadmap</h2>
+            <p className="text-sm text-slate-500 mt-1">Follow structured learning paths based on your level</p>
+          </div>
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
+            {LEARNING_PATHS.map((path) => (
+              <div key={path.title} className="bg-white rounded-2xl border border-slate-200 p-5 sm:p-6 shadow-sm hover:shadow-md transition-shadow">
+                <div className="w-9 h-9 rounded-xl flex items-center justify-center mb-3 bg-gradient-to-br from-cyan-500 to-blue-600">
+                  <BookOpen className="w-4 h-4 text-white" />
+                </div>
+                <h3 className="text-base sm:text-lg font-bold text-slate-900 mb-3">{path.title}</h3>
+                <ul className="space-y-2 mb-4">
+                  {path.items.map((item, i) => (
+                    <li key={i} className="flex items-center gap-2 text-xs sm:text-sm text-slate-600">
+                      <span className="w-1.5 h-1.5 rounded-full bg-cyan-500 shrink-0" />
+                      {item}
+                    </li>
+                  ))}
+                </ul>
+                <span className={`inline-block px-3 py-1 text-[10px] font-bold rounded-full ${badgeStyles[path.badge]}`}>{path.badge}</span>
               </div>
             ))}
           </div>
-        </div>
+        </motion.section>
+
+        {/* Features */}
+        <motion.section initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }}>
+          <div className="mb-8">
+            <h2 className="text-2xl sm:text-3xl font-black text-slate-900">Why Master Architecture Here?</h2>
+          </div>
+          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
+            {[
+              { icon: Cpu, title: "Interactive Simulations", desc: "Visualize CPU pipelines, cache mapping, and memory hierarchies in real-time." },
+              { icon: Zap, title: "Real Performance Data", desc: "See actual timing, hit rates, and throughput calculations as you experiment." },
+              { icon: BookOpen, title: "Interview Ready", desc: "200+ curated interview questions with detailed explanations for placements." },
+              { icon: BarChart3, title: "Step-by-Step Learning", desc: "Beginner to advanced roadmap covering everything from gates to GPUs." },
+            ].map((f, i) => {
+              const Icon = f.icon;
+              return (
+                <div key={i} className="bg-white rounded-xl border border-slate-200 p-5 sm:p-6 shadow-sm">
+                  <Icon className="w-8 h-8 text-cyan-600 mb-3" />
+                  <h3 className="text-sm sm:text-base font-bold text-slate-900 mb-2">{f.title}</h3>
+                  <p className="text-xs sm:text-sm text-slate-500 leading-relaxed">{f.desc}</p>
+                </div>
+              );
+            })}
+          </div>
+        </motion.section>
       </div>
     </div>
   );

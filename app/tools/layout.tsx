@@ -8,6 +8,7 @@ import {
   Cpu, Database, BrainCircuit, Network, MemoryStick,
   ShieldAlert, Blocks, Code2, Globe, Menu, X,
   ChevronRight, Home, ChevronLeft, PanelLeftClose, PanelLeft,
+  Microchip, GitFork,
 } from "lucide-react";
 
 const TOOL_CATEGORIES = [
@@ -17,6 +18,8 @@ const TOOL_CATEGORIES = [
   { label: "Computer Networks", href: "/tools/network",     icon: Network,      color: "text-blue-500" },
   { label: "Database Systems",  href: "/tools/database",    icon: MemoryStick,  color: "text-orange-500" },
   { label: "Cyber Security",    href: "/tools/security",    icon: ShieldAlert,  color: "text-red-500" },
+  { label: "Computer Arch.",    href: "/tools/arch",        icon: Microchip,    color: "text-cyan-500" },
+  { label: "Theory of Comp.",   href: "/tools/theory-of-computing", icon: GitFork, color: "text-indigo-500" },
   { label: "Software Eng.",     href: "/tools/swe",         icon: Blocks,       color: "text-indigo-500" },
   { label: "Programming",       href: "/tools/programming", icon: Code2,        color: "text-pink-500" },
   { label: "Web Development",   href: "/tools/web",         icon: Globe,        color: "text-teal-500" },

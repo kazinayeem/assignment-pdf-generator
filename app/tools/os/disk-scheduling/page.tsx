@@ -91,122 +91,122 @@ export default function DiskSchedulingPage() {
   }, [algorithm, requestArray, head]);
 
   return (
-    <div className="min-h-screen bg-[#edf4fb] px-4 py-8 md:px-8">
+    <div className="min-h-screen bg-[#edf4fb] px-4 sm:px-6 md:px-8 py-6 sm:py-8">
       <div className="mx-auto max-w-7xl">
 
         {/* Back */}
         <Link
           href="/tools/os"
-          className="mb-6 inline-flex items-center gap-2 text-sm font-semibold text-sky-600"
+          className="mb-4 sm:mb-6 inline-flex items-center gap-1.5 sm:gap-2 text-xs sm:text-sm font-semibold text-sky-600"
         >
-          <ArrowLeft size={18} />
+          <ArrowLeft size={16} />
           Back to Operating Systems
         </Link>
 
         {/* Hero */}
-        <div className="flex flex-col gap-8 lg:flex-row lg:items-center lg:justify-between">
+        <div className="flex flex-col gap-6 sm:gap-8 lg:flex-row lg:items-center lg:justify-between">
 
           <div>
-            <p className="text-sm uppercase tracking-[5px] text-slate-500">
+            <p className="text-[11px] sm:text-sm uppercase tracking-[3px] sm:tracking-[5px] text-slate-500">
               Operating Systems
             </p>
 
-            <h1 className="mt-3 text-4xl font-black text-slate-900 md:text-6xl">
+            <h1 className="mt-2 sm:mt-3 text-2xl sm:text-4xl md:text-5xl lg:text-6xl font-black text-slate-900">
               Disk Scheduling Simulator
             </h1>
 
-            <p className="mt-5 max-w-3xl text-base leading-8 text-slate-500 md:text-lg">
+            <p className="mt-3 sm:mt-5 max-w-3xl text-sm sm:text-base leading-6 sm:leading-8 text-slate-500 md:text-lg">
               Learn how Operating Systems optimize disk access
               requests using FCFS, SSTF and SCAN scheduling
               algorithms with real-time visualization.
             </p>
           </div>
 
-          <div className="rounded-[32px] bg-gradient-to-br from-indigo-500 via-sky-500 to-cyan-500 p-8 text-white shadow-2xl">
-            <HardDrive className="mb-4 h-14 w-14" />
+          <div className="rounded-2xl sm:rounded-[32px] bg-gradient-to-br from-indigo-500 via-sky-500 to-cyan-500 p-5 sm:p-8 text-white shadow-2xl">
+            <HardDrive className="mb-3 sm:mb-4 h-10 w-10 sm:h-14 sm:w-14" />
 
-            <h2 className="text-3xl font-bold">
+            <h2 className="text-xl sm:text-3xl font-bold">
               Disk Scheduler Lab
             </h2>
 
-            <p className="mt-3 max-w-xs leading-7 text-white/80">
+            <p className="mt-2 sm:mt-3 max-w-xs text-sm sm:text-base leading-6 sm:leading-7 text-white/80">
               Visualize seek operations and disk head movement.
             </p>
           </div>
         </div>
 
         {/* Top Cards */}
-        <div className="mt-10 grid gap-6 md:grid-cols-2 xl:grid-cols-4">
+        <div className="mt-6 sm:mt-10 grid grid-cols-2 gap-3 sm:gap-6 md:grid-cols-2 xl:grid-cols-4">
 
-          <div className="rounded-[28px] bg-white p-7 shadow-md">
-            <Cpu className="mb-4 text-sky-500" size={34} />
+          <div className="rounded-2xl sm:rounded-[28px] bg-white p-4 sm:p-7 shadow-md">
+            <Cpu className="mb-2 sm:mb-4 text-sky-500" size={24} />
 
-            <h2 className="text-2xl font-bold text-slate-900">
+            <h2 className="text-base sm:text-2xl font-bold text-slate-900">
               FCFS
             </h2>
 
-            <p className="mt-3 leading-7 text-slate-500">
+            <p className="mt-1 sm:mt-3 text-xs sm:text-base leading-5 sm:leading-7 text-slate-500">
               First Come First Serve executes requests in arrival order.
             </p>
           </div>
 
-          <div className="rounded-[28px] bg-white p-7 shadow-md">
-            <Activity className="mb-4 text-indigo-500" size={34} />
+          <div className="rounded-2xl sm:rounded-[28px] bg-white p-4 sm:p-7 shadow-md">
+            <Activity className="mb-2 sm:mb-4 text-indigo-500" size={24} />
 
-            <h2 className="text-2xl font-bold text-slate-900">
+            <h2 className="text-base sm:text-2xl font-bold text-slate-900">
               SSTF
             </h2>
 
-            <p className="mt-3 leading-7 text-slate-500">
+            <p className="mt-1 sm:mt-3 text-xs sm:text-base leading-5 sm:leading-7 text-slate-500">
               Shortest Seek Time First selects nearest request.
             </p>
           </div>
 
-          <div className="rounded-[28px] bg-white p-7 shadow-md">
-            <Layers3 className="mb-4 text-cyan-500" size={34} />
+          <div className="rounded-2xl sm:rounded-[28px] bg-white p-4 sm:p-7 shadow-md">
+            <Layers3 className="mb-2 sm:mb-4 text-cyan-500" size={24} />
 
-            <h2 className="text-2xl font-bold text-slate-900">
+            <h2 className="text-base sm:text-2xl font-bold text-slate-900">
               SCAN
             </h2>
 
-            <p className="mt-3 leading-7 text-slate-500">
+            <p className="mt-1 sm:mt-3 text-xs sm:text-base leading-5 sm:leading-7 text-slate-500">
               Disk arm moves like an elevator servicing requests.
             </p>
           </div>
 
-          <div className="rounded-[28px] bg-white p-7 shadow-md">
-            <Gauge className="mb-4 text-emerald-500" size={34} />
+          <div className="rounded-2xl sm:rounded-[28px] bg-white p-4 sm:p-7 shadow-md">
+            <Gauge className="mb-2 sm:mb-4 text-emerald-500" size={24} />
 
-            <h2 className="text-2xl font-bold text-slate-900">
+            <h2 className="text-base sm:text-2xl font-bold text-slate-900">
               Seek Time
             </h2>
 
-            <p className="mt-3 leading-7 text-slate-500">
+            <p className="mt-1 sm:mt-3 text-xs sm:text-base leading-5 sm:leading-7 text-slate-500">
               Total head movement between disk tracks.
             </p>
           </div>
         </div>
 
         {/* Main */}
-        <div className="mt-10 grid gap-8 xl:grid-cols-[380px_1fr]">
+        <div className="mt-6 sm:mt-10 grid gap-6 sm:gap-8 xl:grid-cols-[380px_1fr]">
 
           {/* Left Controls */}
-          <div className="rounded-[32px] bg-white p-8 shadow-md">
+          <div className="rounded-2xl sm:rounded-[32px] bg-white p-5 sm:p-8 shadow-md">
 
-            <h2 className="text-3xl font-bold text-slate-900">
+            <h2 className="text-xl sm:text-3xl font-bold text-slate-900">
               Simulation Controls
             </h2>
 
-            <div className="mt-8">
+            <div className="mt-5 sm:mt-8">
 
-              <label className="mb-3 block text-sm font-semibold text-slate-500">
+              <label className="mb-2 sm:mb-3 block text-xs sm:text-sm font-semibold text-slate-500">
                 Select Algorithm
               </label>
 
               <select
                 value={algorithm}
                 onChange={(e) => setAlgorithm(e.target.value)}
-                className="w-full rounded-2xl border border-slate-200 bg-slate-50 px-5 py-4 text-lg font-semibold outline-none focus:border-sky-400"
+                className="w-full rounded-xl sm:rounded-2xl border border-slate-200 bg-slate-50 px-3 sm:px-5 py-3 sm:py-4 text-sm sm:text-lg font-semibold outline-none focus:border-sky-400"
               >
                 <option value="FCFS">FCFS</option>
                 <option value="SSTF">SSTF</option>
@@ -214,9 +214,9 @@ export default function DiskSchedulingPage() {
               </select>
             </div>
 
-            <div className="mt-8">
+            <div className="mt-5 sm:mt-8">
 
-              <label className="mb-3 block text-sm font-semibold text-slate-500">
+              <label className="mb-2 sm:mb-3 block text-xs sm:text-sm font-semibold text-slate-500">
                 Initial Head Position
               </label>
 
@@ -224,47 +224,47 @@ export default function DiskSchedulingPage() {
                 type="number"
                 value={head}
                 onChange={(e) => setHead(Number(e.target.value))}
-                className="w-full rounded-2xl border border-slate-200 px-5 py-4 text-lg font-semibold outline-none focus:border-sky-400"
+                className="w-full rounded-xl sm:rounded-2xl border border-slate-200 px-3 sm:px-5 py-3 sm:py-4 text-sm sm:text-lg font-semibold outline-none focus:border-sky-400"
               />
             </div>
 
-            <div className="mt-8">
+            <div className="mt-5 sm:mt-8">
 
-              <label className="mb-3 block text-sm font-semibold text-slate-500">
+              <label className="mb-2 sm:mb-3 block text-xs sm:text-sm font-semibold text-slate-500">
                 Disk Requests
               </label>
 
               <textarea
-                rows={6}
+                rows={4}
                 value={requests}
                 onChange={(e) => setRequests(e.target.value)}
-                className="w-full rounded-2xl border border-slate-200 px-5 py-4 leading-8 outline-none focus:border-sky-400"
+                className="w-full rounded-xl sm:rounded-2xl border border-slate-200 px-3 sm:px-5 py-3 sm:py-4 text-sm leading-6 sm:leading-8 outline-none focus:border-sky-400"
               />
 
-              <p className="mt-3 text-sm text-slate-400">
+              <p className="mt-2 sm:mt-3 text-xs sm:text-sm text-slate-400">
                 Example: 98 183 37 122 14 124 65 67
               </p>
             </div>
 
             {/* Stats */}
-            <div className="mt-10 space-y-5">
+            <div className="mt-6 sm:mt-10 space-y-3 sm:space-y-5">
 
-              <div className="rounded-3xl bg-gradient-to-br from-sky-500 to-cyan-400 p-6 text-white shadow-xl">
-                <p className="text-sm uppercase tracking-[3px] text-white/80">
+              <div className="rounded-2xl sm:rounded-3xl bg-gradient-to-br from-sky-500 to-cyan-400 p-4 sm:p-6 text-white shadow-xl">
+                <p className="text-[11px] sm:text-sm uppercase tracking-[2px] sm:tracking-[3px] text-white/80">
                   Total Seek Time
                 </p>
 
-                <h2 className="mt-4 text-5xl font-black">
+                <h2 className="mt-2 sm:mt-4 text-3xl sm:text-5xl font-black">
                   {simulation.totalSeek}
                 </h2>
               </div>
 
-              <div className="rounded-3xl bg-gradient-to-br from-indigo-500 to-violet-500 p-6 text-white shadow-xl">
-                <p className="text-sm uppercase tracking-[3px] text-white/80">
+              <div className="rounded-2xl sm:rounded-3xl bg-gradient-to-br from-indigo-500 to-violet-500 p-4 sm:p-6 text-white shadow-xl">
+                <p className="text-[11px] sm:text-sm uppercase tracking-[2px] sm:tracking-[3px] text-white/80">
                   Average Seek Time
                 </p>
 
-                <h2 className="mt-4 text-5xl font-black">
+                <h2 className="mt-2 sm:mt-4 text-3xl sm:text-5xl font-black">
                   {simulation.avgSeek}
                 </h2>
               </div>
@@ -273,34 +273,34 @@ export default function DiskSchedulingPage() {
           </div>
 
           {/* Right */}
-          <div className="space-y-8">
+          <div className="space-y-6 sm:space-y-8">
 
             {/* Sequence */}
-            <div className="rounded-[32px] bg-white p-8 shadow-md">
+            <div className="rounded-2xl sm:rounded-[32px] bg-white p-5 sm:p-8 shadow-md">
 
-              <div className="flex items-center gap-3">
-                <CheckCircle2 className="text-sky-600" />
+              <div className="flex items-center gap-2 sm:gap-3">
+                <CheckCircle2 size={20} className="text-sky-600" />
 
-                <h2 className="text-3xl font-bold text-slate-900">
+                <h2 className="text-xl sm:text-3xl font-bold text-slate-900">
                   Execution Order
                 </h2>
               </div>
 
-              <div className="mt-10 flex flex-wrap items-center gap-5">
+              <div className="mt-6 sm:mt-10 flex flex-wrap items-center gap-3 sm:gap-5">
 
                 {simulation.order.map((item, index) => (
                   <div
                     key={index}
-                    className="flex items-center gap-5"
+                    className="flex items-center gap-3 sm:gap-5"
                   >
-                    <div className="rounded-3xl bg-gradient-to-br from-sky-500 to-cyan-400 px-8 py-6 text-center text-white shadow-lg">
-                      <h3 className="text-2xl font-black">
+                    <div className="rounded-2xl sm:rounded-3xl bg-gradient-to-br from-sky-500 to-cyan-400 px-4 sm:px-8 py-3 sm:py-6 text-center text-white shadow-lg">
+                      <h3 className="text-lg sm:text-2xl font-black">
                         {item}
                       </h3>
                     </div>
 
                     {index !== simulation.order.length - 1 && (
-                      <div className="text-4xl font-black text-slate-300">
+                      <div className="text-2xl sm:text-4xl font-black text-slate-300">
                         →
                       </div>
                     )}
@@ -311,15 +311,15 @@ export default function DiskSchedulingPage() {
             </div>
 
             {/* Visualization */}
-            <div className="rounded-[32px] bg-white p-8 shadow-md">
+            <div className="rounded-2xl sm:rounded-[32px] bg-white p-5 sm:p-8 shadow-md">
 
-              <h2 className="text-3xl font-bold text-slate-900">
+              <h2 className="text-xl sm:text-3xl font-bold text-slate-900">
                 Disk Head Movement
               </h2>
 
-              <div className="mt-10 overflow-x-auto">
+              <div className="mt-6 sm:mt-10 overflow-x-auto">
 
-                <div className="flex min-w-max items-end gap-5">
+                <div className="flex min-w-max items-end gap-3 sm:gap-5">
 
                   {simulation.order.map((item, index) => (
                     <div
@@ -327,17 +327,17 @@ export default function DiskSchedulingPage() {
                       className="flex flex-col items-center"
                     >
                       <div
-                        className="flex w-20 items-end justify-center rounded-t-3xl bg-gradient-to-br from-indigo-500 to-sky-500 text-white shadow-lg"
+                        className="flex w-14 sm:w-20 items-end justify-center rounded-t-2xl sm:rounded-t-3xl bg-gradient-to-br from-indigo-500 to-sky-500 text-white shadow-lg"
                         style={{
-                          height: `${item + 80}px`,
+                          height: `${Math.max(60, item + 80)}px`,
                         }}
                       >
-                        <span className="mb-4 text-lg font-black">
+                        <span className="mb-2 sm:mb-4 text-sm sm:text-lg font-black">
                           {item}
                         </span>
                       </div>
 
-                      <div className="mt-3 rounded-xl bg-slate-100 px-4 py-2 text-sm font-semibold text-slate-600">
+                      <div className="mt-2 sm:mt-3 rounded-lg sm:rounded-xl bg-slate-100 px-2 sm:px-4 py-1 sm:py-2 text-[10px] sm:text-sm font-semibold text-slate-600">
                         Step {index}
                       </div>
                     </div>
@@ -348,13 +348,13 @@ export default function DiskSchedulingPage() {
             </div>
 
             {/* Explanation */}
-            <div className="rounded-[32px] bg-white p-8 shadow-md">
+            <div className="rounded-2xl sm:rounded-[32px] bg-white p-5 sm:p-8 shadow-md">
 
-              <h2 className="text-3xl font-bold text-slate-900">
+              <h2 className="text-xl sm:text-3xl font-bold text-slate-900">
                 How Disk Scheduling Works
               </h2>
 
-              <div className="mt-6 space-y-5 text-lg leading-9 text-slate-600">
+              <div className="mt-4 sm:mt-6 space-y-3 sm:space-y-5 text-sm sm:text-lg leading-7 sm:leading-9 text-slate-600">
 
                 <p>
                   Disk Scheduling algorithms determine the order

@@ -12,13 +12,13 @@ export default function ProcessSchedulingPage() {
         <span className="text-gray-700 font-semibold">Process Scheduling</span>
       </div>
 
-      <div className="max-w-4xl mx-auto space-y-6">
-        <div className="bg-white rounded-2xl border border-gray-100 shadow-sm p-6">
-          <h1 className="text-2xl font-black text-gray-900">Process Scheduling Concepts</h1>
-          <p className="text-gray-500 text-sm mt-1">Long-term, medium-term, and short-term scheduling in operating systems.</p>
+      <div className="max-w-4xl mx-auto space-y-4 sm:space-y-6">
+        <div className="bg-white rounded-2xl border border-gray-100 shadow-sm p-4 sm:p-6">
+          <h1 className="text-xl sm:text-2xl font-black text-gray-900">Process Scheduling Concepts</h1>
+          <p className="text-gray-500 text-xs sm:text-sm mt-1">Long-term, medium-term, and short-term scheduling in operating systems.</p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-3 sm:gap-4">
           {[
             { title: "Long-Term Scheduler", icon: Timer, desc: "Controls degree of multiprogramming. Selects processes from disk to load into memory.", color: "blue", bg: "bg-blue-50", border: "border-blue-100", iconColor: "text-blue-600" },
             { title: "Medium-Term Scheduler", icon: Layers, desc: "Handles swapping. Moves processes between memory and disk to manage system load.", color: "violet", bg: "bg-violet-50", border: "border-violet-100", iconColor: "text-violet-600" },
@@ -26,17 +26,17 @@ export default function ProcessSchedulingPage() {
           ].map((s) => {
             const Icon = s.icon;
             return (
-              <div key={s.title} className={`p-6 ${s.bg} rounded-2xl border ${s.border}`}>
-                <Icon className={`w-8 h-8 ${s.iconColor} mb-3`} />
-                <h2 className="text-lg font-black text-gray-900 mb-2">{s.title}</h2>
-                <p className="text-sm text-gray-600 leading-relaxed">{s.desc}</p>
+              <div key={s.title} className={`p-4 sm:p-6 ${s.bg} rounded-2xl border ${s.border}`}>
+                <Icon className={`w-6 h-6 sm:w-8 sm:h-8 ${s.iconColor} mb-2 sm:mb-3`} />
+                <h2 className="text-base sm:text-lg font-black text-gray-900 mb-1 sm:mb-2">{s.title}</h2>
+                <p className="text-xs sm:text-sm text-gray-600 leading-relaxed">{s.desc}</p>
               </div>
             );
           })}
         </div>
 
-        <div className="bg-white rounded-2xl border border-gray-100 shadow-sm p-6">
-          <h2 className="text-sm font-black uppercase tracking-wider text-gray-500 mb-4">Scheduling Queues</h2>
+        <div className="bg-white rounded-2xl border border-gray-100 shadow-sm p-4 sm:p-6">
+          <h2 className="text-xs sm:text-sm font-black uppercase tracking-wider text-gray-500 mb-4">Scheduling Queues</h2>
           <div className="overflow-x-auto">
             <table className="w-full text-sm">
               <thead>
@@ -63,25 +63,25 @@ export default function ProcessSchedulingPage() {
           </div>
         </div>
 
-        <div className="bg-white rounded-2xl border border-gray-100 shadow-sm p-6">
-          <h2 className="text-sm font-black uppercase tracking-wider text-gray-500 mb-4">Context Switching</h2>
-          <p className="text-sm text-gray-600 leading-relaxed mb-4">
+        <div className="bg-white rounded-2xl border border-gray-100 shadow-sm p-4 sm:p-6">
+          <h2 className="text-xs sm:text-sm font-black uppercase tracking-wider text-gray-500 mb-4">Context Switching</h2>
+          <p className="text-xs sm:text-sm text-gray-600 leading-relaxed mb-4">
             Context switching is the mechanism where the OS saves the state of a running process (registers, program counter, memory map) and loads the saved state of another process. While necessary for multitasking, context switching has overhead — typically a few microseconds per switch.
           </p>
-          <div className="p-4 bg-amber-50 rounded-xl border border-amber-100">
-            <p className="text-xs font-bold text-amber-700 mb-1">⚡ Performance Impact</p>
-            <p className="text-xs text-amber-600">Context switch overhead includes saving/loading registers, flushing TLB, and cache misses. Too many switches can degrade performance significantly.</p>
+          <div className="p-3 sm:p-4 bg-amber-50 rounded-xl border border-amber-100">
+            <p className="text-[11px] sm:text-xs font-bold text-amber-700 mb-1">Performance Impact</p>
+            <p className="text-[11px] sm:text-xs text-amber-600">Context switch overhead includes saving/loading registers, flushing TLB, and cache misses. Too many switches can degrade performance significantly.</p>
           </div>
         </div>
 
-        <div className="flex flex-wrap gap-4">
+        <div className="flex flex-wrap gap-3 sm:gap-4">
           <Link href="/tools/os/cpu-scheduling">
-            <button className="flex items-center gap-2 px-6 py-3 bg-indigo-600 hover:bg-indigo-700 text-white font-bold rounded-xl transition-colors shadow-sm">
-              Try CPU Scheduling Simulator <ArrowRight className="w-4 h-4" />
+            <button className="flex items-center gap-2 px-4 sm:px-6 py-2.5 sm:py-3 bg-indigo-600 hover:bg-indigo-700 text-white text-xs sm:text-sm font-bold rounded-xl transition-colors shadow-sm">
+              Try CPU Scheduling Simulator <ArrowRight className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
             </button>
           </Link>
           <Link href="/tools/os">
-            <button className="flex items-center gap-2 px-6 py-3 bg-gray-100 hover:bg-gray-200 text-gray-700 font-bold rounded-xl transition-colors">
+            <button className="flex items-center gap-2 px-4 sm:px-6 py-2.5 sm:py-3 bg-gray-100 hover:bg-gray-200 text-gray-700 text-xs sm:text-sm font-bold rounded-xl transition-colors">
               Back to OS
             </button>
           </Link>

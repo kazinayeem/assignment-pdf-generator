@@ -90,80 +90,80 @@ export default function ProcessManagementPage() {
         <div className="flex flex-col gap-8 lg:flex-row lg:items-center lg:justify-between">
 
           <div>
-            <p className="text-sm uppercase tracking-[5px] text-slate-500">
+            <p className="text-xs sm:text-sm uppercase tracking-[3px] sm:tracking-[5px] text-slate-500">
               Operating Systems
             </p>
 
-            <h1 className="mt-3 text-4xl font-black text-slate-900 md:text-6xl">
+            <h1 className="mt-3 text-2xl sm:text-3xl md:text-4xl lg:text-6xl font-black text-slate-900">
               Process Management Simulator
             </h1>
 
-            <p className="mt-5 max-w-3xl text-base leading-8 text-slate-500 md:text-lg">
+            <p className="mt-4 sm:mt-5 max-w-3xl text-sm sm:text-base leading-7 sm:leading-8 text-slate-500 md:text-lg">
               Learn how processes move between Ready, Running,
               Waiting and Completed states inside Operating Systems.
             </p>
           </div>
 
-          <div className="rounded-[32px] bg-gradient-to-br from-sky-500 via-cyan-500 to-indigo-500 p-8 text-white shadow-2xl">
-            <Cpu className="mb-4 h-14 w-14" />
+          <div className="rounded-[24px] sm:rounded-[32px] bg-gradient-to-br from-sky-500 via-cyan-500 to-indigo-500 p-5 sm:p-8 text-white shadow-2xl shrink-0">
+            <Cpu className="mb-3 sm:mb-4 h-10 w-10 sm:h-14 sm:w-14" />
 
-            <h2 className="text-3xl font-bold">
+            <h2 className="text-xl sm:text-2xl md:text-3xl font-bold">
               Process Control Lab
             </h2>
 
-            <p className="mt-3 max-w-xs leading-7 text-white/80">
+            <p className="mt-2 sm:mt-3 max-w-xs text-sm sm:text-base leading-6 sm:leading-7 text-white/80">
               Visualize process states and scheduling flow dynamically.
             </p>
           </div>
         </div>
 
         {/* Cards */}
-        <div className="mt-10 grid gap-6 md:grid-cols-2 xl:grid-cols-4">
+        <div className="mt-8 sm:mt-10 grid gap-4 sm:gap-6 grid-cols-2 sm:grid-cols-2 lg:grid-cols-4">
 
-          <div className="rounded-[28px] bg-white p-7 shadow-md">
-            <PlayCircle className="mb-4 text-sky-500" size={34} />
+          <div className="rounded-2xl sm:rounded-[28px] bg-white p-4 sm:p-7 shadow-md">
+            <PlayCircle className="mb-2 sm:mb-4 text-sky-500" size={24} />
 
-            <h2 className="text-2xl font-bold text-slate-900">
-              Ready State
+            <h2 className="text-base sm:text-xl md:text-2xl font-bold text-slate-900">
+              Ready
             </h2>
 
-            <p className="mt-3 leading-7 text-slate-500">
+            <p className="mt-2 sm:mt-3 text-xs sm:text-sm leading-5 sm:leading-7 text-slate-500">
               Process waits in queue for CPU execution.
             </p>
           </div>
 
-          <div className="rounded-[28px] bg-white p-7 shadow-md">
-            <Activity className="mb-4 text-emerald-500" size={34} />
+          <div className="rounded-2xl sm:rounded-[28px] bg-white p-4 sm:p-7 shadow-md">
+            <Activity className="mb-2 sm:mb-4 text-emerald-500" size={24} />
 
-            <h2 className="text-2xl font-bold text-slate-900">
-              Running State
+            <h2 className="text-base sm:text-xl md:text-2xl font-bold text-slate-900">
+              Running
             </h2>
 
-            <p className="mt-3 leading-7 text-slate-500">
+            <p className="mt-2 sm:mt-3 text-xs sm:text-sm leading-5 sm:leading-7 text-slate-500">
               Process is currently executing on CPU.
             </p>
           </div>
 
-          <div className="rounded-[28px] bg-white p-7 shadow-md">
-            <PauseCircle className="mb-4 text-orange-500" size={34} />
+          <div className="rounded-2xl sm:rounded-[28px] bg-white p-4 sm:p-7 shadow-md">
+            <PauseCircle className="mb-2 sm:mb-4 text-orange-500" size={24} />
 
-            <h2 className="text-2xl font-bold text-slate-900">
-              Waiting State
+            <h2 className="text-base sm:text-xl md:text-2xl font-bold text-slate-900">
+              Waiting
             </h2>
 
-            <p className="mt-3 leading-7 text-slate-500">
+            <p className="mt-2 sm:mt-3 text-xs sm:text-sm leading-5 sm:leading-7 text-slate-500">
               Process waits for I/O or another resource.
             </p>
           </div>
 
-          <div className="rounded-[28px] bg-white p-7 shadow-md">
-            <CheckCircle2 className="mb-4 text-indigo-500" size={34} />
+          <div className="rounded-2xl sm:rounded-[28px] bg-white p-4 sm:p-7 shadow-md">
+            <CheckCircle2 className="mb-2 sm:mb-4 text-indigo-500" size={24} />
 
-            <h2 className="text-2xl font-bold text-slate-900">
+            <h2 className="text-base sm:text-xl md:text-2xl font-bold text-slate-900">
               Completed
             </h2>
 
-            <p className="mt-3 leading-7 text-slate-500">
+            <p className="mt-2 sm:mt-3 text-xs sm:text-sm leading-5 sm:leading-7 text-slate-500">
               Process has finished execution successfully.
             </p>
           </div>

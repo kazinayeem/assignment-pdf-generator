@@ -137,3 +137,32 @@
 /* Responsive typography */
 @media (max-width: 640px) { :root { font-size: 14px; } }
 @media (min-width: 1024px) { :root { font-size: 15.5px; } }
+
+/* ===== Responsive Utilities ===== */
+@media (max-width: 640px) {
+  .hero-title { font-size: 1.75rem !important; line-height: 2.125rem !important; }
+  .hero-subtitle { font-size: 0.875rem !important; }
+  .card-title { font-size: 0.9375rem !important; }
+}
+@media (min-width: 641px) and (max-width: 1023px) {
+  .hero-title { font-size: 2.5rem !important; }
+}
+
+/* ===== Scrollable table wrapper ===== */
+.table-wrap { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+.table-wrap table { min-width: 600px; }
+
+/* ===== Simulator Responsive ===== */
+.sim-controls { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+.sim-controls > * { flex: 1 1 auto; min-width: 80px; }
+
+/* ===== Sidebar transitions ===== */
+.sidebar-enter { transition: width 0.3s ease-in-out, transform 0.3s ease-in-out; }
+
+/* ===== Glassmorphism ===== */
+.glass {
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}

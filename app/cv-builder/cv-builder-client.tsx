@@ -6,6 +6,7 @@ import { useCVStore } from "@/lib/cv-store";
 import { scoreATS } from "@/lib/ats-scorer";
 import CVEditor from "@/components/cv/cv-editor";
 import CVPreview from "@/components/cv/cv-preview";
+import TemplateSwitcher from "@/components/cv/template-switcher";
 import type { SectionId, CVTemplate } from "@/lib/cv-types";
 import {
   ArrowLeft,
@@ -42,9 +43,19 @@ const NAV_ITEMS: { id: SectionId | "personal"; label: string; icon: React.Elemen
 ];
 
 const TEMPLATES: { id: CVTemplate; label: string; desc: string }[] = [
-  { id: "modern",  label: "Modern",  desc: "Colored header, clean layout" },
-  { id: "classic", label: "Classic", desc: "Traditional serif, timeless" },
-  { id: "minimal", label: "Minimal", desc: "Two-column, sidebar layout" },
+  { id: "modern",            label: "Modern",            desc: "Colored header, clean layout" },
+  { id: "classic",           label: "Classic",           desc: "Traditional serif, timeless" },
+  { id: "minimal",           label: "Minimal",           desc: "Two-column, sidebar layout" },
+  { id: "modern-ats",        label: "ATS Pro",           desc: "Clean ATS-optimized design" },
+  { id: "europass",          label: "Europass",          desc: "Europass academic focus" },
+  { id: "dark-theme",        label: "Dark Theme",        desc: "Dark UI, tech aesthetic" },
+  { id: "creative-gradient", label: "Creative Gradient", desc: "Colorful gradient sidebar" },
+  { id: "minimal-elegant",   label: "Elegant",           desc: "Typography focused" },
+  { id: "corporate",         label: "Corporate",         desc: "Executive business style" },
+  { id: "academic",          label: "Academic",          desc: "Student & education focus" },
+  { id: "startup",           label: "Startup",           desc: "Modern portfolio feel" },
+  { id: "two-column",        label: "Two Column",        desc: "Left profile sidebar" },
+  { id: "glassmorphism",     label: "Glassmorphism",     desc: "Premium glass UI effects" },
 ];
 
 const ACCENT_COLORS = [
@@ -129,6 +140,7 @@ export default function CVBuilderClient() {
   const [showPreview, setShowPreview] = useState(false);
   const [exporting, setExporting] = useState(false);
   const [tab, setTab] = useState<"edit" | "design">("edit");
+  const [templateGalleryOpen, setTemplateGalleryOpen] = useState(false);
   const previewRef = useRef<HTMLDivElement>(null);
 
   const handleExportPDF = async () => {
@@ -258,12 +270,12 @@ export default function CVBuilderClient() {
                 <p className="text-[9px] font-black uppercase tracking-[0.2em] text-gray-400 px-1 mb-2 flex items-center gap-1.5">
                   <LayoutTemplate className="w-3 h-3" /> Template
                 </p>
-                <div className="space-y-1.5">
+                <div className="space-y-1.5 max-h-[260px] overflow-y-auto">
                   {TEMPLATES.map((t) => (
                     <button
                       key={t.id}
                       onClick={() => setTemplate(t.id)}
-                      className={`w-full text-left px-3 py-2.5 rounded-xl border transition-all ${
+                      className={`w-full text-left px-3 py-2 rounded-xl border transition-all ${
                         cv.template === t.id
                           ? "border-orange-300 dark:border-orange-700 bg-orange-50 dark:bg-orange-950/40"
                           : "border-gray-100 dark:border-gray-800 hover:border-gray-200 dark:hover:border-gray-700"
@@ -276,6 +288,12 @@ export default function CVBuilderClient() {
                     </button>
                   ))}
                 </div>
+                <button
+                  onClick={() => setTemplateGalleryOpen(true)}
+                  className="w-full mt-2 px-3 py-2 rounded-xl border border-dashed border-gray-200 dark:border-gray-700 text-[10px] font-bold text-gray-400 hover:text-gray-700 hover:border-gray-300 transition cursor-pointer"
+                >
+                  Browse All Templates →
+                </button>
               </div>
 
               {/* Accent color */}
@@ -353,6 +371,13 @@ export default function CVBuilderClient() {
           </div>
         </div>
       </div>
+      {templateGalleryOpen && (
+        <TemplateSwitcher
+          active={cv.template}
+          onSelect={(t) => { setTemplate(t); setTemplateGalleryOpen(false); }}
+          onClose={() => setTemplateGalleryOpen(false)}
+        />
+      )}
     </div>
   );
 }

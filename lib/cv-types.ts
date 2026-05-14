@@ -86,13 +86,16 @@ export type CVTemplate =
   | "modern"
   | "classic"
   | "minimal"
-  | "executive"
-  | "creative"
-  | "tech"
-  | "elegant"
-  | "bold"
-  | "compact"
-  | "timeline";
+  | "modern-ats"
+  | "europass"
+  | "dark-theme"
+  | "creative-gradient"
+  | "minimal-elegant"
+  | "corporate"
+  | "academic"
+  | "startup"
+  | "two-column"
+  | "glassmorphism";
 
 export interface CVData {
   personal: PersonalInfo;

@@ -3,6 +3,18 @@
 import React from "react";
 import type { CVData } from "@/lib/cv-types";
 import { Mail, Phone, MapPin, Globe, Linkedin, Github } from "lucide-react";
+import {
+  ModernATSTemplate,
+  EuropassTemplate,
+  DarkThemeTemplate,
+  CreativeGradientTemplate,
+  MinimalElegantTemplate,
+  CorporateTemplate,
+  AcademicTemplate,
+  StartupTemplate,
+  TwoColumnTemplate,
+  GlassmorphismTemplate,
+} from "./cv-templates-new";
 
 interface Props {
   cv: CVData;
@@ -535,7 +547,19 @@ function MinimalTemplate({ cv, forExport }: Props) {
 
 // ── Main export ───────────────────────────────────────────────────────────────
 export default function CVPreview({ cv, forExport = false }: Props) {
-  if (cv.template === "classic") return <ClassicTemplate cv={cv} forExport={forExport} />;
-  if (cv.template === "minimal") return <MinimalTemplate cv={cv} forExport={forExport} />;
-  return <ModernTemplate cv={cv} forExport={forExport} />;
+  switch (cv.template) {
+    case "classic":            return <ClassicTemplate cv={cv} forExport={forExport} />;
+    case "minimal":            return <MinimalTemplate cv={cv} forExport={forExport} />;
+    case "modern-ats":         return <ModernATSTemplate cv={cv} forExport={forExport} />;
+    case "europass":           return <EuropassTemplate cv={cv} forExport={forExport} />;
+    case "dark-theme":         return <DarkThemeTemplate cv={cv} forExport={forExport} />;
+    case "creative-gradient":  return <CreativeGradientTemplate cv={cv} forExport={forExport} />;
+    case "minimal-elegant":    return <MinimalElegantTemplate cv={cv} forExport={forExport} />;
+    case "corporate":          return <CorporateTemplate cv={cv} forExport={forExport} />;
+    case "academic":           return <AcademicTemplate cv={cv} forExport={forExport} />;
+    case "startup":            return <StartupTemplate cv={cv} forExport={forExport} />;
+    case "two-column":         return <TwoColumnTemplate cv={cv} forExport={forExport} />;
+    case "glassmorphism":      return <GlassmorphismTemplate cv={cv} forExport={forExport} />;
+    default:                   return <ModernTemplate cv={cv} forExport={forExport} />;
+  }
 }

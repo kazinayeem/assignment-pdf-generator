@@ -1,7 +1,8 @@
 "use client";
 
-import { useState, useMemo } from "react";
+import { useState, useMemo, useEffect } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { motion } from "framer-motion";
 import {
   ArrowRight, BookOpen, BrainCircuit, Cpu, Database, Globe, Menu,
@@ -32,7 +33,6 @@ const FEATURES = [
   { name: "Assignment Cover", href: "/assignment", icon: FileText, desc: "Generate official DIU covers", color: "from-blue-500 to-indigo-600" },
   { name: "CV Builder", href: "/cv-builder", icon: FilePlus, desc: "Build ATS-friendly CVs", color: "from-emerald-500 to-teal-600" },
   { name: "Lab Report", href: "/lab-report", icon: BookOpen, desc: "Create formatted lab reports", color: "from-violet-500 to-purple-600" },
-  { name: "Routine Builder", href: "/routine-builder", icon: Layout, desc: "Design class schedule", color: "from-orange-500 to-amber-600" },
 ];
 
 const CATEGORIES = [
@@ -58,6 +58,13 @@ export default function LandingView() {
   const [searchQuery, setSearchQuery] = useState("");
   const [collapsed, setCollapsed] = useState<Record<string, boolean>>({});
   const [mobileOpen, setMobileOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 60);
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
 
   const toggle = (key: string) => setCollapsed(p => ({ ...p, [key]: !p[key] }));
 
@@ -70,24 +77,29 @@ export default function LandingView() {
   return (
     <div className="min-h-screen bg-[#f8fafc]">
       {/* Navbar */}
-      <header className="sticky top-0 z-30 bg-white/80 backdrop-blur-xl border-b border-slate-200/80">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 h-12 flex items-center justify-between">
+      <header className={`fixed top-0 left-0 right-0 z-30 transition-all duration-300 ${
+        scrolled
+          ? "bg-white/80 backdrop-blur-xl border-b border-slate-200/80"
+          : "bg-transparent border-b border-transparent"
+      }`}>
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 h-16 flex items-center justify-between">
           <div className="flex items-center gap-3">
-            <button onClick={() => setMobileOpen(true)} className="md:hidden p-1.5 rounded-lg hover:bg-slate-100 cursor-pointer">
-              <Menu size={16} className="text-slate-500" />
+            <button onClick={() => setMobileOpen(true)} className={`md:hidden p-1.5 rounded-lg transition-colors cursor-pointer self-start mt-6 ${scrolled ? "hover:bg-slate-100 text-slate-500" : "text-white/80 hover:text-white"}`}>
+              <Menu size={22} />
             </button>
-            <Link href="/" className="flex items-center gap-2">
-              <div className="w-6 h-6 rounded-md bg-gradient-to-br from-indigo-500 to-purple-600 flex items-center justify-center">
-                <span className="text-white font-bold text-[9px]">CG</span>
-              </div>
-              <span className="text-sm font-bold bg-gradient-to-r from-indigo-600 to-purple-600 bg-clip-text text-transparent hidden sm:block">CoverGen V2</span>
+            <Link href="/">
+              <Image src="/logo_navbar.png" alt="CampusFlow" width={640} height={160} style={{ height: 140, width: "auto" }} />
             </Link>
           </div>
 
           <nav className="hidden md:flex items-center gap-1">
             {FEATURES.slice(0, 4).map((f) => (
               <Link key={f.href} href={f.href}
-                className="px-3 py-1.5 rounded-lg text-[11px] font-medium text-slate-500 hover:text-slate-800 hover:bg-slate-100 transition-colors">
+                className={`px-3 py-1.5 rounded-lg text-[11px] font-medium transition-colors ${
+                  scrolled
+                    ? "text-slate-500 hover:text-slate-800 hover:bg-slate-100"
+                    : "text-white/80 hover:text-white hover:bg-white/10"
+                }`}>
                 {f.name}
               </Link>
             ))}
@@ -95,7 +107,11 @@ export default function LandingView() {
 
           <div className="flex items-center gap-2">
             <button onClick={() => setSearchOpen(true)}
-              className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-slate-100 hover:bg-slate-200 text-slate-400 text-[11px] transition-colors cursor-pointer">
+              className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-[11px] transition-colors cursor-pointer ${
+                scrolled
+                  ? "bg-slate-100 hover:bg-slate-200 text-slate-400"
+                  : "bg-white/10 hover:bg-white/20 text-white/70"
+              }`}>
               <Search size={13} />
               <span className="hidden sm:inline">Search</span>
             </button>
@@ -114,7 +130,7 @@ export default function LandingView() {
           <div className="absolute inset-0 bg-black/40" onClick={() => setMobileOpen(false)} />
           <aside className="absolute left-0 top-0 h-full w-64 bg-white shadow-2xl">
             <div className="p-4 border-b border-slate-100 flex items-center justify-between">
-              <span className="font-bold bg-gradient-to-r from-indigo-600 to-purple-600 bg-clip-text text-transparent text-sm">CoverGen V2</span>
+              <Image src="/logo_navbar.png" alt="CampusFlow" width={80} height={20} style={{ height: 20, width: "auto" }} />
               <button onClick={() => setMobileOpen(false)} className="p-1 rounded-md hover:bg-slate-100 cursor-pointer">
                 <X size={18} className="text-slate-400" />
               </button>
@@ -173,7 +189,7 @@ export default function LandingView() {
       )}
 
       {/* Premium Hero */}
-      <section className="relative overflow-hidden bg-gradient-to-br from-indigo-600 via-purple-600 to-indigo-800 text-white">
+      <section className="relative overflow-hidden bg-gradient-to-br from-indigo-600 via-purple-600 to-indigo-800 text-white pt-14">
         <div className="absolute inset-0">
           <div className="absolute top-0 -left-40 w-80 h-80 bg-purple-400 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-pulse" />
           <div className="absolute top-0 -right-40 w-80 h-80 bg-indigo-400 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-pulse" style={{ animationDelay: "2s" }} />
@@ -186,7 +202,7 @@ export default function LandingView() {
             <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }}>
               <div className="inline-flex items-center gap-2 px-3 py-1 bg-white/10 backdrop-blur-md rounded-full text-[11px] font-medium mb-5 border border-white/10">
                 <Sparkles size={12} className="text-indigo-300" />
-                Bornosoft by Nayeem — v2.0
+                CampusFlow v2.0
               </div>
               <h1 className="text-4xl sm:text-5xl lg:text-6xl font-black mb-4 leading-tight tracking-tight">
                 <span className="bg-gradient-to-r from-indigo-200 via-purple-200 to-pink-200 bg-clip-text text-transparent">
@@ -258,7 +274,7 @@ export default function LandingView() {
       <section className="max-w-7xl mx-auto px-4 sm:px-6 py-16">
         <div className="text-center mb-10">
           <div className="inline-flex items-center gap-2 px-3 py-1 bg-indigo-50 rounded-full text-[11px] font-semibold text-indigo-600 mb-3">
-            <Crown size={12} /> Why CoverGen V2?
+            <Crown size={12} /> Why CampusFlow?
           </div>
           <h2 className="text-2xl sm:text-3xl font-black text-slate-800">Built for DIU Students</h2>
           <p className="text-sm text-slate-500 mt-2 max-w-xl mx-auto">

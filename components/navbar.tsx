@@ -2,9 +2,10 @@
 
 import Link from "next/link";
 import { useRouter } from "next/navigation";
+import Image from "next/image";
 import { useAuthStore } from "@/lib/auth-store";
 import { Button } from "@/components/ui/button";
-import { LogOut, User, BookOpen, LogIn, Menu, X } from "lucide-react";
+import { LogOut, User, BookOpen, LogIn, Menu, X, ChevronDown } from "lucide-react";
 import toast from "react-hot-toast";
 import { useState } from "react";
 
@@ -25,12 +26,13 @@ export default function Navbar() {
   };
 
   return (
-    <nav className="bg-white shadow-md sticky top-0 z-50">
+    <nav className="bg-white/80 backdrop-blur-xl border-b border-gray-100 sticky top-0 z-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between items-center h-16">
+        <div className="flex justify-between items-center h-14">
           {/* Logo */}
-          <Link href="/" className="flex-shrink-0 font-bold text-xl text-blue-600">
-            DIU Portal
+          <Link href="/" className="flex-shrink-0 flex items-center gap-2.5">
+            <Image src="/logo_navbar.png" alt="CoverGen V2" width={100} height={24} style={{ height: 24, width: "auto" }} />
+            <span className="hidden sm:inline text-sm font-bold bg-gradient-to-r from-indigo-600 to-purple-600 bg-clip-text text-transparent">CoverGen V2</span>
           </Link>
 
           {/* Desktop Navigation */}
@@ -85,12 +87,17 @@ export default function Navbar() {
                 </Button>
               </div>
             ) : (
-              <Link href="/login">
-                <Button size="sm" className="flex items-center gap-2">
-                  <LogIn className="w-4 h-4" />
-                  Sign In
-                </Button>
-              </Link>
+              <div className="flex items-center gap-3">
+                <Link href="/tools" className="text-xs font-semibold text-gray-500 hover:text-gray-900 transition-colors">
+                  Learning Tools
+                </Link>
+                <Link href="/login">
+                  <Button size="sm" className="flex items-center gap-2 bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-700 hover:to-purple-700 text-white border-0 shadow-sm">
+                    <LogIn className="w-4 h-4" />
+                    Sign In
+                  </Button>
+                </Link>
+              </div>
             )}
           </div>
 
@@ -150,6 +157,11 @@ export default function Navbar() {
                     <p className="text-xs text-gray-600 capitalize">{user?.role}</p>
                   </div>
                 </div>
+                <Link href="/student/mycourses" onClick={() => setMobileMenuOpen(false)}>
+                  <Button size="sm" className="w-full mb-2 bg-gradient-to-r from-indigo-600 to-purple-600 text-white">
+                    Dashboard
+                  </Button>
+                </Link>
                 <Button
                   onClick={handleSignOut}
                   variant="destructive"
@@ -161,12 +173,18 @@ export default function Navbar() {
                 </Button>
               </div>
             ) : (
-              <Link href="/login" onClick={() => setMobileMenuOpen(false)}>
-                <Button size="sm" className="w-full flex items-center justify-center gap-2">
-                  <LogIn className="w-4 h-4" />
-                  Sign In
-                </Button>
-              </Link>
+              <div className="space-y-2 px-3 py-2 border-t">
+                <Link href="/tools" onClick={() => setMobileMenuOpen(false)}
+                  className="block px-3 py-2 text-sm font-semibold text-gray-600 hover:bg-gray-100 rounded-lg">
+                  Learning Tools
+                </Link>
+                <Link href="/login" onClick={() => setMobileMenuOpen(false)}>
+                  <Button size="sm" className="w-full flex items-center justify-center gap-2 bg-gradient-to-r from-indigo-600 to-purple-600 text-white">
+                    <LogIn className="w-4 h-4" />
+                    Sign In
+                  </Button>
+                </Link>
+              </div>
             )}
           </div>
         )}

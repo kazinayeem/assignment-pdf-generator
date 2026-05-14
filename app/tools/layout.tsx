@@ -8,7 +8,7 @@ import {
   Cpu, Database, BrainCircuit, Network, MemoryStick,
   ShieldAlert, Blocks, Code2, Globe, Menu, X,
   ChevronRight, Home, ChevronLeft, PanelLeftClose, PanelLeft,
-  Microchip, GitFork,
+  Microchip, GitFork, BarChart3, Cloud,
 } from "lucide-react";
 
 const TOOL_CATEGORIES = [
@@ -23,6 +23,8 @@ const TOOL_CATEGORIES = [
   { label: "Software Eng.",     href: "/tools/swe",         icon: Blocks,       color: "text-indigo-500" },
   { label: "Programming",       href: "/tools/programming", icon: Code2,        color: "text-pink-500" },
   { label: "Web Development",   href: "/tools/web",         icon: Globe,        color: "text-teal-500" },
+  { label: "Data Science",      href: "/tools/data-science",icon: BarChart3,     color: "text-yellow-500" },
+  { label: "DevOps",            href: "/tools/devops",      icon: Cloud,        color: "text-cyan-500" },
 ];
 
 export default function ToolsLayout({ children }: { children: React.ReactNode }) {

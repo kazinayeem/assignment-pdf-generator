@@ -8,6 +8,8 @@ import {
   Microchip, Network, ShieldAlert, Code2, Blocks, GitFork,
   FileText, FilePlus, Layout, GraduationCap, Search, X,
   ChevronDown, ChevronRight, Sparkles, Zap, Eye, EyeOff, LogIn,
+  BarChart3, Cloud, CheckCircle, Shield, Smartphone,
+  Rocket, Users, Star, Crown,
 } from "lucide-react";
 
 const ALL_TOOLS = [
@@ -22,10 +24,12 @@ const ALL_TOOLS = [
   { name: "Software Eng.", href: "/tools/swe", icon: Blocks, desc: "SDLC, UML, Agile", color: "from-indigo-500 to-blue-600" },
   { name: "Programming", href: "/tools/programming", icon: Code2, desc: "C, C++, JS, Python, Java", color: "from-pink-500 to-rose-600" },
   { name: "Web Development", href: "/tools/web", icon: Globe, desc: "Frontend, backend, full-stack", color: "from-teal-500 to-emerald-600" },
+  { name: "Data Science", href: "/tools/data-science", icon: BarChart3, desc: "Python, ML, deep learning, NLP", color: "from-yellow-500 to-orange-600" },
+  { name: "DevOps", href: "/tools/devops", icon: Cloud, desc: "Docker, K8s, CI/CD, cloud", color: "from-blue-500 to-cyan-600" },
 ];
 
 const FEATURES = [
-  { name: "Assignment Cover", href: "/assignment", icon: FileText, desc: "Generate DIU assignment covers", color: "from-blue-500 to-indigo-600" },
+  { name: "Assignment Cover", href: "/assignment", icon: FileText, desc: "Generate official DIU covers", color: "from-blue-500 to-indigo-600" },
   { name: "CV Builder", href: "/cv-builder", icon: FilePlus, desc: "Build ATS-friendly CVs", color: "from-emerald-500 to-teal-600" },
   { name: "Lab Report", href: "/lab-report", icon: BookOpen, desc: "Create formatted lab reports", color: "from-violet-500 to-purple-600" },
   { name: "Routine Builder", href: "/routine-builder", icon: Layout, desc: "Design class schedule", color: "from-orange-500 to-amber-600" },
@@ -35,6 +39,18 @@ const CATEGORIES = [
   { name: "Core CS", tools: ["Operating Systems", "Data Structures", "Algorithms", "Computer Networks"], icon: BrainCircuit },
   { name: "Systems", tools: ["Database Systems", "Cyber Security", "Computer Arch.", "Theory of Comp."], icon: Cpu },
   { name: "Development", tools: ["Software Eng.", "Programming", "Web Development"], icon: Code2 },
+  { name: "Specialized", tools: ["Data Science", "DevOps"], icon: Zap },
+];
+
+const WHY_CHOOSE = [
+  { icon: Shield, title: "Official DIU Formats", desc: "Professionally formatted covers and reports matching DIU standards.", color: "from-blue-500 to-indigo-600" },
+  { icon: Zap, title: "One-Click Generation", desc: "Generate PDFs instantly with auto-saved student profile data.", color: "from-amber-500 to-orange-600" },
+  { icon: Users, title: "Auto-Saved Profiles", desc: "Your details are saved automatically — never re-enter info.", color: "from-green-500 to-emerald-600" },
+  { icon: Star, title: "ATS-Friendly CV", desc: "Build CVs optimized for applicant tracking systems.", color: "from-purple-500 to-violet-600" },
+  { icon: Rocket, title: "Fast Academic Workflow", desc: "From cover to submission in under 60 seconds.", color: "from-pink-500 to-rose-600" },
+  { icon: BrainCircuit, title: "Interactive CS Tools", desc: "Master DSA, OS, Algorithms, and more with simulators.", color: "from-cyan-500 to-teal-600" },
+  { icon: Smartphone, title: "Mobile Responsive", desc: "Full functionality on desktop, tablet, and phone.", color: "from-sky-500 to-blue-600" },
+  { icon: Cloud, title: "Cloud-Saved Data", desc: "Access your documents anywhere, anytime.", color: "from-indigo-500 to-purple-600" },
 ];
 
 export default function LandingView() {
@@ -62,9 +78,9 @@ export default function LandingView() {
             </button>
             <Link href="/" className="flex items-center gap-2">
               <div className="w-6 h-6 rounded-md bg-gradient-to-br from-indigo-500 to-purple-600 flex items-center justify-center">
-                <span className="text-white font-bold text-[9px]">CF</span>
+                <span className="text-white font-bold text-[9px]">CG</span>
               </div>
-              <span className="text-sm font-bold text-slate-800 hidden sm:block">CampusFlow</span>
+              <span className="text-sm font-bold bg-gradient-to-r from-indigo-600 to-purple-600 bg-clip-text text-transparent hidden sm:block">CoverGen V2</span>
             </Link>
           </div>
 
@@ -84,7 +100,7 @@ export default function LandingView() {
               <span className="hidden sm:inline">Search</span>
             </button>
             <Link href="/login">
-              <button className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-indigo-500 text-white text-[11px] font-bold hover:bg-indigo-600 transition shadow-sm cursor-pointer">
+              <button className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-gradient-to-r from-indigo-500 to-purple-600 text-white text-[11px] font-bold hover:from-indigo-600 hover:to-purple-700 transition shadow-sm cursor-pointer">
                 <LogIn size={12} /> Sign In
               </button>
             </Link>
@@ -98,7 +114,7 @@ export default function LandingView() {
           <div className="absolute inset-0 bg-black/40" onClick={() => setMobileOpen(false)} />
           <aside className="absolute left-0 top-0 h-full w-64 bg-white shadow-2xl">
             <div className="p-4 border-b border-slate-100 flex items-center justify-between">
-              <span className="font-bold text-slate-800 text-sm">CampusFlow</span>
+              <span className="font-bold bg-gradient-to-r from-indigo-600 to-purple-600 bg-clip-text text-transparent text-sm">CoverGen V2</span>
               <button onClick={() => setMobileOpen(false)} className="p-1 rounded-md hover:bg-slate-100 cursor-pointer">
                 <X size={18} className="text-slate-400" />
               </button>
@@ -113,7 +129,7 @@ export default function LandingView() {
               ))}
               <div className="pt-3 mt-3 border-t border-slate-100">
                 <Link href="/login" onClick={() => setMobileOpen(false)}
-                  className="flex items-center justify-center gap-2 w-full py-2 rounded-lg bg-indigo-500 text-white text-xs font-bold hover:bg-indigo-600 transition">
+                  className="flex items-center justify-center gap-2 w-full py-2 rounded-lg bg-gradient-to-r from-indigo-500 to-purple-600 text-white text-xs font-bold hover:from-indigo-600 hover:to-purple-700 transition">
                   <LogIn size={14} /> Sign In
                 </Link>
               </div>
@@ -156,42 +172,112 @@ export default function LandingView() {
         </div>
       )}
 
-      {/* Hero */}
-      <section className="bg-gradient-to-br from-indigo-600 via-purple-600 to-indigo-800 text-white relative overflow-hidden">
-        <div className="absolute inset-0 bg-[radial-gradient(rgba(255,255,255,0.03)_1px,transparent_1px)] bg-[length:24px_24px]" />
-        <div className="max-w-5xl mx-auto px-4 sm:px-6 py-16 sm:py-20 text-center relative z-10">
-          <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }}>
-            <div className="inline-flex items-center gap-2 px-3 py-1 bg-white/10 backdrop-blur-md rounded-full text-[11px] font-medium mb-5 border border-white/10">
-              <Sparkles size={12} className="text-indigo-300" />
-              Academic Productivity Platform
-            </div>
-            <h1 className="text-3xl sm:text-5xl font-black mb-4 leading-tight tracking-tight">
-              <span className="bg-gradient-to-r from-indigo-200 to-purple-200 bg-clip-text text-transparent">
-                Master CS &amp; SWE
-              </span>
-              <br />with Interactive Tools
-            </h1>
-            <p className="text-sm sm:text-base text-indigo-100 max-w-lg mx-auto mb-6 leading-relaxed">
-              Generate assignment covers, build CVs, create lab reports, and master CS topics with interactive simulations.
-            </p>
-            <div className="flex flex-wrap gap-3 justify-center">
-              <Link href="/tools">
-                <button className="bg-white text-indigo-700 px-6 py-2.5 rounded-xl font-bold text-sm hover:bg-indigo-50 transition shadow-xl cursor-pointer flex items-center gap-2">
-                  Explore Tools <ArrowRight size={16} />
-                </button>
-              </Link>
-              <Link href="/assignment">
-                <button className="bg-white/10 text-white border border-white/20 px-6 py-2.5 rounded-xl font-bold text-sm hover:bg-white/20 transition cursor-pointer">
-                  Assignment Cover
-                </button>
-              </Link>
-              <Link href="/cv-builder">
-                <button className="bg-white/10 text-white border border-white/20 px-6 py-2.5 rounded-xl font-bold text-sm hover:bg-white/20 transition cursor-pointer">
-                  CV Builder
-                </button>
-              </Link>
-            </div>
-          </motion.div>
+      {/* Premium Hero */}
+      <section className="relative overflow-hidden bg-gradient-to-br from-indigo-600 via-purple-600 to-indigo-800 text-white">
+        <div className="absolute inset-0">
+          <div className="absolute top-0 -left-40 w-80 h-80 bg-purple-400 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-pulse" />
+          <div className="absolute top-0 -right-40 w-80 h-80 bg-indigo-400 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-pulse" style={{ animationDelay: "2s" }} />
+          <div className="absolute bottom-0 left-20 w-80 h-80 bg-pink-400 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-pulse" style={{ animationDelay: "4s" }} />
+          <div className="absolute inset-0 bg-[radial-gradient(rgba(255,255,255,0.03)_1px,transparent_1px)] bg-[length:24px_24px]" />
+        </div>
+
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 py-20 sm:py-28 relative z-10">
+          <div className="grid lg:grid-cols-2 gap-12 items-center">
+            <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }}>
+              <div className="inline-flex items-center gap-2 px-3 py-1 bg-white/10 backdrop-blur-md rounded-full text-[11px] font-medium mb-5 border border-white/10">
+                <Sparkles size={12} className="text-indigo-300" />
+                Bornosoft by Nayeem — v2.0
+              </div>
+              <h1 className="text-4xl sm:text-5xl lg:text-6xl font-black mb-4 leading-tight tracking-tight">
+                <span className="bg-gradient-to-r from-indigo-200 via-purple-200 to-pink-200 bg-clip-text text-transparent">
+                  Academic Productivity
+                </span>
+                <br />Platform
+              </h1>
+              <p className="text-base sm:text-lg text-indigo-100 max-w-lg mb-6 leading-relaxed">
+                Master CS &amp; SWE with Interactive Tools. Generate assignment covers, build ATS-friendly CVs, 
+                create lab reports, and master computer science topics with interactive educational tools.
+              </p>
+              <div className="flex flex-wrap gap-3">
+                <Link href="/tools">
+                  <button className="bg-white text-indigo-700 px-6 py-3 rounded-xl font-bold text-sm hover:bg-indigo-50 transition shadow-xl cursor-pointer flex items-center gap-2">
+                    Explore Tools <ArrowRight size={16} />
+                  </button>
+                </Link>
+                <Link href="/assignment">
+                  <button className="bg-white/10 text-white border border-white/20 px-6 py-3 rounded-xl font-bold text-sm hover:bg-white/20 transition cursor-pointer">
+                    Generate Cover
+                  </button>
+                </Link>
+                <Link href="/lab-report">
+                  <button className="bg-white/10 text-white border border-white/20 px-6 py-3 rounded-xl font-bold text-sm hover:bg-white/20 transition cursor-pointer">
+                    Lab Report
+                  </button>
+                </Link>
+                <Link href="/cv-builder">
+                  <button className="bg-white/10 text-white border border-white/20 px-6 py-3 rounded-xl font-bold text-sm hover:bg-white/20 transition cursor-pointer">
+                    Build CV
+                  </button>
+                </Link>
+              </div>
+              <div className="flex items-center gap-4 mt-6 text-indigo-200 text-xs">
+                <span className="flex items-center gap-1"><CheckCircle size={12} /> Auto-save</span>
+                <span className="flex items-center gap-1"><Zap size={12} /> One-click</span>
+                <span className="flex items-center gap-1"><Shield size={12} /> DIU Format</span>
+              </div>
+            </motion.div>
+
+            {/* Floating Cards */}
+            <motion.div initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: 0.2 }} className="hidden lg:block relative">
+              <div className="grid grid-cols-2 gap-3">
+                {[
+                  { icon: FileText, label: "Assignment Cover", sub: "DIU Format", color: "from-blue-400 to-indigo-500" },
+                  { icon: FilePlus, label: "ATS CV Builder", sub: "Europass Style", color: "from-emerald-400 to-teal-500" },
+                  { icon: BookOpen, label: "Lab Report", sub: "Official Format", color: "from-violet-400 to-purple-500" },
+                  { icon: BrainCircuit, label: "CS Learning Tools", sub: "21+ Topics", color: "from-amber-400 to-orange-500" },
+                ].map((card, i) => (
+                  <motion.div key={card.label}
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: 0.3 + i * 0.1 }}
+                    className="bg-white/10 backdrop-blur-md rounded-xl p-4 border border-white/10 hover:bg-white/20 transition-all cursor-pointer hover:-translate-y-1">
+                    <div className={`w-10 h-10 rounded-lg bg-gradient-to-br ${card.color} flex items-center justify-center mb-2`}>
+                      <card.icon size={18} className="text-white" />
+                    </div>
+                    <p className="text-sm font-bold text-white">{card.label}</p>
+                    <p className="text-[10px] text-indigo-200">{card.sub}</p>
+                  </motion.div>
+                ))}
+              </div>
+            </motion.div>
+          </div>
+        </div>
+      </section>
+
+      {/* Why Choose Us */}
+      <section className="max-w-7xl mx-auto px-4 sm:px-6 py-16">
+        <div className="text-center mb-10">
+          <div className="inline-flex items-center gap-2 px-3 py-1 bg-indigo-50 rounded-full text-[11px] font-semibold text-indigo-600 mb-3">
+            <Crown size={12} /> Why CoverGen V2?
+          </div>
+          <h2 className="text-2xl sm:text-3xl font-black text-slate-800">Built for DIU Students</h2>
+          <p className="text-sm text-slate-500 mt-2 max-w-xl mx-auto">
+            Everything you need for academic success — from covers to CS mastery.
+          </p>
+        </div>
+        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3">
+          {WHY_CHOOSE.map((item) => {
+            const Icon = item.icon;
+            return (
+              <motion.div key={item.title} whileHover={{ y: -4 }} className="bg-white rounded-xl border border-slate-200 p-4 hover:shadow-lg hover:border-indigo-200 transition-all">
+                <div className={`w-9 h-9 rounded-lg bg-gradient-to-br ${item.color} flex items-center justify-center mb-3`}>
+                  <Icon size={16} className="text-white" />
+                </div>
+                <h3 className="text-xs font-bold text-slate-800 mb-1">{item.title}</h3>
+                <p className="text-[10px] text-slate-500 leading-relaxed">{item.desc}</p>
+              </motion.div>
+            );
+          })}
         </div>
       </section>
 
@@ -219,7 +305,7 @@ export default function LandingView() {
           </div>
         </section>
 
-        {/* Learning Tools */}
+        {/* CS Learning Tools */}
         <section>
           <div className="flex items-center justify-between mb-4">
             <h2 className="text-lg font-bold text-slate-800">CS Learning Tools</h2>
@@ -268,6 +354,50 @@ export default function LandingView() {
                 </div>
               </div>
             ))}
+          </div>
+        </section>
+
+        {/* Pricing */}
+        <section className="bg-gradient-to-br from-slate-900 via-indigo-950 to-slate-900 rounded-2xl p-6 sm:p-8 text-center text-white relative overflow-hidden">
+          <div className="absolute top-0 right-0 w-60 h-60 bg-indigo-500/10 rounded-full -mr-20 -mt-20 blur-3xl" />
+          <div className="absolute bottom-0 left-0 w-60 h-60 bg-purple-500/10 rounded-full -ml-20 -mb-20 blur-3xl" />
+          <div className="relative z-10">
+            <div className="inline-flex items-center gap-2 px-3 py-1 bg-white/10 backdrop-blur-md rounded-full text-[11px] font-medium mb-4 border border-white/10">
+              <Sparkles size={12} /> Pricing
+            </div>
+            <h2 className="text-2xl sm:text-3xl font-black mb-2">Free — ৳0</h2>
+            <p className="text-sm text-indigo-200 mb-6 max-w-md mx-auto">
+              Currently 100% Free for Students. No hidden fees, no subscriptions.
+            </p>
+            <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 max-w-2xl mx-auto mb-6">
+              {[
+                "Unlimited Assignment Covers",
+                "Unlimited Lab Reports",
+                "CV Builder Access",
+                "Learning Tools Access",
+                "Responsive Dashboard",
+                "Auto Save Features",
+                "PDF Export",
+                "DIU Official Formats",
+              ].map((feature) => (
+                <div key={feature} className="flex items-center gap-1.5 text-[11px] text-indigo-200 bg-white/5 rounded-lg px-3 py-2 border border-white/5">
+                  <CheckCircle size={12} className="text-emerald-400 shrink-0" />
+                  <span>{feature}</span>
+                </div>
+              ))}
+            </div>
+            <div className="flex flex-wrap gap-3 justify-center">
+              <Link href="/assignment">
+                <button className="bg-white text-indigo-900 px-6 py-2.5 rounded-xl font-bold text-sm hover:bg-indigo-50 transition shadow-xl cursor-pointer">
+                  Get Started Free
+                </button>
+              </Link>
+              <Link href="/tools">
+                <button className="bg-white/10 text-white border border-white/20 px-6 py-2.5 rounded-xl font-bold text-sm hover:bg-white/20 transition cursor-pointer">
+                  Explore Tools
+                </button>
+              </Link>
+            </div>
           </div>
         </section>
 

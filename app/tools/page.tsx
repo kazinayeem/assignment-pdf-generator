@@ -13,6 +13,8 @@ import {
   Globe,
   Microchip,
   GitFork,
+  BarChart3,
+  Cloud,
 } from "lucide-react";
 
 const topics = [
@@ -81,6 +83,18 @@ const topics = [
     desc: "Frontend, backend and full-stack roadmap.",
     icon: Globe,
     href: "/tools/web",
+  },
+  {
+    title: "Data Science",
+    desc: "Python, pandas, ML, deep learning, NLP and LLMs.",
+    icon: BarChart3,
+    href: "/tools/data-science",
+  },
+  {
+    title: "DevOps",
+    desc: "Docker, Kubernetes, CI/CD, cloud and monitoring.",
+    icon: Cloud,
+    href: "/tools/devops",
   },
 ];
 

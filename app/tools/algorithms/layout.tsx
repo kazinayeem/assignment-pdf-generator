@@ -42,6 +42,24 @@ const config = {
         { name: "String Algorithms", href: "/tools/algorithms/string" },
       ],
     },
+    {
+      title: "Learning Paths",
+      items: [
+        { name: "Full Roadmap", href: "/tools/algorithms/roadmap" },
+        { name: "Beginner Path", href: "/tools/algorithms/beginner-path" },
+        { name: "Interview Prep", href: "/tools/algorithms/interview-prep" },
+        { name: "Advanced Mastery", href: "/tools/algorithms/advanced-mastery" },
+      ],
+    },
+    {
+      title: "Quick Resources",
+      items: [
+        { name: "Time Complexity", href: "/tools/algorithms/time-complexity" },
+        { name: "Space Complexity", href: "/tools/algorithms/space-complexity" },
+        { name: "Interview Patterns", href: "/tools/algorithms/interview-patterns" },
+        { name: "Practice Problems", href: "/tools/algorithms/practice-problems" },
+      ],
+    },
   ],
 };
 

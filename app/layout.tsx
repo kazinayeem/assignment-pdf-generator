@@ -20,27 +20,24 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   title: {
-    default: "CampusFlow | Academic Productivity Platform for DIU",
-    template: "%s | CampusFlow",
+    default: "CoverGen V2 | Academic Productivity Platform for DIU",
+    template: "%s | CoverGen V2",
   },
   description:
-    "CampusFlow is the complete academic productivity platform for Daffodil International University students. Generate assignment covers, lab reports, CVs, and class routines instantly. Built by Bornosoft.",
+    "CoverGen V2 by Bornosoft is the complete academic productivity platform for Daffodil International University students. Generate assignment covers, lab reports, ATS-friendly CVs, and master CS topics instantly.",
   keywords: [
-    "CampusFlow",
+    "CoverGen V2",
+    "Bornosoft by Nayeem",
     "Daffodil International University",
     "DIU",
-    "DIU Student Portal",
-    "Bornosoft",
-    "CampusFlow DIU",
-    "DIU Assignment Cover",
-    "DIU Lab Report",
+    "DIU Assignment Cover Generator",
+    "DIU Lab Report Generator",
     "DIU PDF Generator",
-    "CV Builder",
-    "ATS CV",
+    "ATS CV Builder",
     "Class Routine",
-    "SWE",
     "CSE",
-    "Software Engineering",
+    "SWE",
+    "Academic Productivity",
     "Mohammad Ali Nayeem",
     "bornosoftnr.com",
   ],
@@ -48,19 +45,19 @@ export const metadata: Metadata = {
   creator: "Mohammad Ali Nayeem",
   publisher: "Bornosoft",
   openGraph: {
-    title: "CampusFlow | Academic Productivity Platform for DIU",
+    title: "CoverGen V2 | Academic Productivity Platform for DIU",
     description:
-      "Generate assignment covers, lab reports, CVs, and class routines in seconds. The complete academic toolkit for DIU students.",
+      "Generate official DIU assignment covers, lab reports, ATS-friendly CVs, and master CS topics — all in one platform. Built by Bornosoft.",
     type: "website",
     locale: "en_US",
-    siteName: "CampusFlow",
+    siteName: "CoverGen V2",
     url: "https://bornosoft-cover.vercel.app",
   },
   twitter: {
     card: "summary_large_image",
-    title: "CampusFlow | DIU Student Platform",
+    title: "CoverGen V2 | DIU Student Platform",
     description:
-      "Generate DIU assignment covers, lab reports, and CVs in seconds. Built by Bornosoft.",
+      "Generate DIU assignment covers, lab reports, and ATS-friendly CVs in seconds. Built by Bornosoft by Nayeem.",
   },
   robots: {
     index: true,

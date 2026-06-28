@@ -1,11 +1,13 @@
 "use client";
 
+import { useEffect, useState } from "react";
 import Link from "next/link";
-import { motion, useMotionValue, useSpring } from "framer-motion";
+import { motion, useMotionValue, useSpring, AnimatePresence } from "framer-motion";
 import {
   ArrowRight,
   CheckCircle,
   Github,
+  MousePointer2,
   Play,
   Shield,
   Sparkles,
@@ -18,12 +20,23 @@ import { cn } from "@/lib/utils";
 
 const CARD_KEYS = ["assignment", "cv", "lab", "tools"] as const;
 
+const LIVE_NAMES = ["Rahim", "Fatima", "Tanvir", "Sadia", "Imran", "Nusrat"];
+
 export function HeroSectionV4() {
   const { t } = useTranslation("home");
+  const { t: tV5 } = useTranslation("v5");
   const mouseX = useMotionValue(0);
   const mouseY = useMotionValue(0);
   const springX = useSpring(mouseX, { stiffness: 120, damping: 20 });
   const springY = useSpring(mouseY, { stiffness: 120, damping: 20 });
+  const [liveIndex, setLiveIndex] = useState(0);
+
+  useEffect(() => {
+    const id = setInterval(() => {
+      setLiveIndex((i) => (i + 1) % LIVE_NAMES.length);
+    }, 3500);
+    return () => clearInterval(id);
+  }, []);
 
   const onMouseMove = (e: React.MouseEvent<HTMLElement>) => {
     const rect = e.currentTarget.getBoundingClientRect();
@@ -33,10 +46,9 @@ export function HeroSectionV4() {
 
   return (
     <section
-      className="relative overflow-hidden bg-brand-dark text-foreground pt-24 lg:pt-28"
+      className="relative overflow-hidden bg-brand-dark text-foreground"
       onMouseMove={onMouseMove}
     >
-      {/* Aurora background */}
       <div className="absolute inset-0 overflow-hidden" aria-hidden>
         <div className="blur-orb w-[600px] h-[600px] bg-brand/30 -top-40 -left-40" />
         <div className="blur-orb w-[500px] h-[500px] bg-brand-secondary/25 top-10 right-0" />
@@ -62,15 +74,38 @@ export function HeroSectionV4() {
               </span>
             </h1>
 
-            <p className="text-base sm:text-lg text-white/70 max-w-xl mb-8 leading-relaxed">
+            <p className="text-base sm:text-lg text-white/70 max-w-xl mb-6 leading-relaxed">
               {t("hero.subtitle")}
             </p>
+
+            {/* Live activity */}
+            <div
+              className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/10 border border-white/15 text-xs text-white/80 mb-6"
+              aria-live="polite"
+            >
+              <span className="relative flex h-2 w-2">
+                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-success opacity-75" />
+                <span className="relative inline-flex rounded-full h-2 w-2 bg-success" />
+              </span>
+              <AnimatePresence mode="wait">
+                <motion.span
+                  key={liveIndex}
+                  initial={{ opacity: 0, y: 4 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -4 }}
+                  transition={{ duration: 0.25 }}
+                >
+                  <strong className="text-white">{LIVE_NAMES[liveIndex]}</strong>{" "}
+                  {tV5("hero.liveActivity")}
+                </motion.span>
+              </AnimatePresence>
+            </div>
 
             <div className="flex flex-col sm:flex-row flex-wrap gap-3 mb-6">
               <Link href="/tools" className={cn(button.primary, "inline-flex items-center justify-center gap-2 w-full sm:w-auto")}>
                 {t("hero.ctaPrimary")} <ArrowRight size={18} aria-hidden />
               </Link>
-              <Link href="/tools" className={cn(button.secondary, "inline-flex items-center justify-center gap-2 w-full sm:w-auto bg-white/10 border-white/20 text-white hover:bg-white/20")}>
+              <Link href="#demo" className={cn(button.secondary, "inline-flex items-center justify-center gap-2 w-full sm:w-auto bg-white/10 border-white/20 text-white hover:bg-white/20")}>
                 <Play size={16} aria-hidden /> {t("hero.ctaSecondary")}
               </Link>
               <a
@@ -103,7 +138,6 @@ export function HeroSectionV4() {
             </div>
           </motion.div>
 
-          {/* Browser mockup */}
           <motion.div
             style={{ x: springX, y: springY }}
             initial={{ opacity: 0, x: 40 }}
@@ -111,14 +145,14 @@ export function HeroSectionV4() {
             transition={{ duration: 0.7, delay: 0.2 }}
             className="relative hidden lg:block"
           >
-            <div className={cn(card.base, "p-1 rounded-[24px] border-white/10 bg-white/5 shadow-2xl shadow-brand/10")}>
+            <div className={cn(card.base, "p-1 rounded-[24px] border-white/10 bg-white/5 shadow-2xl shadow-brand/10 relative")}>
               <div className="flex items-center gap-2 px-4 py-3 border-b border-white/10">
                 <div className="w-3 h-3 rounded-full bg-destructive/80" />
                 <div className="w-3 h-3 rounded-full bg-warning/80" />
                 <div className="w-3 h-3 rounded-full bg-success/80" />
                 <span className="ml-3 text-xs text-white/50 font-medium">{t("hero.dashboardLabel")}</span>
               </div>
-              <div className="p-5 grid grid-cols-2 gap-4">
+              <div className="p-5 grid grid-cols-2 gap-4 relative">
                 {HERO_DASHBOARD_CARDS.map((item, i) => {
                   const key = CARD_KEYS[i];
                   return (
@@ -136,6 +170,18 @@ export function HeroSectionV4() {
                     </Link>
                   );
                 })}
+                {/* Animated cursor */}
+                <motion.div
+                  className="absolute pointer-events-none z-20"
+                  animate={{
+                    left: ["20%", "70%", "45%", "25%"],
+                    top: ["25%", "30%", "65%", "55%"],
+                  }}
+                  transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
+                  aria-hidden
+                >
+                  <MousePointer2 size={20} className="text-white drop-shadow-lg" fill="white" />
+                </motion.div>
               </div>
             </div>
             <div className="absolute -top-4 -right-4 w-20 h-20 rounded-2xl bg-brand/30 blur-2xl animate-float" aria-hidden />
@@ -143,7 +189,6 @@ export function HeroSectionV4() {
           </motion.div>
         </div>
 
-        {/* Mobile cards */}
         <div className="grid grid-cols-2 gap-3 mt-10 lg:hidden">
           {HERO_DASHBOARD_CARDS.map((item, i) => {
             const key = CARD_KEYS[i];

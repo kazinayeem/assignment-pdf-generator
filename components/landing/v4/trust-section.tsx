@@ -13,6 +13,8 @@ import {
   Server,
   Star,
   Users,
+  FlaskConical,
+  Activity,
 } from "lucide-react";
 import { useTranslation } from "@/lib/i18n/provider";
 import { spacing, animation, card } from "@/lib/design-system";
@@ -22,12 +24,15 @@ import { cn } from "@/lib/utils";
 const STATS = [
   { key: "students", value: "2,500+", icon: Users },
   { key: "universities", value: "12+", icon: GraduationCap },
-  { key: "projects", value: "18,000+", icon: FileText },
+  { key: "assignments", value: "18,000+", icon: BookOpen },
+  { key: "resumes", value: "4,200+", icon: Briefcase },
+  { key: "labReports", value: "6,500+", icon: FlaskConical },
   { key: "interviewQuestions", value: "789", icon: MessageSquare },
   { key: "devTools", value: "100+", icon: Code2 },
-  { key: "resumes", value: "4,200+", icon: Briefcase },
-  { key: "assignments", value: "18,000+", icon: BookOpen },
+  { key: "dailyActive", value: "800+", icon: Activity },
   { key: "githubStars", value: "50+", icon: Github },
+  { key: "avgRating", value: "4.9★", icon: Star },
+  { key: "projects", value: "18,000+", icon: FileText },
   { key: "uptime", value: "99.9%", icon: Server },
 ] as const;
 
@@ -97,7 +102,7 @@ export function TrustSection() {
           subtitle={t("trust.subtitle")}
         />
 
-        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-3 gap-4 sm:gap-6">
+        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4 sm:gap-6">
           {STATS.map((stat, i) => (
             <AnimatedStat
               key={stat.key}

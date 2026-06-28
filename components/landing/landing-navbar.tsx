@@ -25,9 +25,11 @@ const NAV_ITEMS = [
 type LandingNavbarProps = {
   onSearchOpen: () => void;
   onMobileOpen: () => void;
+  /** When true, navbar is inside the fixed header stack (not independently fixed). */
+  stacked?: boolean;
 };
 
-export function LandingNavbar({ onSearchOpen, onMobileOpen }: LandingNavbarProps) {
+export function LandingNavbar({ onSearchOpen, onMobileOpen, stacked = false }: LandingNavbarProps) {
   const [scrolled, setScrolled] = useState(false);
   const pathname = usePathname();
   const { t } = useTranslation("common");
@@ -44,7 +46,8 @@ export function LandingNavbar({ onSearchOpen, onMobileOpen }: LandingNavbarProps
       animate={{ y: 0, opacity: 1 }}
       transition={{ duration: 0.5 }}
       className={cn(
-        "fixed top-0 left-0 right-0 z-40 transition-all duration-500",
+        "left-0 right-0 transition-all duration-500",
+        stacked ? "relative" : "fixed top-0 z-40",
         scrolled
           ? "bg-background/80 backdrop-blur-xl border-b border-border shadow-sm"
           : "bg-transparent border-b border-transparent"

@@ -14,7 +14,7 @@ type FaqItem = {
   answer: string;
 };
 
-const CATEGORY_IDS = ["general", "platform", "features", "account"] as const;
+const CATEGORY_IDS = ["general", "learning", "resume", "career", "devtools", "payments", "privacy", "support"] as const;
 
 export function FaqSection() {
   const { t, tArray } = useTranslation("faq");
@@ -70,7 +70,7 @@ export function FaqSection() {
                 : "bg-muted text-muted-foreground hover:text-foreground"
             )}
           >
-            All
+            {t("categories.all")}
           </button>
           {CATEGORY_IDS.map((id) => (
             <button
@@ -91,7 +91,10 @@ export function FaqSection() {
 
         <div className="space-y-3">
           {filtered.length === 0 ? (
-            <p className="text-center py-8 text-muted-foreground">{t("search")}</p>
+            <div className={cn(card.base, "text-center py-12 px-6")} role="status">
+              <p className="text-sm font-semibold text-foreground">{t("emptyTitle")}</p>
+              <p className="text-sm text-muted-foreground mt-2">{t("emptyDesc")}</p>
+            </div>
           ) : (
             filtered.map((item, i) => {
               const isOpen = openIndex === i;

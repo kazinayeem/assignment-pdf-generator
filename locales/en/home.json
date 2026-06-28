@@ -7,10 +7,10 @@
     "logoAlt": "BornoSoft logo"
   },
   "hero": {
-    "badge": "CampusFlow V4 — Built for CSE & SWE Students",
-    "title": "The Complete Academic",
-    "titleHighlight": "Productivity Platform",
-    "subtitle": "Master computer science, build ATS-friendly resumes, prepare for interviews, and generate DIU-ready documents — all in one premium platform.",
+    "badge": "CampusFlow V5 — Built for CSE & SWE Students",
+    "title": "Your entire academic life.",
+    "titleHighlight": "One beautiful platform.",
+    "subtitle": "Generate DIU-ready documents, master CS interactively, ace interviews, and launch your career — all without juggling five different tools.",
     "ctaPrimary": "Get Started Free",
     "ctaSecondary": "Watch Demo",
     "ctaGithub": "Star on GitHub",
@@ -41,7 +41,10 @@
     "resumes": "Resumes Created",
     "assignments": "Assignments Generated",
     "githubStars": "GitHub Stars",
-    "uptime": "Uptime"
+    "uptime": "Uptime",
+    "labReports": "Lab Reports",
+    "dailyActive": "Daily Active Users",
+    "avgRating": "Average Rating"
   },
   "features": {
     "badge": "Features",
@@ -124,9 +127,11 @@
     "title": "Loved by students",
     "subtitle": "See what CSE and SWE students across Bangladesh are saying.",
     "items": [
-      { "name": "Rahim Ahmed", "role": "CSE, DIU", "text": "CampusFlow saved me hours every week. Assignment covers and lab reports are now one click away.", "rating": 5 },
-      { "name": "Fatima Khan", "role": "SWE, BRAC", "text": "The Interview Hub helped me prepare for my first tech interview. The company-specific questions are gold.", "rating": 5 },
-      { "name": "Tanvir Hassan", "role": "CSE, NSU", "text": "Best free platform for CS students in Bangladesh. The learning tools and dev utilities are incredible.", "rating": 5 }
+      { "name": "Rahim Ahmed", "role": "CSE, DIU", "university": "DIU", "department": "CSE", "text": "CampusFlow saved me hours every week. Assignment covers and lab reports are now one click away.", "rating": 5 },
+      { "name": "Fatima Khan", "role": "SWE, BRAC", "university": "BRAC", "department": "SWE", "text": "The Interview Hub helped me prepare for my first tech interview. The company-specific questions are gold.", "rating": 5 },
+      { "name": "Tanvir Hassan", "role": "CSE, NSU", "university": "NSU", "department": "CSE", "text": "Best free platform for CS students in Bangladesh. The learning tools and dev utilities are incredible.", "rating": 5 },
+      { "name": "Sadia Islam", "role": "CSE, AIUB", "university": "AIUB", "department": "CSE", "text": "The ATS resume builder got me three interview callbacks. I recommend it to every junior in my department.", "rating": 5 },
+      { "name": "Imran Chowdhury", "role": "SWE, BUET", "university": "BUET", "department": "SWE", "text": "Developer tools alone are worth it — JSON, Tailwind, and encoding utilities I use daily.", "rating": 5 }
     ]
   },
   "pricing": {

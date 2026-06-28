@@ -8,6 +8,7 @@ import { useTranslation } from "@/lib/i18n/provider";
 import { spacing, animation, card, badge, button } from "@/lib/design-system";
 import { ALL_TOOLS, CATEGORIES } from "@/lib/landing-data";
 import { SectionHeader } from "./section-header";
+import { SectionCta } from "../v5/section-cta";
 import { cn } from "@/lib/utils";
 
 const CATEGORY_KEYS = ["core", "systems", "development", "specialized"] as const;
@@ -16,6 +17,7 @@ const NEW = new Set(["Data Science", "DevOps"]);
 
 export function LearningExplorer() {
   const { t } = useTranslation("home");
+  const { t: tV5 } = useTranslation("v5");
   const [search, setSearch] = useState("");
   const [activeCategory, setActiveCategory] = useState<string | null>(null);
 
@@ -143,6 +145,8 @@ export function LearningExplorer() {
             ))
           )}
         </div>
+
+        <SectionCta label={tV5("sectionCta.learning")} href="/tools" />
       </div>
     </section>
   );

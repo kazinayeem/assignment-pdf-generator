@@ -1,0 +1,52 @@
+{
+  "newsletter": {
+    "title": "Stay updated",
+    "subtitle": "Get the latest features, tools, and learning resources.",
+    "placeholder": "Enter your email",
+    "cta": "Subscribe",
+    "success": "Thanks for subscribing!"
+  },
+  "columns": {
+    "product": "Product",
+    "learning": "Learning",
+    "career": "Career",
+    "devtools": "Developer Tools",
+    "resources": "Resources",
+    "company": "Company",
+    "support": "Support",
+    "legal": "Legal"
+  },
+  "links": {
+    "assignment": "Assignment Cover",
+    "cvBuilder": "CV Builder",
+    "labReport": "Lab Report",
+    "learningTools": "Learning Tools",
+    "careerHub": "Career Hub",
+    "interviewKb": "Interview KB",
+    "calculators": "Calculators",
+    "devTools": "Developer Tools",
+    "labPerformance": "Lab Performance",
+    "allTools": "All Tools",
+    "about": "About Us",
+    "bornosoft": "bornosoftnr.com",
+    "dhaka": "Dhaka, Bangladesh",
+    "privacy": "Privacy Policy",
+    "cookie": "Cookie Policy",
+    "refund": "Refund Policy",
+    "security": "Secure Data",
+    "resume": "Resume Builder",
+    "ats": "ATS Checker",
+    "portfolio": "Portfolio",
+    "interview": "Interview Prep",
+    "roadmaps": "Career Roadmaps",
+    "exam": "Exam System",
+    "progress": "Learning Progress"
+  },
+  "brand": {
+    "description": "The complete academic productivity platform for CSE and SWE students. Built with ❤️ by Bornosoft."
+  },
+  "copyright": "All rights reserved.",
+  "developed": "Developed with",
+  "version": "Version",
+  "status": "All systems operational"
+}

@@ -1,6 +1,15 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
+  images: {
+    remotePatterns: [
+      {
+        protocol: "https",
+        hostname: "bornosoftnr.com",
+        pathname: "/**",
+      },
+    ],
+  },
   async redirects() {
     return [
       { source: "/tools/dsa/array", destination: "/tools/dsa/arrays", permanent: true },

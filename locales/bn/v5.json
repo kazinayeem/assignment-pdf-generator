@@ -1,0 +1,149 @@
+{
+  "universities": {
+    "badge": "সারাদেশে বিশ্বস্ত",
+    "title": "বাংলাদেশের শিক্ষার্থীরা ব্যবহার করেন",
+    "subtitle": "ঢাকা থেকে চট্টগ্রাম — CSE ও SWE শিক্ষার্থীরা প্রতিদিন CampusFlow ব্যবহার করেন।"
+  },
+  "universityList": ["DIU", "BRAC", "NSU", "AIUB", "EWU", "UIU", "IUB", "RUET", "KUET", "CUET", "SUST", "BUET"],
+  "demo": {
+    "badge": "প্রোডাক্ট ডেমো",
+    "title": "CampusFlow কাজ করছে দেখুন",
+    "subtitle": "শিক্ষার্থীরা কীভাবে মিনিটে কভার, রিজিউমে ও CS টপিক শিখছে দেখুন।",
+    "watchDemo": "ডেমো দেখুন",
+    "startTour": "ফ্রি ট্যুর শুরু",
+    "livePreview": "লাইভ প্রিভিউ",
+    "browserTitle": "campusflow.app — ড্যাশবোর্ড"
+  },
+  "comparison": {
+    "badge": "কেন CampusFlow",
+    "title": "পাঁচটা টুল জুগিয়ে চলা বন্ধ করুন",
+    "subtitle": "এক প্ল্যাটফর্ম ম্যানুয়াল কাজ ও জেনেরিক রিজিউমে বিল্ডারকে হারায়।",
+    "feature": "ফিচার",
+    "campusflow": "CampusFlow",
+    "manual": "ম্যানুয়াল",
+    "generic": "জেনেরিক টুল",
+    "rows": [
+      { "feature": "DIU অফিসিয়াল ফরম্যাট", "cf": true, "manual": false, "generic": false },
+      { "feature": "ATS রিজিউমে বিল্ডার", "cf": true, "manual": false, "generic": true },
+      { "feature": "CS লার্নিং + পরীক্ষা", "cf": true, "manual": false, "generic": false },
+      { "feature": "ইন্টারভিউ প্রশ্ন ব্যাংক", "cf": true, "manual": false, "generic": false },
+      { "feature": "১০০+ ডেভেলপার টুল", "cf": true, "manual": false, "generic": false },
+      { "feature": "ওয়ান-ক্লিক PDF", "cf": true, "manual": false, "generic": "partial" },
+      { "feature": "শিক্ষার্থীদের বিনামূল্যে", "cf": true, "manual": true, "generic": false },
+      { "feature": "বাংলা + ইংরেজি", "cf": true, "manual": false, "generic": false }
+    ],
+    "partial": "সীমিত",
+    "cta": "বিনামূল্যে শুরু করুন"
+  },
+  "roadmap": {
+    "badge": "পাবলিক রোডম্যাপ",
+    "title": "আমরা পরবর্তীতে কী বানাচ্ছি",
+    "subtitle": "আপনার প্রয়োজনীয় ফিচারে স্বচ্ছ অগ্রগতি।",
+    "status": {
+      "completed": "সম্পন্ন",
+      "inProgress": "চলমান",
+      "planned": "পরিকল্পিত",
+      "comingSoon": "শীঘ্রই",
+      "future": "ভবিষ্যৎ"
+    },
+    "items": [
+      { "title": "ইন্টারভিউ নলেজ বেস", "status": "completed", "quarter": "Q1 ২০২৬" },
+      { "title": "ক্যারিয়ার হাব + ATS", "status": "completed", "quarter": "Q1 ২০২৬" },
+      { "title": "ডেভেলপার টুলস (১০০+)", "status": "completed", "quarter": "Q1 ২০২৬" },
+      { "title": "পরীক্ষা + লিডারবোর্ড", "status": "inProgress", "quarter": "Q2 ২০২৬" },
+      { "title": "সম্পূর্ণ বাংলা", "status": "inProgress", "quarter": "Q2 ২০২৬" },
+      { "title": "মোবাইল PWA", "status": "planned", "quarter": "Q3 ২০২৬" },
+      { "title": "AI ইন্টারভিউ কোচ", "status": "comingSoon", "quarter": "Q3 ২০২৬" },
+      { "title": "বিশ্ববিদ্যালয় পার্টনারশিপ", "status": "future", "quarter": "২০২৭" }
+    ]
+  },
+  "changelog": {
+    "badge": "চেঞ্জলগ",
+    "title": "রিলিজ নোট",
+    "subtitle": "CampusFlow-এর সর্বশেষ উন্নতি।",
+    "versions": [
+      {
+        "version": "v5.0",
+        "date": "জুন ২০২৬",
+        "features": ["ল্যান্ডিং V5", "বিস্তৃত FAQ", "বিশ্ববিদ্যালয় সেকশন", "প্রোডাক্ট ডেমো"],
+        "fixes": ["থিম ফ্লিকার ফিক্স", "মোবাইল ন্যাভ উন্নতি"],
+        "performance": ["লেজি-লোড সেকশন", "অপ্টিমাইজড অ্যানিমেশন"]
+      },
+      {
+        "version": "v4.0",
+        "date": "মে ২০২৬",
+        "features": ["বাংলা i18n", "ইন্টারভিউ হাব", "ক্যারিয়ার হাব", "ডেভটুলস"],
+        "fixes": ["ডার্ক মোড কনট্রাস্ট", "PDF এক্সপোর্ট"],
+        "performance": ["বিল্ড-টাইম ইমপোর্ট", "কোড স্প্লিটিং"]
+      }
+    ],
+    "labels": { "features": "নতুন ফিচার", "fixes": "বাগ ফিক্স", "performance": "পারফরম্যান্স" }
+  },
+  "community": {
+    "badge": "কমিউনিটি",
+    "title": "CampusFlow কমিউনিটিতে যোগ দিন",
+    "subtitle": "সংযুক্ত হন, অবদান রাখুন, ভবিষ্যৎ গড়ুন।",
+    "discord": "Discord",
+    "github": "GitHub",
+    "facebook": "Facebook গ্রুপ",
+    "linkedin": "LinkedIn",
+    "email": "ইমেইল করুন",
+    "featureRequests": "ফিচার রিকোয়েস্ট",
+    "bugReports": "বাগ রিপোর্ট",
+    "cta": "কমিউনিটিতে যোগ দিন"
+  },
+  "github": {
+    "badge": "ওপেন সোর্স",
+    "title": "খোলা মনে তৈরি",
+    "subtitle": "CampusFlow ওপেন সোর্স। GitHub-এ স্টার, ফর্ক ও কন্ট্রিবিউট করুন।",
+    "stars": "স্টার",
+    "forks": "ফর্ক",
+    "contributors": "কন্ট্রিবিউটর",
+    "license": "MIT লাইসেন্স",
+    "contribute": "কন্ট্রিবিউশন গাইড",
+    "sponsor": "GitHub-এ স্পনসর",
+    "repo": "রিপোজিটরি দেখুন",
+    "badge2": "ওপেন সোর্স"
+  },
+  "newsletter": {
+    "badge": "নিউজলেটার",
+    "title": "এগিয়ে থাকুন",
+    "subtitle": "CSE ও SWE শিক্ষার্থীদের সাপ্তাহিক আপডেট — স্প্যাম নেই।",
+    "placeholder": "you@university.edu",
+    "cta": "বিনামূল্যে সাবস্ক্রাইব",
+    "success": "সাবস্ক্রাইব হয়েছে!",
+    "benefits": ["সাপ্তাহিক আপডেট", "নতুন লার্নিং", "ক্যারিয়ার টিপস", "ইন্টারভিউ প্রশ্ন", "ডেভ টুলস"]
+  },
+  "socialProof": {
+    "dailyActive": "দৈনিক সক্রিয় ব্যবহারকারী",
+    "avgRating": "গড় রেটিং",
+    "labReports": "ল্যাব রিপোর্ট"
+  },
+  "sectionCta": {
+    "learning": "লার্নিং দেখুন",
+    "career": "ক্যারিয়ার হাব খুলুন",
+    "devtools": "ডেভটুলস খুলুন",
+    "interview": "ইন্টারভিউ প্র্যাকটিস",
+    "resume": "রিজিউমে তৈরি",
+    "startFree": "বিনামূল্যে শুরু"
+  },
+  "testimonials": {
+    "verified": "যাচাইকৃত শিক্ষার্থী"
+  },
+  "hero": {
+    "liveActivity": "এইমাত্র অ্যাসাইনমেন্ট কভার তৈরি করেছে",
+    "emotionalTitle": "আপনার পুরো একাডেমিক জীবন।",
+    "emotionalHighlight": "এক সুন্দর প্ল্যাটফর্মে।"
+  },
+  "announcements": [
+    "🚀 ইন্টারভিউ হাব — ৭৮৯+ প্রকৃত প্রশ্ন",
+    "🔥 ১০০+ ডেভেলপার টুলস লাইভ",
+    "🎉 CampusFlow বিটা — সব শিক্ষার্থীর জন্য বিনামূল্যে"
+  ],
+  "empty": {
+    "noResults": "কিছু পাওয়া যায়নি",
+    "noResultsDesc": "অন্য সার্চ বা ক্যাটাগরি চেষ্টা করুন।",
+    "comingSoon": "শীঘ্রই আসছে",
+    "loading": "লোড হচ্ছে..."
+  }
+}

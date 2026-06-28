@@ -1,0 +1,149 @@
+{
+  "universities": {
+    "badge": "Trusted nationwide",
+    "title": "Used by students across Bangladesh",
+    "subtitle": "From Dhaka to Chittagong — CSE and SWE students rely on CampusFlow daily."
+  },
+  "universityList": ["DIU", "BRAC", "NSU", "AIUB", "EWU", "UIU", "IUB", "RUET", "KUET", "CUET", "SUST", "BUET"],
+  "demo": {
+    "badge": "Product Demo",
+    "title": "See CampusFlow in action",
+    "subtitle": "Watch how students generate covers, build resumes, and master CS topics in minutes.",
+    "watchDemo": "Watch Demo",
+    "startTour": "Start Free Tour",
+    "livePreview": "Live Preview",
+    "browserTitle": "campusflow.app — Dashboard"
+  },
+  "comparison": {
+    "badge": "Why CampusFlow",
+    "title": "Stop juggling five different tools",
+    "subtitle": "One platform beats manual work and generic resume builders.",
+    "feature": "Feature",
+    "campusflow": "CampusFlow",
+    "manual": "Manual Work",
+    "generic": "Generic Tools",
+    "rows": [
+      { "feature": "DIU Official Formats", "cf": true, "manual": false, "generic": false },
+      { "feature": "ATS Resume Builder", "cf": true, "manual": false, "generic": true },
+      { "feature": "CS Learning + Exams", "cf": true, "manual": false, "generic": false },
+      { "feature": "Interview Question Bank", "cf": true, "manual": false, "generic": false },
+      { "feature": "100+ Developer Tools", "cf": true, "manual": false, "generic": false },
+      { "feature": "One-click PDF Export", "cf": true, "manual": false, "generic": "partial" },
+      { "feature": "Free for Students", "cf": true, "manual": true, "generic": false },
+      { "feature": "Bangla + English", "cf": true, "manual": false, "generic": false }
+    ],
+    "partial": "Limited",
+    "cta": "Start Free — No Credit Card"
+  },
+  "roadmap": {
+    "badge": "Public Roadmap",
+    "title": "What we're building next",
+    "subtitle": "Transparent progress on every feature you care about.",
+    "status": {
+      "completed": "Completed",
+      "inProgress": "In Progress",
+      "planned": "Planned",
+      "comingSoon": "Coming Soon",
+      "future": "Future"
+    },
+    "items": [
+      { "title": "Interview Knowledge Base", "status": "completed", "quarter": "Q1 2026" },
+      { "title": "Career Hub + ATS Checker", "status": "completed", "quarter": "Q1 2026" },
+      { "title": "Developer Tools (100+)", "status": "completed", "quarter": "Q1 2026" },
+      { "title": "Exam System + Leaderboard", "status": "inProgress", "quarter": "Q2 2026" },
+      { "title": "Bangla Full Localization", "status": "inProgress", "quarter": "Q2 2026" },
+      { "title": "Mobile PWA", "status": "planned", "quarter": "Q3 2026" },
+      { "title": "AI Interview Coach", "status": "comingSoon", "quarter": "Q3 2026" },
+      { "title": "University Partnerships", "status": "future", "quarter": "2027" }
+    ]
+  },
+  "changelog": {
+    "badge": "Changelog",
+    "title": "Release notes",
+    "subtitle": "Latest improvements to CampusFlow.",
+    "versions": [
+      {
+        "version": "v5.0",
+        "date": "June 2026",
+        "features": ["Landing V5 audit", "Expanded FAQ", "University trust section", "Product demo"],
+        "fixes": ["Theme flicker fixes", "Mobile nav improvements"],
+        "performance": ["Lazy-loaded sections", "Optimized animations"]
+      },
+      {
+        "version": "v4.0",
+        "date": "May 2026",
+        "features": ["Bangla i18n", "Interview Hub", "Career Hub", "DevTools expansion"],
+        "fixes": ["Dark mode contrast", "PDF export edge cases"],
+        "performance": ["Build-time knowledge import", "Code splitting"]
+      }
+    ],
+    "labels": { "features": "New Features", "fixes": "Bug Fixes", "performance": "Performance" }
+  },
+  "community": {
+    "badge": "Community",
+    "title": "Join the CampusFlow community",
+    "subtitle": "Connect, contribute, and shape the future of student tools.",
+    "discord": "Discord",
+    "github": "GitHub",
+    "facebook": "Facebook Group",
+    "linkedin": "LinkedIn",
+    "email": "Email Us",
+    "featureRequests": "Feature Requests",
+    "bugReports": "Bug Reports",
+    "cta": "Join Community"
+  },
+  "github": {
+    "badge": "Open Source",
+    "title": "Built in the open",
+    "subtitle": "CampusFlow is open source. Star, fork, and contribute on GitHub.",
+    "stars": "Stars",
+    "forks": "Forks",
+    "contributors": "Contributors",
+    "license": "MIT License",
+    "contribute": "Contribution Guide",
+    "sponsor": "Sponsor on GitHub",
+    "repo": "View Repository",
+    "badge2": "Open Source"
+  },
+  "newsletter": {
+    "badge": "Newsletter",
+    "title": "Stay ahead of the curve",
+    "subtitle": "Weekly updates for CSE & SWE students — no spam, ever.",
+    "placeholder": "you@university.edu",
+    "cta": "Subscribe Free",
+    "success": "You're in! Check your inbox.",
+    "benefits": ["Weekly Updates", "New Learning Resources", "Career Tips", "Interview Questions", "Developer Tools"]
+  },
+  "socialProof": {
+    "dailyActive": "Daily Active Users",
+    "avgRating": "Average Rating",
+    "labReports": "Lab Reports"
+  },
+  "sectionCta": {
+    "learning": "Explore Learning",
+    "career": "Open Career Hub",
+    "devtools": "Open Developer Tools",
+    "interview": "Practice Interview",
+    "resume": "Build Resume",
+    "startFree": "Start Free"
+  },
+  "testimonials": {
+    "verified": "Verified Student"
+  },
+  "hero": {
+    "liveActivity": "just generated an assignment cover",
+    "emotionalTitle": "Your entire academic life.",
+    "emotionalHighlight": "One beautiful platform."
+  },
+  "announcements": [
+    "🚀 Interview Hub Released — 789+ real questions",
+    "🔥 100+ Developer Tools now live",
+    "🎉 CampusFlow Beta — Free for all students"
+  ],
+  "empty": {
+    "noResults": "No results found",
+    "noResultsDesc": "Try a different search term or category.",
+    "comingSoon": "Coming Soon",
+    "loading": "Loading..."
+  }
+}

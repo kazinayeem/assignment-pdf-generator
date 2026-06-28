@@ -1,0 +1,32 @@
+{
+  "title": "About CampusFlow",
+  "back": "Back to home",
+  "hero": {
+    "title": "Empowering CSE & SWE Students",
+    "subtitle": "CampusFlow is a dedicated toolkit built by BornoSoft for students. Our mission is to simplify academic workflows at Daffodil International University and beyond."
+  },
+  "cards": {
+    "automation": {
+      "title": "Precision Automation",
+      "desc": "Stop wasting time manually typing course details. CampusFlow automates your cover pages with accuracy based on official university standards."
+    },
+    "security": {
+      "title": "Data Integrity",
+      "desc": "Your academic records are safe. We use secure cloud infrastructure to ensure your profile data is available whenever you need it."
+    }
+  },
+  "founder": {
+    "title": "Built by Mohammad Ali Nayeem",
+    "desc": "As a fellow student, I know the struggle of formatting reports. CampusFlow was born to help our community thrive through technology and better design.",
+    "cta": "Visit BornoSoft"
+  },
+  "contact": {
+    "title": "Contact Us",
+    "subtitle": "Questions, feedback, or partnership — we'd love to hear from you.",
+    "email": "bornosoftnr@gmail.com",
+    "website": "bornosoftnr.com",
+    "emailLabel": "Email",
+    "websiteLabel": "Website",
+    "stayWithUs": "Stay with BornoSoft — we're building CampusFlow for you."
+  }
+}

@@ -1,0 +1,159 @@
+{
+  "announcement": {
+    "text": "Stay with BornoSoft — CampusFlow is growing for you.",
+    "email": "bornosoftnr@gmail.com",
+    "signature": "Nayeem",
+    "dismiss": "Dismiss announcement",
+    "logoAlt": "BornoSoft logo"
+  },
+  "hero": {
+    "badge": "CampusFlow V4 — Built for CSE & SWE Students",
+    "title": "The Complete Academic",
+    "titleHighlight": "Productivity Platform",
+    "subtitle": "Master computer science, build ATS-friendly resumes, prepare for interviews, and generate DIU-ready documents — all in one premium platform.",
+    "ctaPrimary": "Get Started Free",
+    "ctaSecondary": "Watch Demo",
+    "ctaGithub": "Star on GitHub",
+    "trustAutoSave": "Auto-save",
+    "trustOneClick": "One-click PDF",
+    "trustDiu": "DIU Official Format",
+    "trustFree": "Free for students",
+    "statsStudents": "Students",
+    "statsUniversities": "Universities",
+    "statsTools": "Tools",
+    "dashboardLabel": "CampusFlow Dashboard",
+    "cards": {
+      "assignment": { "label": "Assignment Cover", "sub": "DIU Format" },
+      "cv": { "label": "ATS CV Builder", "sub": "Europass Style" },
+      "lab": { "label": "Lab Report", "sub": "Official Format" },
+      "tools": { "label": "CS Learning Tools", "sub": "13+ Topics" }
+    }
+  },
+  "trust": {
+    "badge": "Trusted by students",
+    "title": "Numbers that speak for themselves",
+    "subtitle": "CampusFlow powers academic workflows across Bangladesh and beyond.",
+    "students": "Students",
+    "universities": "Universities",
+    "projects": "Projects Generated",
+    "interviewQuestions": "Interview Questions",
+    "devTools": "Developer Tools",
+    "resumes": "Resumes Created",
+    "assignments": "Assignments Generated",
+    "githubStars": "GitHub Stars",
+    "uptime": "Uptime"
+  },
+  "features": {
+    "badge": "Features",
+    "title": "Everything you need to succeed",
+    "subtitle": "From assignment covers to interview prep — one platform for your entire academic journey.",
+    "assignment": {
+      "title": "Assignment Cover",
+      "desc": "Generate official DIU assignment covers in seconds with auto-filled student profiles.",
+      "cta": "Generate Cover"
+    },
+    "cv": {
+      "title": "CV Builder",
+      "desc": "Build ATS-friendly Europass-style CVs optimized for recruiters and job applications.",
+      "cta": "Build CV"
+    },
+    "lab": {
+      "title": "Lab Report",
+      "desc": "Create professionally formatted lab reports matching DIU standards.",
+      "cta": "Create Report"
+    },
+    "why": {
+      "diu": { "title": "Official DIU Formats", "desc": "Professionally formatted covers and reports matching DIU standards." },
+      "oneClick": { "title": "One-Click Generation", "desc": "Generate PDFs instantly with auto-saved student profile data." },
+      "profiles": { "title": "Auto-Saved Profiles", "desc": "Your details are saved automatically — never re-enter info." },
+      "ats": { "title": "ATS-Friendly CV", "desc": "Build CVs optimized for applicant tracking systems." },
+      "workflow": { "title": "Fast Academic Workflow", "desc": "From cover to submission in under 60 seconds." },
+      "interactive": { "title": "Interactive CS Tools", "desc": "Master DSA, OS, Algorithms, and more with simulators." },
+      "mobile": { "title": "Mobile Responsive", "desc": "Full functionality on desktop, tablet, and phone." },
+      "cloud": { "title": "Cloud-Saved Data", "desc": "Access your documents anywhere, anytime." }
+    }
+  },
+  "learning": {
+    "badge": "Learning Platform",
+    "title": "Master CS topics interactively",
+    "subtitle": "Explore 13+ subjects with simulators, lessons, exams, and progress tracking.",
+    "search": "Search topics...",
+    "filters": "Filters",
+    "continue": "Continue Learning",
+    "progress": "Your Progress",
+    "difficulty": "Difficulty",
+    "duration": "Est. Time",
+    "trending": "Trending",
+    "new": "New",
+    "recommended": "Recommended",
+    "categories": {
+      "core": "Core CS",
+      "systems": "Systems",
+      "development": "Development",
+      "specialized": "Specialized"
+    }
+  },
+  "career": {
+    "badge": "Career Hub",
+    "title": "Launch your tech career",
+    "subtitle": "Resume builder, ATS checker, interview prep, job tracking, and career roadmaps.",
+    "resume": "Resume Builder",
+    "ats": "ATS Checker",
+    "portfolio": "Portfolio Builder",
+    "interview": "Interview Prep",
+    "jobTracker": "Job Tracker",
+    "internship": "Internship Tracker",
+    "salary": "Salary Calculator",
+    "cta": "Explore Career Hub"
+  },
+  "devtools": {
+    "badge": "Developer Tools",
+    "title": "100+ developer utilities",
+    "subtitle": "JSON, CSS, Tailwind, images, encoding, colors, and more — all in your browser.",
+    "json": "JSON Tools",
+    "css": "CSS Tools",
+    "tailwind": "Tailwind Playground",
+    "image": "Image Tools",
+    "encoding": "Encoding Tools",
+    "color": "Color Tools",
+    "network": "Networking Tools",
+    "cta": "Open DevTools"
+  },
+  "testimonials": {
+    "badge": "Testimonials",
+    "title": "Loved by students",
+    "subtitle": "See what CSE and SWE students across Bangladesh are saying.",
+    "items": [
+      { "name": "Rahim Ahmed", "role": "CSE, DIU", "text": "CampusFlow saved me hours every week. Assignment covers and lab reports are now one click away.", "rating": 5 },
+      { "name": "Fatima Khan", "role": "SWE, BRAC", "text": "The Interview Hub helped me prepare for my first tech interview. The company-specific questions are gold.", "rating": 5 },
+      { "name": "Tanvir Hassan", "role": "CSE, NSU", "text": "Best free platform for CS students in Bangladesh. The learning tools and dev utilities are incredible.", "rating": 5 }
+    ]
+  },
+  "pricing": {
+    "badge": "Pricing",
+    "title": "Free forever for students",
+    "subtitle": "No credit card required. No hidden fees. Full access to all core features.",
+    "plan": "Student Plan",
+    "price": "৳0",
+    "period": "forever",
+    "popular": "Most Popular",
+    "cta": "Get Started Free",
+    "noCard": "No credit card required",
+    "features": [
+      "Unlimited Assignment Covers",
+      "Unlimited Lab Reports",
+      "CV Builder Access",
+      "Learning Tools Access",
+      "Interview Knowledge Base",
+      "Career Hub Tools",
+      "Developer Tools",
+      "PDF Export"
+    ]
+  },
+  "cta": {
+    "title": "Ready to supercharge your academics?",
+    "subtitle": "Join thousands of CSE and SWE students using CampusFlow every day.",
+    "primary": "Get Started Free",
+    "secondary": "Explore Tools"
+  }
+}

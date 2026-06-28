@@ -1,0 +1,63 @@
+{
+  "categories": {
+    "general": "General",
+    "platform": "Platform",
+    "features": "Features",
+    "account": "Account"
+  },
+  "search": "Search questions...",
+  "title": "Frequently Asked Questions",
+  "subtitle": "Everything you need to know about CampusFlow.",
+  "items": [
+    {
+      "category": "general",
+      "question": "What is CampusFlow?",
+      "answer": "CampusFlow is a complete academic productivity platform for CSE and SWE students. It includes assignment cover generation, lab reports, CV builder, CS learning tools, interview preparation, career hub, developer tools, and more."
+    },
+    {
+      "category": "platform",
+      "question": "Is CampusFlow free?",
+      "answer": "Yes! CampusFlow is completely free for students. No credit card required. All core features including assignment covers, lab reports, CV builder, and learning tools are available at no cost."
+    },
+    {
+      "category": "features",
+      "question": "Can I build ATS-friendly resumes?",
+      "answer": "Absolutely. Our CV Builder creates Europass-style, ATS-optimized resumes that pass applicant tracking systems used by top tech companies."
+    },
+    {
+      "category": "features",
+      "question": "How does Interview Hub work?",
+      "answer": "Interview Hub imports real interview questions from Bangladesh tech companies. Browse by company, search topics, take quizzes, and bookmark questions for revision."
+    },
+    {
+      "category": "features",
+      "question": "Can I export PDF?",
+      "answer": "Yes. Assignment covers, lab reports, and CVs can all be exported as high-quality PDF files with one click."
+    },
+    {
+      "category": "account",
+      "question": "Do I need an account?",
+      "answer": "Most tools work without an account. Signing in lets you save your student profile, track progress, and sync data across devices."
+    },
+    {
+      "category": "platform",
+      "question": "Can I use it on mobile?",
+      "answer": "Yes. CampusFlow is fully responsive and works on phones, tablets, and desktops with touch-friendly controls."
+    },
+    {
+      "category": "platform",
+      "question": "Is Dark Mode supported?",
+      "answer": "Yes. CampusFlow supports Light, Dark, and System themes with smooth transitions and no flickering."
+    },
+    {
+      "category": "platform",
+      "question": "Will more tools be added?",
+      "answer": "Yes! We continuously add new learning modules, developer tools, career features, and interview resources. CampusFlow is under active development."
+    },
+    {
+      "category": "general",
+      "question": "Can I contribute?",
+      "answer": "We welcome feedback and contributions. Reach out via GitHub or our website bornosoftnr.com to suggest features or report issues."
+    }
+  ]
+}

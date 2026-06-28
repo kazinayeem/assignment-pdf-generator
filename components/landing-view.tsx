@@ -4,13 +4,19 @@ import { useState } from "react";
 import { LandingNavbar } from "./landing/landing-navbar";
 import { MobileMenu } from "./landing/mobile-menu";
 import { SearchModal } from "./landing/search-modal";
-import { HeroSection } from "./landing/hero-section";
-import { WhyChooseSection } from "./landing/why-choose-section";
-import { ProductivitySection } from "./landing/productivity-section";
-import { CSLearningSection } from "./landing/cs-learning-section";
-import { PricingSection } from "./landing/pricing-section";
-import { CTASection } from "./landing/cta-section";
 import { DevelopmentNoticeModal } from "./landing/development-notice-loader";
+import { CookieConsent } from "./landing/cookie-consent";
+import { AnnouncementBar } from "./landing/v4/announcement-bar";
+import { HeroSectionV4 } from "./landing/v4/hero-section";
+import { TrustSection } from "./landing/v4/trust-section";
+import { FeatureShowcase } from "./landing/v4/feature-showcase";
+import { LearningExplorer } from "./landing/v4/learning-explorer";
+import { CareerPreview } from "./landing/v4/career-preview";
+import { DevtoolsPreview } from "./landing/v4/devtools-preview";
+import { TestimonialsSection } from "./landing/v4/testimonials-section";
+import { FaqSection } from "./landing/v4/faq-section";
+import { PricingSection } from "./landing/v4/pricing-section";
+import { CtaSection } from "./landing/v4/cta-section";
 
 export default function LandingView() {
   const [searchOpen, setSearchOpen] = useState(false);
@@ -19,30 +25,36 @@ export default function LandingView() {
 
   return (
     <div className="min-h-screen bg-surface-page overflow-x-hidden">
-      <LandingNavbar
-        onSearchOpen={() => setSearchOpen(true)}
-        onMobileOpen={() => setMobileOpen(true)}
-      />
+        <AnnouncementBar />
+        <LandingNavbar
+          onSearchOpen={() => setSearchOpen(true)}
+          onMobileOpen={() => setMobileOpen(true)}
+        />
 
-      <MobileMenu open={mobileOpen} onClose={() => setMobileOpen(false)} />
+        <MobileMenu open={mobileOpen} onClose={() => setMobileOpen(false)} />
 
-      <SearchModal
-        open={searchOpen}
-        query={searchQuery}
-        onQueryChange={setSearchQuery}
-        onClose={() => setSearchOpen(false)}
-      />
+        <SearchModal
+          open={searchOpen}
+          query={searchQuery}
+          onQueryChange={setSearchQuery}
+          onClose={() => setSearchOpen(false)}
+        />
 
-      <DevelopmentNoticeModal />
+        <DevelopmentNoticeModal />
+        <CookieConsent />
 
-      <main id="main-content">
-        <HeroSection />
-        <WhyChooseSection />
-        <ProductivitySection />
-        <CSLearningSection />
-        <PricingSection />
-        <CTASection />
-      </main>
+        <main id="main-content">
+          <HeroSectionV4 />
+          <TrustSection />
+          <FeatureShowcase />
+          <LearningExplorer />
+          <CareerPreview />
+          <DevtoolsPreview />
+          <TestimonialsSection />
+          <FaqSection />
+          <PricingSection />
+          <CtaSection />
+        </main>
     </div>
   );
 }

@@ -1,0 +1,48 @@
+{
+  "brand": "CampusFlow",
+  "tagline": "Academic Productivity Platform",
+  "nav": {
+    "tools": "Tools",
+    "interview": "Interview",
+    "career": "Career",
+    "calculators": "Calculators",
+    "devtools": "DevTools",
+    "assignment": "Assignment",
+    "cvBuilder": "CV Builder",
+    "labReport": "Lab Report",
+    "search": "Search",
+    "signIn": "Sign In",
+    "getStarted": "Get Started",
+    "menu": "Open menu",
+    "close": "Close"
+  },
+  "theme": {
+    "light": "Light mode",
+    "dark": "Dark mode",
+    "system": "System theme"
+  },
+  "language": {
+    "en": "English",
+    "bn": "বাংলা",
+    "switch": "Change language"
+  },
+  "cookie": {
+    "title": "We use cookies",
+    "description": "We use cookies to improve your experience, remember preferences, and analyze traffic.",
+    "accept": "Accept All",
+    "manage": "Manage Preferences",
+    "privacy": "Privacy Policy",
+    "necessary": "Necessary only"
+  },
+  "loading": "Loading...",
+  "error": "Something went wrong",
+  "retry": "Try Again",
+  "learnMore": "Learn more",
+  "viewAll": "View all",
+  "comingSoon": "Coming soon",
+  "free": "Free",
+  "new": "New",
+  "popular": "Popular",
+  "trending": "Trending",
+  "recommended": "Recommended"
+}

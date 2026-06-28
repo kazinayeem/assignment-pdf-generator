@@ -6,6 +6,7 @@ import { AuthInitializer } from "@/components/auth-initializer";
 import AppSessionProvider from "@/components/session-provider";
 import { ThemeProvider } from "@/components/theme-provider";
 import { JsonLd } from "@/components/structured-data";
+import { I18nProvider } from "@/lib/i18n/provider";
 import { Toaster } from "react-hot-toast";
 import { Analytics } from "@vercel/analytics/next";
 
@@ -111,6 +112,7 @@ export default function RootLayout({
       >
         <JsonLd data={structuredData} />
         <ThemeProvider>
+          <I18nProvider>
           <AppSessionProvider>
             <a
               href="#main-content"
@@ -124,6 +126,7 @@ export default function RootLayout({
             <AppFooter />
             <Analytics />
           </AppSessionProvider>
+          </I18nProvider>
         </ThemeProvider>
       </body>
     </html>

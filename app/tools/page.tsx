@@ -1,8 +1,9 @@
 "use client";
 
 import { useMemo, useState } from "react";
+import Link from "next/link";
 import { motion } from "framer-motion";
-import { Search, Sparkles } from "lucide-react";
+import { Search, Sparkles, GraduationCap, Trophy } from "lucide-react";
 import { TOOL_SUBJECTS, HUB_FILTERS, type HubFilter } from "@/lib/tools/subjects";
 import { useLearningStore } from "@/lib/learning-store";
 import { SubjectCard } from "@/components/tools/subject-card";
@@ -80,6 +81,14 @@ export default function LearnPage() {
                 aria-label="Search subjects"
                 className="w-full pl-12 pr-4 py-3.5 rounded-2xl bg-white dark:bg-white/5 border border-[#E5E7EB] dark:border-white/10 text-base outline-none focus:border-[#6D5DF6]/50 focus:ring-2 focus:ring-[#6D5DF6]/20 transition-all min-h-[44px] shadow-sm"
               />
+            </div>
+            <div className="flex flex-wrap gap-3 mt-6">
+              <Link href="/tools/exam" className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl gradient-primary text-white text-sm font-semibold min-h-[44px] shadow-md shadow-[#6D5DF6]/20">
+                <GraduationCap size={16} /> Exam Center
+              </Link>
+              <Link href="/tools/learning/progress" className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-white dark:bg-white/5 border border-[#E5E7EB] dark:border-white/10 text-sm font-semibold min-h-[44px] hover:border-[#6D5DF6]/30 transition-colors">
+                <Trophy size={16} className="text-[#6D5DF6]" /> My Progress
+              </Link>
             </div>
           </motion.div>
         </div>

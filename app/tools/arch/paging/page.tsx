@@ -2,8 +2,8 @@
 
 import { useState } from "react";
 import Link from "next/link";
-import { Home, ChevronRight, Layers, ArrowRight, RefreshCw, Clock, Cpu, AlertTriangle, BarChart3, GanttChartSquare } from "lucide-react";
-import { Section, InfoCard, CodeBlock, Diagram, MemoryBlock, InterviewQuestion } from "../components";
+import { Home, ChevronRight, Clock, AlertTriangle, BarChart3 } from "lucide-react";
+import { Section, InfoCard, CodeBlock, InterviewQuestion } from "../components";
 
 const ALGORITHMS = [
   { name: "FIFO", desc: "Evict the oldest-loaded page (first in, first out). Simple but suffers from Belady's anomaly.", color: "bg-blue-50 border-blue-200" },
@@ -53,7 +53,7 @@ export default function PagingPage() {
   const [numFrames, setNumFrames] = useState(3);
   const [algo, setAlgo] = useState<"fifo" | "lru">("fifo");
   const [history, setHistory] = useState<{ step: number; page: number; memory: number[]; fault: boolean }[]>([]);
-  const [pageDef, setPageDef] = useState({ size: 4096, pnBits: 20, offsetBits: 12 });
+  const [pageDef] = useState({ size: 4096, pnBits: 20, offsetBits: 12 });
 
   const runSimulation = () => {
     const pages = refString.split(",").map(s => parseInt(s.trim())).filter(n => !isNaN(n));

@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { ChevronRight, Shield, Server, Lock, Key, FileText, AlertTriangle, CheckCircle, HelpCircle, ChevronDown, ArrowRight, Globe } from "lucide-react";
+import { ChevronRight, Shield, Server, Lock, FileText, AlertTriangle, CheckCircle, HelpCircle, ChevronDown, ArrowRight, Globe } from "lucide-react";
 import { useState } from "react";
 
 const interviewData = [

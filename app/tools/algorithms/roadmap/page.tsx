@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import Link from "next/link";
-import { Home, ChevronRight, CheckCircle, Circle, Lock, Trophy, ArrowRight, BookOpen } from "lucide-react";
+import { Home, ChevronRight, CheckCircle, Lock, ArrowRight } from "lucide-react";
 import { useAlgoStore } from "@/lib/algo-store";
 
 const PATHS = [
@@ -50,11 +50,10 @@ const PATHS = [
   },
 ];
 
-const MODULES_FLAT = PATHS.flatMap((p) => p.modules.map((m) => ({ ...m, pathId: p.id })));
 
 export default function RoadmapPage() {
   const [selectedPath, setSelectedPath] = useState("beginner");
-  const { completedTopics, updateLearningPath, completeTopic, isTopicCompleted, getLearningPath } = useAlgoStore();
+  const { isTopicCompleted, getLearningPath } = useAlgoStore();
   const path = PATHS.find((p) => p.id === selectedPath)!;
   const progress = getLearningPath(selectedPath);
 

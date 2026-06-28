@@ -12,7 +12,7 @@ export default function CalculatorsLayout({ children }: { children: React.ReactN
   return (
     <div className="min-h-screen bg-[#F8FAFC] dark:bg-[#0F172A]">
       <CalculatorsNav />
-      <main>{children}</main>
+      <main id="main-content">{children}</main>
     </div>
   );
 }

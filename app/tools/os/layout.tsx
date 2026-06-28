@@ -1,36 +1,21 @@
 "use client";
 
 import SidebarShell from "../components/SidebarShell";
+import { OS_REGISTRY, getTopicHref } from "@/lib/learning/topics-registry";
 
 const config = {
   title: "OS Learning",
   icon: "OS",
   basePath: "/tools/os",
   accent: "indigo" as const,
-  categories: [
-    {
-      title: "Process Management",
-      items: [
-        { name: "Process Management", href: "/tools/os/process-management", sim: true },
-        { name: "CPU Scheduling", href: "/tools/os/cpu-scheduling", sim: true },
-        { name: "Process Scheduling", href: "/tools/os/process-scheduling" },
-        { name: "Deadlock Detection", href: "/tools/os/deadlock", sim: true },
-      ],
-    },
-    {
-      title: "Memory Management",
-      items: [
-        { name: "Memory Management", href: "/tools/os/memory-management", sim: true },
-        { name: "Disk Scheduling", href: "/tools/os/disk-scheduling", sim: true },
-      ],
-    },
-    {
-      title: "Resource Allocation",
-      items: [
-        { name: "Banker's Algorithm", href: "/tools/os/bankers-algorithm", sim: true },
-      ],
-    },
-  ],
+  categories: OS_REGISTRY.categories.map((cat) => ({
+    title: cat.title,
+    items: cat.topics.map((t) => ({
+      name: t.title,
+      href: getTopicHref("os", t),
+      sim: t.hasSimulator,
+    })),
+  })),
 };
 
 export default function OSLayout({ children }: { children: React.ReactNode }) {

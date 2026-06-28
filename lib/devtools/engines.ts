@@ -1,4 +1,4 @@
-import yaml from "js-yaml";
+import * as yaml from "js-yaml";
 import type { DevToolDefinition, DevToolEngine, DevToolOperation, ToolResult, ToolTransformOptions } from "./types";
 
 const SAMPLE_JSON = `{

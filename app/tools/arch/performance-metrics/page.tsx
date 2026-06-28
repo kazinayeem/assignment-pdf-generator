@@ -3,18 +3,7 @@
 import { useState } from "react";
 import Link from "next/link";
 import { Home, ChevronRight, Cpu, Gauge, BarChart3, Hash } from "lucide-react";
-import { Section, InfoCard, CodeBlock, Diagram, InterviewQuestion } from "../components";
-
-type CPIResult = {
-  cpuTime: number;
-  mips: number;
-  totalCycles: number;
-};
-
-type AmdahlResult = {
-  speedup: number;
-  newTime: number;
-};
+import { Section, InfoCard, CodeBlock, InterviewQuestion } from "../components";
 
 export default function PerformanceMetricsPage() {
   const [ic, setIc] = useState("1000000");
@@ -29,7 +18,6 @@ export default function PerformanceMetricsPage() {
   const clockNum = parseFloat(clockRate) || 0;
 
   const freq = clockNum * 1e9;
-  const cycleTime = clockNum > 0 ? 1 / freq : 0;
   const totalCycles = icNum * cpiNum;
   const cpuTime = freq > 0 ? totalCycles / freq : 0;
   const mipsNum = cpuTime > 0 ? icNum / (cpuTime * 1e6) : 0;

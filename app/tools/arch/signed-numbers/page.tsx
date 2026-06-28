@@ -2,8 +2,8 @@
 
 import { useState } from "react";
 import Link from "next/link";
-import { Home, ChevronRight, Plus, Minus, AlertTriangle } from "lucide-react";
-import { Section, InfoCard, CodeBlock, Diagram, InterviewQuestion } from "../components";
+import { Home, ChevronRight, Plus, AlertTriangle } from "lucide-react";
+import { Section, InfoCard, CodeBlock, InterviewQuestion } from "../components";
 
 function toBin(v: number, bits: number): string {
   if (v < 0) v = (1 << bits) + v;

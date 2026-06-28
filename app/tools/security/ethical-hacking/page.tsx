@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { ChevronRight, Terminal, Search, Zap, Lock, Eye, FileText, Shield, Wifi, Database, Globe, Radio, Bug, Key, Network, BookOpen, CheckCircle2, AlertTriangle, Siren, Smartphone, Monitor, Server, ArrowRight } from "lucide-react";
+import { ChevronRight, Terminal, Search, Zap, Lock, Eye, FileText, Shield, Database, Globe, Radio, Bug, Key, Network, BookOpen, CheckCircle2, AlertTriangle } from "lucide-react";
 
 const PHASES = [
   {

@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import Link from "next/link";
-import { Cpu, HelpCircle, BookOpen, GitBranch, Layers, Hash, ArrowRight, ChevronDown, ChevronUp } from "lucide-react";
+import { Cpu, HelpCircle, BookOpen, GitBranch, Layers, Hash, ChevronDown, ChevronUp } from "lucide-react";
 
 const TM_DEFINITION_7 = [
   { symbol: "Q", meaning: "Finite set of states" },

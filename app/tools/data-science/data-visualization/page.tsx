@@ -2,7 +2,7 @@
 
 import React from "react";
 import Link from "next/link";
-import { ChevronRight, BarChart3, PieChart, LineChart, TrendingUp, Code } from "lucide-react";
+import { ChevronRight, BarChart3, PieChart, LineChart, TrendingUp } from "lucide-react";
 
 export default function DataVisualizationPage() {
   return (

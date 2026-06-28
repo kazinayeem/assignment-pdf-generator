@@ -1,6 +1,6 @@
 "use client";
 
-import { useCallback, useEffect, useMemo, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import Link from "next/link";
 import { motion } from "framer-motion";
 import { ArrowLeft, Video, Timer, Camera, Mic } from "lucide-react";
@@ -24,32 +24,9 @@ export function MockInterviewClient() {
   const [score, setScore] = useState(0);
   const [timeLeft, setTimeLeft] = useState(90);
   const [answer, setAnswer] = useState("");
-
-  const questions = useMemo(() => {
-    const pool = [...MOCK_QUESTIONS[category]];
-    return pool.sort(() => Math.random() - 0.5).slice(0, 5);
-  }, [category, started]);
+  const [questions, setQuestions] = useState<string[]>([]);
 
   const currentQ = questions[qIndex];
-
-  useEffect(() => {
-    if (!started || finished) return;
-    if (timeLeft <= 0) {
-      handleNext(true);
-      return;
-    }
-    const t = setTimeout(() => setTimeLeft((t) => t - 1), 1000);
-    return () => clearTimeout(t);
-  }, [started, finished, timeLeft]);
-
-  const handleStart = () => {
-    setStarted(true);
-    setFinished(false);
-    setQIndex(0);
-    setScore(0);
-    setTimeLeft(DIFFICULTY_TIME[difficulty]);
-    setAnswer("");
-  };
 
   const handleNext = useCallback((timedOut = false) => {
     const earned = timedOut ? 0 : answer.trim().length > 50 ? 20 : answer.trim().length > 20 ? 12 : 5;
@@ -65,6 +42,27 @@ export function MockInterviewClient() {
       setAnswer("");
     }
   }, [answer, qIndex, questions.length, score, difficulty, category, addMockResult]);
+
+  useEffect(() => {
+    if (!started || finished) return;
+    if (timeLeft <= 0) {
+      handleNext(true);
+      return;
+    }
+    const t = setTimeout(() => setTimeLeft((t) => t - 1), 1000);
+    return () => clearTimeout(t);
+  }, [started, finished, timeLeft, handleNext]);
+
+  const handleStart = () => {
+    const pool = [...MOCK_QUESTIONS[category]];
+    setQuestions(pool.sort(() => Math.random() - 0.5).slice(0, 5));
+    setStarted(true);
+    setFinished(false);
+    setQIndex(0);
+    setScore(0);
+    setTimeLeft(DIFFICULTY_TIME[difficulty]);
+    setAnswer("");
+  };
 
   return (
     <div>

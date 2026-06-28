@@ -40,7 +40,7 @@ export default function BoothsAlgorithmPage() {
   const [Q, setQ] = useState("3");
   const [bits] = useState(4);
   const [state, setState] = useState<BoothState | null>(null);
-  const [inputStr, setInputStr] = useState("");
+  const [, setInputStr] = useState("");
 
   const initBooth = (mVal: number, qVal: number) => {
     const n = bits;

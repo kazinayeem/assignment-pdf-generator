@@ -42,6 +42,7 @@ export default function Footer() {
         { label: "Lab Report", href: "/lab-report", icon: BookOpen },
         { label: "Learning Tools", href: "/tools", icon: Sparkles },
         { label: "Career Hub", href: "/career", icon: Briefcase },
+        { label: "Interview KB", href: "/interview", icon: BookOpen },
         { label: "Financial Calculators", href: "/calculators", icon: Calculator },
         { label: "Developer Tools", href: "/developer-tools", icon: Wrench },
         { label: "Lab Performance", href: "/lab-performance", icon: ShieldCheck },

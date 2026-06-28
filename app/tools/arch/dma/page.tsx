@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { Home, ChevronRight, Cpu, ArrowLeftRight, Gauge, Network, Zap } from "lucide-react";
+import { Home, ChevronRight, Cpu, Zap } from "lucide-react";
 import { Section, InfoCard, CodeBlock, Diagram, AnimatedFlow, InterviewQuestion } from "../components";
 
 export default function DMAPage() {

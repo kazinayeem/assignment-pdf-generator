@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { ChevronRight, Lock, Globe, Network, Shield, Wifi, Server, ArrowRight, BookOpen, Monitor, Building2, Smartphone, Key, Radio, Eye, Zap, CheckCircle2, AlertTriangle, Lightbulb } from "lucide-react";
+import { ChevronRight, Lock, Globe, Network, Shield, Wifi, Server, ArrowRight, BookOpen, Monitor, Building2, Smartphone, Key, Radio, Eye, Zap, CheckCircle2 } from "lucide-react";
 
 const VPN_TYPES = [
   { name: "Remote Access VPN", desc: "Connects individual users to a private network over the internet. Ideal for remote employees accessing corporate resources from home or travel.", icon: Monitor, color: "violet" },

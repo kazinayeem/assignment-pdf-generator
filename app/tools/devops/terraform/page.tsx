@@ -4,7 +4,7 @@ import Link from "next/link";
 import { useState } from "react";
 import {
   Layers, ChevronRight, BookOpen, FileCode2, Database,
-  Cpu, GitBranch, Terminal, Copy, Check
+  Cpu, GitBranch, Terminal, Copy
 } from "lucide-react";
 
 const BACKEND_TF = `# backend.tf

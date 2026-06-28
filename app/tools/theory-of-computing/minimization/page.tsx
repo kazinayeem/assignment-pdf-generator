@@ -3,7 +3,7 @@
 import { useState, useMemo, useCallback } from "react";
 import Link from "next/link";
 import { Minimize2, HelpCircle, Play, RotateCcw, BookOpen, GitBranch, Layers, Hash } from "lucide-react";
-import type { Automaton, State, Transition } from "../components/types";
+import type { Automaton, State } from "../components/types";
 
 const EXAMPLE_DFAS: Record<string, Automaton> = {
   "DFA 1": {
@@ -117,7 +117,6 @@ function computeMinimization(automaton: Automaton): {
   };
 
   const newStates: State[] = equivalenceClasses.map((ec, i) => {
-    const representative = automaton.states.find((s) => s.id === ec.states[0])!;
     return {
       id: ec.label,
       label: ec.label,

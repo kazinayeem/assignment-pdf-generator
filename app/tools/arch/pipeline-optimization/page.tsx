@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import Link from "next/link";
-import { Home, ChevronRight, GitBranch, Cpu, Zap, RotateCcw, BarChart3, RefreshCw, Target } from "lucide-react";
+import { Home, ChevronRight, RotateCcw } from "lucide-react";
 import { Section, InfoCard, CodeBlock, Diagram, InterviewQuestion } from "../components";
 
 const PREDICTORS = [

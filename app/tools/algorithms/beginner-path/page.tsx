@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { Home, ChevronRight, ArrowRight, CheckCircle, BookOpen } from "lucide-react";
+import { Home, ChevronRight, ArrowRight, CheckCircle } from "lucide-react";
 import { useAlgoStore } from "@/lib/algo-store";
 
 const MODULES = [
@@ -13,7 +13,7 @@ const MODULES = [
 ];
 
 export default function BeginnerPathPage() {
-  const { isTopicCompleted, updateLearningPath, addActivity } = useAlgoStore();
+  const { isTopicCompleted, addActivity } = useAlgoStore();
 
   return (
     <div className="max-w-5xl mx-auto px-6 py-8">

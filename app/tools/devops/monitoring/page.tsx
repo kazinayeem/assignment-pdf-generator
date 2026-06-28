@@ -4,7 +4,7 @@ import Link from "next/link";
 import { useState } from "react";
 import {
   Activity, ChevronRight, BookOpen, BarChart3, Search,
-  Bell, Database, Terminal, Copy, Check, LineChart
+  Bell, Database, LineChart
 } from "lucide-react";
 
 const PROMETHEUS_CONFIG = `# prometheus.yml

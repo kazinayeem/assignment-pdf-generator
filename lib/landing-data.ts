@@ -105,6 +105,7 @@ export const PRICING_FEATURES = [
 
 export const NAV_LINKS = [
   { name: "Tools", href: "/tools" },
+  { name: "Interview", href: "/interview" },
   { name: "Career", href: "/career" },
   { name: "Calculators", href: "/calculators" },
   { name: "DevTools", href: "/developer-tools" },

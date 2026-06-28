@@ -2,7 +2,7 @@
 
 import React from "react";
 import Link from "next/link";
-import { ChevronRight, GitBranch, MessageSquare, BookOpen, Search } from "lucide-react";
+import { ChevronRight, GitBranch, BookOpen, Search } from "lucide-react";
 
 export default function NLPPage() {
   return (

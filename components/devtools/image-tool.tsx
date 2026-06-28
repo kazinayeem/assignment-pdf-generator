@@ -95,7 +95,6 @@ export function ImageTool({ mode }: { mode: "compress" | "resize" | "convert" | 
           Drop image here or click to upload
         </label>
         {preview && mode !== "metadata" && (
-          // eslint-disable-next-line @next/next/no-img-element
           <img src={preview} alt="Processed preview" className="max-w-full max-h-64 rounded-xl" />
         )}
         {info && mode === "metadata" && (

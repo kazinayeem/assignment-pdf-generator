@@ -2,7 +2,7 @@
 
 import React, { useState, useRef, useCallback } from "react";
 import Link from "next/link";
-import { ChevronRight, BrainCircuit, GitBranch, Target, RotateCcw, Trash2 } from "lucide-react";
+import { ChevronRight, BrainCircuit, GitBranch, Target, RotateCcw } from "lucide-react";
 
 type Point = { x: number; y: number; label: "blue" | "red" };
 

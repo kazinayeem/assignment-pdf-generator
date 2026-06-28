@@ -1,4 +1,3 @@
-import { ReactNode } from "react";
 import Link from "next/link";
 import { Home, ChevronRight, BookOpen } from "lucide-react";
 import { Section } from "@/components/tools/topic-primitives";

@@ -4,7 +4,7 @@ import Link from "next/link";
 import { useState } from "react";
 import {
   Server, ChevronRight, BookOpen, FileCode2, Users,
-  Terminal, Copy, Check, Play, Settings
+  Terminal, Copy, Settings
 } from "lucide-react";
 
 const PLAYBOOK = `---

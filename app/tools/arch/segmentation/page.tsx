@@ -2,8 +2,8 @@
 
 import { useState } from "react";
 import Link from "next/link";
-import { Home, ChevronRight, Code, Database, Layers, SquareStack, Shield, Share2, GitBranch, Table } from "lucide-react";
-import { Section, InfoCard, CodeBlock, Diagram, MemoryBlock, InterviewQuestion } from "../components";
+import { Home, ChevronRight, Code, Database, Layers, SquareStack, Shield, Share2, GitBranch } from "lucide-react";
+import { Section, InfoCard, CodeBlock, InterviewQuestion } from "../components";
 
 const SEGMENT_TYPES = [
   { name: "Code (Text)", icon: Code, desc: "Executable instructions. Read-only, fixed size. Shared between processes for memory efficiency.", color: "bg-blue-50 border-blue-300", textColor: "text-blue-700" },

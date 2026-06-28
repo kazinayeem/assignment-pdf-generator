@@ -2,16 +2,7 @@
 
 import { useState } from "react";
 import Link from "next/link";
-import { ChevronRight, Zap, BarChart3, Cpu, BookOpen, Play, RotateCcw, ArrowRight } from "lucide-react";
-
-type QueryPlan = {
-  id: string;
-  name: string;
-  description: string;
-  cost: number;
-  rows: number;
-  steps: string[];
-};
+import { ChevronRight, Zap, BarChart3, Cpu, BookOpen, RotateCcw } from "lucide-react";
 
 const QUERIES = [
   {

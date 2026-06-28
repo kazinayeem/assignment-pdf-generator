@@ -1,7 +1,7 @@
 import {
   Cpu, Database, BrainCircuit, Network, MemoryStick,
   ShieldAlert, Blocks, Code2, Globe, Microchip, GitFork,
-  BarChart3, Cloud, type LucideIcon,
+  BarChart3, Cloud, Smartphone, Bot, type LucideIcon,
 } from "lucide-react";
 import type { AccentKey, Difficulty } from "./tokens";
 
@@ -38,6 +38,8 @@ export const TOOL_SUBJECTS: SubjectMeta[] = [
   { slug: "web", title: "Web Development", shortTitle: "WEB", description: "Frontend, backend, full-stack development, and modern web frameworks.", href: "/tools/web", icon: Globe, accent: "teal", difficulty: "Intermediate", modules: 4, lessons: 16, hours: 36, progress: 8, topicCount: 16, categories: 4 },
   { slug: "data-science", title: "Data Science", shortTitle: "DS", description: "Python, pandas, machine learning, deep learning, NLP, and LLMs.", href: "/tools/data-science", icon: BarChart3, accent: "amber", difficulty: "Advanced", modules: 3, lessons: 12, hours: 44, progress: 25, topicCount: 12, simulators: 3, interviewQuestions: "55+", categories: 3 },
   { slug: "devops", title: "DevOps", shortTitle: "OPS", description: "Docker, Kubernetes, CI/CD pipelines, cloud infrastructure, and monitoring.", href: "/tools/devops", icon: Cloud, accent: "cyan", difficulty: "Intermediate", modules: 3, lessons: 11, hours: 30, progress: 19, topicCount: 11, simulators: 2, categories: 3 },
+  { slug: "ai", title: "Artificial Intelligence", shortTitle: "AI", description: "Search, ML, deep learning, NLP, and large language models.", href: "/tools/data-science/machine-learning", icon: Bot, accent: "violet", difficulty: "Advanced", modules: 3, lessons: 10, hours: 36, progress: 12, topicCount: 6, interviewQuestions: "60+", categories: 2 },
+  { slug: "mobile", title: "Mobile Development", shortTitle: "MOB", description: "React Native, Flutter, mobile UI/UX, and app store deployment.", href: "/tools/mobile", icon: Smartphone, accent: "pink", difficulty: "Intermediate", modules: 3, lessons: 8, hours: 32, progress: 5, topicCount: 5, categories: 2 },
 ];
 
 export const TOOL_CATEGORIES = TOOL_SUBJECTS.map((s) => ({

@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { ChevronRight, Cloud, Shield, Users, Key, Smartphone, Eye, AlertTriangle, CheckCircle2, BookOpen, Server, Globe, Building2, Layers, Lock, Database, Wifi, UserCheck, Radio, RefreshCw, FileText, Monitor, Ban } from "lucide-react";
+import { ChevronRight, Cloud, Shield, Users, Key, Smartphone, Eye, AlertTriangle, CheckCircle2, BookOpen, Server, Globe, Building2, Layers, Lock, Database, Wifi, UserCheck, RefreshCw, FileText } from "lucide-react";
 
 const DEPLOYMENT_MODELS = [
   { name: "Public Cloud", desc: "Third-party provider delivers services over the public internet. Shared infrastructure, multi-tenant.", icon: Globe, color: "blue", use: "Best for startups, dev/test, and variable workloads" },

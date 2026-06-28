@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import Link from "next/link";
-import { Home, ChevronRight, Cpu, Server, Database, BarChart3, TrendingUp } from "lucide-react";
+import { Home, ChevronRight, Cpu, Server, Database } from "lucide-react";
 import { Section, InfoCard, CodeBlock, Diagram, InterviewQuestion } from "../components";
 
 const COUPLING_TYPES = [

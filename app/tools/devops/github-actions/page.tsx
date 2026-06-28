@@ -4,7 +4,7 @@ import Link from "next/link";
 import { useState } from "react";
 import {
   Zap, ChevronRight, BookOpen, Play, CheckCircle2,
-  XCircle, Clock, GitBranch, Terminal, Copy, Check, RotateCcw
+  Clock, GitBranch, Terminal, Copy, Check, RotateCcw
 } from "lucide-react";
 
 const PIPELINE_STAGES = [
@@ -16,8 +16,6 @@ const PIPELINE_STAGES = [
   { name: "Build", icon: Terminal, desc: "Compile and package application", color: "text-pink-500" },
   { name: "Deploy", icon: Zap, desc: "Deploy to staging/production", color: "text-green-500" },
 ];
-
-const STAGE_STATUS = ["running", "passed", "passed", "passed", "running", "pending", "pending"] as const;
 
 const WORKFLOW_YAML = `name: CI/CD Pipeline
 on:

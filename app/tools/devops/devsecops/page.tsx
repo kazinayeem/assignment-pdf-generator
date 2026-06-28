@@ -4,7 +4,7 @@ import Link from "next/link";
 import { useState } from "react";
 import {
   Shield, ChevronRight, BookOpen, FileCode2, Lock,
-  Search, Terminal, Copy, Check, Eye, Key
+  Search, Copy, Eye, Key
 } from "lucide-react";
 
 const VAULT_CONFIG = `# Enable KV secrets engine

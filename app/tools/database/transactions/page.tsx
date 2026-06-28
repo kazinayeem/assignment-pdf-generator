@@ -7,7 +7,6 @@ import {
   Shield,
   Lock,
   Database,
-  ArrowRight,
   ChevronRight,
   BookOpen,
   AlertTriangle,
@@ -226,9 +225,6 @@ export default function TransactionsPage() {
   }, [reset, addLog, scheduleStep]);
 
   const isEnabled = simState === "idle";
-
-  const accountALabel = `Account A: $${accountA}`;
-  const accountBLabel = `Account B: $${accountB}`;
 
   return (
     <div className="min-h-screen bg-gray-50">
@@ -573,7 +569,6 @@ export default function TransactionsPage() {
                   <p className="text-gray-500 italic">No operations yet. Click a button above to start a simulation.</p>
                 ) : (
                   logs.map((entry) => {
-                    const time = new Date().toLocaleTimeString();
                     return (
                       <div key={entry.step} className="flex gap-2 items-start">
                         <span className="text-gray-500 shrink-0 w-6">#{entry.step}</span>

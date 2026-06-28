@@ -60,8 +60,6 @@ export default function SortingPage() {
     setSwaps(0);
   };
 
-  const markSorted = (arr: Bar[], indices: number[]) =>
-    arr.map((b, i) => ({ ...b, state: indices.includes(i) ? "sorted" as const : b.state }));
 
   const runSort = async () => {
     if (running) return;

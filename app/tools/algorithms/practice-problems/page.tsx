@@ -2,8 +2,7 @@
 
 import { useState } from "react";
 import Link from "next/link";
-import { Home, ChevronRight, Search, CheckCircle } from "lucide-react";
-import { useAlgoStore } from "@/lib/algo-store";
+import { Home, ChevronRight, Search } from "lucide-react";
 
 const PROBLEMS = [
   { id: "p1", title: "Two Sum", difficulty: "Easy", category: "Arrays", href: "/tools/algorithms/two-pointer", desc: "Find two numbers that add up to target" },
@@ -43,8 +42,6 @@ const CATEGORIES = ["All", "Easy", "Medium", "Hard"];
 export default function PracticeProblemsPage() {
   const [search, setSearch] = useState("");
   const [filter, setFilter] = useState("All");
-  const { isTopicCompleted } = useAlgoStore();
-
   const filtered = PROBLEMS.filter((p) => {
     const matchSearch = p.title.toLowerCase().includes(search.toLowerCase()) || p.category.toLowerCase().includes(search.toLowerCase());
     const matchFilter = filter === "All" || p.difficulty === filter;

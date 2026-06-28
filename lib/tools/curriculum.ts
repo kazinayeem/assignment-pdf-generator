@@ -84,11 +84,46 @@ export const WEB_CURRICULUM: SubjectCurriculum = {
   missingModules: ["TypeScript", "Web Performance", "Accessibility (a11y)", "Testing (Jest/Cypress)"],
 };
 
+export const AI_CURRICULUM: SubjectCurriculum = {
+  slug: "ai",
+  title: "Artificial Intelligence",
+  estimatedHours: 36,
+  difficulty: "Advanced",
+  learningPath: ["AI Foundations", "Search & Logic", "ML Basics", "Neural Networks", "NLP", "LLMs"],
+  topics: [
+    { slug: "ai-foundations", title: "AI Foundations", description: "History, agents, problem solving, knowledge representation.", icon: "🤖", difficulty: "Beginner", duration: "6 hrs", status: "planned" },
+    { slug: "search-algorithms", title: "Search Algorithms", description: "BFS, DFS, A*, heuristic search.", icon: "🔍", difficulty: "Intermediate", duration: "5 hrs", status: "planned" },
+    { slug: "machine-learning", title: "Machine Learning", description: "Supervised, unsupervised, model evaluation.", icon: "📊", difficulty: "Intermediate", duration: "8 hrs", status: "live", href: "/tools/data-science/machine-learning" },
+    { slug: "deep-learning", title: "Deep Learning", description: "CNNs, RNNs, transformers.", icon: "🧠", difficulty: "Advanced", duration: "10 hrs", status: "live", href: "/tools/data-science/deep-learning" },
+    { slug: "nlp", title: "Natural Language Processing", description: "Tokenization, embeddings, transformers.", icon: "💬", difficulty: "Advanced", duration: "8 hrs", status: "live", href: "/tools/data-science/nlp" },
+    { slug: "llm", title: "Large Language Models", description: "Prompt engineering, RAG, fine-tuning.", icon: "✨", difficulty: "Advanced", duration: "6 hrs", status: "live", href: "/tools/data-science/llm" },
+  ],
+  missingModules: ["Computer Vision", "Reinforcement Learning", "AI Ethics"],
+};
+
+export const MOBILE_CURRICULUM: SubjectCurriculum = {
+  slug: "mobile",
+  title: "Mobile Development",
+  estimatedHours: 32,
+  difficulty: "Intermediate",
+  learningPath: ["Mobile UI", "React Native", "Flutter", "State Management", "Deployment"],
+  topics: [
+    { slug: "mobile-ui", title: "Mobile UI/UX", description: "Design patterns, navigation, responsive layouts.", icon: "📱", difficulty: "Beginner", duration: "6 hrs", status: "planned" },
+    { slug: "react-native", title: "React Native", description: "Components, navigation, native modules.", icon: "⚛️", difficulty: "Intermediate", duration: "10 hrs", status: "planned" },
+    { slug: "flutter", title: "Flutter", description: "Widgets, state management, Dart basics.", icon: "🦋", difficulty: "Intermediate", duration: "10 hrs", status: "planned" },
+    { slug: "mobile-state", title: "State Management", description: "Redux, MobX, Provider, Riverpod.", icon: "🔄", difficulty: "Intermediate", duration: "4 hrs", status: "planned" },
+    { slug: "app-deployment", title: "App Store Deployment", description: "iOS App Store, Google Play, CI/CD.", icon: "🚀", difficulty: "Advanced", duration: "4 hrs", status: "planned" },
+  ],
+  missingModules: ["Swift/iOS Native", "Kotlin/Android Native", "Push Notifications"],
+};
+
 export function getPlannedTopic(subject: string, slug: string) {
   const map: Record<string, SubjectCurriculum> = {
     swe: SWE_CURRICULUM,
     programming: PROGRAMMING_CURRICULUM,
     web: WEB_CURRICULUM,
+    ai: AI_CURRICULUM,
+    mobile: MOBILE_CURRICULUM,
   };
   return map[subject]?.topics.find((t) => t.slug === slug);
 }

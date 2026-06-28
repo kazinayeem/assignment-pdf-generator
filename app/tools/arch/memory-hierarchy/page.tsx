@@ -2,8 +2,8 @@
 
 import { useState } from "react";
 import Link from "next/link";
-import { Home, ChevronRight, Cpu, Zap, HardDrive, Database, Archive, Clock, ArrowUpDown } from "lucide-react";
-import { Section, InfoCard, CodeBlock, Diagram, MemoryBlock, InterviewQuestion, QuizCard } from "../components";
+import { Home, ChevronRight, Cpu, Zap, HardDrive, Database, Archive } from "lucide-react";
+import { Section, InfoCard, CodeBlock, Diagram, InterviewQuestion } from "../components";
 
 const HIERARCHY = [
   { level: "Registers", size: "~1 KB", speed: "0.3 ns", cost: "$$$$$", icon: Cpu, color: "bg-red-500", desc: "Inside CPU, word-size storage" },

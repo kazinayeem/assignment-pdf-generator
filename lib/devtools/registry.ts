@@ -184,7 +184,6 @@ const COLOR = mapTools(COLOR_TOOLS, "color", "color", { ui: "generator" });
 const SVG = mapTools(SVG_TOOLS, "svg", "svg", { acceptsFile: true, fileTypes: ".svg" });
 const IMAGE = mapTools(IMAGE_TOOLS, "image", "image", { ui: "media", acceptsFile: true, fileTypes: "image/*" });
 const ENCODING = ENCODING_TOOLS.map(([slug, title, description, operation]) => {
-  const type = slug.includes("base64") ? "base64" : slug.includes("url") ? "url" : slug.includes("html") ? "html" : slug.includes("unicode") ? "unicode" : slug.includes("ascii") ? "ascii" : slug.includes("binary") ? "binary" : "hex";
   const op = operation as DevToolOperation;
   return d({ slug, title, description, category: "encoding", engine: "encoding", operation: op, popular: slug.includes("base64"), sampleInput: "Hello, CampusFlow!" });
 });

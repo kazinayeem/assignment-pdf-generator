@@ -2,8 +2,8 @@
 
 import { useState } from "react";
 import Link from "next/link";
-import { Home, ChevronRight, Cpu, Monitor, Share2, Database, ArrowRight, Zap, Server } from "lucide-react";
-import { Section, InfoCard, CodeBlock, Diagram, InterviewQuestion, CPUStage, AnimatedFlow } from "../components";
+import { Home, ChevronRight, ArrowRight } from "lucide-react";
+import { Section, InfoCard, CodeBlock, Diagram, InterviewQuestion, AnimatedFlow } from "../components";
 
 const MEMORY_MODELS = [
   {

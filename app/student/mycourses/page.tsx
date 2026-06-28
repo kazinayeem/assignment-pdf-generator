@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useState, useCallback } from "react";
 import { useAuthStore } from "@/lib/auth-store";
 import { useProtectedRoute } from "@/lib/use-protected-route";
 import {
@@ -54,12 +54,7 @@ export default function MyCoursesPage() {
   const [manualTeacherDesig, setManualTeacherDesig] = useState("");
   const [submitting, setSubmitting] = useState(false);
 
-  useEffect(() => {
-    if (!authUser?.uid) return;
-    loadData();
-  }, [authUser?.uid, authUser?.department]);
-
-  const loadData = async () => {
+  const loadData = useCallback(async () => {
     if (!authUser?.uid || !authUser?.department) return;
     setLoadingData(true);
     try {
@@ -92,7 +87,12 @@ export default function MyCoursesPage() {
     } finally {
       setLoadingData(false);
     }
-  };
+  }, [authUser?.uid, authUser?.department]);
+
+  useEffect(() => {
+    if (!authUser?.uid) return;
+    loadData();
+  }, [authUser?.uid, loadData]);
 
   const filteredCourses = myCourses.filter(c => 
     c.courseCode.toLowerCase().includes(searchQuery.toLowerCase()) ||

@@ -2,8 +2,8 @@
 
 import { useState } from "react";
 import Link from "next/link";
-import { Home, ChevronRight, Cpu, Hash, Target, Grid3X3, RefreshCw, CheckCircle, XCircle, Sliders } from "lucide-react";
-import { Section, InfoCard, CodeBlock, Diagram, InterviewQuestion } from "../components";
+import { Home, ChevronRight, Cpu, Hash, Target, Grid3X3, RefreshCw, CheckCircle, XCircle } from "lucide-react";
+import { Section, InfoCard, CodeBlock, InterviewQuestion } from "../components";
 
 type MappingType = "direct" | "associative" | "set-associative";
 
@@ -46,13 +46,11 @@ export default function CacheMappingPage() {
     const offsetBits = Math.ceil(Math.log2(blockSize));
     const lineCount = mappingType === "associative" ? lines.length : lines.length;
     const indexBits = mappingType === "associative" ? 0 : Math.ceil(Math.log2(lineCount / (mappingType === "set-associative" ? ways : 1)));
-    const tagBits = 32 - offsetBits - indexBits;
 
     const offset = addr & ((1 << offsetBits) - 1);
     let index = 0;
     if (mappingType !== "associative") {
-      const setCount = mappingType === "set-associative" ? lineCount / ways : lineCount;
-      index = (addr >> offsetBits) % setCount;
+      index = (addr >> offsetBits) % (mappingType === "set-associative" ? lineCount / ways : lineCount);
     }
     const tag = addr >> (offsetBits + (mappingType === "associative" ? 0 : indexBits));
 
@@ -78,7 +76,6 @@ export default function CacheMappingPage() {
         lines[lineIdx] = { valid: true, tag, data: `0x${addr.toString(16).toUpperCase()}`, lru: 0 };
       }
     } else {
-      const setCount = lineCount / ways;
       const setStart = index * ways;
       const setLines = lines.slice(setStart, setStart + ways);
       const foundInSet = setLines.findIndex(l => l.valid && l.tag === tag);
@@ -217,7 +214,6 @@ export default function CacheMappingPage() {
               <span className="text-red-400 font-bold">■ Invalid</span>
             </div>
             {cache.length > 0 ? cache.map((line, i) => {
-              const sets = mappingType === "set-associative" ? Math.ceil(cache.length / ways) : 0;
               const setNum = mappingType === "set-associative" ? Math.floor(i / ways) : -1;
               return (
                 <div key={i} className={`flex items-center gap-2 p-2 rounded-lg text-xs ${

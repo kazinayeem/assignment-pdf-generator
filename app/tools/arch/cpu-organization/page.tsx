@@ -219,7 +219,7 @@ export default function CPUOrganizationPage() {
 
       <Section title="CPU Operation: Fetch-Decode-Execute Cycle">
         <div className="grid sm:grid-cols-5 gap-2 mb-5">
-          {FETCH_STAGES.map((s, i) => (
+          {FETCH_STAGES.map((s) => (
             <CPUStage key={s.stage} stage={s.stage} desc={s.desc} icon={s.icon} />
           ))}
         </div>

@@ -30,17 +30,6 @@ function modInverse(a: number, m: number): number {
   return 1;
 }
 
-function simpleHash(text: string): string {
-  let hash = 0;
-  for (let i = 0; i < text.length; i++) {
-    const char = text.charCodeAt(i);
-    hash = ((hash << 5) - hash) + char;
-    hash = hash & hash;
-  }
-  const n = Math.abs(hash);
-  const h = n.toString(16);
-  return "0".repeat(32 - h.length) + h;
-}
 
 function simulateMD5(text: string): string {
   let h = 0x67452301;

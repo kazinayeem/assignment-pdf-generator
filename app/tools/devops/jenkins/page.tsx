@@ -3,7 +3,7 @@
 import Link from "next/link";
 import {
   HardDrive, ChevronRight, BookOpen, FileCode2, GitBranch,
-  Users, Layout, Terminal, Copy, Check
+  Users, Layout, Copy
 } from "lucide-react";
 
 const JENKINSFILE = `pipeline {

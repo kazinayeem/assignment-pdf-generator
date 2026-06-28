@@ -1,13 +1,13 @@
 "use client";
 
-import { useState, useRef, useCallback, useEffect } from "react";
+import { useState, useRef, useCallback } from "react";
 import {
   Plus, ArrowRight, Trash2, Play, RotateCcw, Sigma,
   Info, BookOpen, Lightbulb, Zap, ChevronRight, Home,
   MousePointer, CheckCircle2, XCircle, GitBranch,
 } from "lucide-react";
 import {
-  State, Transition, Automaton,
+  Transition, Automaton,
   addState, toggleStart, toggleAccept, removeState,
   addTransition, removeTransition, updateStatePos,
   renameState, simulateNFA, epsilonClosure,
@@ -116,9 +116,6 @@ function transitionKey(t: Transition) {
   return `${t.from}->${t.to}@{${t.symbol}}`;
 }
 
-function noop(e: React.MouseEvent) {
-  e.stopPropagation();
-}
 
 export default function NFAPage() {
   const [automaton, setAutomaton] = useState<Automaton>({ ...NFA_EXAMPLES["Ends with 01"] });
@@ -138,7 +135,7 @@ export default function NFAPage() {
   const [showTheory, setShowTheory] = useState(false);
   const [simStepIndex, setSimStepIndex] = useState(0);
   const [simRunning, setSimRunning] = useState(false);
-  const [renameValue, setRenameValue] = useState("");
+  const [, setRenameValue] = useState("");
   const svgRef = useRef<SVGSVGElement>(null);
 
   const updateAuto = useCallback((fn: (a: Automaton) => Automaton) => {
@@ -295,11 +292,6 @@ export default function NFAPage() {
   }
 
   const startStates = automaton.states.filter((s) => s.isStart).map((s) => s.id);
-  const activeClosure = simRunning && simResult
-    ? epsilonClosure(automaton, [...activeStateIds])
-    : [];
-
-  const stepCount = simResult?.steps.length ?? 0;
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-50 via-white to-indigo-50 px-3 sm:px-6 lg:px-8 py-6">

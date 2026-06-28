@@ -3,9 +3,9 @@
 import { useState, useMemo } from "react";
 import Link from "next/link";
 import {
-  Activity, Search, Filter, Download, Eye, Server, Globe,
+  Activity, Search, Filter, Download, Eye, Server,
   ArrowRight, ChevronRight, BookOpen, Terminal, Network,
-  Wifi, ChevronDown, BarChart3, FileText, HelpCircle, X
+  Wifi, ChevronDown, BarChart3, HelpCircle
 } from "lucide-react";
 
 type Protocol = "DNS" | "TCP" | "HTTP" | "TLS";

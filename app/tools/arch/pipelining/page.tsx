@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import Link from "next/link";
-import { Home, ChevronRight, Cpu, Play, RotateCcw, Zap, BarChart3 } from "lucide-react";
+import { Home, ChevronRight, Play, RotateCcw, Zap } from "lucide-react";
 import { Section, InfoCard, CodeBlock, Diagram, InterviewQuestion, CPUStage, AnimatedFlow } from "../components";
 
 const STAGES = ["IF", "ID", "EX", "MEM", "WB"];
@@ -52,8 +52,6 @@ function getInstructionStage(instIdx: number, cycle: number): number | null {
 export default function PipeliningPage() {
   const [cycle, setCycle] = useState(1);
   const [autoPlay, setAutoPlay] = useState(false);
-  const [expandedHW, setExpandedHW] = useState(false);
-
   const maxCycle = 9;
   const canAdvance = cycle < maxCycle;
 
@@ -83,8 +81,6 @@ export default function PipeliningPage() {
   const totalInstructions = 5;
   const totalCycles = totalInstructions + 5 - 1;
   const speedup = (totalInstructions * 5) / (totalCycles);
-  const idealSpeedup = totalInstructions;
-
   return (
     <div className="max-w-5xl mx-auto px-6 py-8">
       <div className="flex items-center gap-2 mb-6 text-xs text-slate-500">

@@ -77,14 +77,13 @@ function runRR(procs: Process[], quantum: number): { gantt: GanttBlock[]; result
   let time = 0;
   const ready: typeof queue = [];
   const arrived = new Set<string>();
-  let idx = 0;
 
   while (true) {
     // Add newly arrived
     queue.forEach(p => { if (p.arrival <= time && !arrived.has(p.id)) { ready.push(p); arrived.add(p.id); } });
     if (ready.length === 0) {
       if (queue.every(p => p.rem === 0)) break;
-      time++; idx++;
+      time++;
       continue;
     }
     const p = ready.shift()!;

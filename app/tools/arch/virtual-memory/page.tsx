@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import Link from "next/link";
-import { Home, ChevronRight, ArrowRight, Search, RefreshCw, BookOpen, Cpu, AlertTriangle } from "lucide-react";
+import { Home, ChevronRight, Search, RefreshCw } from "lucide-react";
 import { Section, InfoCard, CodeBlock, Diagram, InterviewQuestion, AnimatedFlow } from "../components";
 
 interface PageTableEntry {
@@ -22,7 +22,7 @@ const DEFAULT_PT: PageTableEntry[] = Array.from({ length: 16 }, (_, i) => ({
 export default function VirtualMemoryPage() {
   const [virtualAddr, setVirtualAddr] = useState("");
   const [pageSize, setPageSize] = useState(4096);
-  const [pageTable, setPageTable] = useState<PageTableEntry[]>(DEFAULT_PT);
+  const [pageTable] = useState<PageTableEntry[]>(DEFAULT_PT);
   const [transResult, setTransResult] = useState<{ vpn: number; offset: number; pfn: number; physAddr: string; hit: boolean } | null>(null);
   const [tlbEnabled, setTlbEnabled] = useState(true);
   const [tlbHits, setTlbHits] = useState(0);

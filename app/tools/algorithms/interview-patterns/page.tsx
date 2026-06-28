@@ -1,6 +1,5 @@
 "use client";
 
-import { useState } from "react";
 import Link from "next/link";
 import { Home, ChevronRight } from "lucide-react";
 
@@ -105,7 +104,6 @@ const COMPANY_FOCUS = [
 ];
 
 export default function InterviewPatternsPage() {
-  const [expanded, setExpanded] = useState<string | null>(null);
 
   return (
     <div className="max-w-5xl mx-auto px-6 py-8">

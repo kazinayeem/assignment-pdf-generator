@@ -32,7 +32,7 @@ export default function LandingView() {
         onClose={() => setSearchOpen(false)}
       />
 
-      <main>
+      <main id="main-content">
         <HeroSection />
         <WhyChooseSection />
         <ProductivitySection />

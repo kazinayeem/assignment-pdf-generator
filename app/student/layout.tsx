@@ -158,7 +158,7 @@ export default function StudentLayout({ children }: { children: ReactNode }) {
       </aside>
 
       {/* Main Content Area */}
-      <main className="flex-1 min-w-0 overflow-y-auto pt-20 lg:pt-0">
+      <main id="main-content" className="flex-1 min-w-0 overflow-y-auto pt-20 lg:pt-0">
         <div className="max-w-6xl mx-auto p-6 md:p-10 lg:p-12">
           {children}
         </div>

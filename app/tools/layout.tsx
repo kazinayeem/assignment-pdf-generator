@@ -26,7 +26,7 @@ export default function ToolsLayout({ children }: { children: React.ReactNode })
   const [collapsed, setCollapsed] = useState(false);
   const [searchQuery, setSearchQuery] = useState("");
   const [profileOpen, setProfileOpen] = useState(false);
-  const { pinnedSubjects, togglePinSubject, isPinnedSubject } = useLearningStore();
+  const { togglePinSubject, isPinnedSubject } = useLearningStore();
 
   const isActive = (href: string) => pathname === href || pathname.startsWith(href + "/");
   const crumbs = formatBreadcrumb(pathname);
@@ -55,7 +55,7 @@ export default function ToolsLayout({ children }: { children: React.ReactNode })
     const pinned = filteredCategories.filter((c) => isPinnedSubject(c.slug));
     const rest = filteredCategories.filter((c) => !isPinnedSubject(c.slug));
     return [...pinned, ...rest];
-  }, [filteredCategories, pinnedSubjects, isPinnedSubject]);
+  }, [filteredCategories, isPinnedSubject]);
 
   const sidebarWidth = collapsed ? 72 : 260;
 
@@ -286,7 +286,7 @@ export default function ToolsLayout({ children }: { children: React.ReactNode })
           )}
         </AnimatePresence>
 
-        <main className="flex-1 min-w-0 overflow-y-auto rounded-2xl">
+        <main id="main-content" className="flex-1 min-w-0 overflow-y-auto rounded-2xl">
           {children}
         </main>
       </div>

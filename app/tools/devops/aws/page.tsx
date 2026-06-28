@@ -4,7 +4,7 @@ import Link from "next/link";
 import { useState } from "react";
 import {
   Cloud, ChevronRight, BookOpen, Server, Database,
-  Cpu, Shield, Network, Terminal, Copy, Check
+  Cpu, Shield, Network, Terminal
 } from "lucide-react";
 
 const SERVICES = [

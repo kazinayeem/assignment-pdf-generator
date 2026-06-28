@@ -12,7 +12,7 @@ export default function DevToolsLayout({ children }: { children: React.ReactNode
   return (
     <div className="min-h-screen bg-[#F8FAFC] dark:bg-[#0F172A]">
       <DevToolsNav />
-      <main>{children}</main>
+      <main id="main-content">{children}</main>
     </div>
   );
 }

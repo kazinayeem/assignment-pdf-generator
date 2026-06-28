@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import Link from "next/link";
-import { Home, ChevronRight, Cpu, Monitor, Layout, Database, Zap, ChevronDown, ChevronUp } from "lucide-react";
+import { Home, ChevronRight, ChevronDown, ChevronUp } from "lucide-react";
 import { Section, InfoCard, CodeBlock, Diagram, InterviewQuestion, CPUStage } from "../components";
 
 const TAXONOMY = [

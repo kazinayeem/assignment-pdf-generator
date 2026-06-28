@@ -12,7 +12,7 @@ type ToolsBadgeProps = {
 
 const extraVariants = {
   sim: "bg-amber-50 text-amber-700 border-amber-200 dark:bg-amber-500/10 dark:text-amber-400 dark:border-amber-500/20",
-  new: "bg-[#6D5DF6]/10 text-[#6D5DF6] border-[#6D5DF6]/20",
+  new: "bg-brand/10 text-brand border-brand/20",
   default: "bg-slate-100 text-slate-600 border-slate-200 dark:bg-white/10 dark:text-slate-300 dark:border-white/10",
 };
 

@@ -35,8 +35,8 @@ export function QuestionCards({ questions, company }: { questions: ExtractedQues
                 className="w-full flex items-start gap-3 p-4 text-left min-h-[44px]"
                 aria-expanded={isOpen}
               >
-                <div className="w-8 h-8 rounded-lg bg-[#6D5DF6]/10 flex items-center justify-center shrink-0">
-                  <Icon size={16} className="text-[#6D5DF6]" />
+                <div className="w-8 h-8 rounded-lg bg-brand/10 flex items-center justify-center shrink-0">
+                  <Icon size={16} className="text-brand" />
                 </div>
                 <div className="flex-1 min-w-0">
                   <div className="flex flex-wrap gap-2 mb-1">

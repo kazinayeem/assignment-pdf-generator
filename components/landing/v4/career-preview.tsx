@@ -13,7 +13,7 @@ import {
   Target,
 } from "lucide-react";
 import { useTranslation } from "@/lib/i18n/provider";
-import { spacing, animation, card, button } from "@/lib/design-system";
+import { spacing, animation, card, button, sectionBg } from "@/lib/design-system";
 import { SectionHeader } from "./section-header";
 import { cn } from "@/lib/utils";
 
@@ -31,7 +31,7 @@ export function CareerPreview() {
   const { t } = useTranslation("home");
 
   return (
-    <section className={cn(spacing.section, "relative bg-background")}>
+    <section className={cn(spacing.section, sectionBg.mesh, "relative")}>
       <div className="blur-orb w-[350px] h-[350px] bg-brand-accent/10 top-20 right-10" aria-hidden />
       <div className={cn(spacing.container, "relative")}>
         <SectionHeader

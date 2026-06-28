@@ -3,7 +3,7 @@
 import { motion } from "framer-motion";
 import { GitFork, GitPullRequest, Star, Shield, ExternalLink } from "lucide-react";
 import { useTranslation } from "@/lib/i18n/provider";
-import { spacing, animation, card, button, badge } from "@/lib/design-system";
+import { spacing, animation, card, button, badge, sectionBg } from "@/lib/design-system";
 import { SectionHeader } from "../v4/section-header";
 import { cn } from "@/lib/utils";
 
@@ -19,7 +19,7 @@ export function GitHubSection() {
   const { t } = useTranslation("v5");
 
   return (
-    <section className={cn(spacing.section, "relative bg-background border-y border-border")}>
+    <section className={cn(spacing.section, sectionBg.mesh, "relative border-y border-border")}>
       <div className={cn(spacing.container, "relative")}>
         <SectionHeader
           badge={t("github.badge")}

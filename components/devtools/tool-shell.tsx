@@ -120,7 +120,7 @@ export function ToolShell({
         <div
           className={cn(
             "glass-card p-4 sm:p-5",
-            dragOver && "ring-2 ring-[#6D5DF6]/50"
+            dragOver && "ring-2 ring-brand/50"
           )}
           onDragOver={(e) => { e.preventDefault(); setDragOver(true); }}
           onDragLeave={() => setDragOver(false)}
@@ -132,7 +132,7 @@ export function ToolShell({
             onChange={(e) => onInputChange(e.target.value)}
             placeholder={inputPlaceholder}
             spellCheck={false}
-            className="w-full min-h-[200px] sm:min-h-[280px] resize-y rounded-xl border border-slate-200 dark:border-white/10 bg-white dark:bg-white/5 p-4 font-mono text-sm outline-none focus:border-[#6D5DF6]/50 focus:ring-2 focus:ring-[#6D5DF6]/20"
+            className="w-full min-h-[200px] sm:min-h-[280px] resize-y rounded-xl border border-slate-200 dark:border-white/10 bg-white dark:bg-white/5 p-4 font-mono text-sm outline-none focus:border-brand/50 focus:ring-2 focus:ring-brand/20"
             aria-label={inputLabel}
           />
           {showSecondInput && onInputBChange && (
@@ -143,7 +143,7 @@ export function ToolShell({
                 onChange={(e) => onInputBChange(e.target.value)}
                 placeholder="Second JSON..."
                 spellCheck={false}
-                className="w-full min-h-[120px] resize-y rounded-xl border border-slate-200 dark:border-white/10 bg-white dark:bg-white/5 p-4 font-mono text-sm outline-none focus:border-[#6D5DF6]/50"
+                className="w-full min-h-[120px] resize-y rounded-xl border border-slate-200 dark:border-white/10 bg-white dark:bg-white/5 p-4 font-mono text-sm outline-none focus:border-brand/50"
               />
             </>
           )}

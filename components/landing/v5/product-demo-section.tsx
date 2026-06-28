@@ -4,7 +4,7 @@ import Link from "next/link";
 import { motion } from "framer-motion";
 import { Play, Monitor } from "lucide-react";
 import { useTranslation } from "@/lib/i18n/provider";
-import { spacing, button, card, animation } from "@/lib/design-system";
+import { spacing, button, card, animation, sectionBg } from "@/lib/design-system";
 import { SectionHeader } from "../v4/section-header";
 import { SectionCta } from "./section-cta";
 import { cn } from "@/lib/utils";
@@ -13,7 +13,7 @@ export function ProductDemoSection() {
   const { t } = useTranslation("v5");
 
   return (
-    <section id="demo" className={cn(spacing.section, "relative bg-surface-page")}>
+    <section id="demo" className={cn(spacing.section, sectionBg.mesh, "relative")}>
       <div className={cn(spacing.container, "relative")}>
         <SectionHeader
           badge={t("demo.badge")}

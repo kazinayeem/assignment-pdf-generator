@@ -51,9 +51,9 @@ export function LinkedInClient() {
               <div key={f.key}>
                 <label className="text-xs font-bold uppercase text-slate-500 mb-2 block">{f.label}</label>
                 {f.rows === 1 ? (
-                  <input value={f.value} onChange={(e) => f.set(e.target.value)} className="w-full rounded-xl border border-slate-200 dark:border-white/10 bg-white dark:bg-white/5 p-3 text-sm min-h-[44px] outline-none focus:border-[#6D5DF6]/50" />
+                  <input value={f.value} onChange={(e) => f.set(e.target.value)} className="w-full rounded-xl border border-slate-200 dark:border-white/10 bg-white dark:bg-white/5 p-3 text-sm min-h-[44px] outline-none focus:border-brand/50" />
                 ) : (
-                  <textarea value={f.value} onChange={(e) => f.set(e.target.value)} rows={f.rows} className="w-full rounded-xl border border-slate-200 dark:border-white/10 bg-white dark:bg-white/5 p-3 text-sm outline-none focus:border-[#6D5DF6]/50" />
+                  <textarea value={f.value} onChange={(e) => f.set(e.target.value)} rows={f.rows} className="w-full rounded-xl border border-slate-200 dark:border-white/10 bg-white dark:bg-white/5 p-3 text-sm outline-none focus:border-brand/50" />
                 )}
               </div>
             ))}
@@ -62,7 +62,7 @@ export function LinkedInClient() {
           <div className="space-y-4">
             <div className="glass-card p-6 text-center">
               <p className="text-sm text-slate-500 mb-1">Profile Score</p>
-              <p className="text-5xl font-extrabold text-[#6D5DF6]">{analysis.overall}%</p>
+              <p className="text-5xl font-extrabold text-brand">{analysis.overall}%</p>
             </div>
             {analysis.sections.map((s) => (
               <div key={s.label} className="glass-card p-4 flex gap-3">
@@ -93,7 +93,7 @@ export function LinkedInClient() {
           <div className="glass-card p-5">
             <h3 className="font-bold mb-3">Recommended Skills</h3>
             <div className="flex flex-wrap gap-2">
-              {suggestions.skills.map((s) => <span key={s} className="px-2 py-1 rounded-full bg-[#6D5DF6]/10 text-[#6D5DF6] text-xs font-medium">{s}</span>)}
+              {suggestions.skills.map((s) => <span key={s} className="px-2 py-1 rounded-full bg-brand/10 text-brand text-xs font-medium">{s}</span>)}
             </div>
           </div>
         </div>

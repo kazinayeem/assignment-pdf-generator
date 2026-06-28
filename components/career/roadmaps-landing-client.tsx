@@ -17,16 +17,16 @@ export function RoadmapsLandingClient() {
             const Icon = (LucideIcons as unknown as Record<string, LucideIcons.LucideIcon>)[r.icon] ?? Map;
             return (
               <motion.div key={r.slug} initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: i * 0.03 }}>
-                <Link href={`/career/roadmaps/${r.slug}`} className="glass-card p-5 block h-full hover:border-[#6D5DF6]/30 transition-colors group">
-                  <div className="w-11 h-11 rounded-xl bg-gradient-to-br from-[#6D5DF6] to-[#06B6D4] flex items-center justify-center mb-4 group-hover:scale-105 transition-transform">
+                <Link href={`/career/roadmaps/${r.slug}`} className="glass-card p-5 block h-full hover:border-brand/30 transition-colors group">
+                  <div className="w-11 h-11 rounded-xl bg-gradient-to-br from-brand to-brand-accent flex items-center justify-center mb-4 group-hover:scale-105 transition-transform">
                     <Icon size={20} className="text-white" />
                   </div>
-                  <h3 className="font-bold text-base group-hover:text-[#6D5DF6] transition-colors mb-1">{r.title}</h3>
+                  <h3 className="font-bold text-base group-hover:text-brand transition-colors mb-1">{r.title}</h3>
                   <p className="text-sm text-slate-500 line-clamp-2 mb-3">{r.description}</p>
                   <div className="flex items-center gap-1 text-xs text-slate-400">
                     <Clock size={12} /> ~{r.estimatedMonths} months
                   </div>
-                  <span className="inline-flex items-center gap-1 text-sm text-[#6D5DF6] font-medium mt-3">
+                  <span className="inline-flex items-center gap-1 text-sm text-brand font-medium mt-3">
                     View roadmap <ArrowRight size={14} />
                   </span>
                 </Link>

@@ -49,27 +49,27 @@ export function GitHubReadmeClient() {
           <div className="glass-card p-5 space-y-4">
             <div>
               <label className="text-xs font-bold uppercase text-slate-500 mb-2 block">Name</label>
-              <input value={name} onChange={(e) => setName(e.target.value)} className="w-full rounded-xl border border-slate-200 dark:border-white/10 bg-white dark:bg-white/5 p-3 text-sm min-h-[44px] outline-none focus:border-[#6D5DF6]/50" />
+              <input value={name} onChange={(e) => setName(e.target.value)} className="w-full rounded-xl border border-slate-200 dark:border-white/10 bg-white dark:bg-white/5 p-3 text-sm min-h-[44px] outline-none focus:border-brand/50" />
             </div>
             <div>
               <label className="text-xs font-bold uppercase text-slate-500 mb-2 block">GitHub Username</label>
-              <input value={username} onChange={(e) => setUsername(e.target.value)} className="w-full rounded-xl border border-slate-200 dark:border-white/10 bg-white dark:bg-white/5 p-3 text-sm min-h-[44px] outline-none focus:border-[#6D5DF6]/50" />
+              <input value={username} onChange={(e) => setUsername(e.target.value)} className="w-full rounded-xl border border-slate-200 dark:border-white/10 bg-white dark:bg-white/5 p-3 text-sm min-h-[44px] outline-none focus:border-brand/50" />
             </div>
             {mode === "project" && (
               <div>
                 <label className="text-xs font-bold uppercase text-slate-500 mb-2 block">Project Name</label>
-                <input value={project} onChange={(e) => setProject(e.target.value)} className="w-full rounded-xl border border-slate-200 dark:border-white/10 bg-white dark:bg-white/5 p-3 text-sm min-h-[44px] outline-none focus:border-[#6D5DF6]/50" />
+                <input value={project} onChange={(e) => setProject(e.target.value)} className="w-full rounded-xl border border-slate-200 dark:border-white/10 bg-white dark:bg-white/5 p-3 text-sm min-h-[44px] outline-none focus:border-brand/50" />
               </div>
             )}
             <div>
               <label className="text-xs font-bold uppercase text-slate-500 mb-2 block">Bio / Description</label>
-              <textarea value={bio} onChange={(e) => setBio(e.target.value)} className="w-full rounded-xl border border-slate-200 dark:border-white/10 bg-white dark:bg-white/5 p-3 text-sm min-h-[80px] outline-none focus:border-[#6D5DF6]/50" />
+              <textarea value={bio} onChange={(e) => setBio(e.target.value)} className="w-full rounded-xl border border-slate-200 dark:border-white/10 bg-white dark:bg-white/5 p-3 text-sm min-h-[80px] outline-none focus:border-brand/50" />
             </div>
             <div>
               <label className="text-xs font-bold uppercase text-slate-500 mb-2 block">Technology Icons</label>
               <div className="flex flex-wrap gap-2">
                 {TECH_ICONS.map((t) => (
-                  <button key={t} type="button" onClick={() => toggleTech(t)} className={`px-3 py-2 rounded-xl text-sm min-h-[44px] ${selectedTech.includes(t) ? "bg-[#6D5DF6]/10 text-[#6D5DF6] border border-[#6D5DF6]/30" : "bg-slate-100 dark:bg-white/5"}`}>{t}</button>
+                  <button key={t} type="button" onClick={() => toggleTech(t)} className={`px-3 py-2 rounded-xl text-sm min-h-[44px] ${selectedTech.includes(t) ? "bg-brand/10 text-brand border border-brand/30" : "bg-slate-100 dark:bg-white/5"}`}>{t}</button>
                 ))}
               </div>
             </div>

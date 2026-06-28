@@ -179,7 +179,7 @@ export function DevToolPageClient({ tool }: { tool: DevToolDefinition }) {
           </div>
           <div className="flex gap-2 shrink-0">
             <ToolsButton size="sm" variant="secondary" onClick={() => toggleFavorite(tool.slug)} className="min-h-[44px]">
-              <Bookmark size={16} className={fav ? "fill-[#6D5DF6] text-[#6D5DF6]" : ""} aria-hidden />
+              <Bookmark size={16} className={fav ? "fill-brand text-brand" : ""} aria-hidden />
               {fav ? "Saved" : "Favorite"}
             </ToolsButton>
             <ToolsButton size="sm" variant="secondary" onClick={onShare} className="min-h-[44px]">

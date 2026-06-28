@@ -65,12 +65,12 @@ export function CareerLanding() {
 
   return (
     <div className="min-h-full">
-      <section className="relative overflow-hidden border-b border-[#E5E7EB] dark:border-white/10">
-        <div className="blur-orb w-[500px] h-[500px] bg-[#6D5DF6]/10 -top-40 left-0" aria-hidden />
-        <div className="blur-orb w-[400px] h-[400px] bg-[#06B6D4]/10 -top-20 right-0" aria-hidden />
+      <section className="relative overflow-hidden border-b border-border dark:border-white/10">
+        <div className="blur-orb w-[500px] h-[500px] bg-brand/10 -top-40 left-0" aria-hidden />
+        <div className="blur-orb w-[400px] h-[400px] bg-brand-accent/10 -top-20 right-0" aria-hidden />
         <div className="max-w-[1280px] mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16 lg:py-20">
           <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }}>
-            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#6D5DF6]/10 text-[#6D5DF6] text-sm font-semibold mb-4 border border-[#6D5DF6]/20">
+            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-brand/10 text-brand text-sm font-semibold mb-4 border border-brand/20">
               <Sparkles size={14} aria-hidden />
               All-in-One Career Platform
             </div>
@@ -87,7 +87,7 @@ export function CareerLanding() {
                 onChange={(e) => setSearch(e.target.value)}
                 placeholder="Search career tools..."
                 aria-label="Search career tools"
-                className="w-full pl-12 pr-4 py-4 rounded-2xl bg-white dark:bg-white/5 border border-[#E5E7EB] dark:border-white/10 text-base outline-none focus:border-[#6D5DF6]/50 focus:ring-2 focus:ring-[#6D5DF6]/20 min-h-[44px] shadow-sm"
+                className="w-full pl-12 pr-4 py-4 rounded-2xl bg-white dark:bg-white/5 border border-border dark:border-white/10 text-base outline-none focus:border-brand/50 focus:ring-2 focus:ring-brand/20 min-h-[44px] shadow-sm"
               />
             </div>
           </motion.div>
@@ -101,8 +101,8 @@ export function CareerLanding() {
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4">
             <CareerStatCard label="Resume Score" value={resumeScore || "—"} suffix={resumeScore ? "/100" : undefined} icon={FileText} index={0} />
             <CareerStatCard label="ATS Score" value={atsScore || "—"} suffix={atsScore ? "/100" : undefined} icon={Target} gradient="from-[#F59E0B] to-[#EF4444]" index={1} />
-            <CareerStatCard label="Applications" value={stats.totalApplications} icon={Send} gradient="from-[#10B981] to-[#06B6D4]" index={2} />
-            <CareerStatCard label="Interviews" value={stats.interviews} icon={Calendar} gradient="from-[#8B5CF6] to-[#6D5DF6]" index={3} />
+            <CareerStatCard label="Applications" value={stats.totalApplications} icon={Send} gradient="from-[#10B981] to-brand-accent" index={2} />
+            <CareerStatCard label="Interviews" value={stats.interviews} icon={Calendar} gradient="from-[#8B5CF6] to-brand" index={3} />
           </div>
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4 mt-3 sm:mt-4">
             <CareerStatCard label="Offers" value={stats.offers} icon={TrendingUp} index={4} />
@@ -120,9 +120,9 @@ export function CareerLanding() {
               <Link
                 key={action.href}
                 href={action.href}
-                className="glass-card p-4 flex flex-col items-center gap-2 text-center hover:border-[#6D5DF6]/30 transition-colors min-h-[88px] justify-center"
+                className="glass-card p-4 flex flex-col items-center gap-2 text-center hover:border-brand/30 transition-colors min-h-[88px] justify-center"
               >
-                <action.icon size={22} className="text-[#6D5DF6]" aria-hidden />
+                <action.icon size={22} className="text-brand" aria-hidden />
                 <span className="text-sm font-semibold text-slate-700 dark:text-slate-200">{action.label}</span>
               </Link>
             ))}
@@ -145,13 +145,13 @@ export function CareerLanding() {
                       initial={{ width: 0 }}
                       animate={{ width: `${s.progress}%` }}
                       transition={{ duration: 0.8, delay: 0.2 }}
-                      className="h-full rounded-full bg-gradient-to-r from-[#6D5DF6] to-[#06B6D4]"
+                      className="h-full rounded-full bg-gradient-to-r from-brand to-brand-accent"
                     />
                   </div>
                 </div>
               ))}
             </div>
-            <Link href="/career/analytics" className="inline-flex items-center gap-1 text-sm text-[#6D5DF6] font-medium mt-4 hover:underline">
+            <Link href="/career/analytics" className="inline-flex items-center gap-1 text-sm text-brand font-medium mt-4 hover:underline">
               View analytics <ArrowRight size={14} />
             </Link>
           </section>
@@ -178,7 +178,7 @@ export function CareerLanding() {
               <div className="space-y-3">
                 {activities.slice(0, 5).map((a) => (
                   <div key={a.id} className="text-sm">
-                    <span className="font-medium text-[#6D5DF6]">{a.action}</span>
+                    <span className="font-medium text-brand">{a.action}</span>
                     <span className="text-slate-500 dark:text-slate-400"> — {a.detail}</span>
                   </div>
                 ))}
@@ -216,7 +216,7 @@ export function CareerLanding() {
         {filter === "all" && !search && favoriteTools.length > 0 && (
           <section>
             <div className="flex items-center gap-2 mb-6">
-              <Bookmark size={20} className="text-[#6D5DF6]" aria-hidden />
+              <Bookmark size={20} className="text-brand" aria-hidden />
               <h2 className="text-xl font-bold text-slate-900 dark:text-white">Favorites</h2>
             </div>
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
@@ -227,7 +227,7 @@ export function CareerLanding() {
 
         <section>
           <div className="flex items-center gap-2 mb-6">
-            <TrendingUp size={20} className="text-[#6D5DF6]" aria-hidden />
+            <TrendingUp size={20} className="text-brand" aria-hidden />
             <h2 className="text-xl font-bold text-slate-900 dark:text-white">
               {search || filter !== "all" ? `Results (${filtered.length})` : "All Career Tools"}
             </h2>

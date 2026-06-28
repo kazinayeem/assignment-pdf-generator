@@ -4,7 +4,7 @@ import { useCallback, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { BadgeCheck, ChevronLeft, ChevronRight, Quote, Star } from "lucide-react";
 import { useTranslation } from "@/lib/i18n/provider";
-import { spacing, animation, card } from "@/lib/design-system";
+import { spacing, animation, card, sectionBg } from "@/lib/design-system";
 import { SectionHeader } from "./section-header";
 import { cn } from "@/lib/utils";
 
@@ -66,7 +66,7 @@ export function TestimonialsSection() {
   if (!item) return null;
 
   return (
-    <section className={cn(spacing.section, "relative bg-background")}>
+    <section className={cn(spacing.section, sectionBg.glass, "relative")}>
       <div className="blur-orb w-[300px] h-[300px] bg-brand/10 top-10 left-10" aria-hidden />
       <div className={cn(spacing.container, "relative")}>
         <SectionHeader

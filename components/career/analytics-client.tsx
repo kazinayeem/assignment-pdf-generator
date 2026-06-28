@@ -25,11 +25,11 @@ export function AnalyticsClient() {
     : 0;
 
   const metrics = [
-    { label: "Resume Score", value: resumeScore || "—", suffix: resumeScore ? "/100" : "", icon: Target, color: "from-[#6D5DF6] to-[#8B5CF6]" },
+    { label: "Resume Score", value: resumeScore || "—", suffix: resumeScore ? "/100" : "", icon: Target, color: "from-brand to-brand-secondary" },
     { label: "ATS Score", value: atsScore || "—", suffix: atsScore ? "/100" : "", icon: BarChart3, color: "from-[#F59E0B] to-[#EF4444]" },
-    { label: "Interview Readiness", value: interviewReadiness, suffix: "%", icon: BookOpen, color: "from-[#10B981] to-[#06B6D4]" },
+    { label: "Interview Readiness", value: interviewReadiness, suffix: "%", icon: BookOpen, color: "from-[#10B981] to-brand-accent" },
     { label: "Applications Sent", value: stats.totalApplications, suffix: "", icon: Send, color: "from-[#06B6D4] to-[#3B82F6]" },
-    { label: "Interview Success Rate", value: successRate, suffix: "%", icon: TrendingUp, color: "from-[#8B5CF6] to-[#6D5DF6]" },
+    { label: "Interview Success Rate", value: successRate, suffix: "%", icon: TrendingUp, color: "from-[#8B5CF6] to-brand" },
     { label: "Offer Rate", value: offerRate, suffix: "%", icon: TrendingUp, color: "from-[#10B981] to-[#34D399]" },
   ];
 
@@ -78,7 +78,7 @@ export function AnalyticsClient() {
                     <span className="text-slate-400 tabular-nums">{s.progress}%</span>
                   </div>
                   <div className="h-2.5 rounded-full bg-slate-100 dark:bg-white/10 overflow-hidden">
-                    <motion.div initial={{ width: 0 }} animate={{ width: `${s.progress}%` }} transition={{ duration: 0.8 }} className="h-full rounded-full bg-gradient-to-r from-[#6D5DF6] to-[#06B6D4]" />
+                    <motion.div initial={{ width: 0 }} animate={{ width: `${s.progress}%` }} transition={{ duration: 0.8 }} className="h-full rounded-full bg-gradient-to-r from-brand to-brand-accent" />
                   </div>
                 </div>
               ))}
@@ -86,7 +86,7 @@ export function AnalyticsClient() {
           </div>
 
           <div className="glass-card p-6">
-            <h3 className="font-bold text-lg mb-4 flex items-center gap-2"><Bell size={18} className="text-[#6D5DF6]" /> Notifications</h3>
+            <h3 className="font-bold text-lg mb-4 flex items-center gap-2"><Bell size={18} className="text-brand" /> Notifications</h3>
             <ul className="space-y-3">
               {notifications.map((n) => (
                 <li key={n} className="text-sm p-3 rounded-xl bg-slate-50 dark:bg-white/5 text-slate-600 dark:text-slate-300">{n}</li>
@@ -102,7 +102,7 @@ export function AnalyticsClient() {
               {mockResults.slice(0, 10).map((r) => (
                 <div key={r.id} className="flex justify-between items-center p-3 rounded-xl bg-slate-50 dark:bg-white/5 text-sm">
                   <span className="capitalize">{r.category} · {r.questionsAnswered} questions</span>
-                  <span className="font-bold text-[#6D5DF6]">{r.score}/100</span>
+                  <span className="font-bold text-brand">{r.score}/100</span>
                 </div>
               ))}
             </div>

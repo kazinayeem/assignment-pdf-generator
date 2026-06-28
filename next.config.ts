@@ -8,6 +8,11 @@ const nextConfig: NextConfig = {
         hostname: "bornosoftnr.com",
         pathname: "/**",
       },
+      {
+        protocol: "https",
+        hostname: "www.google.com",
+        pathname: "/s2/favicons/**",
+      },
     ],
   },
   async redirects() {

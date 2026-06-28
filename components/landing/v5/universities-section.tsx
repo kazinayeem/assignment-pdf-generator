@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { motion } from "framer-motion";
 import { useTranslation } from "@/lib/i18n/provider";
-import { spacing, animation, card } from "@/lib/design-system";
+import { spacing, animation, card, sectionBg } from "@/lib/design-system";
 import { SectionHeader } from "../v4/section-header";
 import { cn } from "@/lib/utils";
 
@@ -27,7 +27,7 @@ export function UniversitiesSection() {
   const universities = tArray<string>("universityList");
 
   return (
-    <section className={cn(spacing.section, "relative bg-background border-y border-border")}>
+    <section className={cn(spacing.section, sectionBg.surface, "relative border-y border-border")}>
       <div className={cn(spacing.container, "relative")}>
         <SectionHeader
           badge={t("universities.badge")}
@@ -61,7 +61,7 @@ export function UniversitiesSection() {
           })}
         </div>
         <div className="flex justify-center mt-8">
-          <Link href="/universities" className="text-sm font-semibold text-brand hover:underline">
+          <Link href="/universities" className="text-sm font-semibold text-brand hover:underline underline-offset-4">
             Explore all universities →
           </Link>
         </div>

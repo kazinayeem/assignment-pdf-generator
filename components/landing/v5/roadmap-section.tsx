@@ -3,7 +3,7 @@
 import { motion } from "framer-motion";
 import { CheckCircle2, Circle, Clock, Rocket, Sparkles } from "lucide-react";
 import { useTranslation } from "@/lib/i18n/provider";
-import { spacing, animation, card, badge } from "@/lib/design-system";
+import { spacing, animation, card, badge, sectionBg } from "@/lib/design-system";
 import { SectionHeader } from "../v4/section-header";
 import { cn } from "@/lib/utils";
 
@@ -30,7 +30,7 @@ export function RoadmapSection() {
   const items = tArray<RoadmapItem>("roadmap.items");
 
   return (
-    <section id="roadmap" className={cn(spacing.section, "relative bg-surface-page")}>
+    <section id="roadmap" className={cn(spacing.section, sectionBg.glass, "relative")}>
       <div className={cn(spacing.container, "relative")}>
         <SectionHeader
           badge={t("roadmap.badge")}

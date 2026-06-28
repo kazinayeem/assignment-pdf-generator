@@ -92,10 +92,10 @@ export function ExamHubClient({ subjectSlug, topicSlug }: ExamHubClientProps) {
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: i * 0.05 }}
             onClick={() => setMode(m.id)}
-            className="glass-card p-5 text-left hover:border-[#6D5DF6]/30 transition-colors group"
+            className="glass-card p-5 text-left hover:border-brand/30 transition-colors group"
           >
-            <m.icon size={24} className="text-[#6D5DF6] mb-3" />
-            <h3 className="font-bold group-hover:text-[#6D5DF6] transition-colors">{m.label}</h3>
+            <m.icon size={24} className="text-brand mb-3" />
+            <h3 className="font-bold group-hover:text-brand transition-colors">{m.label}</h3>
             <p className="text-sm text-slate-500 mt-1">{m.desc}</p>
           </motion.button>
         ))}
@@ -106,12 +106,12 @@ export function ExamHubClient({ subjectSlug, topicSlug }: ExamHubClientProps) {
           <h2 className="text-lg font-bold mb-4">Topic Quizzes</h2>
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-3">
             {subject.categories.flatMap((c) => c.topics).map((t) => (
-              <Link key={t.slug} href={`/tools/exam/${subjectSlug}/${t.slug}`} className="glass-card p-4 flex items-center justify-between hover:border-[#6D5DF6]/30 transition-colors group">
+              <Link key={t.slug} href={`/tools/exam/${subjectSlug}/${t.slug}`} className="glass-card p-4 flex items-center justify-between hover:border-brand/30 transition-colors group">
                 <div>
-                  <p className="font-semibold text-sm group-hover:text-[#6D5DF6]">{t.title}</p>
+                  <p className="font-semibold text-sm group-hover:text-brand">{t.title}</p>
                   <p className="text-xs text-slate-400">{getQuestionCount(subjectSlug, t.slug)} questions</p>
                 </div>
-                <ArrowRight size={16} className="text-slate-400 group-hover:text-[#6D5DF6]" />
+                <ArrowRight size={16} className="text-slate-400 group-hover:text-brand" />
               </Link>
             ))}
           </div>
@@ -119,10 +119,10 @@ export function ExamHubClient({ subjectSlug, topicSlug }: ExamHubClientProps) {
       )}
 
       <div className="mt-8 flex gap-3">
-        <Link href="/tools/learning/progress" className="inline-flex items-center gap-2 text-sm text-[#6D5DF6] font-medium hover:underline">
+        <Link href="/tools/learning/progress" className="inline-flex items-center gap-2 text-sm text-brand font-medium hover:underline">
           <Zap size={14} /> View Progress
         </Link>
-        <Link href="/tools/learning/leaderboard" className="inline-flex items-center gap-2 text-sm text-[#6D5DF6] font-medium hover:underline">
+        <Link href="/tools/learning/leaderboard" className="inline-flex items-center gap-2 text-sm text-brand font-medium hover:underline">
           <Trophy size={14} /> Leaderboard
         </Link>
       </div>

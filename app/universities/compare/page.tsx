@@ -1,3 +1,4 @@
+import { Suspense } from "react";
 import type { Metadata } from "next";
 import { UniversityCompareClient } from "@/components/universities/university-compare-client";
 
@@ -7,5 +8,9 @@ export const metadata: Metadata = {
 };
 
 export default function ComparePage() {
-  return <UniversityCompareClient />;
+  return (
+    <Suspense fallback={<div className="min-h-[40vh] animate-pulse bg-muted/30" />}>
+      <UniversityCompareClient />
+    </Suspense>
+  );
 }

@@ -8,16 +8,16 @@ export function CertificateView({ cert }: { cert: Certificate }) {
     <motion.div
       initial={{ opacity: 0, scale: 0.95 }}
       animate={{ opacity: 1, scale: 1 }}
-      className="relative max-w-2xl mx-auto p-8 sm:p-12 rounded-3xl border-4 border-[#6D5DF6]/30 bg-gradient-to-br from-white to-[#6D5DF6]/5 dark:from-[#0F172A] dark:to-[#6D5DF6]/10 shadow-2xl"
+      className="relative max-w-2xl mx-auto p-8 sm:p-12 rounded-3xl border-4 border-brand/30 bg-gradient-to-br from-white to-brand/5 dark:from-background dark:to-brand/10 shadow-2xl"
     >
       <div className="absolute top-4 right-4 text-xs text-slate-400 font-mono">{cert.id}</div>
       <div className="text-center">
-        <p className="text-sm font-semibold text-[#6D5DF6] uppercase tracking-widest mb-2">CampusFlow Certificate</p>
+        <p className="text-sm font-semibold text-brand uppercase tracking-widest mb-2">CampusFlow Certificate</p>
         <h2 className="text-2xl sm:text-3xl font-extrabold text-slate-900 dark:text-white mb-6">Certificate of Completion</h2>
         <p className="text-slate-500 mb-2">This certifies that</p>
         <p className="text-2xl font-bold text-slate-800 dark:text-slate-100 mb-4">{cert.studentName}</p>
         <p className="text-slate-500 mb-1">has successfully completed</p>
-        <p className="text-xl font-bold text-[#6D5DF6] mb-4">{cert.subject}{cert.topic ? ` — ${cert.topic}` : ""}</p>
+        <p className="text-xl font-bold text-brand mb-4">{cert.subject}{cert.topic ? ` — ${cert.topic}` : ""}</p>
         <p className="text-slate-600 dark:text-slate-300 mb-6">with a score of <strong>{cert.score}%</strong></p>
         <div className="flex justify-center gap-8 text-sm text-slate-400">
           <span>Issued: {new Date(cert.issuedAt).toLocaleDateString()}</span>

@@ -22,7 +22,7 @@ function SidebarNodeView({ node, depth = 0 }: { node: typeof knowledgeIndex.side
           </button>
         ) : <span className="w-8" />}
         {node.route ? (
-          <Link href={node.route} className={cn("flex-1 py-2 px-2 rounded-lg text-sm truncate min-h-[40px] flex items-center", isActive ? "bg-[#6D5DF6]/10 text-[#6D5DF6] font-semibold" : "text-slate-600 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-white/5")}>
+          <Link href={node.route} className={cn("flex-1 py-2 px-2 rounded-lg text-sm truncate min-h-[40px] flex items-center", isActive ? "bg-brand/10 text-brand font-semibold" : "text-slate-600 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-white/5")}>
             {node.title}
           </Link>
         ) : (
@@ -63,7 +63,7 @@ export function KnowledgeSidebar() {
             value={filter}
             onChange={(e) => setFilter(e.target.value)}
             placeholder="Filter sidebar..."
-            className="w-full pl-9 pr-3 py-2 rounded-xl text-sm border border-slate-200 dark:border-white/10 bg-white dark:bg-white/5 outline-none focus:border-[#6D5DF6]/50 min-h-[40px]"
+            className="w-full pl-9 pr-3 py-2 rounded-xl text-sm border border-slate-200 dark:border-white/10 bg-white dark:bg-white/5 outline-none focus:border-brand/50 min-h-[40px]"
           />
         </div>
       </div>
@@ -79,13 +79,13 @@ export function KnowledgeSidebar() {
         <Menu size={20} />
       </button>
 
-      <aside className="hidden lg:block w-72 shrink-0 border-r border-slate-200 dark:border-white/10 bg-white/50 dark:bg-[#0F172A]/50 sticky top-[4.5rem] h-[calc(100vh-4.5rem)] overflow-hidden rounded-r-2xl">
+      <aside className="hidden lg:block w-72 shrink-0 border-r border-slate-200 dark:border-white/10 bg-white/50 dark:bg-background/50 sticky top-[4.5rem] h-[calc(100vh-4.5rem)] overflow-hidden rounded-r-2xl">
         {sidebarContent}
       </aside>
 
       {mobileOpen && (
         <div className="lg:hidden fixed inset-0 z-50 bg-black/50" onClick={() => setMobileOpen(false)}>
-          <aside className="w-[min(320px,85vw)] h-full bg-white dark:bg-[#0F172A] shadow-xl" onClick={(e) => e.stopPropagation()}>
+          <aside className="w-[min(320px,85vw)] h-full bg-white dark:bg-background shadow-xl" onClick={(e) => e.stopPropagation()}>
             <div className="flex items-center justify-between p-3 border-b">
               <span className="font-bold">Navigation</span>
               <button type="button" onClick={() => setMobileOpen(false)} className="p-2 min-h-[44px] min-w-[44px] flex items-center justify-center"><X size={20} /></button>

@@ -15,7 +15,7 @@ export function PricingSection() {
   return (
     <section className={cn(spacing.section, sectionBg.elevated, "relative")}>
       <div className="blur-orb w-[500px] h-[500px] bg-brand/8 top-0 left-1/2 -translate-x-1/2" aria-hidden />
-      <div className={cn(spacing.container, "relative max-w-2xl")}>
+      <div className={cn(spacing.container, "relative max-w-3xl")}>
         <SectionHeader
           badge={t("pricing.badge")}
           title={t("pricing.title")}

@@ -136,20 +136,20 @@ export function QuizRunner({ config, onComplete, onCancel }: QuizRunnerProps) {
       <div className="flex items-center justify-between text-sm text-slate-500">
         <span>Question {qIndex + 1} of {questions.length}</span>
         {config.timeLimitMinutes && (
-          <span className={cn("flex items-center gap-1 font-bold tabular-nums", timeLeft <= 60 ? "text-red-500" : "text-[#6D5DF6]")}>
+          <span className={cn("flex items-center gap-1 font-bold tabular-nums", timeLeft <= 60 ? "text-red-500" : "text-brand")}>
             <Clock size={14} /> {Math.floor(timeLeft / 60)}:{String(timeLeft % 60).padStart(2, "0")}
           </span>
         )}
       </div>
 
       <div className="h-2 rounded-full bg-slate-100 dark:bg-white/10 overflow-hidden">
-        <motion.div animate={{ width: `${((qIndex + 1) / questions.length) * 100}%` }} className="h-full bg-gradient-to-r from-[#6D5DF6] to-[#06B6D4]" />
+        <motion.div animate={{ width: `${((qIndex + 1) / questions.length) * 100}%` }} className="h-full bg-gradient-to-r from-brand to-brand-accent" />
       </div>
 
       <AnimatePresence mode="wait">
         <motion.div key={current.id} initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }} exit={{ opacity: 0, x: -20 }} className="glass-card p-6">
           <div className="flex gap-2 mb-3">
-            <span className="text-xs px-2 py-0.5 rounded-full bg-[#6D5DF6]/10 text-[#6D5DF6] capitalize">{current.difficulty}</span>
+            <span className="text-xs px-2 py-0.5 rounded-full bg-brand/10 text-brand capitalize">{current.difficulty}</span>
             <span className="text-xs px-2 py-0.5 rounded-full bg-slate-100 dark:bg-white/5 text-slate-500 capitalize">{current.type.replace(/-/g, " ")}</span>
           </div>
           <p className="text-base sm:text-lg font-semibold text-slate-800 dark:text-slate-100 mb-5">{current.question}</p>
@@ -166,7 +166,7 @@ export function QuizRunner({ config, onComplete, onCancel }: QuizRunnerProps) {
                     "w-full text-left px-4 py-3 rounded-xl text-sm min-h-[44px] transition-colors",
                     showFeedback && i === (typeof current.answer === "number" ? current.answer : current.answer ? 0 : 1) ? "bg-emerald-500/10 border border-emerald-500/30 text-emerald-700" :
                     showFeedback && selected === (current.type === "true-false" ? i === 0 : i) && !isCorrect ? "bg-red-500/10 border border-red-500/30 text-red-700" :
-                    selected === (current.type === "true-false" ? i === 0 : i) ? "bg-[#6D5DF6]/10 border border-[#6D5DF6]/30" :
+                    selected === (current.type === "true-false" ? i === 0 : i) ? "bg-brand/10 border border-brand/30" :
                     "bg-slate-50 dark:bg-white/5 hover:bg-slate-100 dark:hover:bg-white/10 border border-transparent"
                   )}
                 >
@@ -180,7 +180,7 @@ export function QuizRunner({ config, onComplete, onCancel }: QuizRunnerProps) {
               onChange={(e) => setSelected(e.target.value)}
               disabled={showFeedback}
               placeholder="Type your answer..."
-              className="w-full rounded-xl border border-slate-200 dark:border-white/10 bg-white dark:bg-white/5 p-3 text-sm min-h-[44px] outline-none focus:border-[#6D5DF6]/50"
+              className="w-full rounded-xl border border-slate-200 dark:border-white/10 bg-white dark:bg-white/5 p-3 text-sm min-h-[44px] outline-none focus:border-brand/50"
             />
           ) : null}
 

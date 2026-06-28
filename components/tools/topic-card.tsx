@@ -23,7 +23,7 @@ export type TopicCardData = {
   comingSoon?: boolean;
 };
 
-export function TopicCard({ topic, gradient = "from-[#6D5DF6] to-[#8B5CF6]", index = 0 }: {
+export function TopicCard({ topic, gradient = "from-brand to-brand-secondary", index = 0 }: {
   topic: TopicCardData;
   gradient?: string;
   index?: number;
@@ -71,13 +71,13 @@ export function TopicCard({ topic, gradient = "from-[#6D5DF6] to-[#8B5CF6]", ind
             >
               <Bookmark
                 size={16}
-                className={cn(bookmarked ? "fill-[#6D5DF6] text-[#6D5DF6]" : "text-slate-400")}
+                className={cn(bookmarked ? "fill-brand text-brand" : "text-slate-400")}
               />
             </button>
           </div>
         </div>
 
-        <h3 className="text-base font-bold text-slate-900 dark:text-white mb-1 group-hover:text-[#6D5DF6] transition-colors">
+        <h3 className="text-base font-bold text-slate-900 dark:text-white mb-1 group-hover:text-brand transition-colors">
           {topic.name}
         </h3>
 
@@ -104,7 +104,7 @@ export function TopicCard({ topic, gradient = "from-[#6D5DF6] to-[#8B5CF6]", ind
 
         <Link
           href={topic.href}
-          className="inline-flex items-center gap-2 text-sm font-semibold text-[#6D5DF6] hover:gap-3 transition-all min-h-[44px]"
+          className="inline-flex items-center gap-2 text-sm font-semibold text-brand hover:gap-3 transition-all min-h-[44px]"
         >
           {topic.comingSoon ? "Preview" : "Continue"} <ArrowRight size={16} aria-hidden />
         </Link>

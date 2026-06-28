@@ -4,7 +4,7 @@ import Link from "next/link";
 import { motion } from "framer-motion";
 import { ArrowRight, LogIn, Shield, Zap, Users, Star } from "lucide-react";
 import { useTranslation } from "@/lib/i18n/provider";
-import { spacing, animation, button } from "@/lib/design-system";
+import { spacing, animation, button, sectionBg } from "@/lib/design-system";
 import { cn } from "@/lib/utils";
 
 const TRUST_BADGES = [
@@ -18,7 +18,7 @@ export function CtaSection() {
   const { t } = useTranslation("home");
 
   return (
-    <section className={cn(spacing.section, "relative pb-20")}>
+    <section className={cn(spacing.section, sectionBg.surface, "relative pb-14")}>
       <div className={spacing.container}>
         <motion.div
           {...animation.fadeUp}

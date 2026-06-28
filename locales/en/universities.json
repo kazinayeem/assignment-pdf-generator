@@ -4,6 +4,8 @@
     "explore": "Explore",
     "compare": "Compare",
     "calculator": "Cost Calculator",
+    "predictor": "Admission Predictor",
+    "scholarships": "Scholarships",
     "recommend": "AI Recommend",
     "back": "Back to Hub"
   },
@@ -11,12 +13,14 @@
     "badge": "University Hub",
     "title": "Explore every UGC-approved university in Bangladesh",
     "subtitle": "Compare tuition, admission requirements, programs, scholarships, and campus life — all in one place for SSC, HSC, Diploma, and university students.",
-    "searchPlaceholder": "Search by name, city, or department...",
+    "searchPlaceholder": "Search by name, city, department, program, or subject...",
+    "results": "results",
     "stats": {
       "total": "Universities",
       "public": "Public",
       "private": "Private",
-      "international": "International"
+      "international": "International",
+      "qsRanked": "QS Ranked"
     },
     "filters": {
       "all": "All",
@@ -28,7 +32,7 @@
       "scholarship": "Scholarship",
       "hostel": "Hostel",
       "evening": "Evening Program",
-      "online": "Online Program",
+      "online": "Online Admission",
       "clear": "Clear filters"
     },
     "empty": "No universities match your filters.",
@@ -36,13 +40,73 @@
     "compare": "Compare",
     "featured": "Featured Universities"
   },
+  "filters": {
+    "all": "All",
+    "engineering": "Engineering",
+    "medical": "Medical",
+    "science": "Science",
+    "business": "Business",
+    "admissionOpen": "Admission Open",
+    "qsRanked": "QS Ranked",
+    "top10": "Top 10",
+    "budgetFriendly": "Budget Friendly",
+    "highestRated": "Highest Rated",
+    "sortBy": "Sort by",
+    "sortName": "Name (A–Z)",
+    "sortNewest": "Newest",
+    "sortOldest": "Oldest",
+    "sortTuitionAsc": "Lowest Tuition",
+    "sortTuitionDesc": "Highest Tuition",
+    "sortQs": "QS Ranking"
+  },
+  "search": {
+    "types": {
+      "university": "University",
+      "department": "Department",
+      "program": "Program",
+      "location": "Location"
+    }
+  },
   "card": {
     "established": "Est.",
     "students": "Students",
     "departments": "Departments",
+    "programs": "Programs",
     "hostel": "Hostel",
     "scholarship": "Scholarship",
     "ugcApproved": "UGC Approved"
+  },
+  "tuition": {
+    "unavailable": "Contact university",
+    "variesByDepartment": "Varies by department",
+    "startingFrom": "From",
+    "estimated": "estimated",
+    "unverified": "Unverified",
+    "range": "Tuition Range",
+    "perCredit": "per credit",
+    "admissionFee": "Admission Fee",
+    "registrationFee": "Registration Fee",
+    "perCreditFee": "Per Credit Fee",
+    "semesterFee": "Semester Fee",
+    "labFee": "Lab Fee",
+    "verifyOnWebsite": "Verify current fees on the official university website."
+  },
+  "rankings": {
+    "qsWorld": "QS World Ranking",
+    "qsAsia": "QS Asia Ranking",
+    "the": "Times Higher Education",
+    "webometrics": "Webometrics Ranking",
+    "national": "National Ranking",
+    "notRanked": "Not Ranked",
+    "source": "Source",
+    "unverified": "Ranking data not independently verified for this institution."
+  },
+  "admission": {
+    "open": "Admission Open",
+    "closed": "Admission Closed"
+  },
+  "data": {
+    "unavailable": "N/A"
   },
   "detail": {
     "quickFacts": "Quick Facts",
@@ -62,6 +126,8 @@
     "share": "Share",
     "print": "Print",
     "map": "Campus Map",
+    "gallery": "Photo Gallery",
+    "galleryUnavailable": "Campus photos are not available. Visit the official website for images.",
     "contact": "Contact",
     "rankings": "Rankings",
     "type": "Type",
@@ -76,16 +142,20 @@
     "sscMin": "SSC GPA Min",
     "hscMin": "HSC GPA Min",
     "writeReview": "Write a Review",
-    "verified": "UGC Verified"
+    "verified": "UGC Verified",
+    "tour": "Virtual Tour"
   },
   "compare": {
     "title": "Compare Universities",
-    "subtitle": "Side-by-side comparison of tuition, admission, facilities, and career outcomes.",
+    "subtitle": "Side-by-side comparison of tuition, admission, facilities, and rankings.",
     "select": "Select universities to compare",
+    "selected": "selected for comparison",
+    "viewComparison": "View Comparison",
     "add": "Add University",
     "remove": "Remove",
     "max": "Compare up to 4 universities",
     "tuition": "Tuition",
+    "tuitionChart": "Tuition Comparison",
     "credits": "Credits",
     "departments": "Departments",
     "scholarships": "Scholarships",
@@ -96,6 +166,121 @@
     "research": "Research",
     "yes": "Yes",
     "no": "No"
+  },
+  "top": {
+    "title": "Top Universities",
+    "subtitle": "Curated rankings across public, private, engineering, medical, and more.",
+    "quickView": "Quick View",
+    "empty": "No universities in this list yet.",
+    "lists": {
+      "public": "Top Public",
+      "private": "Top Private",
+      "engineering": "Engineering",
+      "business": "Business",
+      "medical": "Medical",
+      "research": "Research",
+      "qs-ranked": "QS Ranked",
+      "affordable": "Affordable",
+      "popular": "Popular",
+      "recent": "Recently Added"
+    }
+  },
+  "dashboard": {
+    "recent": "Recently Viewed",
+    "saved": "Saved Universities",
+    "recommended": "Recommended",
+    "trending": "Trending",
+    "deadlines": "Upcoming Admission Deadlines",
+    "deadlinesHint": "Check deadlines and predict your admission chances.",
+    "empty": "Nothing here yet — explore universities to get started.",
+    "viewAll": "View all"
+  },
+  "predictor": {
+    "title": "Admission Chance Predictor",
+    "subtitle": "Estimate your admission probability based on academics, budget, and preferences.",
+    "group": "HSC Group",
+    "science": "Science",
+    "commerce": "Commerce",
+    "arts": "Arts",
+    "city": "Preferred City",
+    "university": "Preferred University",
+    "anyUniversity": "Any university",
+    "quota": "Quota",
+    "noQuota": "No quota",
+    "ffQuota": "Freedom Fighter quota",
+    "tribalQuota": "Tribal quota",
+    "disabledQuota": "Disability quota",
+    "submit": "Predict Admission Chance",
+    "alternatives": "Better Alternatives",
+    "chance": {
+      "very-high": "Very High",
+      "high": "High",
+      "medium": "Medium",
+      "low": "Low",
+      "very-low": "Very Low"
+    }
+  },
+  "scholarship": {
+    "badge": "Scholarship Checker",
+    "title": "Scholarship Eligibility Checker",
+    "subtitle": "Find merit, need-based, and waiver opportunities based on your profile.",
+    "income": "Family Income Range",
+    "incomeLow": "Below ৳25,000/month",
+    "incomeMedium": "৳25,000 – ৳75,000/month",
+    "incomeHigh": "Above ৳75,000/month",
+    "department": "Department",
+    "check": "Check Eligibility",
+    "waiver": "Waiver",
+    "deadline": "Application deadline"
+  },
+  "employability": {
+    "title": "Graduate Employability",
+    "score": "Employability Score",
+    "unverified": "Placement data not independently verified.",
+    "placement": "Placement",
+    "internship": "Internships",
+    "industry": "Industry Links",
+    "research": "Research",
+    "exchange": "Exchange Programs",
+    "careerSupport": "Career Support",
+    "placementRate": "Placement Rate",
+    "avgSalary": "Avg Graduate Salary",
+    "recruiters": "Top Recruiters",
+    "programs": "programs"
+  },
+  "gallery": {
+    "placeholderNote": "Official campus photos may be available on the university website.",
+    "noImage": "Image not available"
+  },
+  "tour": {
+    "title": "Campus Virtual Tour",
+    "campus": "Campus Tour",
+    "unavailable": "No official video tours available. Visit the university website or YouTube channel.",
+    "watchChannel": "Watch on YouTube"
+  },
+  "countdown": {
+    "title": "Admission Calendar",
+    "opens": "Application Opens",
+    "deadline": "Application Deadline",
+    "test": "Admission Test",
+    "result": "Result Date",
+    "orientation": "Orientation",
+    "semester": "Semester Start",
+    "timeLeft": "Time until next deadline",
+    "reminder": "Set Reminder"
+  },
+  "map": {
+    "busStops": "Nearby bus stops",
+    "metro": "Nearby metro",
+    "restaurants": "Nearby restaurants",
+    "hostels": "Nearby hostels",
+    "openMaps": "Open in Google Maps"
+  },
+  "pdf": {
+    "export": "Export PDF",
+    "exportComparison": "Export Comparison PDF",
+    "exportCost": "Export Cost Report",
+    "exportScholarship": "Export Scholarship Report"
   },
   "calculator": {
     "title": "Cost Calculator",
@@ -114,7 +299,37 @@
     "semesters": "Semesters",
     "includeLiving": "Include living costs",
     "calculate": "Calculate",
-    "result": "Estimated Total"
+    "result": "Estimated Total",
+    "unverified": "Verified tuition data is not available for this university. Select a university with published fees or check the official website.",
+    "creditsCompleted": "Credits Completed",
+    "scholarshipPercent": "Scholarship %",
+    "waiverPercent": "Waiver %",
+    "perCreditTotal": "Per Credit Total",
+    "semesterFees": "Semester Fees",
+    "scholarshipDiscount": "Scholarship Discount",
+    "waiverDiscount": "Waiver Discount",
+    "academicTotal": "Academic Total",
+    "hostelLine": "Hostel Cost",
+    "grandTotal": "Grand Total",
+    "monthlyInstallment": "Monthly Installment"
+  },
+  "career": {
+    "unavailable": "Placement statistics are not publicly verified for this institution."
+  },
+  "reviews": {
+    "empty": "No student reviews yet.",
+    "count": "reviews",
+    "verified": "Verified",
+    "filterDept": "Filter by department",
+    "difficulty": "Difficulty",
+    "campusLife": "Campus Life",
+    "faculty": "Faculty",
+    "helpful": "Helpful"
+  },
+  "pagination": {
+    "prev": "Previous",
+    "next": "Next",
+    "page": "Page"
   },
   "recommend": {
     "title": "AI University Recommendations",
@@ -131,7 +346,12 @@
     "suburban": "Suburban",
     "submit": "Get Recommendations",
     "matches": "Your Top Matches",
-    "matchScore": "Match"
+    "matchScore": "Match",
+    "typePreference": "Public / Private Preference",
+    "hostelNeeded": "Hostel needed",
+    "scholarshipNeeded": "Scholarship needed",
+    "estimatedCost": "Estimated cost",
+    "noMatches": "No matches found. Try adjusting your criteria."
   },
   "types": {
     "public": "Public",

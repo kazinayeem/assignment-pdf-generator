@@ -57,7 +57,7 @@ export function FlexboxPlayground() {
         style={{ display: "flex", flexDirection: direction as React.CSSProperties["flexDirection"], justifyContent: justify as React.CSSProperties["justifyContent"], alignItems: align as React.CSSProperties["alignItems"], flexWrap: wrap as React.CSSProperties["flexWrap"], gap }}
       >
         {[1, 2, 3, 4, 5].map((n) => (
-          <div key={n} className="w-16 h-16 rounded-xl bg-gradient-to-br from-[#6D5DF6] to-[#06B6D4] flex items-center justify-center text-white font-bold text-sm shrink-0">
+          <div key={n} className="w-16 h-16 rounded-xl bg-gradient-to-br from-brand to-brand-accent flex items-center justify-center text-white font-bold text-sm shrink-0">
             {n}
           </div>
         ))}

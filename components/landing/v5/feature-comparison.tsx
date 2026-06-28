@@ -4,7 +4,7 @@ import Link from "next/link";
 import { motion } from "framer-motion";
 import { Check, X, Minus } from "lucide-react";
 import { useTranslation } from "@/lib/i18n/provider";
-import { spacing, animation, card, button } from "@/lib/design-system";
+import { spacing, animation, card, button, sectionBg } from "@/lib/design-system";
 import { SectionHeader } from "../v4/section-header";
 import { cn } from "@/lib/utils";
 
@@ -27,7 +27,7 @@ export function FeatureComparisonSection() {
   const rows = tArray<CompRow>("comparison.rows");
 
   return (
-    <section className={cn(spacing.section, "relative bg-background")}>
+    <section className={cn(spacing.section, sectionBg.elevated, "relative")}>
       <div className={cn(spacing.container, "relative")}>
         <SectionHeader
           badge={t("comparison.badge")}

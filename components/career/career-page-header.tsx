@@ -12,16 +12,16 @@ type CareerPageHeaderProps = {
 
 export function CareerPageHeader({ title, description, icon: Icon, badge }: CareerPageHeaderProps) {
   return (
-    <section className="border-b border-[#E5E7EB] dark:border-white/10">
+    <section className="border-b border-border dark:border-white/10">
       <div className="max-w-[1280px] mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-10">
         <motion.div initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }}>
           {badge && (
-            <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#6D5DF6]/10 text-[#6D5DF6] text-xs font-semibold mb-3 border border-[#6D5DF6]/20">
+            <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-brand/10 text-brand text-xs font-semibold mb-3 border border-brand/20">
               {badge}
             </span>
           )}
           <div className="flex items-start gap-4">
-            <div className="w-12 h-12 rounded-2xl bg-gradient-to-br from-[#6D5DF6] to-[#06B6D4] flex items-center justify-center shadow-lg shrink-0">
+            <div className="w-12 h-12 rounded-2xl bg-gradient-to-br from-brand to-brand-accent flex items-center justify-center shadow-lg shrink-0">
               <Icon size={24} className="text-white" aria-hidden />
             </div>
             <div>

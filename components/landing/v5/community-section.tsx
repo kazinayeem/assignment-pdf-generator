@@ -11,7 +11,7 @@ import {
   Users,
 } from "lucide-react";
 import { useTranslation } from "@/lib/i18n/provider";
-import { spacing, animation, card } from "@/lib/design-system";
+import { spacing, animation, card, sectionBg } from "@/lib/design-system";
 import { SectionHeader } from "../v4/section-header";
 import { SectionCta } from "./section-cta";
 import { cn } from "@/lib/utils";
@@ -30,7 +30,7 @@ export function CommunitySection() {
   const { t } = useTranslation("v5");
 
   return (
-    <section className={cn(spacing.section, "relative bg-surface-page")}>
+    <section className={cn(spacing.section, sectionBg.elevated, "relative")}>
       <div className={cn(spacing.container, "relative")}>
         <SectionHeader
           badge={t("community.badge")}

@@ -65,7 +65,7 @@ export function CoverLetterClient() {
               </div>
               <div>
                 <label className="text-xs font-bold uppercase text-slate-500 mb-2 block">Template</label>
-                <select value={template} onChange={(e) => setTemplate(e.target.value)} className="w-full rounded-xl border border-slate-200 dark:border-white/10 bg-white dark:bg-white/5 p-3 text-sm outline-none focus:border-[#6D5DF6]/50 min-h-[44px]">
+                <select value={template} onChange={(e) => setTemplate(e.target.value)} className="w-full rounded-xl border border-slate-200 dark:border-white/10 bg-white dark:bg-white/5 p-3 text-sm outline-none focus:border-brand/50 min-h-[44px]">
                   {TEMPLATES.map((t) => <option key={t} value={t}>{t}</option>)}
                 </select>
               </div>
@@ -75,7 +75,7 @@ export function CoverLetterClient() {
                   <input
                     value={field === "name" ? name : field === "company" ? company : role}
                     onChange={(e) => { if (field === "name") setName(e.target.value); else if (field === "company") setCompany(e.target.value); else setRole(e.target.value); }}
-                    className="w-full rounded-xl border border-slate-200 dark:border-white/10 bg-white dark:bg-white/5 p-3 text-sm outline-none focus:border-[#6D5DF6]/50 min-h-[44px]"
+                    className="w-full rounded-xl border border-slate-200 dark:border-white/10 bg-white dark:bg-white/5 p-3 text-sm outline-none focus:border-brand/50 min-h-[44px]"
                     placeholder={field === "name" ? "Your full name" : field === "company" ? "Company or university" : "Role title"}
                   />
                 </div>

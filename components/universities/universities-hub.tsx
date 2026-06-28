@@ -1,63 +1,113 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { useCallback, useMemo, useState } from "react";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import { motion } from "framer-motion";
-import { Search, Sparkles, GraduationCap, Building, Globe } from "lucide-react";
+import { Sparkles, GraduationCap, Building, Globe, ChevronLeft, ChevronRight, Award } from "lucide-react";
 import { useTranslation } from "@/lib/i18n/provider";
 import {
   UNIVERSITIES,
   filterUniversities,
   getUniversityStats,
-  getDivisions,
-  getDepartments,
+  paginateUniversities,
 } from "@/lib/universities";
-import type { Division, UniversityFilters, UniversityType } from "@/lib/universities/types";
+import type { Division, SearchSuggestion, UniversityFilters, UniversityType, SpecializationCategory } from "@/lib/universities/types";
 import { UniversityCard } from "./university-card";
+import { UniversitySearch } from "./university-search";
+import { UniversityFiltersPanel } from "./university-filters";
+import { UniversityTopSections } from "./university-top-sections";
+import { UniversityHubDashboard } from "./university-hub-dashboard";
 
 const FEATURED_SLUGS = ["buet", "university-of-dhaka", "brac-university", "nsu", "diu", "uiu", "sust", "ruet"];
-
+const MAX_COMPARE = 4;
 export function UniversitiesHub() {
   const { t } = useTranslation("universities");
+  const router = useRouter();
   const stats = getUniversityStats();
-  const divisions = getDivisions();
-  const departments = getDepartments();
 
   const [query, setQuery] = useState("");
-  const [type, setType] = useState<UniversityType | "all">("all");
-  const [division, setDivision] = useState<Division | "all">("all");
-  const [department, setDepartment] = useState("");
-  const [maxBudget, setMaxBudget] = useState("");
-  const [hostel, setHostel] = useState(false);
-  const [scholarship, setScholarship] = useState(false);
+  const [page, setPage] = useState(1);
+  const [compareSlugs, setCompareSlugs] = useState<string[]>([]);
+  const [panel, setPanel] = useState({
+    type: "all" as UniversityType | "all",
+    division: "all" as Division | "all",
+    category: "all" as SpecializationCategory | "all",
+    sort: "name" as UniversityFilters["sort"],
+    hostel: false,
+    scholarship: false,
+    evening: false,
+    online: false,
+    admissionOpen: false,
+    qsRanked: false,
+    top10: false,
+    budgetFriendly: false,
+    highestRated: false,
+  });
 
   const filters: UniversityFilters = useMemo(
     () => ({
       query: query || undefined,
-      type: type !== "all" ? type : undefined,
-      division: division !== "all" ? division : undefined,
-      department: department || undefined,
-      maxBudget: maxBudget ? Number(maxBudget) : undefined,
-      hostel: hostel || undefined,
-      scholarship: scholarship || undefined,
+      type: panel.type !== "all" ? panel.type : undefined,
+      division: panel.division !== "all" ? panel.division : undefined,
+      category: panel.category !== "all" ? panel.category : undefined,
+      sort: panel.sort,
+      hostel: panel.hostel || undefined,
+      scholarship: panel.scholarship || undefined,
+      evening: panel.evening || undefined,
+      online: panel.online || undefined,
+      admissionOpen: panel.admissionOpen || undefined,
+      qsRanked: panel.qsRanked || undefined,
+      top10: panel.top10 || undefined,
+      budgetFriendly: panel.budgetFriendly || undefined,
+      highestRated: panel.highestRated || undefined,
     }),
-    [query, type, division, department, maxBudget, hostel, scholarship]
+    [query, panel]
   );
 
   const filtered = useMemo(() => filterUniversities(filters), [filters]);
+  const pagination = useMemo(() => paginateUniversities(filtered, page), [filtered, page]);
   const featured = useMemo(
     () => FEATURED_SLUGS.map((s) => UNIVERSITIES.find((u) => u.slug === s)).filter(Boolean),
     []
   );
 
+  const handleSearchChange = useCallback((value: string) => {
+    setQuery(value);
+    setPage(1);
+  }, []);
+
+  const handleSuggestion = useCallback((s: SearchSuggestion) => {
+    if (s.slug) setQuery(s.sublabel ?? s.label);
+    setPage(1);
+  }, []);
+
+  const handleFilterChange = useCallback((patch: Partial<typeof panel>) => {
+    setPanel((p) => ({ ...p, ...patch }));
+    setPage(1);
+  }, []);
+
   const clearFilters = () => {
     setQuery("");
-    setType("all");
-    setDivision("all");
-    setDepartment("");
-    setMaxBudget("");
-    setHostel(false);
-    setScholarship(false);
+    setPage(1);
+    setPanel({
+      type: "all", division: "all", category: "all", sort: "name",
+      hostel: false, scholarship: false, evening: false, online: false,
+      admissionOpen: false, qsRanked: false, top10: false, budgetFriendly: false, highestRated: false,
+    });
+  };
+
+  const toggleCompare = (slug: string) => {
+    setCompareSlugs((prev) => {
+      if (prev.includes(slug)) return prev.filter((s) => s !== slug);
+      if (prev.length >= MAX_COMPARE) return prev;
+      return [...prev, slug];
+    });
+  };
+
+  const goToCompare = () => {
+    if (compareSlugs.length === 0) return;
+    router.push(`/universities/compare?slugs=${compareSlugs.join(",")}`);
   };
 
   return (
@@ -77,12 +127,13 @@ export function UniversitiesHub() {
               {t("landing.subtitle")}
             </p>
 
-            <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 mb-8">
+            <div className="grid grid-cols-2 sm:grid-cols-5 gap-3 mb-8">
               {[
                 { label: t("landing.stats.total"), value: stats.total, icon: GraduationCap },
                 { label: t("landing.stats.public"), value: stats.public, icon: Building },
                 { label: t("landing.stats.private"), value: stats.private, icon: Building },
                 { label: t("landing.stats.international"), value: stats.international, icon: Globe },
+                { label: t("landing.stats.qsRanked"), value: stats.qsRanked, icon: Award },
               ].map((s) => (
                 <div key={s.label} className="glass-card border border-border rounded-2xl p-4 text-center">
                   <s.icon size={20} className="text-brand mx-auto mb-2" aria-hidden />
@@ -96,8 +147,14 @@ export function UniversitiesHub() {
               <Link href="/universities/compare" className="px-4 py-2.5 rounded-xl bg-brand text-brand-foreground text-sm font-semibold min-h-[44px] flex items-center">
                 {t("nav.compare")}
               </Link>
+              <Link href="/universities/predictor" className="px-4 py-2.5 rounded-xl border border-border text-sm font-semibold min-h-[44px] flex items-center hover:bg-muted transition-colors">
+                {t("nav.predictor")}
+              </Link>
               <Link href="/universities/calculator" className="px-4 py-2.5 rounded-xl border border-border text-sm font-semibold min-h-[44px] flex items-center hover:bg-muted transition-colors">
                 {t("nav.calculator")}
+              </Link>
+              <Link href="/universities/scholarships" className="px-4 py-2.5 rounded-xl border border-border text-sm font-semibold min-h-[44px] flex items-center hover:bg-muted transition-colors">
+                {t("nav.scholarships")}
               </Link>
               <Link href="/universities/recommend" className="px-4 py-2.5 rounded-xl border border-border text-sm font-semibold min-h-[44px] flex items-center hover:bg-muted transition-colors">
                 {t("nav.recommend")}
@@ -107,106 +164,87 @@ export function UniversitiesHub() {
         </div>
       </section>
 
-      {/* Featured */}
+      <UniversityTopSections />
+      <UniversityHubDashboard />
+
       <section className="max-w-[1280px] mx-auto px-4 sm:px-6 lg:px-8 py-10">
         <h2 className="text-lg font-bold text-foreground mb-4">{t("landing.featured")}</h2>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-          {featured.map((u) => u && <UniversityCard key={u.slug} university={u} />)}
+          {featured.map((u) => u && <UniversityCard key={u.slug} university={u} showCompare={false} />)}
         </div>
       </section>
 
-      {/* Search & Filters */}
       <section className="max-w-[1280px] mx-auto px-4 sm:px-6 lg:px-8 pb-16">
-        <div className="glass-card border border-border rounded-2xl p-4 sm:p-6 mb-6">
-          <div className="relative mb-4">
-            <Search size={18} className="absolute left-4 top-1/2 -translate-y-1/2 text-muted-foreground" aria-hidden />
-            <input
-              value={query}
-              onChange={(e) => setQuery(e.target.value)}
-              placeholder={t("landing.searchPlaceholder")}
-              aria-label={t("landing.searchPlaceholder")}
-              className="w-full pl-12 pr-4 py-3 rounded-xl bg-background border border-border text-foreground placeholder:text-muted-foreground outline-none focus:border-brand/50 focus:ring-2 focus:ring-brand/20 min-h-[44px]"
-            />
-          </div>
-
-          <div className="flex flex-wrap gap-3">
-            <select
-              value={type}
-              onChange={(e) => setType(e.target.value as UniversityType | "all")}
-              aria-label={t("landing.filters.type")}
-              className="px-3 py-2 rounded-xl border border-border bg-background text-sm min-h-[44px]"
-            >
-              <option value="all">{t("landing.filters.all")} {t("landing.filters.type")}</option>
-              <option value="public">{t("types.public")}</option>
-              <option value="private">{t("types.private")}</option>
-              <option value="international">{t("types.international")}</option>
-            </select>
-
-            <select
-              value={division}
-              onChange={(e) => setDivision(e.target.value as Division | "all")}
-              aria-label={t("landing.filters.division")}
-              className="px-3 py-2 rounded-xl border border-border bg-background text-sm min-h-[44px]"
-            >
-              <option value="all">{t("landing.filters.all")} {t("landing.filters.division")}</option>
-              {divisions.map((d) => (
-                <option key={d} value={d}>{d}</option>
-              ))}
-            </select>
-
-            <select
-              value={department}
-              onChange={(e) => setDepartment(e.target.value)}
-              aria-label={t("landing.filters.department")}
-              className="px-3 py-2 rounded-xl border border-border bg-background text-sm min-h-[44px]"
-            >
-              <option value="">{t("landing.filters.all")} {t("landing.filters.department")}</option>
-              {departments.map((d) => (
-                <option key={d} value={d}>{d}</option>
-              ))}
-            </select>
-
-            <input
-              type="number"
-              value={maxBudget}
-              onChange={(e) => setMaxBudget(e.target.value)}
-              placeholder={t("landing.filters.budget")}
-              aria-label={t("landing.filters.budget")}
-              className="px-3 py-2 rounded-xl border border-border bg-background text-sm min-h-[44px] w-40"
-            />
-
-            <label className="flex items-center gap-2 text-sm px-3 py-2 rounded-xl border border-border cursor-pointer min-h-[44px]">
-              <input type="checkbox" checked={hostel} onChange={(e) => setHostel(e.target.checked)} className="accent-brand" />
-              {t("landing.filters.hostel")}
-            </label>
-
-            <label className="flex items-center gap-2 text-sm px-3 py-2 rounded-xl border border-border cursor-pointer min-h-[44px]">
-              <input type="checkbox" checked={scholarship} onChange={(e) => setScholarship(e.target.checked)} className="accent-brand" />
-              {t("landing.filters.scholarship")}
-            </label>
-
-            <button
-              type="button"
-              onClick={clearFilters}
-              className="px-3 py-2 rounded-xl text-sm text-muted-foreground hover:text-foreground min-h-[44px]"
-            >
-              {t("landing.filters.clear")}
-            </button>
-          </div>
+        <div className="glass-card border border-border rounded-2xl p-4 sm:p-6 mb-6 space-y-4">
+          <UniversitySearch value={query} onChange={handleSearchChange} onSelect={handleSuggestion} />
+          <UniversityFiltersPanel filters={panel} onChange={handleFilterChange} onClear={clearFilters} />
         </div>
 
+        {compareSlugs.length > 0 && (
+          <div className="flex items-center justify-between mb-4 p-3 rounded-xl bg-brand/10 border border-brand/20">
+            <span className="text-sm text-foreground">
+              {compareSlugs.length} {t("compare.selected")}
+            </span>
+            <button
+              type="button"
+              onClick={goToCompare}
+              className="px-4 py-2 rounded-xl bg-brand text-brand-foreground text-sm font-semibold min-h-[40px]"
+            >
+              {t("compare.viewComparison")}
+            </button>
+          </div>
+        )}
+
         <p className="text-sm text-muted-foreground mb-4">
-          {filtered.length} {t("landing.stats.total").toLowerCase()}
+          {pagination.total} {t("landing.results")}
+          {pagination.totalPages > 1 && ` · ${t("pagination.page")} ${pagination.page}/${pagination.totalPages}`}
         </p>
 
         {filtered.length === 0 ? (
-          <p className="text-center py-16 text-muted-foreground">{t("landing.empty")}</p>
-        ) : (
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
-            {filtered.map((u) => (
-              <UniversityCard key={u.slug} university={u} />
-            ))}
+          <div className="text-center py-16">
+            <GraduationCap size={48} className="mx-auto text-muted-foreground/30 mb-4" aria-hidden />
+            <p className="text-muted-foreground mb-4">{t("landing.empty")}</p>
+            <button type="button" onClick={clearFilters} className="text-sm text-brand font-semibold hover:underline">
+              {t("landing.filters.clear")}
+            </button>
           </div>
+        ) : (
+          <>
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
+              {pagination.items.map((u) => (
+                <UniversityCard
+                  key={u.slug}
+                  university={u}
+                  onCompare={toggleCompare}
+                  compareSelected={compareSlugs.includes(u.slug)}
+                />
+              ))}
+            </div>
+
+            {pagination.totalPages > 1 && (
+              <div className="flex items-center justify-center gap-3 mt-8">
+                <button
+                  type="button"
+                  disabled={pagination.page <= 1}
+                  onClick={() => setPage((p) => p - 1)}
+                  className="flex items-center gap-1 px-4 py-2 rounded-xl border border-border text-sm font-medium disabled:opacity-40 min-h-[44px]"
+                >
+                  <ChevronLeft size={16} /> {t("pagination.prev")}
+                </button>
+                <span className="text-sm text-muted-foreground">
+                  {pagination.page} / {pagination.totalPages}
+                </span>
+                <button
+                  type="button"
+                  disabled={pagination.page >= pagination.totalPages}
+                  onClick={() => setPage((p) => p + 1)}
+                  className="flex items-center gap-1 px-4 py-2 rounded-xl border border-border text-sm font-medium disabled:opacity-40 min-h-[44px]"
+                >
+                  {t("pagination.next")} <ChevronRight size={16} />
+                </button>
+              </div>
+            )}
+          </>
         )}
       </section>
     </div>

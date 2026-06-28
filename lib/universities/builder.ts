@@ -1,16 +1,17 @@
 import type {
   AdmissionInfo,
   Division,
+  SpecializationCategory,
   TuitionInfo,
   University,
   UniversityCareer,
+  UniversityEnrichment,
   UniversityFacilities,
   UniversityProgram,
   UniversityRanking,
-  UniversityReview,
   UniversitySeed,
-  UniversityType,
 } from "./types";
+import { inferCategory } from "./format";
 
 const DEFAULT_PROGRAMS: UniversityProgram[] = [
   {
@@ -51,59 +52,52 @@ const DEFAULT_PROGRAMS: UniversityProgram[] = [
   },
 ];
 
-function defaultTuition(type: UniversityType): TuitionInfo {
-  const isPublic = type === "public";
-  const perCredit = isPublic ? 350 : 4200;
-  const semesterFee = isPublic ? 12000 : 85000;
-  const total = semesterFee + perCredit * 18 + 15000;
+function defaultTuition(): TuitionInfo {
   return {
-    admissionFee: isPublic ? 5000 : 25000,
-    registrationFee: isPublic ? 3000 : 15000,
-    perCreditFee: perCredit,
-    semesterFee,
-    labFee: isPublic ? 2000 : 12000,
-    developmentFee: isPublic ? 5000 : 20000,
-    libraryFee: isPublic ? 1500 : 5000,
-    examFee: isPublic ? 2500 : 8000,
-    totalPerSemester: total,
-    estimatedGraduationCost: total * 8,
-    scholarshipPercent: isPublic ? 100 : 50,
-    waiverPolicy: isPublic
-      ? "Merit-based tuition waiver for top performers"
-      : "Up to 100% waiver based on SSC/HSC GPA",
-    monthlyEstimate: Math.round(total / 4),
-    installmentAvailable: !isPublic,
-    emiSupport: !isPublic,
-    educationLoan: true,
+    verified: false,
+    variesByDepartment: true,
+    admissionFee: null,
+    registrationFee: null,
+    perCreditFee: null,
+    perCreditFeeMax: null,
+    semesterFee: null,
+    semesterFeeMax: null,
+    labFee: null,
+    developmentFee: null,
+    libraryFee: null,
+    examFee: null,
+    totalPerSemester: null,
+    totalPerSemesterMax: null,
+    estimatedGraduationCost: null,
+    graduationCostMin: null,
+    graduationCostMax: null,
+    creditHours: null,
+    semesterCount: null,
+    scholarshipPercent: null,
+    waiverPolicy: null,
+    monthlyEstimate: null,
+    installmentAvailable: false,
+    emiSupport: false,
+    educationLoan: false,
   };
 }
 
-function defaultAdmission(type: UniversityType, website: string): AdmissionInfo {
+function defaultAdmission(website: string): AdmissionInfo {
   return {
-    applicationFee: type === "public" ? 1000 : 1500,
-    applicationDeadline: "July 31",
-    sscGpaMin: type === "public" ? 4.0 : 3.5,
-    hscGpaMin: type === "public" ? 4.0 : 3.0,
+    applicationFee: null,
+    applicationDeadline: null,
+    sscGpaMin: null,
+    hscGpaMin: null,
     diplomaAllowed: true,
     oLevelAllowed: true,
     aLevelAllowed: true,
-    requiredDocuments: [
-      "SSC & HSC marksheets",
-      "Passport-size photographs",
-      "National ID / Birth certificate",
-      "Admission test admit card",
-    ],
-    testPattern: type === "public" ? "MCQ + Written (cluster system)" : "University admission test",
+    requiredDocuments: [],
+    testPattern: null,
     applyUrl: website,
-    process: [
-      "Check admission circular",
-      "Submit online application",
-      "Pay application fee",
-      "Sit for admission test",
-      "Check merit list & confirm admission",
-    ],
-    creditTransfer: true,
-    internationalAdmission: true,
+    process: [],
+    creditTransfer: false,
+    internationalAdmission: false,
+    isOpen: null,
   };
 }
 
@@ -111,57 +105,44 @@ function defaultFacilities(seed: UniversitySeed): UniversityFacilities {
   return {
     library: true,
     hostel: seed.hostel ?? seed.type === "public",
-    transport: seed.type === "private",
-    medical: true,
+    transport: false,
+    medical: false,
     sports: true,
-    researchCenters: seed.type === "public" ? 5 : 2,
-    clubs: seed.type === "public" ? 30 : 15,
-    campusAreaAcres: seed.type === "public" ? 50 : 5,
+    researchCenters: null,
+    clubs: null,
+    campusAreaAcres: null,
   };
 }
 
-function defaultCareer(_shortName: string): UniversityCareer {
+function defaultCareer(): UniversityCareer {
   return {
-    employmentRate: 78,
-    avgStartingSalary: 35000,
-    topRecruiters: ["Brain Station 23", "Cefalo", "Samsung R&D", "bKash", "Pathao"],
-    internshipPartners: ["Grameenphone", "Robi", "SSL Wireless", "BJIT"],
-    popularPrograms: ["CSE", "EEE", "BBA", "MBA"],
-    highestPayingDegrees: ["CSE", "EEE", "Pharmacy"],
+    verified: false,
+    employmentRate: null,
+    avgStartingSalary: null,
+    topRecruiters: [],
+    internshipPartners: [],
+    popularPrograms: [],
+    highestPayingDegrees: [],
   };
 }
 
-function defaultRankings(seed: UniversitySeed): UniversityRanking {
-  return {
-    national: seed.nationalRank,
-    employability: seed.type === "public" ? 75 : 70,
-    research: seed.type === "public" ? 70 : 55,
-  };
-}
-
-function defaultReviews(shortName: string): UniversityReview[] {
-  return [
-    {
-      id: `${shortName}-1`,
-      rating: 4,
-      review: `Solid academic environment with growing tech community at ${shortName}.`,
-      department: "CSE",
-      graduationYear: 2025,
-      pros: ["Active clubs", "Good faculty", "Career events"],
-      cons: ["Limited parking", "Crowded cafeteria"],
-      anonymous: true,
-    },
-  ];
+function defaultRankings(): UniversityRanking {
+  return { verified: false };
 }
 
 function websiteFromSlug(slug: string, shortName: string): string {
   const known: Record<string, string> = {
     du: "https://www.du.ac.bd",
+    "university-of-dhaka": "https://www.du.ac.bd",
     buet: "https://www.buet.ac.bd",
     brac: "https://www.bracu.ac.bd",
+    "brac-university": "https://www.bracu.ac.bd",
     nsu: "https://www.northsouth.edu",
+    "north-south-university": "https://www.northsouth.edu",
     diu: "https://www.daffodilvarsity.edu.bd",
+    "daffodil-international-university": "https://www.daffodilvarsity.edu.bd",
     uiu: "https://www.uiu.ac.bd",
+    "united-international-university": "https://www.uiu.ac.bd",
     aiub: "https://www.aiub.edu",
     ewu: "https://www.ewubd.edu",
     iub: "https://www.iub.edu.bd",
@@ -176,8 +157,13 @@ function websiteFromSlug(slug: string, shortName: string): string {
     uap: "https://www.uap-bd.edu",
   };
   if (known[slug]) return known[slug];
+  if (seedHasWebsite(slug)) return "";
   const domain = shortName.toLowerCase().replace(/[^a-z0-9]/g, "");
-  return `https://www.${domain}.edu.bd`;
+  return domain ? `https://www.${domain}.edu.bd` : "";
+}
+
+function seedHasWebsite(_slug: string): boolean {
+  return false;
 }
 
 const DIVISIONS: Division[] = ["Dhaka", "Chattogram", "Rajshahi", "Khulna", "Barishal", "Sylhet", "Rangpur", "Mymensingh"];
@@ -205,10 +191,29 @@ function normalizeDivision(seed: UniversitySeed): Division {
   return DISTRICT_TO_DIVISION[seed.division as string] ?? DISTRICT_TO_DIVISION[seed.district] ?? DISTRICT_TO_DIVISION[seed.city] ?? "Dhaka";
 }
 
-export function buildUniversity(seed: UniversitySeed, enrichment?: Partial<University>): University {
+function resolveCategory(seed: UniversitySeed): SpecializationCategory {
+  return inferCategory(seed.specialization ?? "General");
+}
+
+function mergeTuition(base: TuitionInfo, override?: Partial<TuitionInfo>): TuitionInfo {
+  if (!override) return base;
+  return { ...base, ...override, verified: override.verified ?? true };
+}
+
+function mergeRankings(base: UniversityRanking, override?: Partial<UniversityRanking>): UniversityRanking {
+  if (!override) return base;
+  const merged = { ...base, ...override };
+  if (override.qs != null && override.qsWorld == null) merged.qsWorld = override.qs;
+  merged.verified = override.verified ?? true;
+  return merged;
+}
+
+export function buildUniversity(seed: UniversitySeed, enrichment?: UniversityEnrichment): University {
   const division = normalizeDivision(seed);
-  const website = seed.website ?? websiteFromSlug(seed.slug, seed.shortName.toLowerCase());
-  const tags: string[] = [seed.type, division];
+  const website = seed.website ?? websiteFromSlug(seed.slug, seed.shortName);
+  const specialization = seed.specialization ?? "General";
+  const category = resolveCategory(seed);
+  const tags: string[] = [seed.type, division, category];
   if (seed.hostel) tags.push("hostel");
   if (seed.eveningProgram) tags.push("evening");
   if (seed.onlineProgram) tags.push("online");
@@ -220,61 +225,62 @@ export function buildUniversity(seed: UniversitySeed, enrichment?: Partial<Unive
     type: seed.type,
     ugcApproved: true,
     established: seed.established,
-    specialization: seed.specialization ?? "General",
+    specialization,
+    category,
     division,
     district: seed.district,
     city: seed.city,
     address: `${seed.city}, ${seed.district}, ${division} Division, Bangladesh`,
-    website,
-    admissionPortal: website,
-    email: `info@${seed.shortName.toLowerCase().replace(/[^a-z0-9]/g, "")}.edu.bd`,
-    studentPopulation: seed.studentPopulation ?? (seed.type === "public" ? 15000 : 8000),
-    facultyCount: Math.round((seed.studentPopulation ?? 10000) / 25),
-    departmentCount: seed.departmentCount ?? (seed.type === "public" ? 35 : 20),
+    website: website || `https://www.ugc.gov.bd`,
+    admissionPortal: website || undefined,
+    studentPopulation: seed.studentPopulation ?? null,
+    facultyCount: seed.facultyCount ?? null,
+    departmentCount: seed.departmentCount ?? null,
     facilities: defaultFacilities(seed),
-    rankings: defaultRankings(seed),
-    scholarships: [
-      "Merit scholarship for GPA 5.00",
-      "Freedom fighter quota",
-      "Regional quota (public)",
-    ],
-    waivers: seed.type === "private" ? ["GPA-based tuition waiver up to 100%"] : ["Government subsidized tuition"],
-    financialAid: ["Need-based aid", "Work-study programs"],
-    internationalPartnerships: ["Erasmus+", "Commonwealth exchange"],
-    exchangePrograms: ["Semester abroad programs"],
-    events: ["Orientation", "Tech fest", "Career fair", "Cultural week"],
+    rankings: defaultRankings(),
+    scholarships: [],
+    waivers: [],
+    financialAid: [],
+    internationalPartnerships: [],
+    exchangePrograms: [],
+    events: [],
     programs: DEFAULT_PROGRAMS.map((p) => ({
       ...p,
-      shifts: seed.eveningProgram ? [...p.shifts, "evening"] : p.shifts,
+      shifts: seed.eveningProgram ? [...p.shifts, "evening" as const] : p.shifts,
     })),
-    tuition: defaultTuition(seed.type),
-    admission: defaultAdmission(seed.type, website),
-    career: defaultCareer(seed.shortName),
-    reviews: defaultReviews(seed.shortName),
+    tuition: defaultTuition(),
+    admission: defaultAdmission(website),
+    career: defaultCareer(),
+    reviews: [],
     faqs: [
       {
         question: `Is ${seed.shortName} UGC approved?`,
-        answer: `Yes, ${seed.name} is approved by the University Grants Commission (UGC) of Bangladesh.`,
+        answer: `Yes, ${seed.name} is listed by the University Grants Commission (UGC) of Bangladesh. Verify current status at ugc.gov.bd.`,
       },
       {
-        question: `What is the admission GPA requirement?`,
-        answer: `Typically SSC GPA ${seed.type === "public" ? "4.00+" : "3.50+"} and HSC GPA ${seed.type === "public" ? "4.00+" : "3.00+"} for most programs.`,
+        question: `Where can I find tuition and admission details?`,
+        answer: `Visit the official website or admission portal for the latest fees, GPA requirements, and application deadlines.`,
       },
     ],
-    pros: [
-      "UGC approved institution",
-      seed.type === "public" ? "Affordable public tuition" : "Modern campus facilities",
-      "Multiple academic programs",
-    ],
-    cons: [
-      seed.type === "public" ? "Competitive admission" : "Higher tuition than public universities",
-      "Limited seats in popular departments",
-    ],
+    pros: ["UGC approved institution"],
+    cons: ["Verify tuition and admission details on the official website"],
     tags,
     mapUrl: `https://maps.google.com/?q=${encodeURIComponent(seed.name + " Bangladesh")}`,
   };
 
-  return { ...base, ...enrichment };
+  if (!enrichment) return base;
+
+  return {
+    ...base,
+    ...enrichment,
+    facilities: { ...base.facilities, ...enrichment.facilities },
+    tuition: mergeTuition(base.tuition, enrichment.tuition),
+    admission: { ...base.admission, ...enrichment.admission },
+    career: { ...base.career, ...enrichment.career },
+    rankings: mergeRankings(base.rankings, enrichment.rankings),
+    programs: enrichment.programs ?? base.programs,
+    tags: enrichment.tags ?? base.tags,
+  };
 }
 
 export function slugify(name: string): string {

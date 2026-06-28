@@ -30,7 +30,7 @@ export function ExamReview({ result, onRetry, onCertificate }: ExamReviewProps) 
           <Trophy size={32} className={result.passed ? "text-emerald-500" : "text-amber-500"} />
         </div>
         <h2 className="text-2xl font-extrabold mb-1">{result.passed ? "Passed!" : "Keep Practicing"}</h2>
-        <p className="text-5xl font-extrabold text-[#6D5DF6] tabular-nums my-3">{result.score}/{result.total}</p>
+        <p className="text-5xl font-extrabold text-brand tabular-nums my-3">{result.score}/{result.total}</p>
         <p className="text-slate-500 capitalize">{result.mode.replace(/-/g, " ")} · {result.difficulty} · {accuracy}% accuracy</p>
         <div className="flex justify-center gap-6 mt-4 text-sm text-slate-500">
           <span className="flex items-center gap-1"><Clock size={14} /> {Math.floor(result.timeTakenSeconds / 60)}m {result.timeTakenSeconds % 60}s</span>
@@ -47,7 +47,7 @@ export function ExamReview({ result, onRetry, onCertificate }: ExamReviewProps) 
           { label: "Correct", value: result.answers.filter((a) => a.correct).length, color: "text-emerald-500" },
           { label: "Wrong", value: wrong.length, color: "text-red-500" },
           { label: "Skipped", value: skipped.length, color: "text-slate-400" },
-          { label: "Accuracy", value: `${accuracy}%`, color: "text-[#6D5DF6]" },
+          { label: "Accuracy", value: `${accuracy}%`, color: "text-brand" },
         ].map((s) => (
           <div key={s.label} className="glass-card p-4 text-center">
             <p className={cn("text-2xl font-extrabold tabular-nums", s.color)}>{s.value}</p>
@@ -58,7 +58,7 @@ export function ExamReview({ result, onRetry, onCertificate }: ExamReviewProps) 
 
       {Object.keys(result.topicBreakdown).length > 1 && (
         <div className="glass-card p-5">
-          <h3 className="font-bold mb-4 flex items-center gap-2"><TrendingUp size={18} className="text-[#6D5DF6]" /> Topic-wise Analysis</h3>
+          <h3 className="font-bold mb-4 flex items-center gap-2"><TrendingUp size={18} className="text-brand" /> Topic-wise Analysis</h3>
           <div className="space-y-3">
             {Object.entries(result.topicBreakdown).map(([topic, data]) => {
               const pct = data.total > 0 ? Math.round((data.correct / data.total) * 100) : 0;
@@ -70,7 +70,7 @@ export function ExamReview({ result, onRetry, onCertificate }: ExamReviewProps) 
                     <span className="text-slate-400">{data.correct}/{data.total} ({pct}%)</span>
                   </div>
                   <div className="h-2 rounded-full bg-slate-100 dark:bg-white/10 overflow-hidden">
-                    <div className="h-full rounded-full bg-gradient-to-r from-[#6D5DF6] to-[#06B6D4]" style={{ width: `${pct}%` }} />
+                    <div className="h-full rounded-full bg-gradient-to-r from-brand to-brand-accent" style={{ width: `${pct}%` }} />
                   </div>
                 </div>
               );

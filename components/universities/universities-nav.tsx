@@ -13,7 +13,9 @@ import { getUniversity } from "@/lib/universities";
 const HUB_LINKS = [
   { key: "explore", href: "/universities" },
   { key: "compare", href: "/universities/compare" },
+  { key: "predictor", href: "/universities/predictor" },
   { key: "calculator", href: "/universities/calculator" },
+  { key: "scholarships", href: "/universities/scholarships" },
   { key: "recommend", href: "/universities/recommend" },
 ] as const;
 
@@ -21,6 +23,8 @@ function getPageTitle(pathname: string): string | null {
   if (pathname === "/universities") return null;
   if (pathname === "/universities/compare") return "compare";
   if (pathname === "/universities/calculator") return "calculator";
+  if (pathname === "/universities/predictor") return "predictor";
+  if (pathname === "/universities/scholarships") return "scholarships";
   if (pathname === "/universities/recommend") return "recommend";
   const match = pathname.match(/^\/universities\/([^/]+)$/);
   if (match) return getUniversity(match[1])?.shortName ?? null;
@@ -57,7 +61,7 @@ export function UniversitiesNav() {
             <>
               <ChevronRight size={14} className="shrink-0" aria-hidden />
               <span className="text-foreground font-medium truncate max-w-[100px] sm:max-w-xs">
-                {pageTitle === "compare" || pageTitle === "calculator" || pageTitle === "recommend"
+                {pageTitle === "compare" || pageTitle === "calculator" || pageTitle === "recommend" || pageTitle === "predictor" || pageTitle === "scholarships"
                   ? t(`nav.${pageTitle}`)
                   : pageTitle}
               </span>

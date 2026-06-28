@@ -26,7 +26,7 @@ export function DevToolCard({ tool, index = 0 }: { tool: DevToolDefinition; inde
     >
       <div className="glass-card h-full p-5 flex flex-col group relative">
         <div className="flex items-start justify-between mb-4">
-          <div className="w-11 h-11 rounded-xl bg-gradient-to-br from-[#6D5DF6] to-[#06B6D4] flex items-center justify-center shadow-md group-hover:scale-105 transition-transform">
+          <div className="w-11 h-11 rounded-xl bg-gradient-to-br from-brand to-brand-accent flex items-center justify-center shadow-md group-hover:scale-105 transition-transform">
             <Icon size={20} className="text-white" aria-hidden />
           </div>
           <button
@@ -35,11 +35,11 @@ export function DevToolCard({ tool, index = 0 }: { tool: DevToolDefinition; inde
             aria-label={fav ? "Remove from favorites" : "Add to favorites"}
             className="p-2 rounded-lg hover:bg-slate-100 dark:hover:bg-white/10 min-h-[44px] min-w-[44px] flex items-center justify-center"
           >
-            <Bookmark size={16} className={cn(fav ? "fill-[#6D5DF6] text-[#6D5DF6]" : "text-slate-400")} />
+            <Bookmark size={16} className={cn(fav ? "fill-brand text-brand" : "text-slate-400")} />
           </button>
         </div>
 
-        <h3 className="text-base font-bold text-slate-900 dark:text-white mb-1 group-hover:text-[#6D5DF6] transition-colors line-clamp-1">
+        <h3 className="text-base font-bold text-slate-900 dark:text-white mb-1 group-hover:text-brand transition-colors line-clamp-1">
           {tool.title}
         </h3>
         <p className="text-sm text-slate-500 dark:text-slate-400 leading-relaxed mb-3 line-clamp-2 flex-1">
@@ -59,7 +59,7 @@ export function DevToolCard({ tool, index = 0 }: { tool: DevToolDefinition; inde
 
         <Link
           href={`/developer-tools/${tool.slug}`}
-          className="inline-flex items-center justify-center gap-2 min-h-[44px] px-4 py-2.5 rounded-xl text-sm font-semibold text-white gradient-primary shadow-md shadow-[#6D5DF6]/20 hover:opacity-95 transition-opacity"
+          className="inline-flex items-center justify-center gap-2 min-h-[44px] px-4 py-2.5 rounded-xl text-sm font-semibold text-white gradient-primary shadow-md shadow-brand/20 hover:opacity-95 transition-opacity"
         >
           Open Tool <ArrowRight size={16} aria-hidden />
         </Link>

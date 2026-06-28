@@ -3,7 +3,7 @@
 import { motion } from "framer-motion";
 import { Bug, Rocket, Zap } from "lucide-react";
 import { useTranslation } from "@/lib/i18n/provider";
-import { spacing, animation, card } from "@/lib/design-system";
+import { spacing, animation, card, sectionBg } from "@/lib/design-system";
 import { SectionHeader } from "../v4/section-header";
 import { cn } from "@/lib/utils";
 
@@ -20,7 +20,7 @@ export function ChangelogSection() {
   const versions = tArray<ChangelogVersion>("changelog.versions");
 
   return (
-    <section className={cn(spacing.section, "relative bg-background")}>
+    <section className={cn(spacing.section, sectionBg.surface, "relative")}>
       <div className={cn(spacing.container, "relative max-w-3xl")}>
         <SectionHeader
           badge={t("changelog.badge")}

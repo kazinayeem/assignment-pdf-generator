@@ -30,7 +30,7 @@ export function ProgressDashboard() {
           { label: "Passed Exams", value: examResults.filter((r) => r.passed).length, icon: Trophy },
         ].map((s, i) => (
           <motion.div key={s.label} initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: i * 0.03 }} className="glass-card p-4 sm:p-5">
-            <s.icon size={20} className="text-[#6D5DF6] mb-2" />
+            <s.icon size={20} className="text-brand mb-2" />
             <p className="text-2xl font-extrabold text-slate-900 dark:text-white tabular-nums">{s.value}</p>
             <p className="text-xs text-slate-500">{s.label}</p>
           </motion.div>
@@ -46,7 +46,7 @@ export function ProgressDashboard() {
           <div key={subject.slug} className="glass-card p-6">
             <div className="flex items-center justify-between mb-4">
               <h3 className="font-bold text-lg">{subject.title}</h3>
-              <Link href={`/tools/exam/${subject.slug}`} className="text-sm text-[#6D5DF6] hover:underline">Take Exam →</Link>
+              <Link href={`/tools/exam/${subject.slug}`} className="text-sm text-brand hover:underline">Take Exam →</Link>
             </div>
             {avg > 0 && <p className="text-sm text-slate-500 mb-3">Average score: <strong>{avg}%</strong></p>}
             <div className="grid sm:grid-cols-2 gap-4">

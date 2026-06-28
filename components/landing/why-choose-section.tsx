@@ -8,7 +8,7 @@ import { SectionHeader } from "./section-header";
 export function WhyChooseSection() {
   return (
     <section className="section-padding relative bg-surface-page">
-      <div className="blur-orb w-[300px] h-[300px] bg-[#6D5DF6]/10 top-0 right-0" aria-hidden />
+      <div className="blur-orb w-[300px] h-[300px] bg-brand/10 top-0 right-0" aria-hidden />
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
         <SectionHeader
           badge="Why CampusFlow?"
@@ -31,7 +31,7 @@ export function WhyChooseSection() {
                 className="glass-card p-6 group cursor-default"
               >
                 <div
-                  className={`w-12 h-12 rounded-2xl bg-gradient-to-br ${item.color} flex items-center justify-center mb-5 shadow-lg group-hover:shadow-xl group-hover:shadow-[#6D5DF6]/15 transition-shadow`}
+                  className={`w-12 h-12 rounded-2xl bg-gradient-to-br ${item.color} flex items-center justify-center mb-5 shadow-lg group-hover:shadow-xl group-hover:shadow-brand/15 transition-shadow`}
                 >
                   <Icon size={22} className="text-white" aria-hidden />
                 </div>

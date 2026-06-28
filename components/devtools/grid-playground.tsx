@@ -53,7 +53,7 @@ export function GridPlayground() {
         style={{ display: "grid", gridTemplateColumns: `repeat(${cols}, 1fr)`, gridTemplateRows: `repeat(${rows}, 80px)`, gap, alignItems: align, justifyItems: justify }}
       >
         {Array.from({ length: cols * rows }).map((_, i) => (
-          <div key={i} className="rounded-xl bg-gradient-to-br from-[#6D5DF6]/80 to-[#06B6D4]/80 flex items-center justify-center text-white font-bold text-sm">
+          <div key={i} className="rounded-xl bg-gradient-to-br from-brand/80 to-brand-accent/80 flex items-center justify-center text-white font-bold text-sm">
             {i + 1}
           </div>
         ))}

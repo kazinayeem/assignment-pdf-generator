@@ -19,7 +19,7 @@ export function PlannedTopicPage({ topic, parentPath, parentLabel, subjectPath }
         <div className="max-w-4xl mx-auto px-4 sm:px-6 py-4 flex items-center justify-between gap-4">
           <Link
             href={parentPath}
-            className="inline-flex items-center gap-2 text-sm font-semibold text-[#6D5DF6] hover:opacity-80 transition-opacity min-h-[44px]"
+            className="inline-flex items-center gap-2 text-sm font-semibold text-brand hover:opacity-80 transition-opacity min-h-[44px]"
           >
             <ArrowLeft size={18} aria-hidden />
             Back to {parentLabel}
@@ -52,7 +52,7 @@ export function PlannedTopicPage({ topic, parentPath, parentLabel, subjectPath }
             { icon: Code2, title: "Practice", desc: "Exercises and interview prep" },
           ].map(({ icon: Icon, title, desc }) => (
             <div key={title} className="glass-card p-5 text-center">
-              <Icon className="w-6 h-6 mx-auto mb-2 text-[#6D5DF6]" aria-hidden />
+              <Icon className="w-6 h-6 mx-auto mb-2 text-brand" aria-hidden />
               <p className="font-bold text-sm text-slate-900 dark:text-white">{title}</p>
               <p className="text-xs text-slate-500 mt-1">{desc}</p>
             </div>
@@ -62,7 +62,7 @@ export function PlannedTopicPage({ topic, parentPath, parentLabel, subjectPath }
         {topic.learningObjectives && topic.learningObjectives.length > 0 && (
           <div className="glass-card p-6 mb-8">
             <h2 className="flex items-center gap-2 text-lg font-bold text-slate-900 dark:text-white mb-4">
-              <ListChecks className="w-5 h-5 text-[#6D5DF6]" aria-hidden />
+              <ListChecks className="w-5 h-5 text-brand" aria-hidden />
               Learning Objectives
             </h2>
             <ul className="space-y-2 text-sm text-slate-600 dark:text-slate-400 list-disc pl-5">

@@ -64,7 +64,7 @@ export function TrackerClient({ type, title, description, icon }: TrackerProps) 
             { label: "Rejected", value: typeStats.rejected },
           ].map((s) => (
             <div key={s.label} className="glass-card p-4 text-center">
-              <p className="text-2xl font-extrabold text-[#6D5DF6]">{s.value}</p>
+              <p className="text-2xl font-extrabold text-brand">{s.value}</p>
               <p className="text-xs text-slate-500">{s.label}</p>
             </div>
           ))}
@@ -95,13 +95,13 @@ export function TrackerClient({ type, title, description, icon }: TrackerProps) 
                 <input
                   value={form[f]}
                   onChange={(e) => setForm({ ...form, [f]: e.target.value })}
-                  className="w-full rounded-xl border border-slate-200 dark:border-white/10 bg-white dark:bg-white/5 p-3 text-sm min-h-[44px] outline-none focus:border-[#6D5DF6]/50 capitalize"
+                  className="w-full rounded-xl border border-slate-200 dark:border-white/10 bg-white dark:bg-white/5 p-3 text-sm min-h-[44px] outline-none focus:border-brand/50 capitalize"
                 />
               </div>
             ))}
             <div className="sm:col-span-2">
               <label className="text-xs font-bold uppercase text-slate-500 mb-1 block">Notes</label>
-              <textarea value={form.notes} onChange={(e) => setForm({ ...form, notes: e.target.value })} className="w-full rounded-xl border border-slate-200 dark:border-white/10 bg-white dark:bg-white/5 p-3 text-sm min-h-[80px] outline-none focus:border-[#6D5DF6]/50" />
+              <textarea value={form.notes} onChange={(e) => setForm({ ...form, notes: e.target.value })} className="w-full rounded-xl border border-slate-200 dark:border-white/10 bg-white dark:bg-white/5 p-3 text-sm min-h-[80px] outline-none focus:border-brand/50" />
             </div>
             <div className="sm:col-span-2">
               <ToolsButton onClick={handleAdd}>Save Application</ToolsButton>

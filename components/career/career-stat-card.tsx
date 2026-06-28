@@ -13,7 +13,7 @@ type CareerStatCardProps = {
   suffix?: string;
 };
 
-export function CareerStatCard({ label, value, icon: Icon, gradient = "from-[#6D5DF6] to-[#06B6D4]", index = 0, suffix }: CareerStatCardProps) {
+export function CareerStatCard({ label, value, icon: Icon, gradient = "from-brand to-brand-accent", index = 0, suffix }: CareerStatCardProps) {
   return (
     <motion.div
       initial={{ opacity: 0, y: 12 }}

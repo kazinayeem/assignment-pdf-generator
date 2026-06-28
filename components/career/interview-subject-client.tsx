@@ -26,9 +26,9 @@ export function InterviewSubjectClient({ subject }: { subject: InterviewSubject 
 
   return (
     <div>
-      <div className="border-b border-[#E5E7EB] dark:border-white/10">
+      <div className="border-b border-border dark:border-white/10">
         <div className="max-w-[1280px] mx-auto px-4 sm:px-6 lg:px-8 py-8">
-          <Link href="/career/interview" className="inline-flex items-center gap-1 text-sm text-[#6D5DF6] mb-4 hover:underline">
+          <Link href="/career/interview" className="inline-flex items-center gap-1 text-sm text-brand mb-4 hover:underline">
             <ArrowLeft size={14} /> Back to Interview Hub
           </Link>
           <h1 className="text-2xl sm:text-3xl font-extrabold text-slate-900 dark:text-white mb-2">{subject.title}</h1>
@@ -49,7 +49,7 @@ export function InterviewSubjectClient({ subject }: { subject: InterviewSubject 
           <div className="glass-card p-6 space-y-3">
             {subject.theory.map((t, i) => (
               <div key={i} className="flex gap-3 p-3 rounded-xl bg-slate-50 dark:bg-white/5">
-                <span className="w-6 h-6 rounded-full bg-[#6D5DF6]/10 text-[#6D5DF6] text-xs font-bold flex items-center justify-center shrink-0">{i + 1}</span>
+                <span className="w-6 h-6 rounded-full bg-brand/10 text-brand text-xs font-bold flex items-center justify-center shrink-0">{i + 1}</span>
                 <p className="text-sm text-slate-700 dark:text-slate-200">{t}</p>
               </div>
             ))}
@@ -123,7 +123,7 @@ export function InterviewSubjectClient({ subject }: { subject: InterviewSubject 
           <div className="glass-card p-6">
             <div className="grid sm:grid-cols-2 gap-3">
               {subject.cheatSheet.map((item, i) => (
-                <div key={i} className="p-3 rounded-xl bg-[#6D5DF6]/5 border border-[#6D5DF6]/10 text-sm text-slate-700 dark:text-slate-200">{item}</div>
+                <div key={i} className="p-3 rounded-xl bg-brand/5 border border-brand/10 text-sm text-slate-700 dark:text-slate-200">{item}</div>
               ))}
             </div>
           </div>

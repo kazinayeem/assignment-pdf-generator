@@ -102,7 +102,7 @@ export function CalculatorPageClient({ calculator }: { calculator: CalculatorDef
         <div className="flex flex-wrap items-start justify-between gap-4 mb-8">
           <div>
             {category && (
-              <span className="inline-flex items-center gap-1.5 text-sm font-semibold px-3 py-1 rounded-full bg-[#6D5DF6]/10 text-[#6D5DF6] mb-3">
+              <span className="inline-flex items-center gap-1.5 text-sm font-semibold px-3 py-1 rounded-full bg-brand/10 text-brand mb-3">
                 {category.emoji} {category.label}
               </span>
             )}
@@ -116,9 +116,9 @@ export function CalculatorPageClient({ calculator }: { calculator: CalculatorDef
           <button
             onClick={() => toggleFavorite(calculator.slug)}
             aria-label="Toggle favorite"
-            className="p-3 rounded-2xl border border-[#E5E7EB] dark:border-white/10 hover:bg-slate-50 dark:hover:bg-white/5 min-h-[44px] min-w-[44px]"
+            className="p-3 rounded-2xl border border-border dark:border-white/10 hover:bg-slate-50 dark:hover:bg-white/5 min-h-[44px] min-w-[44px]"
           >
-            <Bookmark size={20} className={cn(isFavorite(calculator.slug) ? "fill-[#6D5DF6] text-[#6D5DF6]" : "text-slate-400")} />
+            <Bookmark size={20} className={cn(isFavorite(calculator.slug) ? "fill-brand text-brand" : "text-slate-400")} />
           </button>
         </div>
 
@@ -137,7 +137,7 @@ export function CalculatorPageClient({ calculator }: { calculator: CalculatorDef
                     <select
                       id={field.name}
                       {...register(field.name)}
-                      className="w-full rounded-xl border border-[#E5E7EB] dark:border-white/10 bg-white dark:bg-white/5 px-4 py-3 text-sm min-h-[44px] outline-none focus:border-[#6D5DF6]/50 focus:ring-2 focus:ring-[#6D5DF6]/20"
+                      className="w-full rounded-xl border border-border dark:border-white/10 bg-white dark:bg-white/5 px-4 py-3 text-sm min-h-[44px] outline-none focus:border-brand/50 focus:ring-2 focus:ring-brand/20"
                     >
                       {field.options?.map((o) => (
                         <option key={o.value} value={o.value}>{o.label}</option>
@@ -173,8 +173,8 @@ export function CalculatorPageClient({ calculator }: { calculator: CalculatorDef
                     className={cn(
                       "rounded-2xl p-4 sm:p-5",
                       item.highlight
-                        ? "bg-gradient-to-br from-[#6D5DF6] to-[#8B5CF6] text-white shadow-lg shadow-[#6D5DF6]/25"
-                        : "bg-slate-50 dark:bg-white/5 border border-[#E5E7EB] dark:border-white/10"
+                        ? "bg-gradient-to-br from-brand to-brand-secondary text-white shadow-lg shadow-brand/25"
+                        : "bg-slate-50 dark:bg-white/5 border border-border dark:border-white/10"
                     )}
                   >
                     <p className={cn("text-sm font-medium mb-1", item.highlight ? "text-white/80" : "text-slate-500")}>
@@ -230,7 +230,7 @@ export function CalculatorPageClient({ calculator }: { calculator: CalculatorDef
             <ol className="space-y-2">
               {(result.steps || []).map((step, i) => (
                 <li key={i} className="text-sm text-slate-600 dark:text-slate-400 flex gap-3">
-                  <span className="w-6 h-6 rounded-lg bg-[#6D5DF6]/10 text-[#6D5DF6] text-xs font-bold flex items-center justify-center shrink-0">
+                  <span className="w-6 h-6 rounded-lg bg-brand/10 text-brand text-xs font-bold flex items-center justify-center shrink-0">
                     {i + 1}
                   </span>
                   {step}
@@ -246,7 +246,7 @@ export function CalculatorPageClient({ calculator }: { calculator: CalculatorDef
             <h2 className="text-lg font-bold text-slate-900 dark:text-white mb-4">Amortization Schedule</h2>
             <table className="w-full text-sm min-w-[500px]">
               <thead>
-                <tr className="border-b border-[#E5E7EB] dark:border-white/10 text-left text-slate-500">
+                <tr className="border-b border-border dark:border-white/10 text-left text-slate-500">
                   <th className="py-3 pr-4">Month</th>
                   <th className="py-3 pr-4">EMI</th>
                   <th className="py-3 pr-4">Principal</th>
@@ -256,7 +256,7 @@ export function CalculatorPageClient({ calculator }: { calculator: CalculatorDef
               </thead>
               <tbody>
                 {result.amortization.slice(0, 24).map((row) => (
-                  <tr key={row.month} className="border-b border-[#E5E7EB]/50 dark:border-white/5">
+                  <tr key={row.month} className="border-b border-border/50 dark:border-white/5">
                     <td className="py-2.5 pr-4 font-medium">{row.month}</td>
                     <td className="py-2.5 pr-4">{formatCurrency(row.emi, calculator.currency)}</td>
                     <td className="py-2.5 pr-4">{formatCurrency(row.principal, calculator.currency)}</td>

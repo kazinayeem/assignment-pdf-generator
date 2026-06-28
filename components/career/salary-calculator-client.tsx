@@ -34,7 +34,7 @@ export function SalaryCalculatorClient() {
           <div className="glass-card p-5 space-y-4">
             <div>
               <label className="text-xs font-bold uppercase text-slate-500 mb-2 block">Country</label>
-              <select value={country} onChange={(e) => setCountry(e.target.value as SalaryCountry)} className="w-full rounded-xl border border-slate-200 dark:border-white/10 bg-white dark:bg-white/5 p-3 text-sm min-h-[44px] outline-none focus:border-[#6D5DF6]/50">
+              <select value={country} onChange={(e) => setCountry(e.target.value as SalaryCountry)} className="w-full rounded-xl border border-slate-200 dark:border-white/10 bg-white dark:bg-white/5 p-3 text-sm min-h-[44px] outline-none focus:border-brand/50">
                 {COUNTRIES.map((c) => <option key={c.id} value={c.id}>{c.label}</option>)}
               </select>
             </div>
@@ -48,17 +48,17 @@ export function SalaryCalculatorClient() {
             </div>
             <div>
               <label className="text-xs font-bold uppercase text-slate-500 mb-2 block">Amount ({result.currency})</label>
-              <input type="number" value={amount} onChange={(e) => setAmount(Number(e.target.value))} className="w-full rounded-xl border border-slate-200 dark:border-white/10 bg-white dark:bg-white/5 p-3 text-sm min-h-[44px] outline-none focus:border-[#6D5DF6]/50" />
+              <input type="number" value={amount} onChange={(e) => setAmount(Number(e.target.value))} className="w-full rounded-xl border border-slate-200 dark:border-white/10 bg-white dark:bg-white/5 p-3 text-sm min-h-[44px] outline-none focus:border-brand/50" />
             </div>
             {period === "hourly" && (
               <>
                 <div>
                   <label className="text-xs font-bold uppercase text-slate-500 mb-2 block">Hours per Week</label>
-                  <input type="number" value={hoursPerWeek} onChange={(e) => setHoursPerWeek(Number(e.target.value))} className="w-full rounded-xl border border-slate-200 dark:border-white/10 bg-white dark:bg-white/5 p-3 text-sm min-h-[44px] outline-none focus:border-[#6D5DF6]/50" />
+                  <input type="number" value={hoursPerWeek} onChange={(e) => setHoursPerWeek(Number(e.target.value))} className="w-full rounded-xl border border-slate-200 dark:border-white/10 bg-white dark:bg-white/5 p-3 text-sm min-h-[44px] outline-none focus:border-brand/50" />
                 </div>
                 <div>
                   <label className="text-xs font-bold uppercase text-slate-500 mb-2 block">Overtime Hours / Week</label>
-                  <input type="number" value={overtimeHours} onChange={(e) => setOvertimeHours(Number(e.target.value))} className="w-full rounded-xl border border-slate-200 dark:border-white/10 bg-white dark:bg-white/5 p-3 text-sm min-h-[44px] outline-none focus:border-[#6D5DF6]/50" />
+                  <input type="number" value={overtimeHours} onChange={(e) => setOvertimeHours(Number(e.target.value))} className="w-full rounded-xl border border-slate-200 dark:border-white/10 bg-white dark:bg-white/5 p-3 text-sm min-h-[44px] outline-none focus:border-brand/50" />
                 </div>
               </>
             )}

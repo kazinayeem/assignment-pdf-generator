@@ -4,7 +4,7 @@ import Link from "next/link";
 import { motion } from "framer-motion";
 import { ArrowRight } from "lucide-react";
 import { useTranslation } from "@/lib/i18n/provider";
-import { spacing, animation, card, button, typography, sectionBg } from "@/lib/design-system";
+import { spacing, animation, card, button, typography, sectionBg, badge, iconBox } from "@/lib/design-system";
 import { FEATURES, WHY_CHOOSE } from "@/lib/landing-data";
 import { SectionHeader } from "./section-header";
 import { cn } from "@/lib/utils";
@@ -36,14 +36,20 @@ export function FeatureShowcase() {
                 {...animation.stagger(i)}
               >
                 <Link href={feature.href} className="block h-full">
-                  <div className={cn(card.base, card.hover, card.interactive, "p-6 sm:p-8 h-full flex flex-col")}>
-                    <div
-                      className={cn(
-                        "w-14 h-14 rounded-2xl bg-gradient-to-br flex items-center justify-center mb-5 shadow-lg",
-                        feature.color
+                  <div className={cn(card.base, card.hover, card.interactive, card.equal, "p-6 sm:p-7")}>
+                    <div className="flex items-start justify-between gap-3 mb-5">
+                      <div
+                        className={cn(
+                          iconBox.lg,
+                          "bg-gradient-to-br shadow-lg shadow-brand/15 group-hover:scale-105 transition-transform",
+                          feature.color
+                        )}
+                      >
+                        <Icon size={26} className="text-white" aria-hidden />
+                      </div>
+                      {feature.tag && (
+                        <span className={badge[feature.tag]}>{feature.tag}</span>
                       )}
-                    >
-                      <Icon size={26} className="text-white" aria-hidden />
                     </div>
                     <h3 className={cn(typography.cardTitle, "text-foreground mb-2")}>
                       {t(`features.${key}.title`)}
@@ -70,12 +76,13 @@ export function FeatureShowcase() {
                 key={key}
                 {...animation.fadeUp}
                 {...animation.stagger(i)}
-                whileHover={{ y: -6 }}
-                className={cn(card.base, "p-5 sm:p-6 group")}
+                whileHover={{ y: -4 }}
+                className={cn(card.base, card.hover, "p-5 sm:p-6 group")}
               >
                 <div
                   className={cn(
-                    "w-11 h-11 rounded-xl bg-gradient-to-br flex items-center justify-center mb-4 shadow-md group-hover:scale-105 transition-transform",
+                    iconBox.md,
+                    "bg-gradient-to-br shadow-md group-hover:scale-105 transition-transform mb-4",
                     item.color
                   )}
                 >

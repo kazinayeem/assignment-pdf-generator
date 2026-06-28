@@ -53,8 +53,8 @@ export function SubjectHero({
   return (
     <section className="relative overflow-hidden bg-gradient-to-br from-[#0F172A] via-[#1e1b4b] to-[#0F172A] text-white">
       <div className="absolute inset-0 bg-[radial-gradient(rgba(255,255,255,0.04)_1px,transparent_1px)] bg-[length:28px_28px]" aria-hidden />
-      <div className="blur-orb w-[400px] h-[400px] bg-[#6D5DF6]/20 -top-32 -left-32" aria-hidden />
-      <div className="blur-orb w-[300px] h-[300px] bg-[#8B5CF6]/15 bottom-0 right-0" aria-hidden />
+      <div className="blur-orb w-[400px] h-[400px] bg-brand/20 -top-32 -left-32" aria-hidden />
+      <div className="blur-orb w-[300px] h-[300px] bg-brand-secondary/15 bottom-0 right-0" aria-hidden />
 
       <div className="max-w-[1280px] mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16 lg:py-20 relative">
         <div className="grid lg:grid-cols-2 gap-10 lg:gap-16 items-center">

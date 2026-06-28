@@ -87,7 +87,7 @@ export function SearchModal({ open, query, onQueryChange, onClose }: SearchModal
                         <tool.icon size={18} className="text-white" aria-hidden />
                       </div>
                       <div className="flex-1 min-w-0">
-                        <p className="text-sm font-semibold text-slate-800 dark:text-white group-hover:text-[#6D5DF6] transition-colors">
+                        <p className="text-sm font-semibold text-slate-800 dark:text-white group-hover:text-brand transition-colors">
                           {tool.name}
                         </p>
                         <p className="text-xs text-slate-400 truncate">{tool.desc}</p>

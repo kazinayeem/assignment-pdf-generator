@@ -18,7 +18,7 @@ export function TopicLessonShell({ subjectSlug, topic, children }: TopicLessonSh
 
   return (
     <div className="max-w-4xl mx-auto px-4 sm:px-6 py-8 sm:py-12">
-      <Link href={`/tools/${subjectSlug}`} className="inline-flex items-center gap-1 text-sm text-[#6D5DF6] mb-6 hover:underline min-h-[44px]">
+      <Link href={`/tools/${subjectSlug}`} className="inline-flex items-center gap-1 text-sm text-brand mb-6 hover:underline min-h-[44px]">
         <ArrowLeft size={14} /> Back to {subjectSlug.toUpperCase()}
       </Link>
 
@@ -27,7 +27,7 @@ export function TopicLessonShell({ subjectSlug, topic, children }: TopicLessonSh
         <h1 className="text-2xl sm:text-3xl font-extrabold text-slate-900 dark:text-white mb-2">{topic.title}</h1>
         <p className="text-slate-500 leading-relaxed">{topic.description}</p>
         <div className="flex flex-wrap gap-2 mt-4">
-          <span className="text-xs px-3 py-1 rounded-full bg-[#6D5DF6]/10 text-[#6D5DF6] font-medium">{topic.difficulty}</span>
+          <span className="text-xs px-3 py-1 rounded-full bg-brand/10 text-brand font-medium">{topic.difficulty}</span>
           <span className="text-xs px-3 py-1 rounded-full bg-slate-100 dark:bg-white/5 text-slate-500">{topic.duration}</span>
           {topic.hasSimulator && <span className="text-xs px-3 py-1 rounded-full bg-cyan-500/10 text-cyan-600">Interactive Simulator</span>}
         </div>
@@ -46,7 +46,7 @@ export function TopicLessonShell({ subjectSlug, topic, children }: TopicLessonSh
         <ul className="space-y-2">
           {topic.learningObjectives.map((obj) => (
             <li key={obj} className="flex items-start gap-2 text-sm text-slate-600 dark:text-slate-300">
-              <BookOpen size={16} className="text-[#6D5DF6] shrink-0 mt-0.5" /> {obj}
+              <BookOpen size={16} className="text-brand shrink-0 mt-0.5" /> {obj}
             </li>
           ))}
         </ul>
@@ -100,12 +100,12 @@ export function TopicLessonShell({ subjectSlug, topic, children }: TopicLessonSh
 
       <div className="flex justify-between items-center pt-8 border-t border-slate-200 dark:border-white/10 mt-10">
         {prev ? (
-          <Link href={getTopicHref(subjectSlug, prev)} className="inline-flex items-center gap-1 text-sm text-[#6D5DF6] hover:underline min-h-[44px]">
+          <Link href={getTopicHref(subjectSlug, prev)} className="inline-flex items-center gap-1 text-sm text-brand hover:underline min-h-[44px]">
             <ArrowLeft size={14} /> {prev.title}
           </Link>
         ) : <div />}
         {next ? (
-          <Link href={getTopicHref(subjectSlug, next)} className="inline-flex items-center gap-1 text-sm text-[#6D5DF6] hover:underline min-h-[44px]">
+          <Link href={getTopicHref(subjectSlug, next)} className="inline-flex items-center gap-1 text-sm text-brand hover:underline min-h-[44px]">
             {next.title} <ArrowRight size={14} />
           </Link>
         ) : (

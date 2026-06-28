@@ -10,7 +10,7 @@ function TreeNode({ name, value, depth = 0 }: { name: string; value: unknown; de
   if (!isObj) {
     return (
       <div className="flex gap-2 py-0.5 font-mono text-sm" style={{ paddingLeft: depth * 16 }}>
-        <span className="text-[#6D5DF6]">{name}:</span>
+        <span className="text-brand">{name}:</span>
         <span className="text-emerald-600 dark:text-emerald-400">{JSON.stringify(value)}</span>
       </div>
     );
@@ -25,7 +25,7 @@ function TreeNode({ name, value, depth = 0 }: { name: string; value: unknown; de
       <button
         type="button"
         onClick={() => setOpen(!open)}
-        className="text-left font-mono text-sm text-slate-700 dark:text-slate-300 hover:text-[#6D5DF6] min-h-[32px]"
+        className="text-left font-mono text-sm text-slate-700 dark:text-slate-300 hover:text-brand min-h-[32px]"
       >
         {open ? "▼" : "▶"} {name}{isArr ? ` [${entries.length}]` : ` {${entries.length}}`}
       </button>

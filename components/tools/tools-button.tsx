@@ -16,13 +16,13 @@ type ToolsButtonProps = ButtonHTMLAttributes<HTMLButtonElement> & {
 
 const variants = {
   primary:
-    "bg-gradient-to-r from-[#6D5DF6] to-[#8B5CF6] text-white shadow-lg shadow-[#6D5DF6]/25 hover:shadow-xl hover:shadow-[#6D5DF6]/30 hover:scale-[1.02] active:scale-[0.98]",
+    "bg-gradient-to-r from-brand to-brand-secondary text-white shadow-lg shadow-brand/25 hover:shadow-xl hover:shadow-brand/30 hover:scale-[1.02] active:scale-[0.98]",
   secondary:
-    "bg-white dark:bg-white/10 text-slate-900 dark:text-white border border-[#E5E7EB] dark:border-white/10 hover:bg-slate-50 dark:hover:bg-white/15",
+    "bg-white dark:bg-white/10 text-slate-900 dark:text-white border border-border dark:border-white/10 hover:bg-slate-50 dark:hover:bg-white/15",
   ghost:
     "text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-white/10",
   outline:
-    "border-2 border-[#6D5DF6]/30 text-[#6D5DF6] hover:bg-[#6D5DF6]/5 dark:border-[#6D5DF6]/40",
+    "border-2 border-brand/30 text-brand hover:bg-brand/5 dark:border-brand/40",
 };
 
 const sizes = {
@@ -42,7 +42,7 @@ export function ToolsButton({
   ...props
 }: ToolsButtonProps) {
   const classes = cn(
-    "btn-premium inline-flex items-center justify-center gap-2 font-semibold transition-all cursor-pointer disabled:opacity-50 disabled:pointer-events-none focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#6D5DF6] focus-visible:ring-offset-2",
+    "btn-premium inline-flex items-center justify-center gap-2 font-semibold transition-all cursor-pointer disabled:opacity-50 disabled:pointer-events-none focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand focus-visible:ring-offset-2",
     variants[variant],
     sizes[size],
     className

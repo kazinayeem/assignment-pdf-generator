@@ -17,7 +17,7 @@ export function CTASection() {
         >
           <div className="absolute inset-0 gradient-primary" aria-hidden />
           <div className="blur-orb w-[300px] h-[300px] bg-white/20 -top-20 -right-20" aria-hidden />
-          <div className="blur-orb w-[250px] h-[250px] bg-[#06B6D4]/30 -bottom-16 -left-16" aria-hidden />
+          <div className="blur-orb w-[250px] h-[250px] bg-brand-accent/30 -bottom-16 -left-16" aria-hidden />
           <div className="absolute inset-0 bg-[radial-gradient(rgba(255,255,255,0.08)_1px,transparent_1px)] bg-[length:24px_24px]" aria-hidden />
 
           <div className="relative z-10 px-6 sm:px-12 lg:px-16 py-16 sm:py-20 text-center text-white">
@@ -40,7 +40,7 @@ export function CTASection() {
 
             <div className="flex flex-col sm:flex-row gap-3 justify-center">
               <Link href="/tools" className="w-full sm:w-auto">
-                <button className="btn-premium w-full sm:w-auto flex items-center justify-center gap-2 bg-white text-[#6D5DF6] px-8 py-4 rounded-2xl font-bold text-base hover:bg-slate-50 transition shadow-xl cursor-pointer min-h-[44px]">
+                <button className="btn-premium w-full sm:w-auto flex items-center justify-center gap-2 bg-white text-brand px-8 py-4 rounded-2xl font-bold text-base hover:bg-slate-50 transition shadow-xl cursor-pointer min-h-[44px]">
                   Browse All Tools <ArrowRight size={18} aria-hidden />
                 </button>
               </Link>
@@ -68,7 +68,7 @@ export function CTASection() {
               <motion.div
                 animate={{ y: [0, -8, 0] }}
                 transition={{ duration: 3.5, repeat: Infinity, ease: "easeInOut", delay: 0.5 }}
-                className="absolute top-1/2 right-20 w-12 h-12 rounded-xl bg-[#06B6D4]/30 backdrop-blur-md"
+                className="absolute top-1/2 right-20 w-12 h-12 rounded-xl bg-brand-accent/30 backdrop-blur-md"
                 aria-hidden
               />
             </div>

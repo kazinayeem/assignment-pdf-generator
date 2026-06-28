@@ -14,16 +14,16 @@ export function CompaniesHub() {
 
       <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
         {companies.map((c) => (
-          <Link key={c.slug} href={c.route} className="glass-card p-5 hover:border-[#6D5DF6]/30 transition-colors group">
+          <Link key={c.slug} href={c.route} className="glass-card p-5 hover:border-brand/30 transition-colors group">
             <div className="flex items-start justify-between mb-3">
-              <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-[#6D5DF6] to-[#06B6D4] flex items-center justify-center">
+              <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-brand to-brand-accent flex items-center justify-center">
                 <Building2 size={18} className="text-white" />
               </div>
               <span className="text-xs px-2 py-1 rounded-full bg-slate-100 dark:bg-white/5 text-slate-500 flex items-center gap-1">
                 <HelpCircle size={10} /> {c.questionCount}
               </span>
             </div>
-            <h3 className="font-bold group-hover:text-[#6D5DF6] transition-colors">{c.name}</h3>
+            <h3 className="font-bold group-hover:text-brand transition-colors">{c.name}</h3>
             <p className="text-xs text-slate-400 mt-1">{c.questionCount} documented questions</p>
           </Link>
         ))}

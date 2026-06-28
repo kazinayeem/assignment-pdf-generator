@@ -8,7 +8,7 @@ import { cn } from "@/lib/utils";
 export function Section({ title, children, className }: { title: string; children: ReactNode; className?: string }) {
   return (
     <section className={cn("mb-10", className)}>
-      <h2 className="text-xl sm:text-2xl font-bold text-slate-900 dark:text-white mb-5 pb-3 border-b border-[#E5E7EB] dark:border-white/10">
+      <h2 className="text-xl sm:text-2xl font-bold text-slate-900 dark:text-white mb-5 pb-3 border-b border-border dark:border-white/10">
         {title}
       </h2>
       <div className="space-y-4">{children}</div>
@@ -30,7 +30,7 @@ export function InfoCard({
   type?: "info" | "warning" | "tip" | "success";
 }) {
   const styles = {
-    info: { bg: "bg-[#6D5DF6]/5", border: "border-[#6D5DF6]/20", emoji: "ℹ️" },
+    info: { bg: "bg-brand/5", border: "border-brand/20", emoji: "ℹ️" },
     warning: { bg: "bg-amber-50 dark:bg-amber-500/10", border: "border-amber-200 dark:border-amber-500/20", emoji: "⚠️" },
     tip: { bg: "bg-emerald-50 dark:bg-emerald-500/10", border: "border-emerald-200 dark:border-emerald-500/20", emoji: "💡" },
     success: { bg: "bg-[#22C55E]/5", border: "border-[#22C55E]/20", emoji: "✓" },
@@ -69,7 +69,7 @@ export function InterviewQuestion({ question, answer, q, a }: { question?: strin
   const [open, setOpen] = useState(false);
 
   return (
-    <div className="rounded-2xl border border-[#E5E7EB] dark:border-white/10 bg-white dark:bg-white/5 overflow-hidden mb-3">
+    <div className="rounded-2xl border border-border dark:border-white/10 bg-white dark:bg-white/5 overflow-hidden mb-3">
       <button
         onClick={() => setOpen(!open)}
         aria-expanded={open}
@@ -89,7 +89,7 @@ export function InterviewQuestion({ question, answer, q, a }: { question?: strin
             transition={{ duration: 0.25 }}
             className="overflow-hidden"
           >
-            <p className="px-5 pb-4 text-sm text-slate-500 dark:text-slate-400 leading-relaxed border-t border-[#E5E7EB] dark:border-white/10 pt-4">
+            <p className="px-5 pb-4 text-sm text-slate-500 dark:text-slate-400 leading-relaxed border-t border-border dark:border-white/10 pt-4">
               {answerText}
             </p>
           </motion.div>
@@ -111,7 +111,7 @@ export function InterviewQuestions({ questions }: { questions: { q: string; a: s
 
 export function Diagram({ title, children }: { title?: string; children: ReactNode }) {
   return (
-    <div className="rounded-2xl border border-[#E5E7EB] dark:border-white/10 bg-white dark:bg-white/5 p-6 mb-6 shadow-sm">
+    <div className="rounded-2xl border border-border dark:border-white/10 bg-white dark:bg-white/5 p-6 mb-6 shadow-sm">
       {title && <h3 className="font-bold text-slate-900 dark:text-white text-base mb-4">{title}</h3>}
       {children}
     </div>

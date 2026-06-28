@@ -7,9 +7,9 @@ import type { CareerRoadmap } from "@/lib/career/types";
 export function RoadmapDetailClient({ roadmap }: { roadmap: CareerRoadmap }) {
   return (
     <div>
-      <div className="border-b border-[#E5E7EB] dark:border-white/10">
+      <div className="border-b border-border dark:border-white/10">
         <div className="max-w-[1280px] mx-auto px-4 sm:px-6 lg:px-8 py-8">
-          <Link href="/career/roadmaps" className="inline-flex items-center gap-1 text-sm text-[#6D5DF6] mb-4 hover:underline">
+          <Link href="/career/roadmaps" className="inline-flex items-center gap-1 text-sm text-brand mb-4 hover:underline">
             <ArrowLeft size={14} /> All Roadmaps
           </Link>
           <h1 className="text-2xl sm:text-3xl font-extrabold text-slate-900 dark:text-white mb-2">{roadmap.title}</h1>
@@ -22,7 +22,7 @@ export function RoadmapDetailClient({ roadmap }: { roadmap: CareerRoadmap }) {
         {roadmap.phases.map((phase, i) => (
           <div key={phase.title} className="glass-card p-6">
             <h2 className="font-bold text-lg mb-4 flex items-center gap-2">
-              <span className="w-8 h-8 rounded-full bg-[#6D5DF6]/10 text-[#6D5DF6] text-sm font-bold flex items-center justify-center">{i + 1}</span>
+              <span className="w-8 h-8 rounded-full bg-brand/10 text-brand text-sm font-bold flex items-center justify-center">{i + 1}</span>
               {phase.title}
             </h2>
             <ul className="space-y-2">

@@ -91,7 +91,7 @@ export function ImageTool({ mode }: { mode: "compress" | "resize" | "convert" | 
         onDrop={onDrop}
       >
         <input type="file" accept="image/*" className="hidden" id="img-upload" onChange={(e) => e.target.files?.[0] && processFile(e.target.files[0])} />
-        <label htmlFor="img-upload" className="cursor-pointer text-[#6D5DF6] font-semibold min-h-[44px] flex items-center">
+        <label htmlFor="img-upload" className="cursor-pointer text-brand font-semibold min-h-[44px] flex items-center">
           Drop image here or click to upload
         </label>
         {preview && mode !== "metadata" && (

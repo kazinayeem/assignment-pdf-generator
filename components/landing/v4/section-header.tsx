@@ -20,7 +20,7 @@ export function SectionHeader({ badge, title, subtitle, align = "center", classN
       viewport={{ once: true, margin: "-60px" }}
       transition={{ duration: 0.5 }}
       className={cn(
-        "mb-10 sm:mb-12",
+        "mb-8 sm:mb-10",
         align === "center" && "text-center max-w-3xl mx-auto",
         className
       )}

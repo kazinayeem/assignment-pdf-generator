@@ -66,9 +66,9 @@ export function MockInterviewClient() {
 
   return (
     <div>
-      <div className="border-b border-[#E5E7EB] dark:border-white/10">
+      <div className="border-b border-border dark:border-white/10">
         <div className="max-w-[1280px] mx-auto px-4 sm:px-6 lg:px-8 py-8">
-          <Link href="/career/interview" className="inline-flex items-center gap-1 text-sm text-[#6D5DF6] mb-4 hover:underline">
+          <Link href="/career/interview" className="inline-flex items-center gap-1 text-sm text-brand mb-4 hover:underline">
             <ArrowLeft size={14} /> Back to Interview Hub
           </Link>
           <h1 className="text-2xl sm:text-3xl font-extrabold text-slate-900 dark:text-white mb-2">Mock Interview</h1>
@@ -104,7 +104,7 @@ export function MockInterviewClient() {
             <div className="lg:col-span-2 space-y-4">
               <div className="flex items-center justify-between">
                 <span className="text-sm text-slate-500">Question {qIndex + 1} of {questions.length}</span>
-                <span className={cn("flex items-center gap-1 text-sm font-bold tabular-nums", timeLeft <= 15 ? "text-red-500" : "text-[#6D5DF6]")}>
+                <span className={cn("flex items-center gap-1 text-sm font-bold tabular-nums", timeLeft <= 15 ? "text-red-500" : "text-brand")}>
                   <Timer size={16} /> {timeLeft}s
                 </span>
               </div>
@@ -115,7 +115,7 @@ export function MockInterviewClient() {
                 value={answer}
                 onChange={(e) => setAnswer(e.target.value)}
                 placeholder="Type your answer here..."
-                className="w-full min-h-[160px] rounded-xl border border-slate-200 dark:border-white/10 bg-white dark:bg-white/5 p-4 text-sm outline-none focus:border-[#6D5DF6]/50"
+                className="w-full min-h-[160px] rounded-xl border border-slate-200 dark:border-white/10 bg-white dark:bg-white/5 p-4 text-sm outline-none focus:border-brand/50"
               />
               <ToolsButton onClick={() => handleNext()}>Next Question</ToolsButton>
             </div>
@@ -134,7 +134,7 @@ export function MockInterviewClient() {
               </div>
               <div className="glass-card p-4 text-center">
                 <p className="text-xs text-slate-500">Current Score</p>
-                <p className="text-3xl font-extrabold text-[#6D5DF6]">{score}</p>
+                <p className="text-3xl font-extrabold text-brand">{score}</p>
               </div>
             </div>
           </div>
@@ -143,7 +143,7 @@ export function MockInterviewClient() {
         {finished && (
           <motion.div initial={{ opacity: 0, scale: 0.95 }} animate={{ opacity: 1, scale: 1 }} className="glass-card p-8 max-w-lg mx-auto text-center">
             <h2 className="text-2xl font-extrabold mb-2">Interview Complete!</h2>
-            <p className="text-5xl font-extrabold text-[#6D5DF6] mb-2">{score}/100</p>
+            <p className="text-5xl font-extrabold text-brand mb-2">{score}/100</p>
             <p className="text-sm text-slate-500 mb-6">{questions.length} questions answered · {category} · {difficulty}</p>
             <p className="text-sm text-slate-600 dark:text-slate-300 mb-6">AI feedback placeholder: Focus on structuring answers with STAR method and providing specific examples.</p>
             <ToolsButton onClick={() => { setStarted(false); setFinished(false); }}>Try Again</ToolsButton>

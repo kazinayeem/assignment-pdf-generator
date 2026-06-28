@@ -20,7 +20,7 @@ export function CSLearningSection() {
 
   return (
     <section className="section-padding relative bg-surface-page">
-      <div className="blur-orb w-[350px] h-[350px] bg-[#8B5CF6]/10 top-20 right-0" aria-hidden />
+      <div className="blur-orb w-[350px] h-[350px] bg-brand-secondary/10 top-20 right-0" aria-hidden />
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
         <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4 mb-12 md:mb-16">
           <SectionHeader
@@ -129,7 +129,7 @@ export function CSLearningSection() {
                             }
                             placeholder={`Search in ${cat.name}...`}
                             aria-label={`Search tools in ${cat.name}`}
-                            className="w-full pl-11 pr-4 py-3 rounded-2xl bg-slate-50 dark:bg-white/5 border border-slate-200 dark:border-white/10 text-sm text-slate-800 dark:text-white placeholder:text-slate-400 outline-none focus:border-[#6D5DF6]/50 transition-colors min-h-[44px]"
+                            className="w-full pl-11 pr-4 py-3 rounded-2xl bg-slate-50 dark:bg-white/5 border border-slate-200 dark:border-white/10 text-sm text-slate-800 dark:text-white placeholder:text-slate-400 outline-none focus:border-brand/50 transition-colors min-h-[44px]"
                             onClick={(e) => e.stopPropagation()}
                           />
                         </div>
@@ -151,8 +151,8 @@ export function CSLearningSection() {
                                   <div
                                     className={cn(
                                       "p-4 rounded-2xl border border-slate-200 dark:border-white/10",
-                                      "hover:border-[#6D5DF6]/30 hover:bg-[#6D5DF6]/5 transition-all",
-                                      "hover:shadow-lg hover:shadow-[#6D5DF6]/10 hover:-translate-y-0.5"
+                                      "hover:border-brand/30 hover:bg-brand/5 transition-all",
+                                      "hover:shadow-lg hover:shadow-brand/10 hover:-translate-y-0.5"
                                     )}
                                   >
                                     <div
@@ -160,7 +160,7 @@ export function CSLearningSection() {
                                     >
                                       <tool.icon size={18} className="text-white" aria-hidden />
                                     </div>
-                                    <p className="text-sm font-bold text-slate-800 dark:text-white group-hover:text-[#6D5DF6] transition-colors">
+                                    <p className="text-sm font-bold text-slate-800 dark:text-white group-hover:text-brand transition-colors">
                                       {tool.name}
                                     </p>
                                     <p className="text-xs text-slate-400 mt-1 leading-relaxed">{tool.desc}</p>

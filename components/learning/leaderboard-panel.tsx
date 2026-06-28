@@ -32,7 +32,7 @@ export function LeaderboardPanel() {
             initial={{ opacity: 0, x: -12 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ delay: i * 0.03 }}
-            className={`flex items-center gap-4 p-4 sm:p-5 border-b border-slate-100 dark:border-white/5 last:border-0 ${entry.id === "you" ? "bg-[#6D5DF6]/5" : ""}`}
+            className={`flex items-center gap-4 p-4 sm:p-5 border-b border-slate-100 dark:border-white/5 last:border-0 ${entry.id === "you" ? "bg-brand/5" : ""}`}
           >
             <div className="w-8 text-center font-bold text-slate-400">
               {i === 0 ? <Medal className="text-amber-500 mx-auto" size={20} /> : i === 1 ? <Medal className="text-slate-400 mx-auto" size={20} /> : i === 2 ? <Medal className="text-amber-700 mx-auto" size={20} /> : i + 1}
@@ -42,7 +42,7 @@ export function LeaderboardPanel() {
               {entry.university && <p className="text-xs text-slate-400">{entry.university} · {entry.department}</p>}
             </div>
             <div className="text-right shrink-0">
-              <p className="font-bold text-[#6D5DF6] tabular-nums">{entry.score.toLocaleString()}</p>
+              <p className="font-bold text-brand tabular-nums">{entry.score.toLocaleString()}</p>
               <p className="text-xs text-slate-400 flex items-center gap-1 justify-end"><Flame size={10} /> {entry.streak}d · {entry.examsTaken} exams</p>
             </div>
           </motion.div>

@@ -29,19 +29,19 @@ export function PortfolioClient() {
           <div className="glass-card p-5 space-y-4">
             <div>
               <label className="text-xs font-bold uppercase text-slate-500 mb-2 block">Name</label>
-              <input value={name} onChange={(e) => setName(e.target.value)} className="w-full rounded-xl border border-slate-200 dark:border-white/10 bg-white dark:bg-white/5 p-3 text-sm min-h-[44px] outline-none focus:border-[#6D5DF6]/50" />
+              <input value={name} onChange={(e) => setName(e.target.value)} className="w-full rounded-xl border border-slate-200 dark:border-white/10 bg-white dark:bg-white/5 p-3 text-sm min-h-[44px] outline-none focus:border-brand/50" />
             </div>
             <div>
               <label className="text-xs font-bold uppercase text-slate-500 mb-2 block">Title</label>
-              <input value={title} onChange={(e) => setTitle(e.target.value)} className="w-full rounded-xl border border-slate-200 dark:border-white/10 bg-white dark:bg-white/5 p-3 text-sm min-h-[44px] outline-none focus:border-[#6D5DF6]/50" />
+              <input value={title} onChange={(e) => setTitle(e.target.value)} className="w-full rounded-xl border border-slate-200 dark:border-white/10 bg-white dark:bg-white/5 p-3 text-sm min-h-[44px] outline-none focus:border-brand/50" />
             </div>
             <div>
               <label className="text-xs font-bold uppercase text-slate-500 mb-2 block">Bio</label>
-              <textarea value={bio} onChange={(e) => setBio(e.target.value)} className="w-full rounded-xl border border-slate-200 dark:border-white/10 bg-white dark:bg-white/5 p-3 text-sm min-h-[80px] outline-none focus:border-[#6D5DF6]/50" />
+              <textarea value={bio} onChange={(e) => setBio(e.target.value)} className="w-full rounded-xl border border-slate-200 dark:border-white/10 bg-white dark:bg-white/5 p-3 text-sm min-h-[80px] outline-none focus:border-brand/50" />
             </div>
             <div>
               <label className="text-xs font-bold uppercase text-slate-500 mb-2 block">GitHub</label>
-              <input value={github} onChange={(e) => setGithub(e.target.value)} className="w-full rounded-xl border border-slate-200 dark:border-white/10 bg-white dark:bg-white/5 p-3 text-sm min-h-[44px] outline-none focus:border-[#6D5DF6]/50" />
+              <input value={github} onChange={(e) => setGithub(e.target.value)} className="w-full rounded-xl border border-slate-200 dark:border-white/10 bg-white dark:bg-white/5 p-3 text-sm min-h-[44px] outline-none focus:border-brand/50" />
             </div>
             <div>
               <label className="text-xs font-bold uppercase text-slate-500 mb-2 block">Theme</label>
@@ -55,7 +55,7 @@ export function PortfolioClient() {
               <label className="text-xs font-bold uppercase text-slate-500 mb-2 block">Sections</label>
               <div className="flex flex-wrap gap-2">
                 {SECTIONS.map((s) => (
-                  <button key={s} type="button" onClick={() => toggleSection(s)} className={`px-3 py-2 rounded-xl text-sm font-medium min-h-[44px] ${enabled.includes(s) ? "bg-[#6D5DF6]/10 text-[#6D5DF6] border border-[#6D5DF6]/30" : "bg-slate-100 dark:bg-white/5 text-slate-500"}`}>{s}</button>
+                  <button key={s} type="button" onClick={() => toggleSection(s)} className={`px-3 py-2 rounded-xl text-sm font-medium min-h-[44px] ${enabled.includes(s) ? "bg-brand/10 text-brand border border-brand/30" : "bg-slate-100 dark:bg-white/5 text-slate-500"}`}>{s}</button>
                 ))}
               </div>
             </div>
@@ -67,7 +67,7 @@ export function PortfolioClient() {
           <div className={`rounded-2xl p-6 sm:p-8 border ${darkMode ? "bg-[#0F172A] text-white border-white/10" : "bg-white text-slate-900 border-slate-200"}`}>
             <p className="text-xs text-slate-400 mb-4">{theme} Theme Preview</p>
             <h2 className="text-2xl font-extrabold mb-1">{name}</h2>
-            <p className="text-[#6D5DF6] font-medium mb-3">{title}</p>
+            <p className="text-brand font-medium mb-3">{title}</p>
             <p className={`text-sm mb-6 ${darkMode ? "text-slate-400" : "text-slate-600"}`}>{bio}</p>
             <div className="flex items-center gap-2 text-sm mb-6">
               <Github size={16} /> {github}

@@ -4,7 +4,7 @@ import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { CheckCircle, Mail, Sparkles } from "lucide-react";
 import { useTranslation } from "@/lib/i18n/provider";
-import { spacing, animation, card, button } from "@/lib/design-system";
+import { spacing, animation, card, button, sectionBg } from "@/lib/design-system";
 import { SectionHeader } from "../v4/section-header";
 import { cn } from "@/lib/utils";
 
@@ -23,7 +23,7 @@ export function NewsletterSection() {
   };
 
   return (
-    <section className={cn(spacing.section, "relative bg-background")}>
+    <section className={cn(spacing.section, sectionBg.glass, "relative")}>
       <div className="blur-orb w-[400px] h-[400px] bg-brand/10 top-0 right-0" aria-hidden />
       <div className={cn(spacing.container, "relative max-w-2xl")}>
         <SectionHeader

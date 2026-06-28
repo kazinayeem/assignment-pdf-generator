@@ -9,7 +9,7 @@ import { SectionHeader } from "./section-header";
 export function PricingSection() {
   return (
     <section className="section-padding relative bg-white dark:bg-slate-900/50">
-      <div className="blur-orb w-[400px] h-[400px] bg-[#6D5DF6]/10 -top-20 left-1/2 -translate-x-1/2" aria-hidden />
+      <div className="blur-orb w-[400px] h-[400px] bg-brand/10 -top-20 left-1/2 -translate-x-1/2" aria-hidden />
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative">
         <SectionHeader
           badge="Pricing"
@@ -27,16 +27,16 @@ export function PricingSection() {
         >
           {/* Best Value badge */}
           <div className="absolute -top-4 left-1/2 -translate-x-1/2 z-10">
-            <div className="inline-flex items-center gap-1.5 px-4 py-1.5 rounded-full bg-gradient-to-r from-[#6D5DF6] to-[#8B5CF6] text-white text-sm font-bold shadow-lg shadow-[#6D5DF6]/30">
+            <div className="inline-flex items-center gap-1.5 px-4 py-1.5 rounded-full bg-gradient-to-r from-brand to-brand-secondary text-white text-sm font-bold shadow-lg shadow-brand/30">
               <Star size={14} className="fill-white" aria-hidden />
               Best Value
             </div>
           </div>
 
-          <div className="gradient-border rounded-3xl p-[2px] shadow-2xl shadow-[#6D5DF6]/20">
+          <div className="gradient-border rounded-3xl p-[2px] shadow-2xl shadow-brand/20">
             <div className="rounded-[22px] bg-gradient-to-br from-[#0F172A] via-[#1e1b4b] to-[#0F172A] p-8 sm:p-12 text-center text-white relative overflow-hidden">
-              <div className="blur-orb w-[200px] h-[200px] bg-[#6D5DF6]/20 top-0 right-0" aria-hidden />
-              <div className="blur-orb w-[200px] h-[200px] bg-[#06B6D4]/15 bottom-0 left-0" aria-hidden />
+              <div className="blur-orb w-[200px] h-[200px] bg-brand/20 top-0 right-0" aria-hidden />
+              <div className="blur-orb w-[200px] h-[200px] bg-brand-accent/15 bottom-0 left-0" aria-hidden />
 
               <div className="relative z-10">
                 <p className="text-sm font-medium text-slate-400 mb-2">Student Plan</p>
@@ -66,7 +66,7 @@ export function PricingSection() {
 
                 <div className="flex flex-col sm:flex-row gap-3 justify-center">
                   <Link href="/assignment" className="w-full sm:w-auto">
-                    <button className="btn-premium w-full sm:w-auto bg-white text-[#6D5DF6] px-8 py-4 rounded-2xl font-bold text-base hover:bg-slate-50 transition shadow-xl cursor-pointer min-h-[44px]">
+                    <button className="btn-premium w-full sm:w-auto bg-white text-brand px-8 py-4 rounded-2xl font-bold text-base hover:bg-slate-50 transition shadow-xl cursor-pointer min-h-[44px]">
                       Get Started Free
                     </button>
                   </Link>

@@ -14,7 +14,7 @@ export function UniversitySchema({ university }: { university: University }) {
       addressCountry: "BD",
     },
     foundingDate: String(university.established),
-    numberOfStudents: university.studentPopulation,
+    ...(university.studentPopulation != null ? { numberOfStudents: university.studentPopulation } : {}),
     sameAs: [university.website, university.facebook, university.linkedin].filter(Boolean),
   };
 

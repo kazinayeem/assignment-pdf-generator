@@ -29,6 +29,7 @@ export type ToolItem = {
   icon: LucideIcon;
   desc: string;
   color: string;
+  tag?: "new" | "popular" | "beta";
 };
 
 export type CategoryItem = {
@@ -56,25 +57,25 @@ export const ALL_TOOLS: ToolItem[] = [
 ];
 
 export const FEATURES: ToolItem[] = [
-  { name: "Assignment Cover", href: "/assignment", icon: FileText, desc: "Generate official DIU covers in seconds with auto-filled student profiles.", color: "from-[#6D5DF6] to-[#8B5CF6]" },
-  { name: "CV Builder", href: "/cv-builder", icon: FilePlus, desc: "Build ATS-friendly Europass-style CVs optimized for recruiters.", color: "from-emerald-500 to-teal-600" },
-  { name: "Lab Report", href: "/lab-report", icon: BookOpen, desc: "Create professionally formatted lab reports matching DIU standards.", color: "from-violet-500 to-purple-600" },
+  { name: "Assignment Cover", href: "/assignment", icon: FileText, desc: "Generate official DIU covers in seconds with auto-filled student profiles.", color: "from-brand to-brand-secondary", tag: "popular" as const },
+  { name: "CV Builder", href: "/cv-builder", icon: FilePlus, desc: "Build ATS-friendly Europass-style CVs optimized for recruiters.", color: "from-success to-emerald-600", tag: "new" as const },
+  { name: "Lab Report", href: "/lab-report", icon: BookOpen, desc: "Create professionally formatted lab reports matching DIU standards.", color: "from-brand-secondary to-violet-600" },
 ];
 
 export const CATEGORIES: CategoryItem[] = [
-  { name: "Core CS", tools: ["Operating Systems", "Data Structures", "Algorithms", "Computer Networks"], icon: BrainCircuit, color: "from-[#6D5DF6] to-[#8B5CF6]", accent: "#6D5DF6" },
-  { name: "Systems", tools: ["Database Systems", "Cyber Security", "Computer Arch.", "Theory of Comp."], icon: Cpu, color: "from-cyan-500 to-[#06B6D4]", accent: "#06B6D4" },
-  { name: "Development", tools: ["Software Eng.", "Programming", "Web Development"], icon: Code2, color: "from-emerald-500 to-teal-600", accent: "#22C55E" },
-  { name: "Specialized", tools: ["Data Science", "DevOps"], icon: Zap, color: "from-amber-500 to-[#F59E0B]", accent: "#F59E0B" },
+  { name: "Core CS", tools: ["Operating Systems", "Data Structures", "Algorithms", "Computer Networks"], icon: BrainCircuit, color: "from-brand to-brand-secondary", accent: "var(--brand)" },
+  { name: "Systems", tools: ["Database Systems", "Cyber Security", "Computer Arch.", "Theory of Comp."], icon: Cpu, color: "from-cyan-500 to-brand-accent", accent: "var(--cf-accent)" },
+  { name: "Development", tools: ["Software Eng.", "Programming", "Web Development"], icon: Code2, color: "from-success to-emerald-600", accent: "var(--cf-success)" },
+  { name: "Specialized", tools: ["Data Science", "DevOps"], icon: Zap, color: "from-warning to-amber-600", accent: "var(--cf-warning)" },
 ];
 
 export const WHY_CHOOSE = [
-  { icon: Shield, title: "Official DIU Formats", desc: "Professionally formatted covers and reports matching DIU standards.", color: "from-[#6D5DF6] to-[#8B5CF6]" },
-  { icon: Zap, title: "One-Click Generation", desc: "Generate PDFs instantly with auto-saved student profile data.", color: "from-amber-500 to-orange-600" },
-  { icon: Users, title: "Auto-Saved Profiles", desc: "Your details are saved automatically — never re-enter info.", color: "from-[#22C55E] to-emerald-600" },
-  { icon: Star, title: "ATS-Friendly CV", desc: "Build CVs optimized for applicant tracking systems.", color: "from-violet-500 to-purple-600" },
+  { icon: Shield, title: "Official DIU Formats", desc: "Professionally formatted covers and reports matching DIU standards.", color: "from-brand to-brand-secondary" },
+  { icon: Zap, title: "One-Click Generation", desc: "Generate PDFs instantly with auto-saved student profile data.", color: "from-warning to-orange-600" },
+  { icon: Users, title: "Auto-Saved Profiles", desc: "Your details are saved automatically — never re-enter info.", color: "from-success to-emerald-600" },
+  { icon: Star, title: "ATS-Friendly CV", desc: "Build CVs optimized for applicant tracking systems.", color: "from-brand-secondary to-violet-600" },
   { icon: Rocket, title: "Fast Academic Workflow", desc: "From cover to submission in under 60 seconds.", color: "from-pink-500 to-rose-600" },
-  { icon: BrainCircuit, title: "Interactive CS Tools", desc: "Master DSA, OS, Algorithms, and more with simulators.", color: "from-[#06B6D4] to-cyan-600" },
+  { icon: BrainCircuit, title: "Interactive CS Tools", desc: "Master DSA, OS, Algorithms, and more with simulators.", color: "from-brand-accent to-cyan-600" },
   { icon: Smartphone, title: "Mobile Responsive", desc: "Full functionality on desktop, tablet, and phone.", color: "from-sky-500 to-blue-600" },
   { icon: Cloud, title: "Cloud-Saved Data", desc: "Access your documents anywhere, anytime.", color: "from-indigo-500 to-purple-600" },
 ];

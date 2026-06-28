@@ -40,7 +40,7 @@ export function SubjectCard({ subject, index = 0 }: { subject: SubjectMeta; inde
       transition={{ delay: index * 0.05, duration: 0.4 }}
     >
       <div className="glass-card h-full p-6 sm:p-8 flex flex-col group relative overflow-hidden">
-        <div className="absolute -right-8 -top-8 w-32 h-32 rounded-full bg-[#6D5DF6]/5 blur-2xl group-hover:bg-[#6D5DF6]/10 transition-colors" aria-hidden />
+        <div className="absolute -right-8 -top-8 w-32 h-32 rounded-full bg-brand/5 blur-2xl group-hover:bg-brand/10 transition-colors" aria-hidden />
 
         <div className="flex items-start justify-between mb-6 relative">
           <div
@@ -61,7 +61,7 @@ export function SubjectCard({ subject, index = 0 }: { subject: SubjectMeta; inde
           >
             <Bookmark
               size={18}
-              className={cn(bookmarked ? "fill-[#6D5DF6] text-[#6D5DF6]" : "text-slate-400")}
+              className={cn(bookmarked ? "fill-brand text-brand" : "text-slate-400")}
             />
           </button>
         </div>

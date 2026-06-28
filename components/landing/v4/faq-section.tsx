@@ -69,7 +69,7 @@ export function FaqSection() {
   return (
     <section className={cn(spacing.section, sectionBg.mesh, "relative")}>
       <div className="blur-orb w-[350px] h-[350px] bg-brand/8 bottom-0 right-1/4" aria-hidden />
-      <div className={cn(spacing.container, "relative max-w-3xl")}>
+      <div className={cn(spacing.container, "relative max-w-4xl")}>
         <SectionHeader
           title={t("title")}
           subtitle={t("subtitle")}
@@ -135,7 +135,7 @@ export function FaqSection() {
         )}
 
         {/* Accordion */}
-        <div className="space-y-2.5">
+        <div className={cn(card.base, "p-3 sm:p-4 space-y-2")}>
           {filtered.length === 0 ? (
             <div className={cn(card.base, "text-center py-14 px-6")} role="status">
               <HelpCircle size={40} className="text-brand/30 mx-auto mb-4" aria-hidden />
@@ -153,9 +153,8 @@ export function FaqSection() {
                   {...animation.fadeUp}
                   {...animation.stagger(i % 8)}
                   className={cn(
-                    card.base,
-                    "overflow-hidden transition-colors",
-                    isOpen && "border-brand/25 shadow-md shadow-brand/5"
+                    "overflow-hidden rounded-xl border border-border/60 bg-background/60 transition-colors",
+                    isOpen && "border-brand/25 shadow-md shadow-brand/5 bg-background"
                   )}
                 >
                   <button

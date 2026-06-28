@@ -5,7 +5,7 @@ import Link from "next/link";
 import { motion } from "framer-motion";
 import { ArrowRight, Search, Sparkles, TrendingUp } from "lucide-react";
 import { useTranslation } from "@/lib/i18n/provider";
-import { spacing, animation, card, badge, button } from "@/lib/design-system";
+import { spacing, animation, card, badge, button, sectionBg } from "@/lib/design-system";
 import { ALL_TOOLS, CATEGORIES } from "@/lib/landing-data";
 import { SectionHeader } from "./section-header";
 import { SectionCta } from "../v5/section-cta";
@@ -38,7 +38,7 @@ export function LearningExplorer() {
   }, [search, activeCategory]);
 
   return (
-    <section className={cn(spacing.section, "relative bg-surface-page")}>
+    <section className={cn(spacing.section, sectionBg.surface, "relative")}>
       <div className="blur-orb w-[400px] h-[400px] bg-brand/10 bottom-0 left-0" aria-hidden />
       <div className={cn(spacing.container, "relative")}>
         <SectionHeader

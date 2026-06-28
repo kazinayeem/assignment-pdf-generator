@@ -16,7 +16,7 @@ export function ProgressBar({ value, className, showLabel, size = "md" }: Progre
       {showLabel && (
         <div className="flex justify-between text-xs text-slate-500 dark:text-slate-400 mb-1.5">
           <span>Progress</span>
-          <span className="font-semibold text-[#6D5DF6]">{clamped}%</span>
+          <span className="font-semibold text-brand">{clamped}%</span>
         </div>
       )}
       <div
@@ -30,7 +30,7 @@ export function ProgressBar({ value, className, showLabel, size = "md" }: Progre
         aria-valuemax={100}
       >
         <div
-          className="h-full rounded-full bg-gradient-to-r from-[#6D5DF6] to-[#8B5CF6] transition-all duration-700 ease-out"
+          className="h-full rounded-full bg-gradient-to-r from-brand to-brand-secondary transition-all duration-700 ease-out"
           style={{ width: `${clamped}%` }}
         />
       </div>

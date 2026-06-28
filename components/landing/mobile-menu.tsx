@@ -30,7 +30,7 @@ export function MobileMenu({ open, onClose }: MobileMenuProps) {
             animate={{ x: 0 }}
             exit={{ x: "-100%" }}
             transition={{ type: "spring", damping: 28, stiffness: 300 }}
-            className="absolute left-0 top-0 h-full w-[min(320px,85vw)] bg-white dark:bg-[#0F172A] shadow-2xl flex flex-col"
+            className="absolute left-0 top-0 h-full w-[min(320px,85vw)] bg-white dark:bg-background shadow-2xl flex flex-col"
           >
             <div className="p-5 border-b border-slate-100 dark:border-white/10 flex items-center justify-between">
               <Image
@@ -82,7 +82,7 @@ export function MobileMenu({ open, onClose }: MobileMenuProps) {
             </nav>
             <div className="p-4 border-t border-slate-100 dark:border-white/10">
               <Link href="/login" onClick={onClose} className="block w-full">
-                <button className="btn-premium flex items-center justify-center gap-2 w-full py-3.5 rounded-2xl bg-gradient-to-r from-[#6D5DF6] to-[#8B5CF6] text-white text-sm font-bold hover:shadow-lg hover:shadow-[#6D5DF6]/25 transition cursor-pointer min-h-[44px]">
+                <button className="btn-premium flex items-center justify-center gap-2 w-full py-3.5 rounded-2xl bg-gradient-to-r from-brand to-brand-secondary text-white text-sm font-bold hover:shadow-lg hover:shadow-brand/25 transition cursor-pointer min-h-[44px]">
                   <LogIn size={16} /> Sign In
                 </button>
               </Link>

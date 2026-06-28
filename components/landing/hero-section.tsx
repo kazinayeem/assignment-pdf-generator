@@ -16,9 +16,9 @@ export function HeroSection() {
     <section className="relative overflow-hidden gradient-hero text-white pt-24 lg:pt-28">
       {/* Parallax background */}
       <div className="absolute inset-0 overflow-hidden" aria-hidden>
-        <div className="blur-orb w-[500px] h-[500px] bg-[#6D5DF6]/30 -top-32 -left-32 animate-pulse" />
-        <div className="blur-orb w-[400px] h-[400px] bg-[#8B5CF6]/25 top-20 -right-20 animate-pulse" style={{ animationDelay: "2s" }} />
-        <div className="blur-orb w-[350px] h-[350px] bg-[#06B6D4]/20 bottom-0 left-1/3 animate-pulse" style={{ animationDelay: "4s" }} />
+        <div className="blur-orb w-[500px] h-[500px] bg-brand/30 -top-32 -left-32 animate-pulse" />
+        <div className="blur-orb w-[400px] h-[400px] bg-brand-secondary/25 top-20 -right-20 animate-pulse" style={{ animationDelay: "2s" }} />
+        <div className="blur-orb w-[350px] h-[350px] bg-brand-accent/20 bottom-0 left-1/3 animate-pulse" style={{ animationDelay: "4s" }} />
         <div className="absolute inset-0 bg-[radial-gradient(rgba(255,255,255,0.04)_1px,transparent_1px)] bg-[length:32px_32px]" />
         <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-[#0F172A]/80" />
       </div>
@@ -50,7 +50,7 @@ export function HeroSection() {
 
             <div className="flex flex-col sm:flex-row gap-3 mb-8">
               <Link href="/tools" className="w-full sm:w-auto">
-                <button className="btn-premium w-full sm:w-auto flex items-center justify-center gap-2 bg-white text-[#6D5DF6] px-8 py-4 rounded-2xl font-bold text-base hover:bg-slate-50 transition shadow-xl shadow-black/20 cursor-pointer min-h-[44px]">
+                <button className="btn-premium w-full sm:w-auto flex items-center justify-center gap-2 bg-white text-brand px-8 py-4 rounded-2xl font-bold text-base hover:bg-slate-50 transition shadow-xl shadow-black/20 cursor-pointer min-h-[44px]">
                   Explore Tools <ArrowRight size={18} aria-hidden />
                 </button>
               </Link>
@@ -117,7 +117,7 @@ export function HeroSection() {
                       className={`group relative p-5 rounded-3xl bg-white/8 backdrop-blur-md border border-white/12 hover:bg-white/15 hover:border-white/20 transition-all cursor-pointer shadow-lg ${i % 2 === 0 ? "animate-float" : "animate-float-delayed"}`}
                     >
                       <div
-                        className={`w-12 h-12 rounded-2xl bg-gradient-to-br ${card.color} flex items-center justify-center mb-4 shadow-lg group-hover:shadow-xl group-hover:shadow-[#6D5DF6]/20 transition-shadow`}
+                        className={`w-12 h-12 rounded-2xl bg-gradient-to-br ${card.color} flex items-center justify-center mb-4 shadow-lg group-hover:shadow-xl group-hover:shadow-brand/20 transition-shadow`}
                       >
                         <card.icon size={22} className="text-white" aria-hidden />
                       </div>
@@ -131,8 +131,8 @@ export function HeroSection() {
             </div>
 
             {/* Decorative floating elements */}
-            <div className="absolute -top-6 -right-6 w-24 h-24 rounded-2xl bg-gradient-to-br from-[#6D5DF6]/40 to-[#8B5CF6]/40 blur-xl animate-float" aria-hidden />
-            <div className="absolute -bottom-4 -left-4 w-20 h-20 rounded-full bg-[#06B6D4]/30 blur-2xl animate-float-delayed" aria-hidden />
+            <div className="absolute -top-6 -right-6 w-24 h-24 rounded-2xl bg-gradient-to-br from-brand/40 to-brand-secondary/40 blur-xl animate-float" aria-hidden />
+            <div className="absolute -bottom-4 -left-4 w-20 h-20 rounded-full bg-brand-accent/30 blur-2xl animate-float-delayed" aria-hidden />
           </motion.div>
         </div>
 

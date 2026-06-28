@@ -13,7 +13,7 @@ export function KnowledgeSearchClient() {
     if (!query.trim()) return text;
     const parts = text.split(new RegExp(`(${query.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")})`, "gi"));
     return parts.map((part, i) =>
-      part.toLowerCase() === query.toLowerCase() ? <mark key={i} className="bg-[#6D5DF6]/20 text-[#6D5DF6] rounded px-0.5">{part}</mark> : part
+      part.toLowerCase() === query.toLowerCase() ? <mark key={i} className="bg-brand/20 text-brand rounded px-0.5">{part}</mark> : part
     );
   };
 
@@ -26,7 +26,7 @@ export function KnowledgeSearchClient() {
           value={query}
           onChange={(e) => setQuery(e.target.value)}
           placeholder="Search titles, questions, companies, content..."
-          className="w-full pl-12 pr-4 py-4 rounded-2xl border border-slate-200 dark:border-white/10 bg-white dark:bg-white/5 text-base outline-none focus:border-[#6D5DF6]/50 min-h-[44px]"
+          className="w-full pl-12 pr-4 py-4 rounded-2xl border border-slate-200 dark:border-white/10 bg-white dark:bg-white/5 text-base outline-none focus:border-brand/50 min-h-[44px]"
           autoFocus
         />
       </div>
@@ -40,9 +40,9 @@ export function KnowledgeSearchClient() {
 
       <div className="space-y-3">
         {results.map((r) => (
-          <Link key={r.id} href={r.route} className="glass-card p-4 block hover:border-[#6D5DF6]/30 transition-colors">
+          <Link key={r.id} href={r.route} className="glass-card p-4 block hover:border-brand/30 transition-colors">
             <div className="flex items-start gap-3">
-              <Building2 size={18} className="text-[#6D5DF6] shrink-0 mt-0.5" />
+              <Building2 size={18} className="text-brand shrink-0 mt-0.5" />
               <div>
                 <p className="font-semibold text-slate-800 dark:text-slate-100">{highlight(r.title)}</p>
                 <p className="text-sm text-slate-500 mt-1 line-clamp-2">{highlight(r.summary)}</p>

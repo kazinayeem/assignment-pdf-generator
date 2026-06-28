@@ -52,12 +52,12 @@ export function DevToolsLanding() {
 
   return (
     <div className="min-h-full">
-      <section className="relative overflow-hidden border-b border-[#E5E7EB] dark:border-white/10">
-        <div className="blur-orb w-[500px] h-[500px] bg-[#06B6D4]/10 -top-40 left-0" aria-hidden />
-        <div className="blur-orb w-[400px] h-[400px] bg-[#6D5DF6]/10 -top-20 right-0" aria-hidden />
+      <section className="relative overflow-hidden border-b border-border dark:border-white/10">
+        <div className="blur-orb w-[500px] h-[500px] bg-brand-accent/10 -top-40 left-0" aria-hidden />
+        <div className="blur-orb w-[400px] h-[400px] bg-brand/10 -top-20 right-0" aria-hidden />
         <div className="max-w-[1280px] mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16 lg:py-20">
           <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }}>
-            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#6D5DF6]/10 text-[#6D5DF6] text-sm font-semibold mb-4 border border-[#6D5DF6]/20">
+            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-brand/10 text-brand text-sm font-semibold mb-4 border border-brand/20">
               <Sparkles size={14} aria-hidden />
               {ALL_DEVTOOLS.length}+ Developer Utilities
             </div>
@@ -74,7 +74,7 @@ export function DevToolsLanding() {
                 onChange={(e) => setSearch(e.target.value)}
                 placeholder="Search developer tools..."
                 aria-label="Search developer tools"
-                className="w-full pl-12 pr-4 py-4 rounded-2xl bg-white dark:bg-white/5 border border-[#E5E7EB] dark:border-white/10 text-base outline-none focus:border-[#6D5DF6]/50 focus:ring-2 focus:ring-[#6D5DF6]/20 min-h-[44px] shadow-sm"
+                className="w-full pl-12 pr-4 py-4 rounded-2xl bg-white dark:bg-white/5 border border-border dark:border-white/10 text-base outline-none focus:border-brand/50 focus:ring-2 focus:ring-brand/20 min-h-[44px] shadow-sm"
               />
             </div>
           </motion.div>
@@ -113,7 +113,7 @@ export function DevToolsLanding() {
         {filter === "all" && !search && favoriteTools.length > 0 && (
           <section>
             <div className="flex items-center gap-2 mb-6">
-              <Bookmark size={20} className="text-[#6D5DF6]" aria-hidden />
+              <Bookmark size={20} className="text-brand" aria-hidden />
               <h2 className="text-xl font-bold text-slate-900 dark:text-white">Favorites</h2>
             </div>
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">

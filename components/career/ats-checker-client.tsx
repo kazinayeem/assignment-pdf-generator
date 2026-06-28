@@ -113,7 +113,7 @@ export function ATSCheckerClient() {
               value={pasteText}
               onChange={(e) => setPasteText(e.target.value)}
               placeholder="Paste your resume content here..."
-              className="w-full min-h-[200px] rounded-xl border border-slate-200 dark:border-white/10 bg-white dark:bg-white/5 p-4 text-sm outline-none focus:border-[#6D5DF6]/50"
+              className="w-full min-h-[200px] rounded-xl border border-slate-200 dark:border-white/10 bg-white dark:bg-white/5 p-4 text-sm outline-none focus:border-brand/50"
             />
           </div>
         )}
@@ -121,7 +121,7 @@ export function ATSCheckerClient() {
         {displayScore !== undefined && (
           <motion.div initial={{ opacity: 0, scale: 0.95 }} animate={{ opacity: 1, scale: 1 }} className="glass-card p-6 sm:p-8 text-center">
             <p className="text-sm text-slate-500 mb-2">ATS Score</p>
-            <p className="text-5xl sm:text-6xl font-extrabold bg-gradient-to-r from-[#6D5DF6] to-[#06B6D4] bg-clip-text text-transparent tabular-nums">
+            <p className="text-5xl sm:text-6xl font-extrabold bg-gradient-to-r from-brand to-brand-accent bg-clip-text text-transparent tabular-nums">
               {displayScore}
               <span className="text-2xl text-slate-400">/100</span>
             </p>

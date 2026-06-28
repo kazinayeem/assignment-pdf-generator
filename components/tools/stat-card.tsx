@@ -14,7 +14,7 @@ type StatCardProps = {
   animate?: boolean;
 };
 
-export function StatCard({ label, value, icon: Icon, gradient = "from-[#6D5DF6] to-[#8B5CF6]", className, animate = true }: StatCardProps) {
+export function StatCard({ label, value, icon: Icon, gradient = "from-brand to-brand-secondary", className, animate = true }: StatCardProps) {
   const numValue = typeof value === "string" ? parseInt(value.replace(/\D/g, ""), 10) || 0 : value;
   const suffix = typeof value === "string" ? value.replace(/[\d.]/g, "") : "";
   const spring = useSpring(0, { stiffness: 60, damping: 20 });

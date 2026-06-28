@@ -18,7 +18,7 @@ export function KnowledgeQuizPanel({ quiz, title }: { quiz: KnowledgeQuizItem[];
         {quiz.map((q, i) => (
           <div key={q.id} className="p-4 rounded-xl bg-slate-50 dark:bg-white/5">
             <div className="flex gap-2 mb-2">
-              <span className="text-xs px-2 py-0.5 rounded-full bg-[#6D5DF6]/10 text-[#6D5DF6] capitalize">{q.type}</span>
+              <span className="text-xs px-2 py-0.5 rounded-full bg-brand/10 text-brand capitalize">{q.type}</span>
               <span className="text-xs px-2 py-0.5 rounded-full bg-slate-200 dark:bg-white/10 capitalize">{q.difficulty}</span>
             </div>
             <p className="font-medium text-sm mb-3">{i + 1}. {q.question}</p>
@@ -32,7 +32,7 @@ export function KnowledgeQuizPanel({ quiz, title }: { quiz: KnowledgeQuizItem[];
                     className={cn(
                       "w-full text-left px-3 py-2 rounded-lg text-sm min-h-[40px]",
                       revealed.has(q.id) && j === q.answer ? "bg-emerald-500/10 text-emerald-700 border border-emerald-500/30" :
-                      answers[q.id] === j ? "bg-[#6D5DF6]/10 border border-[#6D5DF6]/30" :
+                      answers[q.id] === j ? "bg-brand/10 border border-brand/30" :
                       "bg-white dark:bg-white/5 border border-transparent hover:border-slate-200"
                     )}
                   >
@@ -51,7 +51,7 @@ export function KnowledgeQuizPanel({ quiz, title }: { quiz: KnowledgeQuizItem[];
               </div>
             )}
             {q.type === "flashcard" && (
-              <button type="button" onClick={() => reveal(q.id)} className="text-sm text-[#6D5DF6] font-medium min-h-[44px]">
+              <button type="button" onClick={() => reveal(q.id)} className="text-sm text-brand font-medium min-h-[44px]">
                 {revealed.has(q.id) ? `Answer: ${String(q.answer).slice(0, 200)}` : "Reveal Flashcard"}
               </button>
             )}

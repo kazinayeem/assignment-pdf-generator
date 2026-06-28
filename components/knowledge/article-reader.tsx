@@ -51,7 +51,7 @@ export function ArticleReader({ article }: { article: KnowledgeArticle }) {
         {/* Hero */}
         <div className="mb-8 pb-8 border-b border-slate-200 dark:border-white/10">
           <div className="flex flex-wrap gap-2 mb-4">
-            <span className="text-xs px-3 py-1 rounded-full bg-[#6D5DF6]/10 text-[#6D5DF6] font-semibold capitalize">{CATEGORY_LABELS[article.category] ?? article.category}</span>
+            <span className="text-xs px-3 py-1 rounded-full bg-brand/10 text-brand font-semibold capitalize">{CATEGORY_LABELS[article.category] ?? article.category}</span>
             <span className="text-xs px-3 py-1 rounded-full bg-slate-100 dark:bg-white/5 text-slate-500 capitalize">{article.difficulty}</span>
             {article.company && (
               <span className="text-xs px-3 py-1 rounded-full bg-emerald-500/10 text-emerald-600 flex items-center gap-1">
@@ -68,7 +68,7 @@ export function ArticleReader({ article }: { article: KnowledgeArticle }) {
             {article.lastUpdated && <span>Updated {new Date(article.lastUpdated).toLocaleDateString()}</span>}
           </div>
           <div className="flex flex-wrap gap-2 mt-5">
-            <button type="button" onClick={() => toggleBookmark(article.route)} className={cn("inline-flex items-center gap-2 px-4 py-2 rounded-xl text-sm font-medium min-h-[44px] border", bookmarked ? "border-[#6D5DF6] text-[#6D5DF6] bg-[#6D5DF6]/5" : "border-slate-200 dark:border-white/10")}>
+            <button type="button" onClick={() => toggleBookmark(article.route)} className={cn("inline-flex items-center gap-2 px-4 py-2 rounded-xl text-sm font-medium min-h-[44px] border", bookmarked ? "border-brand text-brand bg-brand/5" : "border-slate-200 dark:border-white/10")}>
               <Bookmark size={16} className={bookmarked ? "fill-current" : ""} /> Bookmark
             </button>
             <button type="button" onClick={() => { markRead(article.route); toast.success("Marked as read"); }} className="inline-flex items-center gap-2 px-4 py-2 rounded-xl text-sm font-medium min-h-[44px] border border-slate-200 dark:border-white/10">
@@ -124,7 +124,7 @@ export function ArticleReader({ article }: { article: KnowledgeArticle }) {
                 const rel = getArticleBySlug(slug);
                 if (!rel) return null;
                 return (
-                  <Link key={slug} href={rel.route} className="glass-card p-4 hover:border-[#6D5DF6]/30 transition-colors">
+                  <Link key={slug} href={rel.route} className="glass-card p-4 hover:border-brand/30 transition-colors">
                     <p className="font-semibold text-sm">{rel.title}</p>
                     <p className="text-xs text-slate-400 mt-1 line-clamp-2">{rel.summary}</p>
                   </Link>
@@ -136,12 +136,12 @@ export function ArticleReader({ article }: { article: KnowledgeArticle }) {
 
         <div className="flex justify-between items-center mt-12 pt-8 border-t border-slate-200 dark:border-white/10 gap-4">
           {prev ? (
-            <Link href={prev.route} className="inline-flex items-center gap-2 text-sm text-[#6D5DF6] hover:underline min-h-[44px] max-w-[45%]">
+            <Link href={prev.route} className="inline-flex items-center gap-2 text-sm text-brand hover:underline min-h-[44px] max-w-[45%]">
               <ArrowLeft size={14} className="shrink-0" /><span className="truncate">{prev.title}</span>
             </Link>
           ) : <div />}
           {next ? (
-            <Link href={next.route} className="inline-flex items-center gap-2 text-sm text-[#6D5DF6] hover:underline min-h-[44px] max-w-[45%] text-right">
+            <Link href={next.route} className="inline-flex items-center gap-2 text-sm text-brand hover:underline min-h-[44px] max-w-[45%] text-right">
               <span className="truncate">{next.title}</span><ArrowRight size={14} className="shrink-0" />
             </Link>
           ) : <div />}

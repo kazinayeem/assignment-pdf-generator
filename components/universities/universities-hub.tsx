@@ -14,7 +14,6 @@ import {
 } from "@/lib/universities";
 import type { Division, UniversityFilters, UniversityType } from "@/lib/universities/types";
 import { UniversityCard } from "./university-card";
-import { cn } from "@/lib/utils";
 
 const FEATURED_SLUGS = ["buet", "university-of-dhaka", "brac-university", "nsu", "diu", "uiu", "sust", "ruet"];
 

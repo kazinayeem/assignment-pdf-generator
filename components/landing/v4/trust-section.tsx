@@ -17,7 +17,7 @@ import {
   Activity,
 } from "lucide-react";
 import { useTranslation } from "@/lib/i18n/provider";
-import { spacing, animation, card } from "@/lib/design-system";
+import { spacing, animation, card, sectionBg } from "@/lib/design-system";
 import { SectionHeader } from "./section-header";
 import { cn } from "@/lib/utils";
 
@@ -93,7 +93,7 @@ export function TrustSection() {
   const { t } = useTranslation("home");
 
   return (
-    <section className={cn(spacing.section, "relative bg-surface-page")}>
+    <section className={cn(spacing.section, sectionBg.surface, "relative")}>
       <div className="blur-orb w-[400px] h-[400px] bg-brand/10 top-0 left-1/4" aria-hidden />
       <div className={cn(spacing.container, "relative")}>
         <SectionHeader

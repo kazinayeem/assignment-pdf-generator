@@ -1,5 +1,6 @@
 import type {
   AdmissionInfo,
+  Division,
   TuitionInfo,
   University,
   UniversityCareer,
@@ -119,7 +120,7 @@ function defaultFacilities(seed: UniversitySeed): UniversityFacilities {
   };
 }
 
-function defaultCareer(shortName: string): UniversityCareer {
+function defaultCareer(_shortName: string): UniversityCareer {
   return {
     employmentRate: 78,
     avgStartingSalary: 35000,
@@ -179,9 +180,35 @@ function websiteFromSlug(slug: string, shortName: string): string {
   return `https://www.${domain}.edu.bd`;
 }
 
+const DIVISIONS: Division[] = ["Dhaka", "Chattogram", "Rajshahi", "Khulna", "Barishal", "Sylhet", "Rangpur", "Mymensingh"];
+
+const DISTRICT_TO_DIVISION: Record<string, Division> = {
+  Dhaka: "Dhaka", Gazipur: "Dhaka", Narayanganj: "Dhaka", Tangail: "Dhaka",
+  Munshiganj: "Dhaka", Manikganj: "Dhaka", Kishoreganj: "Dhaka", Faridpur: "Dhaka",
+  Gopalganj: "Dhaka", Shariatpur: "Dhaka", Jamalpur: "Mymensingh", Mymensingh: "Mymensingh",
+  Netrokona: "Mymensingh", Chattogram: "Chattogram", Chittagong: "Chattogram",
+  Cumilla: "Chattogram", Comilla: "Chattogram", Noakhali: "Chattogram", Feni: "Chattogram",
+  "Cox's Bazar": "Chattogram", Brahmanbaria: "Chattogram", Bandarban: "Chattogram",
+  Rangamati: "Chattogram", Lakshmipur: "Chattogram", Chandpur: "Chattogram",
+  Pirojpur: "Barishal", Patuakhali: "Barishal", Barishal: "Barishal",
+  Jashore: "Khulna", Khulna: "Khulna", Kushtia: "Khulna", Chuadanga: "Khulna",
+  Meherpur: "Khulna", Satkhira: "Khulna", Rajshahi: "Rajshahi", Pabna: "Rajshahi",
+  Natore: "Rajshahi", Bogura: "Rajshahi", Sirajganj: "Rajshahi",
+  Chapainawabganj: "Rajshahi", Naogaon: "Rajshahi", Sylhet: "Sylhet",
+  Sunamganj: "Sylhet", Habiganj: "Sylhet", Rangpur: "Rangpur", Dinajpur: "Rangpur",
+  Thakurgaon: "Rangpur", Nilphamari: "Rangpur", Kurigram: "Rangpur",
+  Lalmonirhat: "Rangpur", Saidpur: "Rangpur",
+};
+
+function normalizeDivision(seed: UniversitySeed): Division {
+  if (DIVISIONS.includes(seed.division as Division)) return seed.division as Division;
+  return DISTRICT_TO_DIVISION[seed.division as string] ?? DISTRICT_TO_DIVISION[seed.district] ?? DISTRICT_TO_DIVISION[seed.city] ?? "Dhaka";
+}
+
 export function buildUniversity(seed: UniversitySeed, enrichment?: Partial<University>): University {
+  const division = normalizeDivision(seed);
   const website = seed.website ?? websiteFromSlug(seed.slug, seed.shortName.toLowerCase());
-  const tags: string[] = [seed.type, seed.division];
+  const tags: string[] = [seed.type, division];
   if (seed.hostel) tags.push("hostel");
   if (seed.eveningProgram) tags.push("evening");
   if (seed.onlineProgram) tags.push("online");
@@ -194,10 +221,10 @@ export function buildUniversity(seed: UniversitySeed, enrichment?: Partial<Unive
     ugcApproved: true,
     established: seed.established,
     specialization: seed.specialization ?? "General",
-    division: seed.division,
+    division,
     district: seed.district,
     city: seed.city,
-    address: `${seed.city}, ${seed.district}, ${seed.division} Division, Bangladesh`,
+    address: `${seed.city}, ${seed.district}, ${division} Division, Bangladesh`,
     website,
     admissionPortal: website,
     email: `info@${seed.shortName.toLowerCase().replace(/[^a-z0-9]/g, "")}.edu.bd`,

@@ -4,7 +4,7 @@ import Link from "next/link";
 import { motion } from "framer-motion";
 import { ArrowRight } from "lucide-react";
 import { useTranslation } from "@/lib/i18n/provider";
-import { spacing, animation, card, button } from "@/lib/design-system";
+import { spacing, animation, card, button, typography, sectionBg } from "@/lib/design-system";
 import { FEATURES, WHY_CHOOSE } from "@/lib/landing-data";
 import { SectionHeader } from "./section-header";
 import { cn } from "@/lib/utils";
@@ -16,7 +16,7 @@ export function FeatureShowcase() {
   const { t } = useTranslation("home");
 
   return (
-    <section className={cn(spacing.section, "relative bg-background")}>
+    <section className={cn(spacing.section, sectionBg.elevated, "relative")}>
       <div className="blur-orb w-[350px] h-[350px] bg-brand-secondary/10 top-10 right-0" aria-hidden />
       <div className={cn(spacing.container, "relative")}>
         <SectionHeader
@@ -45,7 +45,7 @@ export function FeatureShowcase() {
                     >
                       <Icon size={26} className="text-white" aria-hidden />
                     </div>
-                    <h3 className="text-lg font-bold text-foreground mb-2">
+                    <h3 className={cn(typography.cardTitle, "text-foreground mb-2")}>
                       {t(`features.${key}.title`)}
                     </h3>
                     <p className="text-sm text-muted-foreground leading-relaxed flex-1 mb-6">

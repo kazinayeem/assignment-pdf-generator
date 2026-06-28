@@ -13,6 +13,7 @@ import { LanguageSwitcher } from "./language-switcher";
 
 const NAV_ITEMS = [
   { key: "tools", href: "/tools" },
+  { key: "universities", href: "/universities" },
   { key: "interview", href: "/interview" },
   { key: "career", href: "/career" },
   { key: "calculators", href: "/calculators" },

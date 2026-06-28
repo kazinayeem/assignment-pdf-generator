@@ -5,7 +5,7 @@ import Link from "next/link";
 import { motion } from "framer-motion";
 import {
   ExternalLink, MapPin, Mail, Phone, Star, Check, X,
-  BookOpen, DollarSign, GraduationCap, Building, Share2, Bookmark, Printer,
+  Share2, Bookmark, Printer,
 } from "lucide-react";
 import { useTranslation } from "@/lib/i18n/provider";
 import { card, badge, button, animation } from "@/lib/design-system";

@@ -1,10 +1,15 @@
 import type { MetadataRoute } from "next";
 import { getAllRoutes } from "@/lib/knowledge/loader";
+import { getUniversitySlugs } from "@/lib/universities";
 
 const BASE_URL = "https://bornosoft-cover.vercel.app";
 
 const STATIC_ROUTES = [
   "/",
+  "/universities",
+  "/universities/compare",
+  "/universities/calculator",
+  "/universities/recommend",
   "/cv-builder",
   "/lab-report",
   "/routine-builder",
@@ -67,5 +72,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.6,
     }));
 
-  return [...staticEntries, ...knowledgeEntries];
+  const universityEntries = getUniversitySlugs().map((slug) => ({
+    url: `${BASE_URL}/universities/${slug}`,
+    lastModified: now,
+    changeFrequency: "monthly" as const,
+    priority: 0.7,
+  }));
+
+  return [...staticEntries, ...universityEntries, ...knowledgeEntries];
 }

@@ -155,7 +155,7 @@ export type UniversitySeed = {
   type: UniversityType;
   established: number;
   specialization?: string;
-  division: Division;
+  division: Division | string;
   district: string;
   city: string;
   website?: string;

@@ -20,14 +20,14 @@ export function SectionHeader({ badge, title, subtitle, align = "center", classN
       viewport={{ once: true, margin: "-60px" }}
       transition={{ duration: 0.5 }}
       className={cn(
-        "mb-12 sm:mb-16",
+        "mb-10 sm:mb-12",
         align === "center" && "text-center max-w-3xl mx-auto",
         className
       )}
     >
       {badge && <span className={cn(badgeStyles.brand, "mb-4")}>{badge}</span>}
-      <h2 className="text-heading font-extrabold text-foreground mb-4">{title}</h2>
-      {subtitle && <p className="text-base text-muted-foreground leading-relaxed">{subtitle}</p>}
+      <h2 className="text-heading font-extrabold text-foreground mb-3">{title}</h2>
+      {subtitle && <p className="text-body-lg max-w-2xl mx-auto">{subtitle}</p>}
     </motion.div>
   );
 }

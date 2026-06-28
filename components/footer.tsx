@@ -38,6 +38,7 @@ export default function Footer() {
         { label: t("links.cvBuilder"), href: "/cv-builder" },
         { label: t("links.labReport"), href: "/lab-report" },
         { label: t("links.learningTools"), href: "/tools" },
+        { label: t("links.universities"), href: "/universities" },
         { label: t("links.calculators"), href: "/calculators" },
         { label: t("links.devTools"), href: "/developer-tools" },
       ],
@@ -82,12 +83,12 @@ export default function Footer() {
   ];
 
   return (
-    <footer className="bg-brand-dark text-muted-foreground pt-20 pb-8 px-4 sm:px-6 overflow-hidden relative border-t border-border/10">
+    <footer className="bg-brand-dark text-muted-foreground pt-16 pb-8 px-4 sm:px-6 overflow-hidden relative border-t border-border/10">
       <div className="blur-orb w-[400px] h-[400px] bg-brand/10 -top-40 right-0" aria-hidden />
       <div className="blur-orb w-[300px] h-[300px] bg-brand-accent/10 bottom-0 left-0" aria-hidden />
 
       <div className={cn(spacing.container, "relative")}>
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-6 gap-12 lg:gap-8 mb-16">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-6 gap-10 lg:gap-8 mb-12">
           <div className="sm:col-span-2 lg:col-span-2 space-y-6">
             <div className="flex items-center gap-3">
               <div className="w-11 h-11 gradient-primary rounded-2xl flex items-center justify-center shadow-lg shadow-brand/20">
@@ -202,7 +203,7 @@ export default function Footer() {
               <ShieldCheck className="w-3.5 h-3.5" aria-hidden />
               {t("status")}
             </span>
-            <span className="text-[10px] text-muted-foreground font-mono">{t("version")} 4.0</span>
+            <span className="text-[10px] text-muted-foreground font-mono bg-foreground/5 px-2 py-1 rounded-md border border-border/10">{t("version")} 5.0</span>
           </div>
         </div>
       </div>

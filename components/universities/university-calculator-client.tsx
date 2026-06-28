@@ -4,7 +4,7 @@ import { useMemo, useState } from "react";
 import { motion } from "framer-motion";
 import { useTranslation } from "@/lib/i18n/provider";
 import { UNIVERSITIES } from "@/lib/universities";
-import { card, button, animation } from "@/lib/design-system";
+import { card, animation } from "@/lib/design-system";
 import { cn } from "@/lib/utils";
 
 export function UniversityCalculatorClient() {

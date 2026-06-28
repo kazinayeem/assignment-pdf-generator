@@ -7,6 +7,13 @@ export const spacing = {
   gapGrid: "gap-4 sm:gap-6 lg:gap-8",
 } as const;
 
+export const sectionBg = {
+  surface: "section-surface",
+  elevated: "section-elevated",
+  mesh: "section-mesh",
+  glass: "section-glass",
+} as const;
+
 export const radius = {
   sm: "rounded-lg",
   md: "rounded-xl",
@@ -21,23 +28,26 @@ export const shadow = {
   lg: "shadow-lg",
   xl: "shadow-xl",
   glow: "shadow-lg shadow-brand/10",
+  glowLg: "shadow-xl shadow-brand/20",
 } as const;
 
 export const typography = {
   hero: "text-hero font-extrabold tracking-tight",
   heading: "text-heading font-bold tracking-tight",
   subheading: "text-subheading font-semibold",
+  cardTitle: "text-card-title font-bold",
   body: "text-base text-muted-foreground leading-relaxed",
+  bodyLg: "text-body-lg text-muted-foreground",
   caption: "text-sm text-muted-foreground",
   label: "text-xs font-bold uppercase tracking-wider text-muted-foreground",
 } as const;
 
 export const animation = {
   fadeUp: {
-    initial: { opacity: 0, y: 24 },
+    initial: { opacity: 0, y: 20 },
     whileInView: { opacity: 1, y: 0 },
-    viewport: { once: true, margin: "-80px" },
-    transition: { duration: 0.5 },
+    viewport: { once: true, margin: "-60px" },
+    transition: { duration: 0.45, ease: [0.4, 0, 0.2, 1] },
   },
   fadeIn: {
     initial: { opacity: 0 },
@@ -46,12 +56,12 @@ export const animation = {
     transition: { duration: 0.4 },
   },
   scaleIn: {
-    initial: { opacity: 0, scale: 0.96 },
+    initial: { opacity: 0, scale: 0.97 },
     whileInView: { opacity: 1, scale: 1 },
     viewport: { once: true },
-    transition: { type: "spring" as const, damping: 24, stiffness: 300 },
+    transition: { type: "spring" as const, damping: 26, stiffness: 320 },
   },
-  stagger: (i: number) => ({ transition: { delay: i * 0.08 } }),
+  stagger: (i: number) => ({ transition: { delay: Math.min(i * 0.06, 0.36) } }),
 } as const;
 
 export const iconSize = {
@@ -62,19 +72,27 @@ export const iconSize = {
 } as const;
 
 export const card = {
-  base: "glass-card border border-border bg-card/80 backdrop-blur-xl",
-  hover: "transition-all duration-300 hover:-translate-y-1 hover:shadow-xl hover:shadow-brand/10 hover:border-brand/20",
-  interactive: "cursor-pointer group",
+  base: "glass-card border border-border bg-card/90 backdrop-blur-xl rounded-2xl",
+  hover: "glass-card-interactive transition-all duration-250 hover:-translate-y-0.5 hover:shadow-lg hover:shadow-brand/10 hover:border-brand/20",
+  interactive: "cursor-pointer group glass-card-interactive",
 } as const;
 
 export const button = {
-  primary: "gradient-primary text-brand-foreground font-semibold min-h-[44px] px-6 py-3 rounded-xl shadow-md hover:shadow-lg hover:shadow-brand/20 transition-all",
-  secondary: "border border-border bg-background text-foreground font-semibold min-h-[44px] px-6 py-3 rounded-xl hover:bg-muted transition-all",
-  ghost: "text-muted-foreground hover:text-foreground hover:bg-muted min-h-[44px] px-4 py-2 rounded-xl transition-all",
+  primary:
+    "btn-premium gradient-primary text-brand-foreground font-semibold min-h-[44px] px-6 py-3 rounded-xl shadow-md hover:shadow-lg hover:shadow-brand/25 hover:brightness-105 focus-visible:ring-2 focus-visible:ring-brand focus-visible:ring-offset-2 transition-all active:scale-[0.98] disabled:opacity-50 disabled:pointer-events-none",
+  secondary:
+    "border border-border bg-background text-foreground font-semibold min-h-[44px] px-6 py-3 rounded-xl hover:bg-muted hover:border-brand/20 focus-visible:ring-2 focus-visible:ring-brand focus-visible:ring-offset-2 transition-all active:scale-[0.98] disabled:opacity-50",
+  ghost:
+    "text-muted-foreground hover:text-foreground hover:bg-muted min-h-[44px] px-4 py-2 rounded-xl focus-visible:ring-2 focus-visible:ring-brand transition-all",
 } as const;
 
 export const badge = {
   brand: "inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold bg-brand/10 text-brand border border-brand/20",
   success: "inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold bg-success/10 text-success border border-success/20",
-  muted: "inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-medium bg-muted text-muted-foreground",
+  warning: "inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold bg-warning/10 text-warning border border-warning/20",
+  muted: "inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-medium bg-muted text-muted-foreground border border-border",
+} as const;
+
+export const input = {
+  base: "w-full px-4 py-3 rounded-xl bg-background border border-border text-foreground placeholder:text-muted-foreground outline-none focus:border-brand/50 focus:ring-2 focus:ring-brand/20 min-h-[44px] transition-colors",
 } as const;

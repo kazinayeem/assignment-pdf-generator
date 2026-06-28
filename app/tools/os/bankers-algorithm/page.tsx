@@ -56,10 +56,10 @@ export default function BankersAlgorithmPage() {
     );
 
     let work = [...available];
-    let finish = new Array(processes.length).fill(false);
+    const finish = new Array(processes.length).fill(false);
 
-    let safeSequence: string[] = [];
-    let steps: any[] = [];
+    const safeSequence: string[] = [];
+    const steps: any[] = [];
 
     let changed = true;
 

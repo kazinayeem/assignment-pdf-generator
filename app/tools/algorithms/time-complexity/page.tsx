@@ -87,16 +87,16 @@ export default function TimeComplexityPage() {
             </thead>
             <tbody>
               {[
-                { n: "10", c1: "1", log: "3", n: "10", nlogn: "30", n2: "100", exp: "1,024" },
-                { n: "100", c1: "1", log: "7", n: "100", nlogn: "700", n2: "10,000", exp: "1.27×10³⁰" },
-                { n: "1,000", c1: "1", log: "10", n: "1,000", nlogn: "10,000", n2: "1,000,000", exp: "—" },
-                { n: "10,000", c1: "1", log: "13", n: "10,000", nlogn: "130,000", n2: "100M", exp: "—" },
+                { size: "10", c1: "1", log: "3", linear: "10", nlogn: "30", n2: "100", exp: "1,024" },
+                { size: "100", c1: "1", log: "7", linear: "100", nlogn: "700", n2: "10,000", exp: "1.27×10³⁰" },
+                { size: "1,000", c1: "1", log: "10", linear: "1,000", nlogn: "10,000", n2: "1,000,000", exp: "—" },
+                { size: "10,000", c1: "1", log: "13", linear: "10,000", nlogn: "130,000", n2: "100M", exp: "—" },
               ].map((row, i) => (
                 <tr key={i} className="border-b border-slate-200">
-                  <td className="p-3 font-bold text-slate-900">{row.n}</td>
+                  <td className="p-3 font-bold text-slate-900">{row.size}</td>
                   <td className="p-3 text-green-600 font-semibold">{row.c1}</td>
                   <td className="p-3 text-emerald-600 font-semibold">{row.log}</td>
-                  <td className="p-3 text-amber-600 font-semibold">{row.n}</td>
+                  <td className="p-3 text-amber-600 font-semibold">{row.linear}</td>
                   <td className="p-3 text-orange-600 font-semibold">{row.nlogn}</td>
                   <td className="p-3 text-red-500 font-semibold">{row.n2}</td>
                   <td className="p-3 text-red-700 font-semibold">{row.exp}</td>

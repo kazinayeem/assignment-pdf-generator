@@ -62,10 +62,11 @@ export default function BoothsAlgorithmPage() {
     if (!state || state.done) return;
     const n = bits;
     const mask = (1 << n) - 1;
-    let { A, Q, Q1, M, step } = state;
+    let { A, Q, step } = state;
+    const { Q1, M } = state;
     const q0 = Q & 1;
     let op = ""; let desc = "";
-    let newA = A; let newQ1 = q0;
+    let newA = A; const newQ1 = q0;
 
     if (q0 === 0 && Q1 === 0) {
       op = "0 0 → Shift";

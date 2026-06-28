@@ -1,161 +1,105 @@
-// app/learn/page.tsx
 "use client";
-import Link from "next/link";
-import {
-  Cpu,
-  Database,
-  ShieldAlert,
-  BrainCircuit,
-  MemoryStick,
-  Code2,
-  Network,
-  Blocks,
-  Globe,
-  Microchip,
-  GitFork,
-  BarChart3,
-  Cloud,
-} from "lucide-react";
 
-const topics = [
-  {
-    title: "Operating Systems",
-    desc: "CPU scheduling, memory management, deadlock.",
-    icon: Cpu,
-    href: "/tools/os",
-  },
-  {
-    title: "Data Structures",
-    desc: "Array, Linked List, Tree, Graph, Stack & Queue.",
-    icon: Database,
-    href: "/tools/dsa",
-  },
-  {
-    title: "Algorithms",
-    desc: "Sorting, searching, greedy, DP and more.",
-    icon: BrainCircuit,
-    href: "/tools/algorithms",
-  },
-  {
-    title: "Computer Networks",
-    desc: "OSI, TCP/IP, routing and protocols.",
-    icon: Network,
-    href: "/tools/network",
-  },
-  {
-    title: "Database Systems",
-    desc: "SQL, normalization, ERD and queries.",
-    icon: MemoryStick,
-    href: "/tools/database",
-  },
-  {
-    title: "Cyber Security",
-    desc: "Encryption, authentication and security basics.",
-    icon: ShieldAlert,
-    href: "/tools/security",
-  },
-  {
-    title: "Computer Architecture",
-    desc: "CPU design, memory hierarchy, pipelining, ISA.",
-    icon: Microchip,
-    href: "/tools/arch",
-  },
-  {
-    title: "Theory of Computing",
-    desc: "DFA, NFA, regex, Turing machines, automata.",
-    icon: GitFork,
-    href: "/tools/theory-of-computing",
-  },
-  {
-    title: "Software Engineering",
-    desc: "SDLC, UML, Agile and system design.",
-    icon: Blocks,
-    href: "/tools/swe",
-  },
-  {
-    title: "Programming",
-    desc: "C, C++, JavaScript, Python and Java.",
-    icon: Code2,
-    href: "/tools/programming",
-  },
-  {
-    title: "Web Development",
-    desc: "Frontend, backend and full-stack roadmap.",
-    icon: Globe,
-    href: "/tools/web",
-  },
-  {
-    title: "Data Science",
-    desc: "Python, pandas, ML, deep learning, NLP and LLMs.",
-    icon: BarChart3,
-    href: "/tools/data-science",
-  },
-  {
-    title: "DevOps",
-    desc: "Docker, Kubernetes, CI/CD, cloud and monitoring.",
-    icon: Cloud,
-    href: "/tools/devops",
-  },
-];
+import { useMemo, useState } from "react";
+import { motion } from "framer-motion";
+import { Search, Sparkles } from "lucide-react";
+import { TOOL_SUBJECTS, HUB_FILTERS, type HubFilter } from "@/lib/tools/subjects";
+import { useLearningStore } from "@/lib/learning-store";
+import { SubjectCard } from "@/components/tools/subject-card";
+import { FilterChips } from "@/components/tools/filter-chips";
+
+const POPULAR_SLUGS = ["os", "dsa", "algorithms", "arch", "security"];
 
 export default function LearnPage() {
+  const [filter, setFilter] = useState<HubFilter>("all");
+  const [search, setSearch] = useState("");
+  const { bookmarked, completedLessons, isPinnedSubject } = useLearningStore();
+
+  const filtered = useMemo(() => {
+    let items = [...TOOL_SUBJECTS];
+
+    if (search) {
+      const q = search.toLowerCase();
+      items = items.filter(
+        (s) => s.title.toLowerCase().includes(q) || s.description.toLowerCase().includes(q)
+      );
+    }
+
+    switch (filter) {
+      case "popular":
+        items = items.filter((s) => POPULAR_SLUGS.includes(s.slug));
+        break;
+      case "bookmarked":
+        items = items.filter((s) => bookmarked.includes(s.href));
+        break;
+      case "completed":
+        items = items.filter((s) => completedLessons.some((h) => h.startsWith(s.href)));
+        break;
+      case "beginner":
+        items = items.filter((s) => s.difficulty === "Beginner");
+        break;
+      case "intermediate":
+        items = items.filter((s) => s.difficulty === "Intermediate");
+        break;
+      case "advanced":
+        items = items.filter((s) => s.difficulty === "Advanced");
+        break;
+      case "recent":
+        items = [...items].sort((a, b) => b.progress - a.progress);
+        break;
+    }
+
+    const pinned = items.filter((s) => isPinnedSubject(s.slug));
+    const rest = items.filter((s) => !isPinnedSubject(s.slug));
+    return [...pinned, ...rest];
+  }, [filter, search, bookmarked, completedLessons, isPinnedSubject]);
+
   return (
-    <div className="min-h-screen bg-[#eef3f8] px-6 py-12">
-      {/* Header */}
-      <div className="mb-10 flex items-center justify-between">
-        <div>
-          <p className="text-sm uppercase tracking-[5px] text-slate-500">
-            Learn By Doing
-          </p>
+    <div className="min-h-full bg-[#F8FAFC] dark:bg-[#0F172A]">
+      <section className="relative overflow-hidden border-b border-[#E5E7EB] dark:border-white/10">
+        <div className="blur-orb w-[400px] h-[400px] bg-[#6D5DF6]/10 -top-32 right-0" aria-hidden />
+        <div className="max-w-[1280px] mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16">
+          <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }}>
+            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#6D5DF6]/10 text-[#6D5DF6] text-sm font-semibold mb-4 border border-[#6D5DF6]/20">
+              <Sparkles size={14} aria-hidden />
+              CSE & SWE Learning Hub
+            </div>
+            <h1 className="text-3xl sm:text-4xl lg:text-[2.5rem] font-extrabold text-slate-900 dark:text-white tracking-tight mb-3">
+              Master Computer Science
+            </h1>
+            <p className="text-base sm:text-lg text-slate-500 dark:text-slate-400 max-w-2xl leading-relaxed mb-8">
+              Interactive simulators, structured lessons, interview prep, and roadmaps — everything you need to excel in CS & SWE.
+            </p>
 
-          <h1 className="mt-2 text-4xl font-bold text-slate-900">
-            CSE & SWE Learning Hub
-          </h1>
+            <div className="relative max-w-md">
+              <Search size={18} className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-400" aria-hidden />
+              <input
+                value={search}
+                onChange={(e) => setSearch(e.target.value)}
+                placeholder="Search subjects..."
+                aria-label="Search subjects"
+                className="w-full pl-12 pr-4 py-3.5 rounded-2xl bg-white dark:bg-white/5 border border-[#E5E7EB] dark:border-white/10 text-base outline-none focus:border-[#6D5DF6]/50 focus:ring-2 focus:ring-[#6D5DF6]/20 transition-all min-h-[44px] shadow-sm"
+              />
+            </div>
+          </motion.div>
         </div>
+      </section>
 
-        <button className="rounded-full border border-sky-200 bg-white px-5 py-2 text-sm font-semibold text-sky-600 shadow-sm transition hover:bg-sky-50">
-          View All
-        </button>
-      </div>
+      <div className="max-w-[1280px] mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12">
+        <FilterChips filters={HUB_FILTERS} active={filter} onChange={setFilter} className="mb-8" />
 
-      {/* Grid */}
-      <div className="grid gap-7 md:grid-cols-2 xl:grid-cols-3">
-        {topics.map((item, index) => {
-          const Icon = item.icon;
-
-          return (
-            <Link key={index} href={item.href}>
-              <div className="group relative overflow-hidden rounded-[30px] border border-white/40 bg-white p-8 shadow-md transition duration-300 hover:-translate-y-2 hover:shadow-2xl">
-                
-                {/* Glow Effect */}
-                <div className="absolute right-[-40px] top-[-40px] h-32 w-32 rounded-full bg-sky-100 blur-3xl transition group-hover:bg-sky-200" />
-
-                {/* Icon */}
-                <div className="relative z-10 mb-6 flex h-16 w-16 items-center justify-center rounded-2xl bg-gradient-to-br from-sky-100 to-indigo-100 shadow-inner">
-                  <Icon className="h-8 w-8 text-sky-600" />
-                </div>
-
-                {/* Content */}
-                <div className="relative z-10">
-                  <h2 className="text-3xl font-bold text-slate-900">
-                    {item.title}
-                  </h2>
-
-                  <p className="mt-3 text-base leading-7 text-slate-500">
-                    {item.desc}
-                  </p>
-                </div>
-
-                {/* Button */}
-                <div className="relative z-10 mt-10 flex items-center justify-end">
-                  <button className="rounded-full bg-sky-50 px-5 py-2 text-lg font-semibold text-sky-600 transition hover:bg-sky-100">
-                    Explore →
-                  </button>
-                </div>
-              </div>
-            </Link>
-          );
-        })}
+        {filtered.length === 0 ? (
+          <div className="text-center py-20 text-slate-400">
+            <p className="text-lg font-medium">No subjects match your filters</p>
+            <p className="text-sm mt-2">Try adjusting your search or filter criteria</p>
+          </div>
+        ) : (
+          <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
+            {filtered.map((subject, i) => (
+              <SubjectCard key={subject.slug} subject={subject} index={i} />
+            ))}
+          </div>
+        )}
       </div>
     </div>
   );

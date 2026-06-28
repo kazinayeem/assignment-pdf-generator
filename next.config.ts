@@ -1,11 +1,10 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  eslint: {
-    ignoreDuringBuilds: true,
-  },
-  typescript: {
-    ignoreBuildErrors: true,
+  async redirects() {
+    return [
+      { source: "/tools/dsa/array", destination: "/tools/dsa/arrays", permanent: true },
+    ];
   },
   async rewrites() {
     return [

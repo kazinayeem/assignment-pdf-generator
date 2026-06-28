@@ -54,7 +54,7 @@ export default function SearchingPage() {
     if (isNaN(val)) { setResult("❌ Enter a valid number to search."); return; }
     setRunning(true); stopRef.current = false;
     setComparisons(0); setResult("");
-    const arr = bars.map((b) => ({ ...b, state: "default" as const }));
+    const arr: Bar[] = bars.map((b) => ({ ...b, state: "default" }));
     let cmp = 0;
 
     if (algo === "linear") {

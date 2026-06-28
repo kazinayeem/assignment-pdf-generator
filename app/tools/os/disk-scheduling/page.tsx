@@ -45,7 +45,7 @@ export default function DiskSchedulingPage() {
       order.push(current);
 
       while (pending.length > 0) {
-        let closest = pending.reduce((prev, curr) =>
+        const closest = pending.reduce((prev, curr) =>
           Math.abs(curr - current) <
           Math.abs(prev - current)
             ? curr
@@ -63,7 +63,7 @@ export default function DiskSchedulingPage() {
     }
 
     if (algorithm === "SCAN") {
-      let current = head;
+      const current = head;
 
       const left = requestArray
         .filter((r) => r < current)

@@ -5,7 +5,7 @@ import { useRouter } from "next/navigation";
 import Image from "next/image";
 import { useAuthStore } from "@/lib/auth-store";
 import { Button } from "@/components/ui/button";
-import { LogOut, User, BookOpen, LogIn, Menu, X, ChevronDown } from "lucide-react";
+import { LogOut, User, BookOpen, LogIn, Menu, X } from "lucide-react";
 import toast from "react-hot-toast";
 import { useState } from "react";
 

@@ -1,103 +1,76 @@
 "use client";
 
 import Link from "next/link";
-import { AlertCircle, Home, ArrowLeft } from "lucide-react";
+import { AlertCircle, Home, ArrowLeft, Calculator, BookOpen } from "lucide-react";
+
+const QUICK_LINKS = [
+  { href: "/", label: "Home", icon: Home },
+  { href: "/tools", label: "Learning Tools", icon: BookOpen },
+  { href: "/calculators", label: "Calculators", icon: Calculator },
+  { href: "/assignment", label: "Assignment Cover" },
+];
 
 export default function NotFound() {
   return (
-    <div style={{ fontFamily: "'Outfit', 'DM Sans', sans-serif", minHeight: "100vh", background: "#f8fafc", display: "flex", alignItems: "center", justifyContent: "center", padding: "24px" }}>
-      <style>{`
-        @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;600&display=swap');
-        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-        
-        .btn-primary { background: #6366f1; border: none; border-radius: 10px; color: #fff; cursor: pointer; font-family: inherit; font-size: 14px; font-weight: 600; padding: 12px 24px; transition: background .2s; }
-        .btn-primary:hover { background: #4f46e5; }
-        
-        .btn-secondary { background: #f1f5f9; border: 1.5px solid #e2e8f0; border-radius: 10px; color: #475569; cursor: pointer; font-family: inherit; font-size: 14px; font-weight: 600; padding: 12px 24px; transition: all .2s; text-decoration: none; display: inline-flex; align-items: center; gap: 8px; }
-        .btn-secondary:hover { background: #e2e8f0; color: #1e293b; }
-        
-        @keyframes float { 
-          0%, 100% { transform: translateY(0px); } 
-          50% { transform: translateY(-20px); } 
-        }
-        .float-animation { animation: float 3s ease-in-out infinite; }
-      `}</style>
-
-      <div style={{ textAlign: "center", maxWidth: 600 }}>
-        {/* Icon */}
-        <div style={{ marginBottom: 32 }}>
-          <div style={{ display: "inline-block", className: "float-animation" }}>
-            <AlertCircle size={80} style={{ color: "#ef4444", opacity: 0.8 }} />
+    <div className="min-h-screen bg-[#F8FAFC] dark:bg-[#0F172A] flex items-center justify-center px-4 py-16">
+      <div className="text-center max-w-lg w-full">
+        <div className="inline-flex mb-8 animate-float" aria-hidden="true">
+          <div className="w-20 h-20 rounded-2xl bg-red-500/10 flex items-center justify-center">
+            <AlertCircle className="w-10 h-10 text-red-500" />
           </div>
         </div>
 
-        {/* Error Code */}
-        <div style={{ marginBottom: 16 }}>
-          <h1 style={{ fontSize: 72, fontWeight: 900, color: "#1e293b", letterSpacing: "-2px", lineHeight: 1 }}>404</h1>
-        </div>
-
-        {/* Title */}
-        <h2 style={{ fontSize: 32, fontWeight: 700, color: "#1e293b", marginBottom: 12, letterSpacing: "-0.5px" }}>
-          Page Not Found
-        </h2>
-
-        {/* Description */}
-        <p style={{ fontSize: 16, color: "#64748b", marginBottom: 32, lineHeight: 1.6 }}>
-          Sorry, the page you're looking for doesn't exist or is not available. 
-          <br />
-          It might have been moved or deleted.
+        <p className="text-sm font-semibold uppercase tracking-wider text-[#6D5DF6] mb-3">Error 404</p>
+        <h1 className="text-5xl sm:text-6xl font-extrabold text-slate-900 dark:text-white tracking-tight mb-4">
+          Page not found
+        </h1>
+        <p className="text-base text-slate-600 dark:text-slate-400 mb-8 leading-relaxed">
+          The page you&apos;re looking for doesn&apos;t exist or may have been moved.
         </p>
 
-        {/* Suggestions */}
-        <div style={{ background: "#eef2ff", border: "1.5px solid #c7d2fe", borderRadius: 14, padding: 20, marginBottom: 32, textAlign: "left" }}>
-          <p style={{ fontSize: 13, fontWeight: 600, color: "#6366f1", marginBottom: 12, letterSpacing: ".05em", textTransform: "uppercase" }}>
-            Here's what you can do:
+        <div className="glass-card p-5 mb-8 text-left">
+          <p className="text-xs font-semibold uppercase tracking-wider text-[#6D5DF6] mb-3">
+            What you can do
           </p>
-          <ul style={{ fontSize: 14, color: "#475569", lineHeight: 1.8, paddingLeft: 20 }}>
-            <li>Check the URL for spelling mistakes</li>
+          <ul className="text-sm text-slate-600 dark:text-slate-400 space-y-2 list-disc pl-5">
+            <li>Check the URL for typos</li>
             <li>Return to the home page</li>
-            <li>Navigate using the main menu</li>
-            <li>Contact support if you think this is an error</li>
+            <li>Browse tools or calculators below</li>
           </ul>
         </div>
 
-        {/* Action Buttons */}
-        <div style={{ display: "flex", gap: 12, justifyContent: "center", flexWrap: "wrap" }}>
-          <Link href="/" style={{ textDecoration: "none" }}>
-            <button className="btn-primary" style={{ display: "inline-flex", alignItems: "center", gap: 8 }}>
-              <Home size={18} /> Go to Home
-            </button>
-          </Link>
-          <button 
-            className="btn-secondary" 
-            onClick={() => window.history.back()}
-            style={{ cursor: "pointer" }}
+        <div className="flex flex-col sm:flex-row gap-3 justify-center mb-10">
+          <Link
+            href="/"
+            className="inline-flex items-center justify-center gap-2 min-h-[44px] px-6 py-3 rounded-xl font-semibold text-white gradient-primary shadow-lg shadow-[#6D5DF6]/25 hover:opacity-95 transition-opacity"
           >
-            <ArrowLeft size={18} /> Go Back
+            <Home className="w-4 h-4" aria-hidden="true" />
+            Go to Home
+          </Link>
+          <button
+            type="button"
+            onClick={() => window.history.back()}
+            className="inline-flex items-center justify-center gap-2 min-h-[44px] px-6 py-3 rounded-xl font-semibold text-slate-700 dark:text-slate-200 bg-white dark:bg-white/5 border border-slate-200 dark:border-white/10 hover:bg-slate-50 dark:hover:bg-white/10 transition-colors"
+          >
+            <ArrowLeft className="w-4 h-4" aria-hidden="true" />
+            Go Back
           </button>
         </div>
 
-        {/* Quick Links */}
-        <div style={{ marginTop: 48, paddingTop: 32, borderTop: "1px solid #e2e8f0" }}>
-          <p style={{ fontSize: 12, color: "#94a3b8", marginBottom: 16, letterSpacing: ".05em", textTransform: "uppercase", fontWeight: 600 }}>
-            Quick Links
-          </p>
-          <div style={{ display: "flex", flexWrap: "wrap", gap: 12, justifyContent: "center" }}>
-            <Link href="/tools" style={{ textDecoration: "none", color: "#6366f1", fontSize: 14, fontWeight: 500, padding: "8px 12px", borderRadius: 8, transition: "all .2s", display: "inline-block", border: "1px solid #e2e8f0" }}>
-              Tools
-            </Link>
-            <Link href="/about" style={{ textDecoration: "none", color: "#6366f1", fontSize: 14, fontWeight: 500, padding: "8px 12px", borderRadius: 8, transition: "all .2s", display: "inline-block", border: "1px solid #e2e8f0" }}>
-              About
-            </Link>
-            <Link href="/login" style={{ textDecoration: "none", color: "#6366f1", fontSize: 14, fontWeight: 500, padding: "8px 12px", borderRadius: 8, transition: "all .2s", display: "inline-block", border: "1px solid #e2e8f0" }}>
-              Login
-            </Link>
+        <div className="pt-8 border-t border-slate-200 dark:border-white/10">
+          <p className="text-xs font-semibold uppercase tracking-wider text-slate-400 mb-4">Quick links</p>
+          <div className="flex flex-wrap gap-2 justify-center">
+            {QUICK_LINKS.map((link) => (
+              <Link
+                key={link.href}
+                href={link.href}
+                className="inline-flex items-center gap-1.5 min-h-[44px] px-4 py-2 rounded-xl text-sm font-medium text-[#6D5DF6] bg-[#6D5DF6]/5 dark:bg-[#6D5DF6]/10 border border-[#6D5DF6]/20 hover:bg-[#6D5DF6]/10 transition-colors"
+              >
+                {link.icon && <link.icon className="w-3.5 h-3.5" aria-hidden="true" />}
+                {link.label}
+              </Link>
+            ))}
           </div>
-        </div>
-
-        {/* Footer Note */}
-        <div style={{ marginTop: 40, fontSize: 12, color: "#94a3b8" }}>
-          Error Code: <span style={{ fontFamily: "'JetBrains Mono', monospace", fontWeight: 600, color: "#64748b" }}>404_NOT_FOUND</span>
         </div>
       </div>
     </div>

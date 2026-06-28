@@ -52,7 +52,7 @@ function InterviewAccordion({ q, a }: { q: string; a: string }) {
 
 function simulateHash(input: string, algo: string): string {
   const chars = "0123456789abcdef";
-  let len = algo === "sha256" ? 64 : algo === "sha512" ? 128 : 40;
+  const len = algo === "sha256" ? 64 : algo === "sha512" ? 128 : 40;
   let hash = "";
   let seed = 0;
   for (let i = 0; i < input.length; i++) seed = ((seed << 5) - seed + input.charCodeAt(i)) | 0;

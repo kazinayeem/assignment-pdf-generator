@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { RotateCcw, Home } from "lucide-react";
 
-export default function DatabaseError({ error, reset }: { error: Error & { digest?: string }; reset: () => void }) {
+export default function DatabaseError({ error: _error, reset }: { error: Error & { digest?: string }; reset: () => void }) {
   return (
     <div className="min-h-screen bg-gray-50 flex items-center justify-center px-4">
       <div className="text-center max-w-md">

@@ -33,11 +33,11 @@ export default function MemoryManagementPage() {
 
   const simulation = useMemo(() => {
     let memory: number[] = [];
-    let history: any[] = [];
+    const history: any[] = [];
     let faults = 0;
 
     pages.forEach((page, index) => {
-      let hit = memory.includes(page);
+      const hit = memory.includes(page);
 
       if (!hit) {
         faults++;

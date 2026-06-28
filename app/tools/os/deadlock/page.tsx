@@ -55,8 +55,8 @@ export default function DeadlockPage() {
     );
 
     let work = [...available];
-    let finish = new Array(processes.length).fill(false);
-    let safeSequence: string[] = [];
+    const finish = new Array(processes.length).fill(false);
+    const safeSequence: string[] = [];
 
     let changed = true;
 

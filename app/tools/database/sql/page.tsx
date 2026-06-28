@@ -75,7 +75,7 @@ function resolveValue(
 function executeMockSQL(
   query: string,
 ): { columns: string[]; rows: MockRow[] } {
-  let sql = query.trim().replace(/\s+/g, " ").replace(/;$/, "");
+  const sql = query.trim().replace(/\s+/g, " ").replace(/;$/, "");
 
   if (!/^SELECT\b/i.test(sql)) {
     throw new Error(

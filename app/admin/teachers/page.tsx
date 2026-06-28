@@ -93,8 +93,8 @@ export default function TeachersPage() {
       setSubmitting(true);
       const payload = {
         name: formName, designation: formDesignation, initial: formInitial,
-        department: formDepartment, email: formEmail || null,
-        phone: formPhone || null, room: formRoom || null, approved: true,
+        department: formDepartment, email: formEmail || undefined,
+        phone: formPhone || undefined, room: formRoom || undefined, approved: true,
       };
       if (editingId) {
         await updateTeacher(editingId, payload);

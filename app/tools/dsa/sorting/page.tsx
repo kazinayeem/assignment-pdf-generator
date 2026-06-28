@@ -70,7 +70,7 @@ export default function SortingPage() {
     setComparisons(0);
     setSwaps(0);
 
-    const arr = bars.map((b) => ({ ...b, state: "default" as const }));
+    const arr: Bar[] = bars.map((b) => ({ ...b, state: "default" }));
     let cmp = 0, sw = 0;
 
     const update = (a: Bar[]) => setBars([...a]);

@@ -74,7 +74,7 @@ export const useAlgoStore = create<AlgoState>()(
             recentActivity: [
               {
                 topicId,
-                action: "complete",
+                action: "complete" as const,
                 timestamp: new Date().toISOString(),
               },
               ...state.recentActivity,

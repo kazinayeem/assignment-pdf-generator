@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { UniversitiesNav } from "@/components/universities/universities-nav";
+import { PwaRegister } from "@/components/universities/pwa-register";
 
 export const metadata: Metadata = {
   title: "University Hub",
@@ -16,12 +17,16 @@ export const metadata: Metadata = {
     "university comparison",
     "CampusFlow",
   ],
+  manifest: "/manifest.json",
 };
 
 export default function UniversitiesLayout({ children }: { children: React.ReactNode }) {
   return (
     <div className="min-h-screen bg-surface-page">
       <UniversitiesNav />
+      <div className="max-w-[1280px] mx-auto px-4 pt-2 flex justify-end">
+        <PwaRegister />
+      </div>
       <main id="main-content">{children}</main>
     </div>
   );

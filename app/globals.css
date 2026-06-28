@@ -67,6 +67,7 @@
 
 :root {
   font-size: 15px;
+  --landing-header-h: 72px;
   --radius: 0.75rem;
   /* CampusFlow design tokens */
   --cf-primary: #6D5DF6;
@@ -225,7 +226,7 @@
 }
 
 .glass-card {
-  background: rgba(255, 255, 255, 0.85);
+  background: color-mix(in srgb, var(--card) 88%, transparent);
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
   border: 1px solid var(--border);
@@ -237,7 +238,7 @@
 }
 
 .dark .glass-card {
-  background: rgba(30, 41, 59, 0.65);
+  background: color-mix(in srgb, var(--card) 72%, transparent);
   border: 1px solid rgba(255, 255, 255, 0.08);
   box-shadow: 0 4px 24px rgba(0, 0, 0, 0.25);
 }

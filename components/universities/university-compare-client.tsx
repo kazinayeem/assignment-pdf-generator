@@ -6,9 +6,7 @@ import { motion } from "framer-motion";
 import { Search, Download } from "lucide-react";
 import { useTranslation } from "@/lib/i18n/provider";
 import { UNIVERSITIES, getUniversity } from "@/lib/universities";
-import {
-  formatCurrency, formatRanking, formatTuitionRange, getQsDisplayRank,
-} from "@/lib/universities/format";
+import { formatCurrency, formatQsWorldRanking, formatRanking, formatTheSustainabilitySummary, formatTheWorldRanking, formatTuitionRange } from "@/lib/universities/format";
 import { exportComparisonPdf } from "@/lib/universities/pdf-export";
 import type { University } from "@/lib/universities/types";
 import { UniversityLogo } from "./university-logo";
@@ -62,7 +60,9 @@ export function UniversityCompareClient() {
     { key: "departments", label: t("compare.departments"), get: (u: University) => String(u.departmentCount ?? "—") },
     { key: "programs", label: t("card.programs"), get: (u: University) => String(u.programs.length) },
     { key: "scholarships", label: t("compare.scholarships"), get: (u: University) => u.scholarships.length > 0 ? u.scholarships.join(", ") : (u.tuition.waiverPolicy ?? "—") },
-    { key: "qs", label: t("rankings.qsWorld"), get: (u: University) => formatRanking(getQsDisplayRank(u.rankings), t("rankings.notRanked")) },
+    { key: "qs", label: t("rankings.qsWorld"), get: (u: University) => formatQsWorldRanking(u.rankings, t("rankings.notRanked")) },
+    { key: "the", label: t("rankings.the"), get: (u: University) => formatTheWorldRanking(u.rankings, t("rankings.notRanked")) },
+    { key: "theImpact", label: t("rankings.theSustainability"), get: (u: University) => formatTheSustainabilitySummary(u.rankings.theSustainability, t("rankings.notRanked")) },
     { key: "national", label: t("rankings.national"), get: (u: University) => formatRanking(u.rankings.national, t("rankings.notRanked")) },
     { key: "webometrics", label: t("rankings.webometrics"), get: (u: University) => formatRanking(u.rankings.webometrics, t("rankings.notRanked")) },
     { key: "hostel", label: t("compare.hostel"), get: (u: University) => u.facilities.hostel ? t("compare.yes") : t("compare.no") },

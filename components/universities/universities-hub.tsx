@@ -78,9 +78,22 @@ export function UniversitiesHub() {
   }, []);
 
   const handleSuggestion = useCallback((s: SearchSuggestion) => {
+    if (s.slug && s.type === "university") {
+      router.push(`/universities/${s.slug}`);
+      return;
+    }
+    if (s.slug && s.type === "department" && s.deptSlug) {
+      router.push(`/universities/${s.slug}/departments/${s.deptSlug}`);
+      return;
+    }
+    if (s.slug && (s.type === "circular" || s.type === "program" || s.type === "department")) {
+      router.push(`/universities/${s.slug}`);
+      return;
+    }
     if (s.slug) setQuery(s.sublabel ?? s.label);
+    else setQuery(s.label);
     setPage(1);
-  }, []);
+  }, [router]);
 
   const handleFilterChange = useCallback((patch: Partial<typeof panel>) => {
     setPanel((p) => ({ ...p, ...patch }));

@@ -43,7 +43,7 @@ export function AnnouncementBar() {
           initial={{ height: 0, opacity: 0 }}
           animate={{ height: "auto", opacity: 1 }}
           exit={{ height: 0, opacity: 0 }}
-          className="overflow-hidden bg-brand-dark border-b border-border/10"
+          className="overflow-hidden bg-brand-dark border-b border-white/10 text-white"
           role="region"
           aria-label="Announcement"
         >
@@ -65,7 +65,7 @@ export function AnnouncementBar() {
               />
             </a>
 
-            <div className="flex-1 min-w-0 flex flex-col sm:flex-row sm:items-center sm:gap-2 text-foreground/90">
+            <div className="flex-1 min-w-0 flex flex-col sm:flex-row sm:items-center sm:gap-2 text-white/90">
               <AnimatePresence mode="wait">
                 <motion.p
                   key={index}
@@ -80,19 +80,19 @@ export function AnnouncementBar() {
               </AnimatePresence>
               <a
                 href={`mailto:${t("announcement.email")}`}
-                className="inline-flex items-center gap-1 text-brand hover:underline shrink-0 text-xs sm:text-sm font-semibold min-h-[32px]"
+                className="inline-flex items-center gap-1 text-brand-accent hover:underline shrink-0 text-xs sm:text-sm font-semibold min-h-[32px]"
               >
                 <Mail size={13} aria-hidden />
                 {t("announcement.email")}
               </a>
-              <span className="hidden sm:inline text-muted-foreground text-xs">· {t("announcement.signature")}</span>
+              <span className="hidden sm:inline text-white/50 text-xs">· {t("announcement.signature")}</span>
             </div>
 
             <button
               type="button"
               onClick={dismiss}
               aria-label={t("announcement.dismiss")}
-              className="shrink-0 p-1.5 rounded-lg hover:bg-foreground/10 text-muted-foreground min-h-[32px] min-w-[32px] flex items-center justify-center focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand"
+              className="shrink-0 p-1.5 rounded-lg hover:bg-white/10 text-white/60 min-h-[32px] min-w-[32px] flex items-center justify-center focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-accent"
             >
               <X size={16} aria-hidden />
             </button>

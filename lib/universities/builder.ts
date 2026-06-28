@@ -12,6 +12,10 @@ import type {
   UniversitySeed,
 } from "./types";
 import { inferCategory } from "./format";
+import { V3_ENRICHMENTS } from "./v3-enrichments";
+import { QS_WORLD_RANKINGS_2027 } from "./qs-rankings-2027";
+import { THE_WORLD_RANKINGS } from "./the-rankings";
+import { THE_SUSTAINABILITY_2026 } from "./the-sustainability-rankings";
 
 const DEFAULT_PROGRAMS: UniversityProgram[] = [
   {
@@ -208,6 +212,22 @@ function mergeRankings(base: UniversityRanking, override?: Partial<UniversityRan
   return merged;
 }
 
+function applyVerifiedRankings(university: University): University {
+  let rankings = university.rankings;
+  const qs = QS_WORLD_RANKINGS_2027[university.slug];
+  if (qs) rankings = mergeRankings(rankings, qs);
+  const the = THE_WORLD_RANKINGS[university.slug];
+  if (the) rankings = mergeRankings(rankings, the);
+  const sustainability = THE_SUSTAINABILITY_2026[university.slug];
+  if (sustainability) {
+    rankings = { ...rankings, verified: true, theSustainability: sustainability };
+  }
+  if (qs || the || sustainability) {
+    return { ...university, rankings: { ...rankings, verified: true } };
+  }
+  return university;
+}
+
 export function buildUniversity(seed: UniversitySeed, enrichment?: UniversityEnrichment): University {
   const division = normalizeDivision(seed);
   const website = seed.website ?? websiteFromSlug(seed.slug, seed.shortName);
@@ -268,19 +288,43 @@ export function buildUniversity(seed: UniversitySeed, enrichment?: UniversityEnr
     mapUrl: `https://maps.google.com/?q=${encodeURIComponent(seed.name + " Bangladesh")}`,
   };
 
-  if (!enrichment) return base;
+  if (!enrichment) {
+    const v3 = V3_ENRICHMENTS[seed.slug];
+    if (!v3) return applyVerifiedRankings(base);
+    return applyVerifiedRankings({
+      ...base,
+      ...v3,
+      admission: { ...base.admission, ...v3.admission },
+      facilities: { ...base.facilities, ...(v3.facilities ?? {}) },
+    } as University);
+  }
 
-  return {
+  const v3 = V3_ENRICHMENTS[seed.slug];
+
+  const merged = {
     ...base,
     ...enrichment,
-    facilities: { ...base.facilities, ...enrichment.facilities },
-    tuition: mergeTuition(base.tuition, enrichment.tuition),
-    admission: { ...base.admission, ...enrichment.admission },
-    career: { ...base.career, ...enrichment.career },
-    rankings: mergeRankings(base.rankings, enrichment.rankings),
-    programs: enrichment.programs ?? base.programs,
-    tags: enrichment.tags ?? base.tags,
+    ...(v3 ?? {}),
+    facilities: { ...base.facilities, ...enrichment.facilities, ...(v3?.facilities ?? {}) },
+    tuition: mergeTuition(base.tuition, { ...enrichment.tuition, ...v3?.tuition }),
+    admission: { ...base.admission, ...enrichment.admission, ...v3?.admission },
+    career: { ...base.career, ...enrichment.career, ...v3?.career },
+    rankings: mergeRankings(base.rankings, { ...enrichment.rankings, ...v3?.rankings }),
+    programs: v3?.programs ?? enrichment.programs ?? base.programs,
+    tags: enrichment.tags ?? v3?.tags ?? base.tags,
   };
+
+  // Link department programs from merged programs list
+  if (merged.departments?.length) {
+    merged.departments = merged.departments.map((d) => ({
+      ...d,
+      programs: d.programs.length > 0
+        ? d.programs
+        : merged.programs.filter((p) => p.department.toLowerCase() === d.name.toLowerCase() || p.department === d.name),
+    }));
+  }
+
+  return applyVerifiedRankings(merged as University);
 }
 
 export function slugify(name: string): string {

@@ -2,10 +2,14 @@
   "nav": {
     "hub": "University Hub",
     "explore": "Explore",
+    "departments": "Departments",
+    "circulars": "Circulars",
     "compare": "Compare",
     "calculator": "Cost Calculator",
     "predictor": "Admission Predictor",
     "scholarships": "Scholarships",
+    "community": "Community",
+    "creditTransfer": "Credit Transfer",
     "recommend": "AI Recommend",
     "back": "Back to Hub"
   },
@@ -64,7 +68,11 @@
       "university": "University",
       "department": "Department",
       "program": "Program",
-      "location": "Location"
+      "location": "Location",
+      "course": "Course",
+      "circular": "Circular",
+      "faculty": "Faculty",
+      "alumni": "Alumni"
     }
   },
   "card": {
@@ -98,6 +106,18 @@
     "webometrics": "Webometrics Ranking",
     "national": "National Ranking",
     "notRanked": "Not Ranked",
+    "overallScore": "Overall Score",
+    "academicReputation": "Academic Reputation",
+    "citationsPerFaculty": "Citations per Faculty",
+    "qsStars": "QS Stars",
+    "theTopNational": "Top National Tier",
+    "theBandNote": "Ranked in THE World University Rankings 801–1000 band — among Bangladesh's highest nationally ranked institutions.",
+    "theSustainability": "THE Impact Rankings",
+    "sustainabilityNational": "#{{rank}} in Bangladesh",
+    "sustainabilityPrivate": "#{{rank}} among private universities",
+    "sustainabilityNote": "Measures institutional contribution to the UN Sustainable Development Goals (SDGs).",
+    "sdg": "SDG {{goal}}",
+    "sdgGlobalRank": "#{{rank}} globally",
     "source": "Source",
     "unverified": "Ranking data not independently verified for this institution."
   },
@@ -143,7 +163,14 @@
     "hscMin": "HSC GPA Min",
     "writeReview": "Write a Review",
     "verified": "UGC Verified",
-    "tour": "Virtual Tour"
+    "tour": "Virtual Tour",
+    "departments": "Departments",
+    "timeline": "Timeline",
+    "international": "International",
+    "accreditation": "Accreditation",
+    "analytics": "Analytics",
+    "alumni": "Alumni",
+    "ai": "AI Insights"
   },
   "compare": {
     "title": "Compare Universities",
@@ -256,7 +283,13 @@
     "title": "Campus Virtual Tour",
     "campus": "Campus Tour",
     "unavailable": "No official video tours available. Visit the university website or YouTube channel.",
-    "watchChannel": "Watch on YouTube"
+    "watchChannel": "Watch on YouTube",
+    "types": {
+      "youtube": "YouTube",
+      "streetview": "Street View",
+      "360": "360° Tour",
+      "drone": "Drone Video"
+    }
   },
   "countdown": {
     "title": "Admission Calendar",
@@ -369,5 +402,160 @@
     "anonymous": "Submit anonymously",
     "submit": "Submit Review",
     "success": "Thank you! Your review has been submitted."
+  },
+  "departments": {
+    "search": "Search departments, faculties, programs...",
+    "allFaculties": "All Faculties",
+    "empty": "No departments match your filters.",
+    "viewDetails": "View Department",
+    "hod": "Head of Department",
+    "research": "Research Areas",
+    "admissionReq": "Admission Requirements",
+    "downloadCurriculum": "Download Official Curriculum",
+    "notFound": "Department not found.",
+    "levels": {
+      "bachelor": "Undergraduate",
+      "masters": "Masters",
+      "phd": "PhD",
+      "diploma": "Diploma"
+    }
+  },
+  "curriculum": {
+    "title": "Curriculum",
+    "semester": "Semester",
+    "code": "Code",
+    "course": "Course",
+    "credits": "Credits",
+    "type": "Type",
+    "category": "Category",
+    "prereq": "Prerequisites",
+    "searchCourses": "Search by course code or name...",
+    "expandAll": "Expand All",
+    "collapseAll": "Collapse All",
+    "print": "Print",
+    "searchResults": "Search Results",
+    "verifyNote": "Curriculum shown may be a sample structure. Always verify the official syllabus on the university website."
+  },
+  "circulars": {
+    "badge": "Admission Circulars",
+    "title": "Admission Circular Center",
+    "subtitle": "Latest admission notices, circulars, and important dates from Bangladesh universities.",
+    "search": "Search circulars...",
+    "latest": "Latest",
+    "latestSection": "Latest Circulars",
+    "pastSection": "Past Circulars",
+    "deadline": "Deadline",
+    "fee": "Application Fee",
+    "downloadPdf": "Download PDF",
+    "apply": "Apply Now",
+    "saveOffline": "Save Offline",
+    "empty": "No circulars available. Check university websites for updates."
+  },
+  "timeline": {
+    "title": "University Timeline",
+    "categories": {
+      "founded": "Founded",
+      "expansion": "Expansion",
+      "department": "Department",
+      "research": "Research",
+      "award": "Award",
+      "leadership": "Leadership",
+      "milestone": "Milestone",
+      "recognition": "Recognition"
+    }
+  },
+  "international": {
+    "empty": "International partnership data not available. Visit the official website.",
+    "exchange": "Exchange Programs",
+    "types": {
+      "exchange": "Student Exchange",
+      "dual-degree": "Dual Degree",
+      "research": "Research Collaboration",
+      "scholarship": "Scholarship Abroad"
+    }
+  },
+  "accreditation": {
+    "status": { "active": "Active", "expired": "Expired", "pending": "Pending" },
+    "issued": "Issued",
+    "unverified": "Not independently verified"
+  },
+  "stats": {
+    "unverified": "Admission statistics are not publicly verified for this institution.",
+    "applicants": "Applicants",
+    "selected": "Selected",
+    "acceptanceRate": "Acceptance Rate",
+    "seats": "Available Seats",
+    "competition": "Competition",
+    "avgGpa": "Avg GPA",
+    "byDepartment": "Department-wise Statistics"
+  },
+  "trends": {
+    "note": "Trend data is shown where publicly available. Missing values indicate data not published."
+  },
+  "alumni": {
+    "empty": "Alumni profiles not available for this institution.",
+    "recruiters": "Top Recruiters",
+    "advice": "Advice"
+  },
+  "ai": {
+    "universitySummary": "AI University Summary",
+    "careerRecommendation": "AI Career Recommendation",
+    "scholarshipSuggestions": "AI Scholarship Suggestions",
+    "getCareerRec": "Get Career Advice",
+    "getScholarships": "Get Scholarship Tips"
+  },
+  "community": {
+    "title": "Student Community",
+    "subtitle": "Ask questions, share experiences, and help fellow students.",
+    "search": "Search discussions...",
+    "searchBtn": "Search",
+    "ask": "Ask Question",
+    "questionTitle": "Question title",
+    "questionBody": "Describe your question...",
+    "anyUniversity": "Any university",
+    "post": "Post Question",
+    "empty": "No discussions yet. Be the first to ask!",
+    "bookmark": "Bookmark",
+    "answer": "Write an answer...",
+    "reply": "Reply"
+  },
+  "creditTransfer": {
+    "badge": "Credit Transfer",
+    "title": "Credit Transfer Checker",
+    "subtitle": "Estimate credit transfer eligibility between universities.",
+    "fromUniversity": "Current University",
+    "fromDepartment": "Current Department",
+    "toUniversity": "Target University",
+    "toDepartment": "Target Department",
+    "completedCredits": "Completed Credits",
+    "completedCourses": "Completed Courses",
+    "check": "Check Transfer",
+    "eligible": "Likely Eligible",
+    "notEligible": "May Not Be Eligible",
+    "acceptedCredits": "Estimated Accepted Credits",
+    "remainingCredits": "Remaining Credits",
+    "policy": "Transfer Policy",
+    "documents": "Required Documents"
+  },
+  "notifications": {
+    "title": "Smart Notifications",
+    "email": "Email (optional)",
+    "hint": "Browser notifications require permission. Email alerts are stored locally.",
+    "active": "active subscriptions",
+    "topics": {
+      "admission-open": "Admission Opening",
+      "admission-deadline": "Admission Deadline",
+      "scholarship": "Scholarship Deadline",
+      "circular": "Circular Updates",
+      "ranking": "Ranking Updates",
+      "department-news": "Department News",
+      "events": "University Events",
+      "exam": "Exam Dates"
+    }
+  },
+  "pwa": {
+    "install": "Install App",
+    "saveOffline": "Save Offline",
+    "saved": "Saved Offline"
   }
 }

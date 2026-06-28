@@ -46,7 +46,8 @@ export function HeroSectionV4() {
 
   return (
     <section
-      className="relative overflow-hidden bg-brand-dark text-foreground"
+      id="hero-section"
+      className="relative overflow-hidden bg-brand-dark text-white pt-[var(--landing-header-h,72px)]"
       onMouseMove={onMouseMove}
     >
       <div className="absolute inset-0 overflow-hidden" aria-hidden>
@@ -145,7 +146,7 @@ export function HeroSectionV4() {
             transition={{ duration: 0.7, delay: 0.2 }}
             className="relative hidden lg:block"
           >
-            <div className={cn(card.base, "p-1 rounded-[24px] border-white/10 bg-white/5 shadow-2xl shadow-brand/10 relative")}>
+            <div className={cn(card.onDark, "p-1 rounded-[24px] relative")}>
               <div className="flex items-center gap-2 px-4 py-3 border-b border-white/10">
                 <div className="w-3 h-3 rounded-full bg-destructive/80" />
                 <div className="w-3 h-3 rounded-full bg-warning/80" />
@@ -159,7 +160,7 @@ export function HeroSectionV4() {
                     <Link key={item.href} href={item.href}>
                       <motion.div
                         whileHover={{ y: -4, scale: 1.02 }}
-                        className={cn(card.base, card.interactive, "p-5 border-white/10 bg-white/5 hover:bg-white/10")}
+                        className={cn(card.onDark, card.interactiveOnDark, card.hoverOnDark, "p-5")}
                       >
                         <div className={cn("w-11 h-11 rounded-xl bg-gradient-to-br flex items-center justify-center mb-3", item.color)}>
                           <item.icon size={20} className="text-white" aria-hidden />
@@ -194,7 +195,7 @@ export function HeroSectionV4() {
             const key = CARD_KEYS[i];
             return (
               <Link key={item.href} href={item.href}>
-                <div className={cn(card.base, "p-4 border-white/10 bg-white/5")}>
+                <div className={cn(card.onDark, "p-4")}>
                   <div className={cn("w-10 h-10 rounded-xl bg-gradient-to-br flex items-center justify-center mb-2", item.color)}>
                     <item.icon size={18} className="text-white" aria-hidden />
                   </div>

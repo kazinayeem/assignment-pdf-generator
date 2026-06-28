@@ -83,8 +83,12 @@ export const iconBox = {
 
 export const card = {
   base: "glass-card border border-border bg-card/90 backdrop-blur-xl rounded-2xl",
+  /** Translucent cards on dark hero / gradient surfaces — avoids white glass-card bleed */
+  onDark: "rounded-2xl border border-white/10 bg-white/5 backdrop-blur-xl shadow-2xl shadow-brand/10",
   hover: "glass-card-interactive transition-all duration-300 hover:-translate-y-1 hover:shadow-lg hover:shadow-brand/10 hover:border-brand/25",
+  hoverOnDark: "transition-all duration-300 hover:-translate-y-1 hover:bg-white/10 hover:border-white/20",
   interactive: "cursor-pointer group glass-card-interactive",
+  interactiveOnDark: "cursor-pointer group",
   equal: "h-full flex flex-col",
 } as const;
 

@@ -2,10 +2,14 @@
   "nav": {
     "hub": "বিশ্ববিদ্যালয় হাব",
     "explore": "অন্বেষণ",
+    "departments": "বিভাগ",
+    "circulars": "ভর্তি বিজ্ঞপ্তি",
     "compare": "তুলনা",
     "calculator": "খরচ ক্যালকুলেটর",
     "predictor": "ভর্তি পূর্বাভাস",
     "scholarships": "বৃত্তি",
+    "community": "কমিউনিটি",
+    "creditTransfer": "ক্রেডিট ট্রান্সফার",
     "recommend": "AI সুপারিশ",
     "back": "হাবে ফিরুন"
   },
@@ -98,6 +102,18 @@
     "webometrics": "ওয়েবোমেট্রিক্স র‍্যাঙ্কিং",
     "national": "জাতীয় র‍্যাঙ্কিং",
     "notRanked": "র‍্যাঙ্ক নেই",
+    "overallScore": "সামগ্রিক স্কোর",
+    "academicReputation": "একাডেমিক সুনাম",
+    "citationsPerFaculty": "প্রতি ফ্যাকাল্টি উদ্ধৃতি",
+    "qsStars": "QS স্টার",
+    "theTopNational": "শীর্ষ জাতীয় স্তর",
+    "theBandNote": "THE বিশ্ব বিশ্ববিদ্যালয় র‍্যাঙ্কিংয়ে ৮০১–১০০০ ব্যান্ড — বাংলাদেশের সর্বোচ্চ জাতীয় স্তরের অন্তর্ভুক্ত।",
+    "theSustainability": "THE ইমপ্যাক্ট র‍্যাঙ্কিং",
+    "sustainabilityNational": "বাংলাদেশে #{{rank}}",
+    "sustainabilityPrivate": "বেসরকারি বিশ্ববিদ্যালয়ে #{{rank}}",
+    "sustainabilityNote": "জাতিসংঘের টেকসই উন্নয়ন লক্ষ্যমাত্রা (SDG) অর্জনে প্রতিষ্ঠানের অবদান পরিমাপ করে।",
+    "sdg": "SDG {{goal}}",
+    "sdgGlobalRank": "বিশ্বে #{{rank}}",
     "source": "উৎস",
     "unverified": "এই প্রতিষ্ঠানের র‍্যাঙ্কিং স্বাধীনভাবে যাচাই করা হয়নি।"
   },
@@ -143,7 +159,14 @@
     "hscMin": "HSC GPA ন্যূনতম",
     "writeReview": "রিভিউ লিখুন",
     "verified": "UGC যাচাইকৃত",
-    "tour": "ভার্চুয়াল ট্যুর"
+    "tour": "ভার্চুয়াল ট্যুর",
+    "departments": "বিভাগ",
+    "timeline": "টাইমলাইন",
+    "international": "আন্তর্জাতিক",
+    "accreditation": "স্বীকৃতি",
+    "analytics": "অ্যানালিটিক্স",
+    "alumni": "প্রাক্তন শিক্ষার্থী",
+    "ai": "AI অন্তর্দৃষ্টি"
   },
   "compare": {
     "title": "বিশ্ববিদ্যালয় তুলনা",
@@ -256,7 +279,13 @@
     "title": "ক্যাম্পাস ভার্চুয়াল ট্যুর",
     "campus": "ক্যাম্পাস ট্যুর",
     "unavailable": "অফিসিয়াল ভিডিও ট্যুর নেই। বিশ্ববিদ্যালয়ের ওয়েবসাইট বা YouTube চ্যানেল দেখুন।",
-    "watchChannel": "YouTube-এ দেখুন"
+    "watchChannel": "YouTube-এ দেখুন",
+    "types": {
+      "youtube": "YouTube",
+      "streetview": "স্ট্রিট ভিউ",
+      "360": "৩৬০° ট্যুর",
+      "drone": "ড্রোন ভিডিও"
+    }
   },
   "countdown": {
     "title": "ভর্তি ক্যালেন্ডার",
@@ -369,5 +398,112 @@
     "anonymous": "বেনামে জমা দিন",
     "submit": "রিভিউ জমা",
     "success": "ধন্যবাদ! আপনার রিভিউ জমা হয়েছে।"
-  }
+  },
+  "departments": {
+    "search": "বিভাগ, ফ্যাকাল্টি, প্রোগ্রাম খুঁজুন...",
+    "allFaculties": "সব ফ্যাকাল্টি",
+    "empty": "আপনার ফিল্টারে কোনো বিভাগ নেই।",
+    "viewDetails": "বিভাগ দেখুন",
+    "hod": "বিভাগীয় প্রধান",
+    "research": "গবেষণা ক্ষেত্র",
+    "admissionReq": "ভর্তির শর্ত",
+    "downloadCurriculum": "অফিসিয়াল কারিকুলাম ডাউনলোড",
+    "notFound": "বিভাগ পাওয়া যায়নি।",
+    "levels": { "bachelor": "স্নাতক", "masters": "স্নাতকোত্তর", "phd": "পিএইচডি", "diploma": "ডিপ্লোমা" }
+  },
+  "curriculum": {
+    "title": "কারিকুলাম",
+    "semester": "সেমিস্টার",
+    "code": "কোড",
+    "course": "কোর্স",
+    "credits": "ক্রেডিট",
+    "type": "ধরন",
+    "category": "ক্যাটাগরি",
+    "prereq": "পূর্বশর্ত",
+    "searchCourses": "কোর্স কোড বা নাম দিয়ে খুঁজুন...",
+    "expandAll": "সব খুলুন",
+    "collapseAll": "সব বন্ধ",
+    "print": "প্রিন্ট",
+    "searchResults": "অনুসন্ধান ফলাফল",
+    "verifyNote": "কারিকুলাম নমুনা হতে পারে। অফিসিয়াল সিলেবাস বিশ্ববিদ্যালয়ের ওয়েবসাইটে যাচাই করুন।"
+  },
+  "circulars": {
+    "badge": "ভর্তি বিজ্ঞপ্তি",
+    "title": "ভর্তি বিজ্ঞপ্তি কেন্দ্র",
+    "subtitle": "বাংলাদেশের বিশ্ববিদ্যালয়ের সর্বশেষ ভর্তি বিজ্ঞপ্তি ও গুরুত্বপূর্ণ তারিখ।",
+    "search": "বিজ্ঞপ্তি খুঁজুন...",
+    "latest": "সর্বশেষ",
+    "latestSection": "সর্বশেষ বিজ্ঞপ্তি",
+    "pastSection": "পুরনো বিজ্ঞপ্তি",
+    "deadline": "শেষ তারিখ",
+    "fee": "আবেদন ফি",
+    "downloadPdf": "PDF ডাউনলোড",
+    "apply": "আবেদন করুন",
+    "saveOffline": "অফলাইন সংরক্ষণ",
+    "empty": "কোনো বিজ্ঞপ্তি নেই। বিশ্ববিদ্যালয়ের ওয়েবসাইট দেখুন।"
+  },
+  "timeline": {
+    "title": "বিশ্ববিদ্যালয় টাইমলাইন",
+    "categories": {
+      "founded": "প্রতিষ্ঠা", "expansion": "প্রসার", "department": "বিভাগ", "research": "গবেষণা",
+      "award": "পুরস্কার", "leadership": "নেতৃত্ব", "milestone": "মাইলফলক", "recognition": "স্বীকৃতি"
+    }
+  },
+  "international": {
+    "empty": "আন্তর্জাতিক অংশীদারিত্বের তথ্য নেই।",
+    "exchange": "বিনিময় প্রোগ্রাম",
+    "types": { "exchange": "ছাত্র বিনিময়", "dual-degree": "দ্বৈত ডিগ্রি", "research": "গবেষণা", "scholarship": "বিদেশি বৃত্তি" }
+  },
+  "accreditation": {
+    "status": { "active": "সক্রিয়", "expired": "মেয়াদোত্তীর্ণ", "pending": "অপেক্ষমাণ" },
+    "issued": "ইস্যু",
+    "unverified": "স্বাধীনভাবে যাচাই করা হয়নি"
+  },
+  "stats": {
+    "unverified": "ভর্তি পরিসংখ্যান সর্বজনীনভাবে যাচাই করা হয়নি।",
+    "applicants": "আবেদনকারী", "selected": "নির্বাচিত", "acceptanceRate": "গ্রহণ হার",
+    "seats": "আসন", "competition": "প্রতিযোগিতা", "avgGpa": "গড় GPA", "byDepartment": "বিভাগভিত্তিক পরিসংখ্যান"
+  },
+  "trends": { "note": "ট্রেন্ড ডেটা যেখানে প্রকাশিত সেখানে দেখানো হয়।" },
+  "alumni": { "empty": "প্রাক্তন শিক্ষার্থী প্রোফাইল নেই।", "recruiters": "শীর্ষ নিয়োগকারী", "advice": "পরামর্শ" },
+  "ai": {
+    "universitySummary": "AI বিশ্ববিদ্যালয় সারাংশ",
+    "careerRecommendation": "AI ক্যারিয়ার সুপারিশ",
+    "scholarshipSuggestions": "AI বৃত্তি পরামর্শ",
+    "getCareerRec": "ক্যারিয়ার পরামর্শ",
+    "getScholarships": "বৃত্তি পরামর্শ"
+  },
+  "community": {
+    "title": "শিক্ষার্থী কমিউনিটি",
+    "subtitle": "প্রশ্ন করুন, অভিজ্ঞতা শেয়ার করুন।",
+    "search": "আলোচনা খুঁজুন...", "searchBtn": "খুঁজুন", "ask": "প্রশ্ন করুন",
+    "questionTitle": "প্রশ্নের শিরোনাম", "questionBody": "আপনার প্রশ্ন লিখুন...",
+    "anyUniversity": "যেকোনো বিশ্ববিদ্যালয়", "post": "প্রশ্ন পোস্ট",
+    "empty": "এখনও কোনো আলোচনা নেই।", "bookmark": "বুকমার্ক",
+    "answer": "উত্তর লিখুন...", "reply": "উত্তর"
+  },
+  "creditTransfer": {
+    "badge": "ক্রেডিট ট্রান্সফার",
+    "title": "ক্রেডিট ট্রান্সফার যাচাই",
+    "subtitle": "বিশ্ববিদ্যালয়ের মধ্যে ক্রেডিট স্থানান্তর যোগ্যতা অনুমান করুন।",
+    "fromUniversity": "বর্তমান বিশ্ববিদ্যালয়", "fromDepartment": "বর্তমান বিভাগ",
+    "toUniversity": "লক্ষ্য বিশ্ববিদ্যালয়", "toDepartment": "লক্ষ্য বিভাগ",
+    "completedCredits": "সম্পন্ন ক্রেডিট", "completedCourses": "সম্পন্ন কোর্স",
+    "check": "যাচাই করুন", "eligible": "সম্ভবত যোগ্য", "notEligible": "সম্ভবত অযোগ্য",
+    "acceptedCredits": "আনুমানিক গৃহীত ক্রেডিট", "remainingCredits": "অবশিষ্ট ক্রেডিট",
+    "policy": "স্থানান্তর নীতি", "documents": "প্রয়োজনীয় কাগজপত্র"
+  },
+  "notifications": {
+    "title": "স্মার্ট নোটিফিকেশন",
+    "email": "ইমেইল (ঐচ্ছিক)",
+    "hint": "ব্রাউজার নোটিফিকেশনের জন্য অনুমতি প্রয়োজন।",
+    "active": "সক্রিয় সাবস্ক্রিপশন",
+    "topics": {
+      "admission-open": "ভর্তি শুরু", "admission-deadline": "ভর্তি শেষ তারিখ",
+      "scholarship": "বৃত্তি শেষ তারিখ", "circular": "বিজ্ঞপ্তি আপডেট",
+      "ranking": "র‍্যাঙ্কিং আপডেট", "department-news": "বিভাগীয় খবর",
+      "events": "ইভেন্ট", "exam": "পরীক্ষার তারিখ"
+    }
+  },
+  "pwa": { "install": "অ্যাপ ইনস্টল", "saveOffline": "অফলাইন সংরক্ষণ", "saved": "অফলাইনে সংরক্ষিত" }
 }

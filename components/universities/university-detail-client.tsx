@@ -21,21 +21,42 @@ import { UniversityVirtualTour } from "./university-virtual-tour";
 import { UniversityAdmissionCountdown } from "./university-admission-countdown";
 import { UniversityEmployabilitySection } from "./university-employability-section";
 import { UniversityReviewsPanel } from "./university-reviews-panel";
+import { UniversityDepartmentExplorer } from "./university-department-explorer";
+import { UniversityTimelineSection } from "./university-timeline-section";
+import { UniversityInternationalSection } from "./university-international-section";
+import { UniversityAccreditationSection } from "./university-accreditation-section";
+import { UniversityAdmissionStatsSection } from "./university-admission-stats-section";
+import { UniversityTrendAnalytics } from "./university-trend-analytics";
+import { UniversityAlumniSection } from "./university-alumni-section";
+import { UniversityAiPanel } from "./university-ai-panel";
+import { UniversityNotificationsPanel } from "./university-notifications-panel";
+import { saveUniversityOffline, isUniversityOffline, removeUniversityOffline } from "@/lib/universities/offline";
 import { cn } from "@/lib/utils";
 
 type UniversityDetailClientProps = {
   university: University;
 };
 
-const TABS = ["overview", "programs", "tuition", "admission", "rankings", "gallery", "campus", "tour", "facilities", "career", "reviews", "faqs"] as const;
+const TABS = [
+  "overview", "departments", "programs", "tuition", "admission", "rankings",
+  "timeline", "international", "accreditation", "analytics", "alumni", "ai",
+  "gallery", "campus", "tour", "facilities", "career", "reviews", "faqs",
+] as const;
 type Tab = (typeof TABS)[number];
 
 const TAB_LABELS: Record<Tab, string> = {
   overview: "quickFacts",
+  departments: "departments",
   programs: "programs",
   tuition: "tuition",
   admission: "admission",
   rankings: "rankings",
+  timeline: "timeline",
+  international: "international",
+  accreditation: "accreditation",
+  analytics: "analytics",
+  alumni: "alumni",
+  ai: "ai",
   gallery: "gallery",
   campus: "map",
   tour: "tour",
@@ -53,11 +74,13 @@ export function UniversityDetailClient({ university }: UniversityDetailClientPro
   const { t } = useTranslation("universities");
   const [tab, setTab] = useState<Tab>("overview");
   const [bookmarked, setBookmarked] = useState(false);
+  const [offline, setOffline] = useState(false);
   const avgRating = getAverageRating(university);
 
   useEffect(() => {
     addRecentlyViewed(university.slug);
     setBookmarked(isFavorite(university.slug));
+    setOffline(isUniversityOffline(university.slug));
   }, [university.slug]);
   const unavailable = t("data.unavailable");
   const tuitionLabels = {
@@ -115,6 +138,9 @@ export function UniversityDetailClient({ university }: UniversityDetailClientPro
                 </a>
                 <button type="button" onClick={() => { toggleFavorite(university.slug); setBookmarked(isFavorite(university.slug)); }} className={cn(button.ghost, "inline-flex items-center gap-2")}>
                   <Bookmark size={14} className={bookmarked ? "fill-brand text-brand" : ""} aria-hidden /> {t("detail.bookmark")}
+                </button>
+                <button type="button" onClick={() => { if (offline) { removeUniversityOffline(university.slug); } else { saveUniversityOffline(university.slug); } setOffline(isUniversityOffline(university.slug)); }} className={cn(button.ghost, "inline-flex items-center gap-2")}>
+                  <Download size={14} className={offline ? "text-brand" : ""} aria-hidden /> {offline ? t("pwa.saved") : t("pwa.saveOffline")}
                 </button>
                 <button type="button" onClick={() => exportUniversityPdf(university)} className={cn(button.ghost, "inline-flex items-center gap-2")}>
                   <Download size={14} aria-hidden /> {t("pdf.export")}
@@ -219,6 +245,13 @@ export function UniversityDetailClient({ university }: UniversityDetailClientPro
                     <span className="font-semibold text-foreground">{t("detail.map")}</span>
                   </a>
                 )}
+                <UniversityNotificationsPanel university={university} />
+              </motion.div>
+            )}
+
+            {tab === "departments" && (
+              <motion.div {...animation.fadeUp}>
+                <UniversityDepartmentExplorer university={university} />
               </motion.div>
             )}
 
@@ -305,6 +338,50 @@ export function UniversityDetailClient({ university }: UniversityDetailClientPro
                     )}
                   </div>
                 )}
+                <UniversityNotificationsPanel university={university} />
+              </motion.div>
+            )}
+
+            {tab === "rankings" && (
+              <motion.div {...animation.fadeUp}>
+                <UniversityRankingsSection rankings={university.rankings} />
+              </motion.div>
+            )}
+
+            {tab === "timeline" && (
+              <motion.div {...animation.fadeUp}>
+                <UniversityTimelineSection university={university} />
+              </motion.div>
+            )}
+
+            {tab === "international" && (
+              <motion.div {...animation.fadeUp}>
+                <UniversityInternationalSection university={university} />
+              </motion.div>
+            )}
+
+            {tab === "accreditation" && (
+              <motion.div {...animation.fadeUp}>
+                <UniversityAccreditationSection university={university} />
+              </motion.div>
+            )}
+
+            {tab === "analytics" && (
+              <motion.div {...animation.fadeUp} className="space-y-6">
+                <UniversityAdmissionStatsSection university={university} />
+                <UniversityTrendAnalytics university={university} />
+              </motion.div>
+            )}
+
+            {tab === "alumni" && (
+              <motion.div {...animation.fadeUp}>
+                <UniversityAlumniSection university={university} />
+              </motion.div>
+            )}
+
+            {tab === "ai" && (
+              <motion.div {...animation.fadeUp}>
+                <UniversityAiPanel university={university} />
               </motion.div>
             )}
 
@@ -323,12 +400,6 @@ export function UniversityDetailClient({ university }: UniversityDetailClientPro
             {tab === "tour" && (
               <motion.div {...animation.fadeUp}>
                 <UniversityVirtualTour university={university} />
-              </motion.div>
-            )}
-
-            {tab === "rankings" && (
-              <motion.div {...animation.fadeUp}>
-                <UniversityRankingsSection rankings={university.rankings} />
               </motion.div>
             )}
 

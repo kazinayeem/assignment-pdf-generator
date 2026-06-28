@@ -1,0 +1,20 @@
+{
+  "name": "CampusFlow University Hub",
+  "short_name": "CampusFlow",
+  "description": "Bangladesh's comprehensive university discovery platform",
+  "start_url": "/universities",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#6D5DF6",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "/logo_navbar.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ],
+  "categories": ["education"],
+  "lang": "en"
+}

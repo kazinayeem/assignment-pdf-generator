@@ -1,4 +1,4 @@
-import type { TuitionInfo, University, UniversityRanking } from "./types";
+import type { TheSustainabilityRanking, TuitionInfo, University, UniversityRanking } from "./types";
 
 export function formatCurrency(amount: number | null | undefined): string {
   if (amount == null) return "—";
@@ -25,12 +25,72 @@ export function formatRanking(
   return `#${rank}`;
 }
 
+export function formatQsWorldRanking(
+  rankings: UniversityRanking,
+  notRankedLabel = "Not Ranked"
+): string {
+  if (rankings.qsWorldDisplay) {
+    const d = rankings.qsWorldDisplay;
+    return d.startsWith("#") ? d : `#${d}`;
+  }
+  if (rankings.qsWorld != null) return `#${rankings.qsWorld}`;
+  if (rankings.qsAsia != null) return `#${rankings.qsAsia} (Asia)`;
+  if (rankings.qs != null) return `#${rankings.qs}`;
+  return notRankedLabel;
+}
+
 export function getQsDisplayRank(rankings: UniversityRanking): number | null {
   return rankings.qsWorld ?? rankings.qsAsia ?? rankings.qs ?? null;
 }
 
 export function isQsRanked(rankings: UniversityRanking): boolean {
-  return getQsDisplayRank(rankings) != null;
+  return rankings.qsWorld != null || rankings.qsWorldDisplay != null;
+}
+
+export function formatTheWorldRanking(
+  rankings: UniversityRanking,
+  notRankedLabel = "Not Ranked"
+): string {
+  if (rankings.theWorldDisplay) {
+    const d = rankings.theWorldDisplay;
+    return d.startsWith("#") ? d : `#${d}`;
+  }
+  if (rankings.theWorld != null) return `#${rankings.theWorld}`;
+  if (rankings.the != null) return `#${rankings.the}`;
+  return notRankedLabel;
+}
+
+export function isTheRanked(rankings: UniversityRanking): boolean {
+  return rankings.theWorld != null || rankings.theWorldDisplay != null || rankings.the != null;
+}
+
+export function formatTheSustainabilityGlobal(
+  sustainability: TheSustainabilityRanking | null | undefined,
+  notRankedLabel = "Not Ranked"
+): string {
+  if (!sustainability) return notRankedLabel;
+  if (sustainability.globalDisplay) {
+    const d = sustainability.globalDisplay;
+    return d.startsWith("#") ? d : `#${d}`;
+  }
+  if (sustainability.globalRank != null) return `#${sustainability.globalRank}`;
+  return notRankedLabel;
+}
+
+export function hasTheSustainability(rankings: UniversityRanking): boolean {
+  return rankings.theSustainability != null;
+}
+
+export function formatTheSustainabilitySummary(
+  sustainability: TheSustainabilityRanking | null | undefined,
+  notRankedLabel = "Not Ranked"
+): string {
+  if (!sustainability) return notRankedLabel;
+  const global = formatTheSustainabilityGlobal(sustainability, "");
+  if (global) return global;
+  if (sustainability.nationalLabel) return sustainability.nationalLabel;
+  if (sustainability.nationalRank != null) return `#${sustainability.nationalRank} in Bangladesh`;
+  return notRankedLabel;
 }
 
 export function formatTuitionRange(tuition: TuitionInfo, labels: {

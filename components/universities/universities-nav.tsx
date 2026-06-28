@@ -12,10 +12,14 @@ import { getUniversity } from "@/lib/universities";
 
 const HUB_LINKS = [
   { key: "explore", href: "/universities" },
+  { key: "departments", href: "/universities" },
+  { key: "circulars", href: "/universities/circulars" },
   { key: "compare", href: "/universities/compare" },
   { key: "predictor", href: "/universities/predictor" },
   { key: "calculator", href: "/universities/calculator" },
   { key: "scholarships", href: "/universities/scholarships" },
+  { key: "community", href: "/universities/community" },
+  { key: "creditTransfer", href: "/universities/credit-transfer" },
   { key: "recommend", href: "/universities/recommend" },
 ] as const;
 
@@ -25,6 +29,9 @@ function getPageTitle(pathname: string): string | null {
   if (pathname === "/universities/calculator") return "calculator";
   if (pathname === "/universities/predictor") return "predictor";
   if (pathname === "/universities/scholarships") return "scholarships";
+  if (pathname === "/universities/circulars") return "circulars";
+  if (pathname === "/universities/community") return "community";
+  if (pathname === "/universities/credit-transfer") return "creditTransfer";
   if (pathname === "/universities/recommend") return "recommend";
   const match = pathname.match(/^\/universities\/([^/]+)$/);
   if (match) return getUniversity(match[1])?.shortName ?? null;
@@ -61,7 +68,7 @@ export function UniversitiesNav() {
             <>
               <ChevronRight size={14} className="shrink-0" aria-hidden />
               <span className="text-foreground font-medium truncate max-w-[100px] sm:max-w-xs">
-                {pageTitle === "compare" || pageTitle === "calculator" || pageTitle === "recommend" || pageTitle === "predictor" || pageTitle === "scholarships"
+                {pageTitle === "compare" || pageTitle === "calculator" || pageTitle === "recommend" || pageTitle === "predictor" || pageTitle === "scholarships" || pageTitle === "circulars" || pageTitle === "community" || pageTitle === "creditTransfer"
                   ? t(`nav.${pageTitle}`)
                   : pageTitle}
               </span>
@@ -69,7 +76,7 @@ export function UniversitiesNav() {
           )}
         </nav>
 
-        <nav className="hidden lg:flex items-center gap-1 ml-4" aria-label="University Hub">
+        <nav className="hidden xl:flex items-center gap-1 ml-2 overflow-x-auto" aria-label="University Hub">
           {HUB_LINKS.map((link) => (
             <Link
               key={link.href}

@@ -1,7 +1,7 @@
 import jsPDF from "jspdf";
 import autoTable from "jspdf-autotable";
-import type { TuitionCalculationResult, University } from "./types";
-import { formatRanking, formatTuitionRange, getQsDisplayRank } from "./format";
+import type { CurriculumSemester, DepartmentDetail, TuitionCalculationResult, University } from "./types";
+import { formatQsWorldRanking, formatTheSustainabilitySummary, formatTheWorldRanking, formatTuitionRange } from "./format";
 
 const tuitionLabels = {
   unavailable: "Contact university",
@@ -24,7 +24,9 @@ export function exportUniversityPdf(university: University) {
     `Established: ${university.established}`,
     `Location: ${university.address}`,
     `Website: ${university.website}`,
-    `QS Rank: ${formatRanking(getQsDisplayRank(university.rankings), "Not Ranked")}`,
+    `QS Rank: ${formatQsWorldRanking(university.rankings, "Not Ranked")}`,
+    `THE Rank: ${formatTheWorldRanking(university.rankings, "Not Ranked")}`,
+    `THE Impact: ${formatTheSustainabilitySummary(university.rankings.theSustainability, "Not Ranked")}`,
     `Tuition: ${formatTuitionRange(university.tuition, tuitionLabels)}`,
     `Students: ${university.studentPopulation ?? "N/A"}`,
     `Departments: ${university.departmentCount ?? "N/A"}`,
@@ -48,7 +50,9 @@ export function exportComparisonPdf(universities: University[]) {
     body: [
       ["Type", ...universities.map((u) => u.type)],
       ["Location", ...universities.map((u) => `${u.city}, ${u.division}`)],
-      ["QS Rank", ...universities.map((u) => formatRanking(getQsDisplayRank(u.rankings), "N/A"))],
+      ["QS Rank", ...universities.map((u) => formatQsWorldRanking(u.rankings, "N/A"))],
+      ["THE Rank", ...universities.map((u) => formatTheWorldRanking(u.rankings, "N/A"))],
+      ["THE Impact", ...universities.map((u) => formatTheSustainabilitySummary(u.rankings.theSustainability, "N/A"))],
       ["Tuition", ...universities.map((u) => formatTuitionRange(u.tuition, tuitionLabels))],
       ["Hostel", ...universities.map((u) => (u.facilities.hostel ? "Yes" : "No"))],
       ["Departments", ...universities.map((u) => String(u.departmentCount ?? "N/A"))],
@@ -119,4 +123,38 @@ export function exportAdmissionPdf(university: University, chance: string, confi
   doc.text(`SSC Min: ${university.admission.sscGpaMin ?? "N/A"}`, 14, 52);
   doc.text(`HSC Min: ${university.admission.hscGpaMin ?? "N/A"}`, 14, 60);
   doc.save(`${university.slug}-admission-report.pdf`);
+}
+
+export function exportCurriculumPdf(
+  university: University,
+  department: DepartmentDetail,
+  curriculum: CurriculumSemester[]
+) {
+  const doc = new jsPDF();
+  doc.setFontSize(16);
+  doc.text(`Curriculum — ${department.name}`, 14, 20);
+  doc.setFontSize(10);
+  doc.text(`${university.name} · Verify on official website`, 14, 28);
+
+  let startY = 36;
+  for (const sem of curriculum) {
+    if (startY > 250) {
+      doc.addPage();
+      startY = 20;
+    }
+    doc.setFontSize(12);
+    doc.text(`Semester ${sem.number}`, 14, startY);
+    startY += 6;
+
+    autoTable(doc, {
+      startY,
+      head: [["Code", "Course", "Credits", "Type", "Category"]],
+      body: sem.courses.map((c) => [c.code, c.name, String(c.credits), c.type, c.category]),
+      styles: { fontSize: 8 },
+      headStyles: { fillColor: [109, 93, 246] },
+    });
+    startY = (doc as jsPDF & { lastAutoTable: { finalY: number } }).lastAutoTable.finalY + 10;
+  }
+
+  doc.save(`${university.slug}-${department.slug}-curriculum.pdf`);
 }

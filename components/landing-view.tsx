@@ -57,13 +57,14 @@ export default function LandingView() {
   const [searchQuery, setSearchQuery] = useState("");
   const [mobileOpen, setMobileOpen] = useState(false);
   const headerRef = useRef<HTMLDivElement>(null);
-  const [headerHeight, setHeaderHeight] = useState(72);
 
   useEffect(() => {
     const el = headerRef.current;
     if (!el) return;
 
-    const updateHeight = () => setHeaderHeight(el.offsetHeight);
+    const updateHeight = () => {
+      document.documentElement.style.setProperty("--landing-header-h", `${el.offsetHeight}px`);
+    };
     const observer = new ResizeObserver(updateHeight);
     observer.observe(el);
     updateHeight();
@@ -81,7 +82,6 @@ export default function LandingView() {
             onMobileOpen={() => setMobileOpen(true)}
           />
         </div>
-        <div style={{ height: headerHeight }} aria-hidden className="shrink-0" />
 
         <MobileMenu open={mobileOpen} onClose={() => setMobileOpen(false)} />
 

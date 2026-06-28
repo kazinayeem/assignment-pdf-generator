@@ -5,7 +5,7 @@ import { motion } from "framer-motion";
 import { MapPin, Star, Eye, GraduationCap } from "lucide-react";
 import { useTranslation } from "@/lib/i18n/provider";
 import { card, badge, animation } from "@/lib/design-system";
-import { formatTuitionRange, getQsDisplayRank } from "@/lib/universities/format";
+import { formatQsWorldRanking, formatTuitionRange, isQsRanked } from "@/lib/universities/format";
 import { getAverageRating } from "@/lib/universities";
 import type { University } from "@/lib/universities/types";
 import { UniversityLogo } from "./university-logo";
@@ -17,7 +17,8 @@ type UniversityCompactCardProps = {
 
 export function UniversityCompactCard({ university }: UniversityCompactCardProps) {
   const { t } = useTranslation("universities");
-  const qsRank = getQsDisplayRank(university.rankings);
+  const qsLabel = formatQsWorldRanking(university.rankings, "");
+  const qsRanked = isQsRanked(university.rankings);
   const rating = getAverageRating(university);
   const tuitionLabels = {
     unavailable: t("tuition.unavailable"),
@@ -38,8 +39,8 @@ export function UniversityCompactCard({ university }: UniversityCompactCardProps
 
       <div className="flex flex-wrap gap-1 mb-3">
         <span className={cn(badge.brand, "text-[10px]")}>{t(`types.${university.type}`)}</span>
-        {qsRank != null ? (
-          <span className={cn(badge.muted, "text-[10px]")}>QS #{qsRank}</span>
+        {qsRanked ? (
+          <span className={cn(badge.muted, "text-[10px]")}>QS {qsLabel}</span>
         ) : (
           <span className={cn(badge.muted, "text-[10px] opacity-70")}>{t("rankings.notRanked")}</span>
         )}

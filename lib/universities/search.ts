@@ -1,4 +1,5 @@
 import type { SearchSuggestion, University } from "./types";
+import { slugify } from "./builder";
 
 export type SearchMatch = {
   university: University;
@@ -104,6 +105,7 @@ export function getSearchSuggestions(universities: University[], query: string, 
           label: p.department,
           sublabel: u.shortName,
           slug: u.slug,
+          deptSlug: slugify(p.department),
           matchField: "department",
         });
       }
@@ -116,6 +118,22 @@ export function getSearchSuggestions(universities: University[], query: string, 
           matchField: "program",
         });
       }
+      if (fieldMatches(p.id, tokens)) {
+        add({
+          type: "course",
+          label: p.id.toUpperCase(),
+          sublabel: `${p.department} · ${u.shortName}`,
+          slug: u.slug,
+          deptSlug: p.department.toLowerCase(),
+          matchField: "course",
+        });
+      }
+    }
+    if (u.admission.circularUrl && fieldMatches("circular", tokens)) {
+      add({ type: "circular", label: `${u.shortName} Circular`, slug: u.slug, matchField: "circular" });
+    }
+    if (u.viceChancellor && fieldMatches(u.viceChancellor, tokens)) {
+      add({ type: "faculty", label: u.viceChancellor, sublabel: u.shortName, slug: u.slug, matchField: "faculty" });
     }
     if (suggestions.length >= limit) break;
   }

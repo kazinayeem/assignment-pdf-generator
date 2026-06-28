@@ -9,7 +9,7 @@ import {
 } from "lucide-react";
 import { useTranslation } from "@/lib/i18n/provider";
 import { card, badge, animation } from "@/lib/design-system";
-import { formatCount, formatRanking, formatStartingCost, formatTuitionRange, getQsDisplayRank,
+import { formatCount, formatQsWorldRanking, formatStartingCost, formatTheWorldRanking, formatTheSustainabilityGlobal, formatTuitionRange, hasTheSustainability, isQsRanked, isTheRanked,
 } from "@/lib/universities/format";
 import { isFavorite, toggleFavorite } from "@/lib/universities/storage";
 import type { University } from "@/lib/universities/types";
@@ -27,7 +27,12 @@ export function UniversityCard({ university, onCompare, compareSelected, showCom
   const { t } = useTranslation("universities");
   const [bookmarked, setBookmarked] = useState(() => isFavorite(university.slug));
 
-  const qsRank = getQsDisplayRank(university.rankings);
+  const qsLabel = formatQsWorldRanking(university.rankings, "");
+  const theLabel = formatTheWorldRanking(university.rankings, "");
+  const qsRanked = isQsRanked(university.rankings);
+  const theRanked = isTheRanked(university.rankings);
+  const sustainabilityRanked = hasTheSustainability(university.rankings);
+  const sustainabilityLabel = formatTheSustainabilityGlobal(university.rankings.theSustainability, "");
   const tuitionLabels = {
     unavailable: t("tuition.unavailable"),
     variesByDepartment: t("tuition.variesByDepartment"),
@@ -72,9 +77,16 @@ export function UniversityCard({ university, onCompare, compareSelected, showCom
       </div>
 
       <div className="flex flex-wrap gap-1.5 mb-3">
-        {qsRank != null ? (
-          <span className={cn(badge.muted, "text-[10px]")}>QS {formatRanking(qsRank, "")}</span>
-        ) : (
+        {qsRanked && (
+          <span className={cn(badge.muted, "text-[10px]")}>QS {qsLabel}</span>
+        )}
+        {theRanked && (
+          <span className={cn(badge.muted, "text-[10px]")}>THE {theLabel}</span>
+        )}
+        {sustainabilityRanked && sustainabilityLabel && (
+          <span className={cn(badge.success, "text-[10px]")}>THE Impact {sustainabilityLabel}</span>
+        )}
+        {!qsRanked && !theRanked && !sustainabilityRanked && (
           <span className={cn(badge.muted, "text-[10px] opacity-70")}>{t("rankings.notRanked")}</span>
         )}
         {university.admission.isOpen === true && (

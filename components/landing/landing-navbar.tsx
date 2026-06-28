@@ -31,15 +31,27 @@ type LandingNavbarProps = {
 };
 
 export function LandingNavbar({ onSearchOpen, onMobileOpen, stacked = false }: LandingNavbarProps) {
-  const [scrolled, setScrolled] = useState(false);
+  const [overHero, setOverHero] = useState(true);
   const pathname = usePathname();
   const { t } = useTranslation("common");
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 40);
-    window.addEventListener("scroll", onScroll, { passive: true });
-    return () => window.removeEventListener("scroll", onScroll);
+    const hero = document.getElementById("hero-section");
+    if (!hero) {
+      setOverHero(false);
+      return;
+    }
+
+    const observer = new IntersectionObserver(
+      ([entry]) => setOverHero(entry.isIntersecting),
+      { threshold: 0, rootMargin: "-80px 0px 0px 0px" }
+    );
+    observer.observe(hero);
+    return () => observer.disconnect();
   }, []);
+
+  /** Light navbar (dark text) when past hero */
+  const lightNav = !overHero;
 
   return (
     <motion.header
@@ -49,9 +61,9 @@ export function LandingNavbar({ onSearchOpen, onMobileOpen, stacked = false }: L
       className={cn(
         "left-0 right-0 transition-all duration-500",
         stacked ? "relative" : "fixed top-0 z-40",
-        scrolled
-          ? "bg-background/80 backdrop-blur-xl border-b border-border shadow-sm"
-          : "bg-transparent border-b border-transparent"
+        lightNav
+          ? "bg-background/95 backdrop-blur-xl border-b border-border shadow-sm"
+          : "bg-brand-dark/95 backdrop-blur-xl border-b border-white/10 shadow-sm"
       )}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -62,7 +74,7 @@ export function LandingNavbar({ onSearchOpen, onMobileOpen, stacked = false }: L
               aria-label={t("nav.menu")}
               className={cn(
                 "md:hidden flex items-center justify-center min-h-[44px] min-w-[44px] rounded-xl transition-colors cursor-pointer",
-                scrolled
+                lightNav
                   ? "text-muted-foreground hover:bg-muted"
                   : "text-white/80 hover:bg-white/10"
               )}
@@ -78,7 +90,7 @@ export function LandingNavbar({ onSearchOpen, onMobileOpen, stacked = false }: L
                 priority
                 className={cn(
                   "h-8 sm:h-9 w-auto transition-all duration-300",
-                  !scrolled && "brightness-0 invert"
+                  !lightNav && "brightness-0 invert"
                 )}
               />
             </Link>
@@ -93,7 +105,7 @@ export function LandingNavbar({ onSearchOpen, onMobileOpen, stacked = false }: L
                   href={link.href}
                   className={cn(
                     "relative px-3 py-2 rounded-xl text-sm font-medium transition-colors min-h-[44px] flex items-center",
-                    scrolled
+                    lightNav
                       ? isActive
                         ? "text-brand bg-brand/10"
                         : "text-muted-foreground hover:text-foreground hover:bg-muted"
@@ -106,7 +118,10 @@ export function LandingNavbar({ onSearchOpen, onMobileOpen, stacked = false }: L
                   {isActive && (
                     <motion.span
                       layoutId="nav-active"
-                      className="absolute inset-0 rounded-xl bg-brand/10 -z-10"
+                      className={cn(
+                        "absolute inset-0 rounded-xl -z-10",
+                        lightNav ? "bg-brand/10" : "bg-white/10"
+                      )}
                       transition={{ type: "spring", bounce: 0.2, duration: 0.5 }}
                     />
                   )}
@@ -121,7 +136,7 @@ export function LandingNavbar({ onSearchOpen, onMobileOpen, stacked = false }: L
               aria-label={t("nav.search")}
               className={cn(
                 "hidden sm:flex items-center gap-2 px-3 py-2 rounded-xl text-sm transition-colors cursor-pointer min-h-[44px]",
-                scrolled
+                lightNav
                   ? "bg-muted hover:bg-muted/80 text-muted-foreground"
                   : "bg-white/10 hover:bg-white/20 text-white/70"
               )}
@@ -134,13 +149,13 @@ export function LandingNavbar({ onSearchOpen, onMobileOpen, stacked = false }: L
               aria-label={t("nav.search")}
               className={cn(
                 "sm:hidden flex items-center justify-center min-h-[44px] min-w-[44px] rounded-xl transition-colors cursor-pointer",
-                scrolled ? "text-muted-foreground hover:bg-muted" : "text-white/70 hover:bg-white/10"
+                lightNav ? "text-muted-foreground hover:bg-muted" : "text-white/70 hover:bg-white/10"
               )}
             >
               <Search size={18} />
             </button>
-            <LanguageSwitcher scrolled={scrolled} compact />
-            <ThemeToggle scrolled={scrolled} />
+            <LanguageSwitcher scrolled={lightNav} compact />
+            <ThemeToggle scrolled={lightNav} />
             <Link href="/login" className="hidden sm:block">
               <button
                 className="btn-premium flex items-center gap-2 px-5 py-2.5 rounded-xl gradient-primary text-brand-foreground text-sm font-semibold hover:shadow-lg hover:shadow-brand/30 transition cursor-pointer min-h-[44px]"

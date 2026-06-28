@@ -9,7 +9,7 @@ export const metadata: Metadata = {
 
 export default function InterviewLayout({ children }: { children: React.ReactNode }) {
   return (
-    <div className="min-h-screen bg-[#F8FAFC] dark:bg-[#0F172A]">
+    <div className="min-h-screen bg-surface-page">
       <KnowledgeNav />
       <div className="max-w-[1400px] mx-auto flex">
         <KnowledgeSidebar />

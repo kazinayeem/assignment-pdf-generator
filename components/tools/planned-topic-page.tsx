@@ -14,7 +14,7 @@ type PlannedTopicPageProps = {
 
 export function PlannedTopicPage({ topic, parentPath, parentLabel, subjectPath }: PlannedTopicPageProps) {
   return (
-    <div className="min-h-screen bg-[#F8FAFC] dark:bg-[#0F172A]">
+    <div className="min-h-screen bg-surface-page">
       <div className="sticky top-0 z-40 glass border-b border-slate-200/60 dark:border-white/10">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 py-4 flex items-center justify-between gap-4">
           <Link

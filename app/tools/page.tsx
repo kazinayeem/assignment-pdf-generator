@@ -56,7 +56,7 @@ export default function LearnPage() {
   }, [filter, search, bookmarked, completedLessons, isPinnedSubject]);
 
   return (
-    <div className="min-h-full bg-[#F8FAFC] dark:bg-[#0F172A]">
+    <div className="min-h-full bg-surface-page">
       <section className="relative overflow-hidden border-b border-[#E5E7EB] dark:border-white/10">
         <div className="blur-orb w-[400px] h-[400px] bg-[#6D5DF6]/10 -top-32 right-0" aria-hidden />
         <div className="max-w-[1280px] mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16">

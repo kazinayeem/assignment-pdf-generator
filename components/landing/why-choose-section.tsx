@@ -7,7 +7,7 @@ import { SectionHeader } from "./section-header";
 
 export function WhyChooseSection() {
   return (
-    <section className="section-padding relative bg-[#FAFAFC] dark:bg-[#0F172A]">
+    <section className="section-padding relative bg-surface-page">
       <div className="blur-orb w-[300px] h-[300px] bg-[#6D5DF6]/10 top-0 right-0" aria-hidden />
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
         <SectionHeader

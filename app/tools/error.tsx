@@ -5,7 +5,7 @@ import { AlertTriangle, RefreshCw, BookOpen } from "lucide-react";
 
 export default function ToolsError({ error, reset }: { error: Error; reset: () => void }) {
   return (
-    <div className="min-h-[60vh] bg-[#F8FAFC] dark:bg-[#0F172A] flex items-center justify-center px-4 py-16">
+    <div className="min-h-[60vh] bg-surface-page flex items-center justify-center px-4 py-16">
       <div className="text-center max-w-md w-full">
         <div className="w-16 h-16 rounded-2xl bg-amber-500/10 flex items-center justify-center mx-auto mb-6">
           <AlertTriangle className="w-8 h-8 text-amber-500" aria-hidden="true" />

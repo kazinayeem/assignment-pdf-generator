@@ -5,8 +5,11 @@ import AppFooter from "@/components/app-footer";
 import { AuthInitializer } from "@/components/auth-initializer";
 import AppSessionProvider from "@/components/session-provider";
 import { ThemeProvider } from "@/components/theme-provider";
+import { JsonLd } from "@/components/structured-data";
 import { Toaster } from "react-hot-toast";
 import { Analytics } from "@vercel/analytics/next";
+
+const SITE_URL = "https://bornosoft-cover.vercel.app";
 
 const plusJakarta = Plus_Jakarta_Sans({
   variable: "--font-jakarta",
@@ -21,44 +24,46 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   title: {
-    default: "CoverGen V2 | Academic Productivity Platform for DIU",
-    template: "%s | CoverGen V2",
+    default: "CampusFlow V2 | Academic Productivity Platform for DIU",
+    template: "%s | CampusFlow V2",
   },
   description:
-    "CoverGen V2 by Bornosoft is the complete academic productivity platform for Daffodil International University students. Generate assignment covers, lab reports, ATS-friendly CVs, and master CS topics instantly.",
+    "CampusFlow V2 by Bornosoft is the complete academic productivity platform for Daffodil International University students. Assignment covers, lab reports, ATS CVs, CS learning tools, interview prep, and career hub — all in one place.",
   keywords: [
-    "CoverGen V2",
-    "Bornosoft by Nayeem",
+    "CampusFlow",
+    "CampusFlow V2",
+    "Bornosoft",
     "Daffodil International University",
     "DIU",
     "DIU Assignment Cover Generator",
     "DIU Lab Report Generator",
-    "DIU PDF Generator",
     "ATS CV Builder",
-    "Class Routine",
+    "Interview Preparation",
+    "Career Hub",
+    "CS Learning Platform",
     "CSE",
     "SWE",
     "Academic Productivity",
     "Mohammad Ali Nayeem",
-    "bornosoftnr.com",
   ],
   authors: [{ name: "Mohammad Ali Nayeem" }],
   creator: "Mohammad Ali Nayeem",
   publisher: "Bornosoft",
+  metadataBase: new URL(SITE_URL),
   openGraph: {
-    title: "CoverGen V2 | Academic Productivity Platform for DIU",
+    title: "CampusFlow V2 | Academic Productivity Platform for DIU",
     description:
-      "Generate official DIU assignment covers, lab reports, ATS-friendly CVs, and master CS topics — all in one platform. Built by Bornosoft.",
+      "Assignment covers, lab reports, ATS CVs, CS learning modules, interview knowledge base, and career tools — built for DIU students by Bornosoft.",
     type: "website",
     locale: "en_US",
-    siteName: "CoverGen V2",
-    url: "https://bornosoft-cover.vercel.app",
+    siteName: "CampusFlow V2",
+    url: SITE_URL,
   },
   twitter: {
     card: "summary_large_image",
-    title: "CoverGen V2 | DIU Student Platform",
+    title: "CampusFlow V2 | DIU Student Platform",
     description:
-      "Generate DIU assignment covers, lab reports, and ATS-friendly CVs in seconds. Built by Bornosoft by Nayeem.",
+      "The all-in-one academic and career platform for DIU students. Learning, tools, interview prep, and more.",
   },
   robots: {
     index: true,
@@ -67,6 +72,31 @@ export const metadata: Metadata = {
   alternates: {
     canonical: "/",
   },
+};
+
+const structuredData = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebSite",
+      name: "CampusFlow V2",
+      url: SITE_URL,
+      description: "Academic productivity and career platform for DIU students.",
+      publisher: { "@type": "Organization", name: "Bornosoft" },
+      potentialAction: {
+        "@type": "SearchAction",
+        target: `${SITE_URL}/interview/search?q={search_term_string}`,
+        "query-input": "required name=search_term_string",
+      },
+    },
+    {
+      "@type": "SoftwareApplication",
+      name: "CampusFlow V2",
+      applicationCategory: "EducationalApplication",
+      operatingSystem: "Web",
+      offers: { "@type": "Offer", price: "0", priceCurrency: "BDT" },
+    },
+  ],
 };
 
 export default function RootLayout({
@@ -79,11 +109,12 @@ export default function RootLayout({
       <body
         className={`${plusJakarta.variable} ${geistMono.variable} font-sans antialiased`}
       >
+        <JsonLd data={structuredData} />
         <ThemeProvider>
           <AppSessionProvider>
             <a
               href="#main-content"
-              className="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-[200] focus:px-4 focus:py-2 focus:rounded-lg focus:bg-primary focus:text-primary-foreground focus:outline-none focus:ring-2 focus:ring-ring"
+              className="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-[200] focus:px-4 focus:py-2 focus:rounded-lg focus:bg-brand focus:text-brand-foreground focus:outline-none focus:ring-2 focus:ring-ring"
             >
               Skip to main content
             </a>

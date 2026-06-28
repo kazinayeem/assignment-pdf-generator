@@ -4,8 +4,10 @@ import { useMemo, useState } from "react";
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 import rehypeRaw from "rehype-raw";
+import rehypeSanitize from "rehype-sanitize";
 import rehypeSlug from "rehype-slug";
 import rehypeAutolinkHeadings from "rehype-autolink-headings";
+import { markdownSanitizeSchema } from "@/lib/markdown/sanitize-schema";
 import { cn } from "@/lib/utils";
 
 type MarkdownRendererProps = {
@@ -22,20 +24,20 @@ export function MarkdownRenderer({ content, className, onCopyCode }: MarkdownRen
       <div className={cn("kb-prose prose prose-slate dark:prose-invert max-w-none", className)}>
         <ReactMarkdown
           remarkPlugins={[remarkGfm]}
-          rehypePlugins={[rehypeRaw, rehypeSlug, [rehypeAutolinkHeadings, { behavior: "wrap" }]]}
+          rehypePlugins={[rehypeRaw, rehypeSlug, [rehypeAutolinkHeadings, { behavior: "wrap" }], [rehypeSanitize, markdownSanitizeSchema]]}
           components={{
             img: ({ src, alt }) => (
               <button type="button" onClick={() => src && setLightbox(String(src))} className="block my-4 w-full">
-                <img src={src} alt={alt ?? ""} loading="lazy" className="rounded-xl border border-slate-200 dark:border-white/10 max-w-full h-auto cursor-zoom-in" />
+                <img src={src} alt={alt ?? ""} loading="lazy" className="rounded-xl border border-border max-w-full h-auto cursor-zoom-in" />
               </button>
             ),
             a: ({ href, children }) => (
-              <a href={href} target={href?.startsWith("http") ? "_blank" : undefined} rel={href?.startsWith("http") ? "noopener noreferrer" : undefined} className="text-[#6D5DF6] hover:underline">
+              <a href={href} target={href?.startsWith("http") ? "_blank" : undefined} rel={href?.startsWith("http") ? "noopener noreferrer" : undefined} className="text-brand hover:underline">
                 {children}
               </a>
             ),
             table: ({ children }) => (
-              <div className="overflow-x-auto my-4 rounded-xl border border-slate-200 dark:border-white/10">
+              <div className="overflow-x-auto my-4 rounded-xl border border-border">
                 <table className="min-w-full text-sm">{children}</table>
               </div>
             ),
@@ -45,8 +47,8 @@ export function MarkdownRenderer({ content, className, onCopyCode }: MarkdownRen
               const code = String(children).replace(/\n$/, "");
               if (match) {
                 return (
-                  <div className="relative my-4 rounded-xl bg-[#0F172A] border border-white/10 overflow-hidden">
-                    <div className="flex items-center justify-between px-4 py-2 border-b border-white/10 text-xs text-slate-400">
+                  <div className="relative my-4 rounded-xl bg-brand-dark border border-border overflow-hidden">
+                    <div className="flex items-center justify-between px-4 py-2 border-b border-border text-xs text-muted-foreground">
                       <span>{match[1]}</span>
                       <button
                         type="button"
@@ -60,18 +62,18 @@ export function MarkdownRenderer({ content, className, onCopyCode }: MarkdownRen
                   </div>
                 );
               }
-              return <code className="px-1.5 py-0.5 rounded bg-slate-100 dark:bg-white/10 text-sm" {...props}>{children}</code>;
+              return <code className="px-1.5 py-0.5 rounded bg-muted text-sm" {...props}>{children}</code>;
             },
             details: ({ children }) => (
-              <details className="my-4 rounded-xl border border-[#6D5DF6]/20 bg-[#6D5DF6]/5 p-4 open:shadow-sm">
+              <details className="my-4 rounded-xl border border-brand/20 bg-brand/5 p-4 open:shadow-sm">
                 {children}
               </details>
             ),
             summary: ({ children }) => (
-              <summary className="cursor-pointer font-semibold text-[#6D5DF6] min-h-[44px] flex items-center">{children}</summary>
+              <summary className="cursor-pointer font-semibold text-brand min-h-[44px] flex items-center">{children}</summary>
             ),
             blockquote: ({ children }) => (
-              <blockquote className="border-l-4 border-[#6D5DF6] pl-4 my-4 text-slate-600 dark:text-slate-300 italic">{children}</blockquote>
+              <blockquote className="border-l-4 border-brand pl-4 my-4 text-muted-foreground italic">{children}</blockquote>
             ),
           }}
         >
@@ -94,11 +96,11 @@ export function TableOfContents({ headings }: { headings: { id: string; text: st
 
   return (
     <nav className="glass-card p-4 sticky top-24 max-h-[calc(100vh-8rem)] overflow-y-auto" aria-label="Table of contents">
-      <p className="text-xs font-bold uppercase tracking-wider text-slate-500 mb-3">On this page</p>
+      <p className="text-xs font-bold uppercase tracking-wider text-muted-foreground mb-3">On this page</p>
       <ul className="space-y-2">
         {items.map((h) => (
           <li key={h.id} style={{ paddingLeft: `${(h.level - 1) * 12}px` }}>
-            <a href={`#${h.id}`} className="text-sm text-slate-600 dark:text-slate-300 hover:text-[#6D5DF6] line-clamp-2">
+            <a href={`#${h.id}`} className="text-sm text-muted-foreground hover:text-brand line-clamp-2">
               {h.text}
             </a>
           </li>

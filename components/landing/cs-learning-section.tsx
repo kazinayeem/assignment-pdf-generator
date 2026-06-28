@@ -19,7 +19,7 @@ export function CSLearningSection() {
   const expandAll = () => setCollapsed({});
 
   return (
-    <section className="section-padding relative bg-[#FAFAFC] dark:bg-[#0F172A]">
+    <section className="section-padding relative bg-surface-page">
       <div className="blur-orb w-[350px] h-[350px] bg-[#8B5CF6]/10 top-20 right-0" aria-hidden />
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
         <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4 mb-12 md:mb-16">

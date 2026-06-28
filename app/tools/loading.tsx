@@ -1,6 +1,6 @@
 export default function ToolsLoading() {
   return (
-    <div className="min-h-[60vh] flex items-center justify-center bg-[#F8FAFC] dark:bg-[#0F172A]">
+    <div className="min-h-[60vh] flex items-center justify-center bg-surface-page">
       <div className="text-center">
         <div className="w-12 h-12 border-4 border-[#E5E7EB] dark:border-white/10 border-t-[#6D5DF6] rounded-full animate-spin mx-auto mb-4" />
         <p className="text-sm text-slate-500 font-medium">Loading learning tools...</p>

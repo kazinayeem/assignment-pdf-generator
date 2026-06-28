@@ -6,7 +6,7 @@ import { Section, InfoCard, InterviewQuestions } from "@/components/tools/topic-
 
 export default function HTTPPage() {
   return (
-    <div className="min-h-screen bg-[#F8FAFC] dark:bg-[#0F172A] px-4 sm:px-6 lg:px-8 py-8">
+    <div className="min-h-screen bg-surface-page px-4 sm:px-6 lg:px-8 py-8">
       <nav className="flex items-center gap-1.5 text-xs text-slate-500 mb-6" aria-label="Breadcrumb">
         <Link href="/tools/network" className="text-[#6D5DF6] hover:underline">Networks</Link>
         <ChevronRight className="w-3 h-3" aria-hidden />

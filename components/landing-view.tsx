@@ -10,6 +10,7 @@ import { ProductivitySection } from "./landing/productivity-section";
 import { CSLearningSection } from "./landing/cs-learning-section";
 import { PricingSection } from "./landing/pricing-section";
 import { CTASection } from "./landing/cta-section";
+import { DevelopmentNoticeModal } from "./landing/development-notice-loader";
 
 export default function LandingView() {
   const [searchOpen, setSearchOpen] = useState(false);
@@ -17,7 +18,7 @@ export default function LandingView() {
   const [mobileOpen, setMobileOpen] = useState(false);
 
   return (
-    <div className="min-h-screen bg-[#FAFAFC] dark:bg-[#0F172A] overflow-x-hidden">
+    <div className="min-h-screen bg-surface-page overflow-x-hidden">
       <LandingNavbar
         onSearchOpen={() => setSearchOpen(true)}
         onMobileOpen={() => setMobileOpen(true)}
@@ -31,6 +32,8 @@ export default function LandingView() {
         onQueryChange={setSearchQuery}
         onClose={() => setSearchOpen(false)}
       />
+
+      <DevelopmentNoticeModal />
 
       <main id="main-content">
         <HeroSection />

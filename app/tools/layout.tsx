@@ -60,7 +60,7 @@ export default function ToolsLayout({ children }: { children: React.ReactNode })
   const sidebarWidth = collapsed ? 72 : 260;
 
   return (
-    <div className="min-h-screen bg-[#F8FAFC] dark:bg-[#0F172A] flex flex-col">
+    <div className="min-h-screen bg-surface-page flex flex-col">
       {/* Floating top navbar */}
       <header className="sticky top-0 z-50 px-3 sm:px-4 pt-3 pb-2">
         <div className="max-w-[1920px] mx-auto flex items-center gap-2 sm:gap-3 h-14 px-3 sm:px-4 rounded-2xl bg-white/80 dark:bg-[#0F172A]/80 backdrop-blur-xl border border-[#E5E7EB]/80 dark:border-white/10 shadow-sm">

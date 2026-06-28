@@ -6,7 +6,7 @@ import { motion } from "framer-motion";
 import { Bookmark, Share2, Printer, Clock, Building2, ArrowLeft, ArrowRight, CheckCircle2 } from "lucide-react";
 import type { KnowledgeArticle } from "@/lib/knowledge/types";
 import { getAdjacentArticles, getArticleBySlug } from "@/lib/knowledge/loader";
-import { MarkdownRenderer, TableOfContents } from "./markdown-renderer";
+import { MarkdownRenderer, TableOfContents } from "./markdown-loader";
 import { QuestionCards } from "./question-cards";
 import { KnowledgeQuizPanel } from "./knowledge-quiz-panel";
 import { useKnowledgeStore } from "@/lib/knowledge-store";

@@ -12,7 +12,7 @@ const QUICK_LINKS = [
 
 export default function NotFound() {
   return (
-    <div className="min-h-screen bg-[#F8FAFC] dark:bg-[#0F172A] flex items-center justify-center px-4 py-16">
+    <div className="min-h-screen bg-surface-page flex items-center justify-center px-4 py-16">
       <div className="text-center max-w-lg w-full">
         <div className="inline-flex mb-8 animate-float" aria-hidden="true">
           <div className="w-20 h-20 rounded-2xl bg-red-500/10 flex items-center justify-center">

@@ -54,7 +54,7 @@ export function SubjectIndexPage({
   }));
 
   return (
-    <div className="min-h-screen bg-[#F8FAFC] dark:bg-[#0F172A]">
+    <div className="min-h-screen bg-surface-page">
       <SubjectHero
         badge={badge}
         badgeIcon={badgeIcon}

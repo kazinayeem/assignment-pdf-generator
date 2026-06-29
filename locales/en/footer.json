@@ -4,7 +4,7 @@
     "company": "Bornosoft",
     "tagline": "Complete Learning & Career Platform for Computer Science Students.",
     "description": "Built to help students learn, build projects, prepare for interviews, and launch successful software engineering careers.",
-    "companyLine": "A product of Bornosoft"
+    "companyLine": "A Product of Bornosoft"
   },
   "columns": {
     "product": "Product",
@@ -49,17 +49,9 @@
     "github": "GitHub",
     "linkedin": "LinkedIn",
     "facebook": "Facebook",
-    "email": "Email",
-    "founders": "Founder Portfolios"
+    "email": "Email"
   },
   "copyright": "All Rights Reserved.",
-  "builtBy": "Built with",
-  "authorSection": {
-    "builtWith": "Built with",
-    "by": "by",
-    "coFounders": "Co-Founders of Bornosoft",
-    "productLine": "A Product of Bornosoft"
-  },
   "status": "All systems operational",
   "version": "Version"
 }

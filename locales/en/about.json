@@ -1,99 +1,198 @@
 {
   "title": "About BornoFlow",
   "back": "Back to home",
-  "bornoFlow": {
-    "title": "About BornoFlow",
-    "body": "BornoFlow is a modern learning, career, and productivity platform designed for Computer Science, Software Engineering, and IT students.",
-    "ecosystem": "The platform combines interactive career roadmaps, AI-powered learning, interview preparation, university guidance, developer tools, resume building, project-based learning, and productivity tools into one integrated ecosystem.",
-    "goal": "Our goal is to bridge the gap between academic learning and real-world software engineering careers.",
-    "mission": "Our mission is to provide structured roadmaps, interactive learning, interview preparation, developer tools, university guidance, and career resources—all in one platform."
+  "hero": {
+    "headline": "Building the Future of Student Technology",
+    "subtitle": "BornoFlow is a complete ecosystem helping Computer Science students learn, build projects, and launch their careers.",
+    "ctaExplore": "Explore Platform",
+    "ctaContact": "Contact Us"
   },
-  "bornosoft": {
-    "title": "About Bornosoft",
-    "body": "Bornosoft is a software company focused on building modern SaaS platforms, AI-powered applications, developer tools, automation systems, and educational technologies.",
-    "belief": "We believe in creating products that empower students, developers, startups, and businesses with practical technology solutions."
+  "story": {
+    "label": "Our Story",
+    "title": "How BornoFlow Began",
+    "intro": "BornoFlow is a modern learning, career, and productivity platform. Bornosoft builds SaaS platforms, AI-powered applications, and educational technologies that empower students worldwide.",
+    "steps": {
+      "idea": { "title": "Idea Started", "desc": "Identifying the gap between academic CS education and industry-ready skills." },
+      "research": { "title": "Research", "desc": "Studying student needs across universities, interviews, and career paths." },
+      "development": { "title": "Development", "desc": "Building the first tools — assignment covers, lab reports, and learning modules." },
+      "launch": { "title": "Launch", "desc": "BornoFlow platform launch with core academic productivity tools." },
+      "community": { "title": "Growing Community", "desc": "Thousands of students adopting BornoFlow across Bangladesh and beyond." },
+      "future": { "title": "Future Vision", "desc": "AI-powered learning, global expansion, and the complete student career ecosystem." }
+    }
   },
-  "vision": {
-    "title": "Our Vision",
-    "body": "To become one of the leading technology companies building innovative educational and developer-focused products for the global community."
+  "stats": {
+    "label": "By the Numbers",
+    "title": "Platform at Scale",
+    "items": {
+      "devTools": "Developer Tools",
+      "roadmaps": "Career Roadmaps",
+      "interviewQuestions": "Interview Questions",
+      "universities": "Universities",
+      "calculators": "Calculators",
+      "students": "Students",
+      "atsScore": "ATS Score",
+      "freeForever": "Free Forever"
+    }
+  },
+  "missionVision": {
+    "label": "Purpose",
+    "title": "Mission & Vision"
   },
   "mission": {
     "title": "Our Mission",
     "body": "To empower students and developers with world-class learning resources, AI-powered tools, and modern software solutions that accelerate career growth."
   },
+  "vision": {
+    "title": "Our Vision",
+    "body": "To become one of the leading technology companies building innovative educational and developer-focused products for the global community."
+  },
   "founders": {
+    "label": "Leadership",
     "title": "Meet the Founders",
     "subtitle": "Bornosoft is led by passionate engineers building technology that empowers the next generation of software professionals.",
     "portfolio": "Portfolio",
+    "expertiseLabel": "Expertise",
+    "techLabel": "Favorite Technologies",
     "nayeem": {
       "role": "Co-Founder & Software Engineer",
-      "bio": "Mohammad Ali Nayeem is a Software Engineering student and Full Stack Developer with a passion for building scalable web applications, AI-powered platforms, developer tools, and educational technology. He leads the technical architecture and product development of BornoFlow while focusing on creating practical solutions for students and developers."
+      "bio": "Mohammad Ali Nayeem is a Software Engineering student and Full Stack Developer with a passion for building scalable web applications, AI-powered platforms, developer tools, and educational technology. He leads the technical architecture and product development of BornoFlow.",
+      "companyRole": "Platform Lead",
+      "experience": "3+ years building web apps & EdTech",
+      "expertise": ["Software Architecture", "Platform Engineering", "Full Stack Development", "Product Design"],
+      "tech": ["React", "Next.js", "TypeScript", "Node.js", "AI"],
+      "quote": "Technology should solve real problems for students — not add complexity."
     },
     "reduan": {
       "role": "Co-Founder & Software Engineer",
-      "bio": "Reduan Ahmad is a Software Engineer passionate about software architecture, modern web technologies, scalable systems, and innovative digital products. As Co-Founder of Bornosoft, he contributes to product strategy, engineering excellence, and building reliable technology solutions."
+      "bio": "Reduan Ahmad is a Software Engineer passionate about software architecture, modern web technologies, scalable systems, and innovative digital products. As Co-Founder of Bornosoft, he drives product strategy and engineering excellence.",
+      "companyRole": "Product & Engineering Lead",
+      "experience": "3+ years in scalable systems & SaaS",
+      "expertise": ["Product Development", "AI & Full Stack", "System Design", "Software Engineering"],
+      "tech": ["React", "Python", "PostgreSQL", "Docker", "AWS"],
+      "quote": "Great products are built with quality engineering and relentless iteration."
     }
   },
-  "leadership": {
-    "title": "Leadership",
-    "nayeem": {
-      "role": "Co-Founder",
-      "focus": [
-        "Software Engineer",
-        "Software Architecture",
-        "Platform Engineering"
-      ]
-    },
-    "reduan": {
-      "role": "Co-Founder",
-      "focus": [
-        "Product Development",
-        "AI & Full Stack Development",
-        "Software Engineer"
-      ]
+  "timeline": {
+    "label": "Milestones",
+    "title": "Company Timeline",
+    "steps": {
+      "founded": { "title": "Bornosoft Founded", "desc": "Company established with a vision for student technology." },
+      "firstProduct": { "title": "First Product", "desc": "Assignment Studio and Lab Report Generator launched." },
+      "bornoflow": { "title": "BornoFlow", "desc": "Unified platform bringing all tools under one ecosystem." },
+      "devtools": { "title": "Developer Tools", "desc": "100+ BornoDev utilities for developers." },
+      "roadmaps": { "title": "BornoMaps", "desc": "75+ interactive career roadmaps launched." },
+      "university": { "title": "University Hub", "desc": "300+ universities with rankings and guides." },
+      "ai": { "title": "AI Platform", "desc": "Borno AI learning assistant in development." },
+      "future": { "title": "Future", "desc": "Global expansion and next-generation student tools." }
     }
   },
   "values": {
-    "title": "Our Values",
+    "label": "Culture",
+    "title": "Core Values",
     "items": {
       "innovation": "Innovation",
-      "learning": "Continuous Learning",
-      "knowledge": "Open Knowledge",
-      "engineering": "Quality Engineering",
+      "quality": "Quality",
       "community": "Community",
-      "collaboration": "Collaboration",
-      "scalability": "Scalability",
+      "learning": "Learning",
+      "openSource": "Open Source",
+      "trust": "Trust",
+      "engineering": "Engineering",
       "accessibility": "Accessibility"
+    },
+    "descriptions": {
+      "innovation": "Pushing boundaries with modern technology and creative solutions.",
+      "quality": "Engineering excellence in every feature we ship.",
+      "community": "Built with and for the student developer community.",
+      "learning": "Continuous growth for our users and our team.",
+      "openSource": "Transparent development and community contributions.",
+      "trust": "Reliable, secure, and student-first in everything we do.",
+      "engineering": "Clean code, scalable architecture, and best practices.",
+      "accessibility": "Education tools available to everyone, everywhere."
     }
   },
-  "highlights": {
-    "title": "Platform Highlights",
-    "items": [
-      "Interactive Career Roadmaps",
-      "AI Learning Assistant",
-      "Resume Builder",
-      "ATS Resume Checker",
-      "Developer Tools",
-      "University Explorer",
-      "Career Hub",
-      "Interview Hub",
-      "Project-Based Learning",
-      "Coding Challenges",
-      "Professional PDF Export"
-    ]
+  "ecosystem": {
+    "label": "Products",
+    "title": "Product Ecosystem",
+    "subtitle": "Bornosoft builds an integrated suite of tools — from learning to career launch.",
+    "comingSoon": "Coming Soon",
+    "live": "Live",
+    "products": {
+      "bornosoft": { "name": "Bornosoft", "desc": "Parent company building SaaS, AI, and educational technology." },
+      "bornoflow": { "name": "BornoFlow", "desc": "Complete learning, career, and productivity platform for CS students." },
+      "bornoMaps": { "name": "BornoMaps", "desc": "Interactive career roadmaps with 75+ learning paths." },
+      "bornoAi": { "name": "Borno AI", "desc": "AI-powered learning assistant and study tools." },
+      "bornoCareer": { "name": "BornoCareer", "desc": "Resume builder, ATS checker, and career hub." },
+      "bornoUni": { "name": "BornoUni", "desc": "University explorer with rankings and admission tools." },
+      "bornoDev": { "name": "BornoDev", "desc": "100+ developer utilities and formatters." },
+      "resumeBuilder": { "name": "Resume Builder", "desc": "ATS-friendly resume builder with PDF export." },
+      "assignmentStudio": { "name": "Assignment Studio", "desc": "Professional assignment covers and academic documents." },
+      "interviewHub": { "name": "Interview Hub", "desc": "5000+ interview questions from Bangladesh tech companies." },
+      "developerTools": { "name": "Developer Tools", "desc": "JSON, YAML, encoders, generators, and more." },
+      "universityExplorer": { "name": "University Explorer", "desc": "Explore 300+ universities with detailed profiles." }
+    }
   },
-  "products": {
-    "title": "Bornosoft Products",
-    "bornoMaps": "Interactive career roadmaps with 75+ learning paths",
-    "bornoAi": "AI-powered learning assistant and study tools",
-    "bornoCareer": "Resume, ATS checker, interview prep & career hub",
-    "bornoUni": "180+ Bangladesh university explorer & rankings",
-    "bornoDev": "100+ developer utilities and formatters"
+  "why": {
+    "label": "Advantage",
+    "title": "Why Choose BornoFlow",
+    "subtitle": "See how BornoFlow compares to traditional learning approaches.",
+    "traditional": "Traditional Learning",
+    "bornoflow": "BornoFlow",
+    "rows": {
+      "structured": { "label": "Structured Paths", "traditional": "Scattered resources", "bornoflow": "75+ career roadmaps" },
+      "tools": { "label": "Developer Tools", "traditional": "External websites", "bornoflow": "100+ built-in tools" },
+      "career": { "label": "Career Prep", "traditional": "Separate platforms", "bornoflow": "Resume, interview & career hub" },
+      "free": { "label": "Cost", "traditional": "Paid courses", "bornoflow": "100% free forever" },
+      "community": { "label": "Community", "traditional": "Isolated learning", "bornoflow": "10,000+ students" },
+      "ai": { "label": "AI Assistance", "traditional": "Not available", "bornoflow": "Borno AI (coming soon)" }
+    }
+  },
+  "community": {
+    "label": "Impact",
+    "title": "Community Impact",
+    "subtitle": "Growing a global community of student developers and learners.",
+    "openSource": "BornoFlow is open source. Contribute, star, and shape the future.",
+    "viewGithub": "View on GitHub",
+    "stats": {
+      "students": "Students",
+      "universities": "Universities",
+      "projects": "Projects Built",
+      "contributors": "Contributors",
+      "countries": "Countries"
+    }
+  },
+  "tech": {
+    "label": "Engineering",
+    "title": "Technology Stack",
+    "subtitle": "Built with modern, battle-tested technologies for performance and reliability."
+  },
+  "openSource": {
+    "label": "Open Source",
+    "title": "Built in the Open",
+    "subtitle": "Transparent development, community contributions, and MIT licensed.",
+    "items": {
+      "github": { "title": "GitHub", "desc": "Source code and releases" },
+      "contribute": { "title": "Contribute", "desc": "Join our contributors" },
+      "docs": { "title": "Documentation", "desc": "Changelog & release notes" },
+      "license": { "title": "License", "desc": "MIT open source" },
+      "community": { "title": "Community", "desc": "Connect with the team" }
+    }
   },
   "contact": {
-    "title": "Contact",
+    "label": "Get in Touch",
+    "title": "Contact Us",
     "subtitle": "Questions, feedback, or partnership — we'd love to hear from you.",
-    "email": "bornosoftnr@gmail.com",
-    "website": "bornosoftnr.com"
+    "email": "Email",
+    "website": "Website",
+    "location": "Location",
+    "locationValue": "Dhaka, Bangladesh",
+    "portfolios": "Founder Portfolios",
+    "social": "Social Links",
+    "message": "We typically respond within 24–48 hours. For partnerships and university collaborations, reach out via email."
+  },
+  "cta": {
+    "title": "Ready to build your future?",
+    "subtitle": "Join thousands of CS students learning, building, and launching careers with BornoFlow.",
+    "startLearning": "Start Learning",
+    "explorePlatform": "Explore Platform"
   }
 }

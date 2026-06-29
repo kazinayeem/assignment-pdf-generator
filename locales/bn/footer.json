@@ -49,17 +49,9 @@
     "github": "GitHub",
     "linkedin": "LinkedIn",
     "facebook": "Facebook",
-    "email": "ইমেইল",
-    "founders": "প্রতিষ্ঠাতাদের পোর্টফোলিও"
+    "email": "ইমেইল"
   },
   "copyright": "সর্বস্বত্ব সংরক্ষিত।",
-  "builtBy": "তৈরি করেছেন",
-  "authorSection": {
-    "builtWith": "ভালোবাসা দিয়ে তৈরি",
-    "by": "",
-    "coFounders": "Bornosoft-এর সহ-প্রতিষ্ঠাতা",
-    "productLine": "Bornosoft-এর একটি প্রোডাক্ট"
-  },
   "status": "সব সিস্টেম চালু",
   "version": "সংস্করণ"
 }

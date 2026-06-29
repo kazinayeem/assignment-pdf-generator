@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react";
 import { useTheme } from "next-themes";
 import { Moon, Sun } from "lucide-react";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import { cn } from "@/lib/utils";
 import { useTranslation } from "@/lib/i18n/provider";
 
@@ -24,12 +24,7 @@ export function ThemeToggle({ className, scrolled, lightNav }: ThemeToggleProps)
   const onLight = lightNav ?? scrolled ?? true;
 
   if (!mounted) {
-    return (
-      <div
-        className={cn("h-10 w-[72px] rounded-xl border", onLight ? "border-border bg-muted/40" : "border-white/15 bg-white/8", className)}
-        aria-hidden
-      />
-    );
+    return <div className={cn("h-10 w-10 shrink-0 rounded-xl", className)} aria-hidden />;
   }
 
   return (
@@ -39,28 +34,27 @@ export function ThemeToggle({ className, scrolled, lightNav }: ThemeToggleProps)
       aria-label={isDark ? t("theme.light") : t("theme.dark")}
       title={isDark ? t("theme.light") : t("theme.dark")}
       className={cn(
-        "relative h-10 w-[72px] rounded-xl border p-1 transition-colors duration-200 cursor-pointer",
+        "relative flex h-10 w-10 shrink-0 items-center justify-center rounded-xl border transition-all duration-200 cursor-pointer",
         "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand/40",
-        onLight ? "border-border/60 bg-muted/40" : "border-white/15 bg-white/8 backdrop-blur-md",
+        "hover:scale-105 active:scale-95",
+        onLight
+          ? "border-border/50 bg-muted/30 text-muted-foreground hover:bg-muted/60 hover:text-foreground"
+          : "border-white/12 bg-white/6 text-white/70 hover:bg-white/12 hover:text-white backdrop-blur-md",
         className
       )}
     >
-      <motion.div
-        className={cn(
-          "absolute top-1 bottom-1 w-[calc(50%-2px)] rounded-lg shadow-sm",
-          onLight ? "bg-background" : "bg-white/20"
-        )}
-        animate={{ left: isDark ? "calc(50% + 1px)" : "4px" }}
-        transition={{ type: "spring", stiffness: 500, damping: 32 }}
-      />
-      <span className="relative z-10 flex h-full">
-        <span className={cn("flex-1 flex items-center justify-center", !isDark ? "text-brand" : onLight ? "text-muted-foreground" : "text-white/50")}>
-          <Sun size={15} />
-        </span>
-        <span className={cn("flex-1 flex items-center justify-center", isDark ? "text-brand" : onLight ? "text-muted-foreground" : "text-white/50")}>
-          <Moon size={15} />
-        </span>
-      </span>
+      <AnimatePresence mode="wait" initial={false}>
+        <motion.span
+          key={isDark ? "moon" : "sun"}
+          initial={{ opacity: 0, rotate: -30, scale: 0.8 }}
+          animate={{ opacity: 1, rotate: 0, scale: 1 }}
+          exit={{ opacity: 0, rotate: 30, scale: 0.8 }}
+          transition={{ duration: 0.15 }}
+          className="flex items-center justify-center"
+        >
+          {isDark ? <Moon size={17} /> : <Sun size={17} />}
+        </motion.span>
+      </AnimatePresence>
     </button>
   );
 }

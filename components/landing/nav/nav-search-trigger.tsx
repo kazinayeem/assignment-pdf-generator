@@ -7,67 +7,63 @@ import { useTranslation } from "@/lib/i18n/provider";
 type NavSearchTriggerProps = {
   onClick: () => void;
   lightNav: boolean;
-  className?: string;
 };
 
-export function NavSearchTrigger({ onClick, lightNav, className }: NavSearchTriggerProps) {
+export function NavSearchTrigger({ onClick, lightNav }: NavSearchTriggerProps) {
   const { t } = useTranslation("common");
 
   return (
     <>
-      {/* Desktop */}
       <button
         type="button"
         onClick={onClick}
         aria-label={t("nav.search")}
         className={cn(
-          "hidden lg:flex items-center gap-2 h-10 px-3 rounded-xl border text-sm transition-all duration-200 cursor-pointer",
+          "hidden lg:flex items-center gap-2 shrink-0 h-10 px-3 rounded-xl border text-sm",
+          "w-[220px] transition-all duration-200 cursor-pointer overflow-hidden",
           "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand/40",
-          "w-[220px]",
           lightNav
-            ? "bg-muted/40 border-border/60 text-muted-foreground hover:bg-muted/70 hover:border-border"
-            : "bg-white/8 border-white/15 text-white/60 hover:bg-white/12 hover:text-white/80 backdrop-blur-md",
-          className
+            ? "bg-muted/30 border-border/50 text-muted-foreground hover:bg-muted/50 hover:border-border"
+            : "bg-white/6 border-white/12 text-white/55 hover:bg-white/10 hover:text-white/75 backdrop-blur-md"
         )}
       >
-        <Search size={15} aria-hidden className="shrink-0 opacity-70" />
-        <span className="flex-1 text-left text-sm">{t("nav.searchPlaceholder")}</span>
+        <Search size={14} className="shrink-0 opacity-60" aria-hidden />
+        <span className="flex-1 truncate text-left text-[13px]">{t("nav.searchPlaceholder")}</span>
         <kbd
           className={cn(
-            "hidden xl:inline-flex items-center gap-0.5 px-1.5 py-0.5 rounded-md text-[10px] font-medium border",
-            lightNav ? "bg-background border-border text-muted-foreground" : "bg-white/10 border-white/20 text-white/50"
+            "shrink-0 inline-flex items-center px-1.5 py-0.5 rounded-md text-[10px] font-medium border leading-none",
+            lightNav ? "bg-background/80 border-border/80 text-muted-foreground" : "bg-white/8 border-white/15 text-white/45"
           )}
         >
           ⌘K
         </kbd>
       </button>
 
-      {/* Tablet */}
       <button
         type="button"
         onClick={onClick}
         aria-label={t("nav.search")}
         className={cn(
-          "hidden md:flex lg:hidden items-center gap-2 h-10 px-3 rounded-xl border text-sm transition-all duration-200 cursor-pointer",
-          "w-[180px]",
+          "hidden md:flex lg:hidden items-center gap-2 shrink-0 h-10 px-3 rounded-xl border text-sm",
+          "w-[180px] transition-all duration-200 cursor-pointer overflow-hidden",
+          "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand/40",
           lightNav
-            ? "bg-muted/40 border-border/60 text-muted-foreground hover:bg-muted/70"
-            : "bg-white/8 border-white/15 text-white/60 hover:bg-white/12 backdrop-blur-md"
+            ? "bg-muted/30 border-border/50 text-muted-foreground hover:bg-muted/50"
+            : "bg-white/6 border-white/12 text-white/55 hover:bg-white/10 backdrop-blur-md"
         )}
       >
-        <Search size={15} aria-hidden />
-        <span className="flex-1 text-left truncate text-sm">{t("nav.search")}</span>
+        <Search size={14} className="shrink-0" aria-hidden />
+        <span className="flex-1 truncate text-left text-[13px]">{t("nav.searchPlaceholder")}</span>
       </button>
 
-      {/* Mobile icon */}
       <button
         type="button"
         onClick={onClick}
         aria-label={t("nav.search")}
         className={cn(
-          "md:hidden flex items-center justify-center min-h-11 min-w-11 rounded-xl transition-colors duration-200 cursor-pointer",
+          "md:hidden flex items-center justify-center shrink-0 h-10 w-10 rounded-xl transition-colors duration-200",
           "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand/40",
-          lightNav ? "text-muted-foreground hover:bg-muted" : "text-white/70 hover:bg-white/10"
+          lightNav ? "text-muted-foreground hover:bg-muted/80" : "text-white/70 hover:bg-white/10"
         )}
       >
         <Search size={18} />

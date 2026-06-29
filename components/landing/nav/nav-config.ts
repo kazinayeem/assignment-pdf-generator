@@ -1,6 +1,6 @@
 import {
   BookOpen, Briefcase, Calculator, Code2, FilePlus, FileText, GraduationCap,
-  Map, School, Wrench, BrainCircuit, Globe, Shield, BarChart3, Sparkles,
+  Map, School, Wrench, BrainCircuit, Globe, Shield, BarChart3, Sparkles, Library, Cpu,
   type LucideIcon,
 } from "lucide-react";
 
@@ -27,14 +27,16 @@ export const MEGA_MENUS: MegaMenuConfig[] = [
     labelKey: "tools",
     href: "/tools",
     featured: [
-      { key: "dsa", href: "/tools/dsa", labelKey: "nav.mega.dsa", description: "nav.mega.dsaDesc", icon: BrainCircuit, badge: "popular" },
-      { key: "os", href: "/tools/os", labelKey: "nav.mega.os", description: "nav.mega.osDesc", icon: Code2 },
+      { key: "learning-tools", href: "/tools", labelKey: "nav.mega.learningTools", description: "nav.mega.learningToolsDesc", icon: BrainCircuit, badge: "popular" },
+      { key: "dsa", href: "/tools/dsa", labelKey: "nav.mega.dsa", description: "nav.mega.dsaDesc", icon: Code2 },
       { key: "web", href: "/tools/web", labelKey: "nav.mega.web", description: "nav.mega.webDesc", icon: Globe, badge: "new" },
     ],
     quickLinks: [
+      { key: "os", href: "/tools/os", labelKey: "nav.mega.os", icon: Cpu },
       { key: "algorithms", href: "/tools/algorithms", labelKey: "nav.mega.algorithms", icon: BrainCircuit },
-      { key: "database", href: "/tools/database", labelKey: "nav.mega.database", icon: BarChart3 },
-      { key: "security", href: "/tools/security", labelKey: "nav.mega.security", icon: Shield },
+      { key: "assignment", href: "/assignment", labelKey: "assignment", icon: FileText },
+      { key: "lab", href: "/lab-report", labelKey: "labReport", icon: BookOpen },
+      { key: "resources", href: "/interview/resources", labelKey: "nav.mega.resources", icon: Library },
       { key: "all-tools", href: "/tools", labelKey: "nav.mega.allTools", icon: Sparkles },
     ],
   },
@@ -65,6 +67,7 @@ export const MEGA_MENUS: MegaMenuConfig[] = [
     quickLinks: [
       { key: "scholarships", href: "/universities/scholarships", labelKey: "nav.mega.scholarships", icon: GraduationCap },
       { key: "calculator", href: "/universities/calculator", labelKey: "nav.mega.uniCalculator", icon: Calculator },
+      { key: "calculators", href: "/calculators", labelKey: "calculators", icon: Calculator },
       { key: "recommend", href: "/universities/recommend", labelKey: "nav.mega.recommend", icon: Sparkles },
     ],
   },
@@ -81,32 +84,27 @@ export const MEGA_MENUS: MegaMenuConfig[] = [
       { key: "assignment", href: "/assignment", labelKey: "assignment", icon: FileText },
       { key: "lab", href: "/lab-report", labelKey: "labReport", icon: BookOpen },
       { key: "calculators", href: "/calculators", labelKey: "calculators", icon: Calculator },
+      { key: "resources", href: "/interview/resources", labelKey: "nav.mega.resources", icon: Library },
     ],
   },
   {
-    key: "devtools",
-    labelKey: "devtools",
+    key: "developer",
+    labelKey: "developer",
     href: "/developer-tools",
     featured: [
       { key: "devtools-hub", href: "/developer-tools", labelKey: "nav.mega.devtoolsHub", description: "nav.mega.devtoolsDesc", icon: Wrench, badge: "popular" },
       { key: "json", href: "/developer-tools/json-formatter", labelKey: "nav.mega.json", description: "nav.mega.jsonDesc", icon: Code2 },
-      { key: "regex", href: "/developer-tools/hash-generator", labelKey: "nav.mega.hash", description: "nav.mega.hashDesc", icon: Sparkles, badge: "new" },
+      { key: "hash", href: "/developer-tools/hash-generator", labelKey: "nav.mega.hash", description: "nav.mega.hashDesc", icon: Shield, badge: "new" },
     ],
     quickLinks: [
       { key: "base64", href: "/developer-tools/base64-encode", labelKey: "nav.mega.base64", icon: Code2 },
-      { key: "hash", href: "/developer-tools/hash-generator", labelKey: "nav.mega.hash", icon: Shield },
+      { key: "json-viewer", href: "/developer-tools/json-viewer", labelKey: "nav.mega.jsonViewer", icon: Sparkles },
       { key: "all-devtools", href: "/developer-tools", labelKey: "nav.mega.allDevtools", icon: Wrench },
     ],
   },
 ];
 
-export const SIMPLE_NAV_LINKS: NavLinkItem[] = [
-  { key: "interview", href: "/interview", labelKey: "interview" },
-  { key: "calculators", href: "/calculators", labelKey: "calculators" },
-];
-
-export const SECONDARY_NAV_LINKS: NavLinkItem[] = [
-  { key: "assignment", href: "/assignment", labelKey: "assignment" },
-  { key: "cvBuilder", href: "/cv-builder", labelKey: "cvBuilder" },
-  { key: "labReport", href: "/lab-report", labelKey: "labReport" },
-];
+/** @deprecated All secondary links live inside mega menus */
+export const SIMPLE_NAV_LINKS: NavLinkItem[] = [];
+/** @deprecated All secondary links live inside mega menus */
+export const SECONDARY_NAV_LINKS: NavLinkItem[] = [];

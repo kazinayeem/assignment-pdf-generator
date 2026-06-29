@@ -90,10 +90,10 @@ export const MEGA_MENUS: MegaMenuConfig[] = [
     featured: [
       { key: "devtools-hub", href: "/developer-tools", labelKey: "nav.mega.devtoolsHub", description: "nav.mega.devtoolsDesc", icon: Wrench, badge: "popular" },
       { key: "json", href: "/developer-tools/json-formatter", labelKey: "nav.mega.json", description: "nav.mega.jsonDesc", icon: Code2 },
-      { key: "regex", href: "/developer-tools/regex-tester", labelKey: "nav.mega.regex", description: "nav.mega.regexDesc", icon: Sparkles, badge: "new" },
+      { key: "regex", href: "/developer-tools/hash-generator", labelKey: "nav.mega.hash", description: "nav.mega.hashDesc", icon: Sparkles, badge: "new" },
     ],
     quickLinks: [
-      { key: "base64", href: "/developer-tools/base64", labelKey: "nav.mega.base64", icon: Code2 },
+      { key: "base64", href: "/developer-tools/base64-encode", labelKey: "nav.mega.base64", icon: Code2 },
       { key: "hash", href: "/developer-tools/hash-generator", labelKey: "nav.mega.hash", icon: Shield },
       { key: "all-devtools", href: "/developer-tools", labelKey: "nav.mega.allDevtools", icon: Wrench },
     ],

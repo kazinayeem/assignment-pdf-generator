@@ -7,7 +7,7 @@ import { useTranslation } from "@/lib/i18n/provider";
 import { LanguageSwitcherLink } from "@/components/landing/language-switcher";
 import { ThemeToggle } from "@/components/landing/theme-toggle";
 import { BuiltBySection } from "@/components/brand/built-by";
-import { BRAND } from "@/lib/brand";
+import { BRAND, FOUNDERS } from "@/lib/brand";
 import { cn } from "@/lib/utils";
 
 const PRODUCT_LINKS = [
@@ -36,6 +36,7 @@ const RESOURCE_LINKS = [
 
 const COMPANY_LINKS = [
   { key: "about", href: "/about" },
+  { key: "team", href: "/about#team" },
   { key: "products", href: "/about#products" },
   { key: "careers", href: `mailto:${BRAND.email}` },
   { key: "contact", href: `mailto:${BRAND.email}` },
@@ -49,7 +50,6 @@ export default function Footer() {
 
   const connectLinks = [
     { key: "website", href: BRAND.companyUrl, icon: Globe, external: true },
-    { key: "portfolio", href: BRAND.portfolioUrl, icon: ExternalLink, external: true },
     { key: "github", href: BRAND.github, icon: Github, external: true },
     { key: "linkedin", href: BRAND.linkedin, icon: Linkedin, external: true },
     { key: "facebook", href: BRAND.facebook, icon: Facebook, external: true },
@@ -80,6 +80,15 @@ export default function Footer() {
             </Link>
             <p className="text-sm font-medium text-slate-300 leading-snug">{t("brand.tagline")}</p>
             <p className="text-sm text-slate-500 leading-relaxed max-w-sm">{t("brand.description")}</p>
+            <a
+              href={BRAND.companyUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-xs text-brand-accent hover:underline inline-flex items-center gap-1"
+            >
+              {BRAND.companyUrl.replace("https://", "")}
+              <ExternalLink size={10} aria-hidden />
+            </a>
             <BuiltBySection variant="footer" />
           </div>
 
@@ -128,7 +137,7 @@ export default function Footer() {
           {/* Connect */}
           <div className="lg:col-span-2">
             <h4 className="text-xs font-semibold uppercase tracking-wider text-slate-500 mb-4">{t("columns.connect")}</h4>
-            <ul className="space-y-2">
+            <ul className="space-y-2 mb-4">
               {connectLinks.map((link) => (
                 <li key={link.key}>
                   <a
@@ -143,6 +152,22 @@ export default function Footer() {
                 </li>
               ))}
             </ul>
+            <p className="text-[10px] uppercase tracking-wider text-slate-600 mb-2">{t("connect.founders")}</p>
+            <ul className="space-y-1.5">
+              {FOUNDERS.map((founder) => (
+                <li key={founder.id}>
+                  <a
+                    href={founder.portfolioUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-xs text-slate-400 hover:text-brand-accent transition-colors flex items-center gap-1.5 min-h-[32px]"
+                  >
+                    <ExternalLink size={11} className="opacity-50" aria-hidden />
+                    {founder.name}
+                  </a>
+                </li>
+              ))}
+            </ul>
           </div>
         </div>
 
@@ -150,7 +175,7 @@ export default function Footer() {
           <p className="text-xs text-slate-500 text-center lg:text-left leading-relaxed">
             © {BRAND.copyrightYear} {BRAND.platform}. {t("brand.companyLine")}.<br className="sm:hidden" />
             <span className="hidden sm:inline"> </span>
-            {t("builtBy")} ❤️ {BRAND.author}. {t("copyright")}
+            {t("builtBy")} ❤️ {BRAND.authors}. {t("copyright")}
           </p>
           <div className="flex flex-wrap items-center justify-center gap-3">
             <LanguageSwitcherLink className="!text-slate-500 hover:!text-white" />

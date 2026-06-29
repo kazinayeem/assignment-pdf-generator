@@ -36,6 +36,7 @@
   },
   "company": {
     "about": "About Bornosoft",
+    "team": "Team",
     "products": "Products",
     "careers": "Careers",
     "contact": "Contact",
@@ -45,21 +46,19 @@
   },
   "connect": {
     "website": "Website",
-    "portfolio": "Portfolio",
     "github": "GitHub",
     "linkedin": "LinkedIn",
     "facebook": "Facebook",
-    "email": "Email"
+    "email": "Email",
+    "founders": "Founder Portfolios"
   },
   "copyright": "All Rights Reserved.",
   "builtBy": "Built with",
   "authorSection": {
     "builtWith": "Built with",
     "by": "by",
-    "title": "Founder & Software Engineer",
-    "role": "Creator of BornoFlow",
-    "poweredBy": "Powered by Bornosoft",
-    "portfolio": "Portfolio"
+    "coFounders": "Co-Founders of Bornosoft",
+    "productLine": "A Product of Bornosoft"
   },
   "status": "All systems operational",
   "version": "Version"

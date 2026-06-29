@@ -3,7 +3,7 @@ import { AboutPageContent } from "@/components/static-page/about-content";
 
 export const metadata: Metadata = {
   title: "About BornoFlow",
-  description: "Learn about BornoFlow and Bornosoft — the complete learning and career platform for CS students, built by Mohammad Ali Nayeem.",
+  description: "Learn about BornoFlow, Bornosoft, and our co-founders Mohammad Ali Nayeem and Reduan Ahmad — the complete learning and career platform for CS students.",
 };
 
 export default function AboutPage() {

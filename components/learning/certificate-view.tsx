@@ -28,7 +28,7 @@ export function CertificateView({ cert }: { cert: Certificate }) {
           QR
         </div>
         <p className="text-[10px] text-slate-400 mt-4">
-          {BRAND.companyTagline} · Built with ❤️ by {BRAND.author}
+          {BRAND.companyTagline} · Built with ❤️ by {BRAND.authors}
         </p>
         <p className="text-[10px] text-slate-400 mt-1">Verify at /verify/{cert.id}</p>
       </div>

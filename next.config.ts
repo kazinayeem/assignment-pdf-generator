@@ -10,6 +10,16 @@ const nextConfig: NextConfig = {
       },
       {
         protocol: "https",
+        hostname: "www.kazinayeem.site",
+        pathname: "/**",
+      },
+      {
+        protocol: "https",
+        hostname: "www.reduanahmadswe.site",
+        pathname: "/**",
+      },
+      {
+        protocol: "https",
         hostname: "www.google.com",
         pathname: "/s2/favicons/**",
       },

@@ -6,6 +6,9 @@ import { FileText, Target, Rocket, Sparkles, Mail, ExternalLink, CheckCircle2 } 
 import { useTranslation } from "@/lib/i18n/provider";
 import { StaticPageShell } from "./static-page-shell";
 import { BuiltBySection } from "@/components/brand/built-by";
+import { MeetFoundersSection } from "@/components/brand/meet-founders-section";
+import { LeadershipSection } from "@/components/brand/leadership-section";
+import { ValuesSection } from "@/components/brand/values-section";
 import { BRAND, SUB_PRODUCTS } from "@/lib/brand";
 import { card } from "@/lib/design-system";
 import { cn } from "@/lib/utils";
@@ -35,18 +38,21 @@ export function AboutPageContent() {
           unoptimized
         />
         <h2 className="text-3xl sm:text-4xl font-extrabold text-foreground mb-2">{BRAND.platform}</h2>
-        <p className="text-sm text-muted-foreground">{BRAND.companyTagline}</p>
+        <p className="text-sm text-muted-foreground">{BRAND.productLine}</p>
       </div>
 
       <section className="mb-10">
         <h3 className="text-xl font-bold text-foreground mb-3">{t("bornoFlow.title")}</h3>
         <p className="text-muted-foreground leading-relaxed mb-3">{t("bornoFlow.body")}</p>
+        <p className="text-muted-foreground leading-relaxed mb-3">{t("bornoFlow.ecosystem")}</p>
+        <p className="text-muted-foreground leading-relaxed mb-3">{t("bornoFlow.goal")}</p>
         <p className="text-muted-foreground leading-relaxed">{t("bornoFlow.mission")}</p>
       </section>
 
       <section className="mb-10">
         <h3 className="text-xl font-bold text-foreground mb-3">{t("bornosoft.title")}</h3>
-        <p className="text-muted-foreground leading-relaxed">{t("bornosoft.body")}</p>
+        <p className="text-muted-foreground leading-relaxed mb-3">{t("bornosoft.body")}</p>
+        <p className="text-muted-foreground leading-relaxed">{t("bornosoft.belief")}</p>
       </section>
 
       <div className="grid sm:grid-cols-2 gap-6 mb-10">
@@ -61,6 +67,10 @@ export function AboutPageContent() {
           <p className="text-sm text-muted-foreground leading-relaxed">{t("mission.body")}</p>
         </div>
       </div>
+
+      <MeetFoundersSection />
+      <LeadershipSection />
+      <ValuesSection />
 
       <section className="mb-10">
         <h3 className="text-xl font-bold text-foreground mb-4">{t("highlights.title")}</h3>

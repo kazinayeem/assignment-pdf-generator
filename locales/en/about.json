@@ -3,20 +3,68 @@
   "back": "Back to home",
   "bornoFlow": {
     "title": "About BornoFlow",
-    "body": "BornoFlow is a comprehensive learning, career, and productivity platform designed specifically for Computer Science, Software Engineering, and IT students.",
+    "body": "BornoFlow is a modern learning, career, and productivity platform designed for Computer Science, Software Engineering, and IT students.",
+    "ecosystem": "The platform combines interactive career roadmaps, AI-powered learning, interview preparation, university guidance, developer tools, resume building, project-based learning, and productivity tools into one integrated ecosystem.",
+    "goal": "Our goal is to bridge the gap between academic learning and real-world software engineering careers.",
     "mission": "Our mission is to provide structured roadmaps, interactive learning, interview preparation, developer tools, university guidance, and career resources—all in one platform."
   },
   "bornosoft": {
     "title": "About Bornosoft",
-    "body": "Bornosoft is a software company focused on building modern web applications, educational platforms, automation tools, SaaS products, and AI-powered solutions that help students, developers, and businesses succeed."
+    "body": "Bornosoft is a software company focused on building modern SaaS platforms, AI-powered applications, developer tools, automation systems, and educational technologies.",
+    "belief": "We believe in creating products that empower students, developers, startups, and businesses with practical technology solutions."
   },
   "vision": {
-    "title": "Vision",
-    "body": "Empower every student with the tools, knowledge, and guidance needed to become a world-class software engineer."
+    "title": "Our Vision",
+    "body": "To become one of the leading technology companies building innovative educational and developer-focused products for the global community."
   },
   "mission": {
-    "title": "Mission",
-    "body": "Build high-quality educational software that bridges the gap between academic learning and real-world industry skills."
+    "title": "Our Mission",
+    "body": "To empower students and developers with world-class learning resources, AI-powered tools, and modern software solutions that accelerate career growth."
+  },
+  "founders": {
+    "title": "Meet the Founders",
+    "subtitle": "Bornosoft is led by passionate engineers building technology that empowers the next generation of software professionals.",
+    "portfolio": "Portfolio",
+    "nayeem": {
+      "role": "Co-Founder & Software Engineer",
+      "bio": "Mohammad Ali Nayeem is a Software Engineering student and Full Stack Developer with a passion for building scalable web applications, AI-powered platforms, developer tools, and educational technology. He leads the technical architecture and product development of BornoFlow while focusing on creating practical solutions for students and developers."
+    },
+    "reduan": {
+      "role": "Co-Founder & Software Engineer",
+      "bio": "Reduan Ahmad is a Software Engineer passionate about software architecture, modern web technologies, scalable systems, and innovative digital products. As Co-Founder of Bornosoft, he contributes to product strategy, engineering excellence, and building reliable technology solutions."
+    }
+  },
+  "leadership": {
+    "title": "Leadership",
+    "nayeem": {
+      "role": "Co-Founder",
+      "focus": [
+        "Software Engineer",
+        "Software Architecture",
+        "Platform Engineering"
+      ]
+    },
+    "reduan": {
+      "role": "Co-Founder",
+      "focus": [
+        "Product Development",
+        "AI & Full Stack Development",
+        "Software Engineer"
+      ]
+    }
+  },
+  "values": {
+    "title": "Our Values",
+    "items": {
+      "innovation": "Innovation",
+      "learning": "Continuous Learning",
+      "knowledge": "Open Knowledge",
+      "engineering": "Quality Engineering",
+      "community": "Community",
+      "collaboration": "Collaboration",
+      "scalability": "Scalability",
+      "accessibility": "Accessibility"
+    }
   },
   "highlights": {
     "title": "Platform Highlights",
@@ -41,14 +89,6 @@
     "bornoCareer": "Resume, ATS checker, interview prep & career hub",
     "bornoUni": "180+ Bangladesh university explorer & rankings",
     "bornoDev": "100+ developer utilities and formatters"
-  },
-  "founder": {
-    "title": "Built with ❤️ by Mohammad Ali Nayeem",
-    "role": "Founder & Software Engineer",
-    "creator": "Creator of BornoFlow",
-    "powered": "Powered by Bornosoft",
-    "portfolio": "Portfolio",
-    "company": "Company Website"
   },
   "contact": {
     "title": "Contact",

@@ -457,7 +457,7 @@
   nav, footer, .no-print { display: none !important; }
   .print-author { display: block !important; border: none !important; background: transparent !important; padding: 0 !important; }
   body::after {
-    content: "© 2026 BornoFlow · A product of Bornosoft · Built with ❤️ by Mohammad Ali Nayeem";
+    content: "© 2026 BornoFlow · A product of Bornosoft · Built with ❤️ by Mohammad Ali Nayeem & Reduan Ahmad";
     display: block;
     margin-top: 2rem;
     padding-top: 1rem;

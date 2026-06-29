@@ -10,6 +10,7 @@ import { card, badge, animation } from "@/lib/design-system";
 import { INTERVIEW_CATEGORIES, DIFFICULTY_LEVELS } from "@/lib/roadmaps/content/constants";
 import { computeReadiness } from "@/lib/roadmaps/readiness";
 import { useRoadmapsStore } from "@/lib/roadmaps/store";
+import { useRoadmapProgress } from "@/lib/roadmaps/use-roadmap-progress";
 import type { Roadmap, InterviewCategory, RoadmapDifficulty } from "@/lib/roadmaps/types";
 import { RoadmapExportMenu } from "./roadmap-export-menu";
 import { cn } from "@/lib/utils";
@@ -17,8 +18,11 @@ import { cn } from "@/lib/utils";
 type Props = { roadmap: Roadmap };
 
 export function RoadmapExpandedSections({ roadmap }: Props) {
-  const progress = useRoadmapsStore((s) => s.getRoadmapProgress(roadmap.slug));
-  const { markInterviewPracticed, markCodingSolved, togglePortfolioItem, setReadinessFlag } = useRoadmapsStore();
+  const progress = useRoadmapProgress(roadmap.slug);
+  const markInterviewPracticed = useRoadmapsStore((s) => s.markInterviewPracticed);
+  const markCodingSolved = useRoadmapsStore((s) => s.markCodingSolved);
+  const togglePortfolioItem = useRoadmapsStore((s) => s.togglePortfolioItem);
+  const setReadinessFlag = useRoadmapsStore((s) => s.setReadinessFlag);
   const readiness = useMemo(
     () => computeReadiness(roadmap, progress),
     [roadmap, progress]

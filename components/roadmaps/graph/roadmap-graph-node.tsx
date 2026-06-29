@@ -60,7 +60,6 @@ export function RoadmapGraphNode({
     <motion.button
       type="button"
       data-graph-node
-      layout
       initial={{ opacity: 0, scale: 0.92 }}
       animate={{
         opacity: isDimmed ? 0.35 : 1,

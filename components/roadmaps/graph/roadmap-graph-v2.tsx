@@ -66,7 +66,9 @@ export function RoadmapGraphV2({
 
   const viewport = useGraphViewport({ containerRef, bounds: { width: bounds.width, height: bounds.height } });
   const fitRef = useRef(viewport.fitToScreen);
+  const centerOnNodeRef = useRef(viewport.centerOnNode);
   fitRef.current = viewport.fitToScreen;
+  centerOnNodeRef.current = viewport.centerOnNode;
 
   const searchResults = useMemo(
     () => searchRoadmapNodes(roadmap, searchQuery),
@@ -113,16 +115,18 @@ export function RoadmapGraphV2({
       onSelectNode(node);
       const ox = node.position.x - bounds.minX;
       const oy = node.position.y - bounds.minY;
-      viewport.centerOnNode(ox, oy, GRAPH_NODE_SIZE.width, GRAPH_NODE_SIZE.height);
+      centerOnNodeRef.current(ox, oy, GRAPH_NODE_SIZE.width, GRAPH_NODE_SIZE.height);
     },
-    [bounds.minX, bounds.minY, onSelectNode, viewport]
+    [bounds.minX, bounds.minY, onSelectNode]
   );
 
+  const lastAutoFocusQuery = useRef("");
   useEffect(() => {
-    if (searchResults.length === 1) {
-      focusNode(searchResults[0].node);
-    }
-  }, [searchResults, focusNode]);
+    const q = searchQuery.trim();
+    if (!q || searchResults.length !== 1 || lastAutoFocusQuery.current === q) return;
+    lastAutoFocusQuery.current = q;
+    focusNode(searchResults[0].node);
+  }, [searchQuery, searchResults, focusNode]);
 
   const handleMinimapNavigate = (graphX: number, graphY: number) => {
     const ox = graphX - bounds.minX;

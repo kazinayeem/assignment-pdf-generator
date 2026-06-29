@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useMemo, useState } from "react";
+import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { motion } from "framer-motion";
 import {
   Bookmark, Clock, DollarSign, TrendingUp, BarChart3, ChevronRight, GraduationCap,
@@ -14,6 +14,7 @@ import { RoadmapExpandedSections } from "./roadmap-expanded-sections";
 import { RoadmapDetailSidebar } from "./roadmap-detail-sidebar";
 import { RoadmapExportMenu } from "./roadmap-export-menu";
 import { useRoadmapsStore, getRoadmapCompletionPercent } from "@/lib/roadmaps/store";
+import { useRoadmapProgress } from "@/lib/roadmaps/use-roadmap-progress";
 import { computeReadiness } from "@/lib/roadmaps/readiness";
 import type { Roadmap, RoadmapNode, NodeStatus } from "@/lib/roadmaps/types";
 import { cn } from "@/lib/utils";
@@ -25,21 +26,22 @@ type RoadmapDetailClientProps = {
 export function RoadmapDetailClient({ roadmap }: RoadmapDetailClientProps) {
   const { t } = useTranslation("roadmaps");
   const [selectedNode, setSelectedNode] = useState<RoadmapNode | null>(null);
-  const {
-    recordVisit,
-    recordNodeVisit,
-    toggleBookmark,
-    toggleNodeComplete,
-    toggleNodeBookmark,
-    isNodeComplete,
-    setQuizScore,
-    addStudyMinutes,
-    bookmarks,
-  } = useRoadmapsStore();
+  const recordVisit = useRoadmapsStore((s) => s.recordVisit);
+  const recordNodeVisit = useRoadmapsStore((s) => s.recordNodeVisit);
+  const toggleBookmark = useRoadmapsStore((s) => s.toggleBookmark);
+  const toggleNodeComplete = useRoadmapsStore((s) => s.toggleNodeComplete);
+  const toggleNodeBookmark = useRoadmapsStore((s) => s.toggleNodeBookmark);
+  const isNodeComplete = useRoadmapsStore((s) => s.isNodeComplete);
+  const setQuizScore = useRoadmapsStore((s) => s.setQuizScore);
+  const addStudyMinutes = useRoadmapsStore((s) => s.addStudyMinutes);
+  const bookmarks = useRoadmapsStore((s) => s.bookmarks);
 
-  const roadmapProgress = useRoadmapsStore((s) => s.getRoadmapProgress(roadmap.slug));
+  const roadmapProgress = useRoadmapProgress(roadmap.slug);
+  const visitRecorded = useRef<string | null>(null);
 
   useEffect(() => {
+    if (visitRecorded.current === roadmap.slug) return;
+    visitRecorded.current = roadmap.slug;
     recordVisit(roadmap.slug);
     addStudyMinutes(5);
   }, [roadmap.slug, recordVisit, addStudyMinutes]);
@@ -53,13 +55,14 @@ export function RoadmapDetailClient({ roadmap }: RoadmapDetailClientProps) {
   const bookmarked = bookmarks.includes(roadmap.slug);
   const bookmarkedNodeIds = useMemo(() => new Set(roadmapProgress.bookmarkedNodeIds ?? []), [roadmapProgress.bookmarkedNodeIds]);
 
+  const completedNodeIds = roadmapProgress.completedNodeIds ?? [];
   const getNodeStatus = useMemo(() => {
-    const completed = new Set(roadmapProgress.completedNodeIds ?? []);
+    const completed = new Set(completedNodeIds);
     return (nodeId: string): NodeStatus => {
       if (completed.has(nodeId)) return "completed";
       return "available";
     };
-  }, [roadmapProgress]);
+  }, [completedNodeIds]);
 
   const continueNode = useMemo(() => {
     const incomplete = roadmap.nodes.find((n) => !isNodeComplete(roadmap.slug, n.id));
@@ -79,10 +82,15 @@ export function RoadmapDetailClient({ roadmap }: RoadmapDetailClientProps) {
     [roadmap.nodes, bookmarkedNodeIds]
   );
 
-  const handleSelectNode = (node: RoadmapNode) => {
+  const handleSelectNode = useCallback((node: RoadmapNode) => {
     setSelectedNode(node);
     recordNodeVisit(roadmap.slug, node.id);
-  };
+  }, [roadmap.slug, recordNodeVisit]);
+
+  const checkNodeComplete = useCallback(
+    (id: string) => isNodeComplete(roadmap.slug, id),
+    [roadmap.slug, isNodeComplete]
+  );
 
   return (
     <div className="max-w-[1600px] mx-auto px-4 sm:px-6 lg:px-8 py-6 sm:py-8">
@@ -160,7 +168,7 @@ export function RoadmapDetailClient({ roadmap }: RoadmapDetailClientProps) {
               roadmap={roadmap}
               selectedNodeId={selectedNode?.id ?? null}
               onSelectNode={handleSelectNode}
-              isNodeComplete={(id) => isNodeComplete(roadmap.slug, id)}
+              isNodeComplete={checkNodeComplete}
               getNodeStatus={getNodeStatus}
               bookmarkedNodeIds={bookmarkedNodeIds}
               onToggleNodeBookmark={(nodeId) => toggleNodeBookmark(roadmap.slug, nodeId)}
@@ -186,7 +194,7 @@ export function RoadmapDetailClient({ roadmap }: RoadmapDetailClientProps) {
           overallPercent={overallPercent}
           onContinue={() => handleSelectNode(continueNode)}
           onSelectNode={handleSelectNode}
-          isNodeComplete={(id) => isNodeComplete(roadmap.slug, id)}
+          isNodeComplete={checkNodeComplete}
           quizScores={roadmapProgress.quizScores}
           className="hidden xl:block"
         />
@@ -202,7 +210,7 @@ export function RoadmapDetailClient({ roadmap }: RoadmapDetailClientProps) {
         overallPercent={overallPercent}
         onContinue={() => handleSelectNode(continueNode)}
         onSelectNode={handleSelectNode}
-        isNodeComplete={(id) => isNodeComplete(roadmap.slug, id)}
+        isNodeComplete={checkNodeComplete}
         quizScores={roadmapProgress.quizScores}
         className="xl:hidden mb-8"
       />

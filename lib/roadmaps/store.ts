@@ -8,6 +8,8 @@ function defaultProgress(): RoadmapProgress {
   return {
     completedNodeIds: [],
     bookmarked: false,
+    bookmarkedNodeIds: [],
+    recentNodeIds: [],
     quizScores: {},
     lastVisitedAt: null,
     studyMinutes: 0,
@@ -37,6 +39,8 @@ type RoadmapsStore = RoadmapsUserState & {
   markCodingSolved: (slug: string, problemId: string) => void;
   togglePortfolioItem: (slug: string, itemId: string) => void;
   setReadinessFlag: (slug: string, flag: "mockInterviewDone" | "resumeReady" | "githubReady" | "linkedinReady", value: boolean) => void;
+  toggleNodeBookmark: (slug: string, nodeId: string) => void;
+  recordNodeVisit: (slug: string, nodeId: string) => void;
 };
 
 export const useRoadmapsStore = create<RoadmapsStore>()(
@@ -167,6 +171,22 @@ export const useRoadmapsStore = create<RoadmapsStore>()(
         set((s) => {
           const current = s.progress[slug] ?? defaultProgress();
           return { progress: { ...s.progress, [slug]: { ...current, [flag]: value } } };
+        }),
+
+      toggleNodeBookmark: (slug, nodeId) =>
+        set((s) => {
+          const current = s.progress[slug] ?? defaultProgress();
+          const bookmarked = current.bookmarkedNodeIds.includes(nodeId)
+            ? current.bookmarkedNodeIds.filter((id) => id !== nodeId)
+            : [...current.bookmarkedNodeIds, nodeId];
+          return { progress: { ...s.progress, [slug]: { ...current, bookmarkedNodeIds: bookmarked } } };
+        }),
+
+      recordNodeVisit: (slug, nodeId) =>
+        set((s) => {
+          const current = s.progress[slug] ?? defaultProgress();
+          const recentNodeIds = [nodeId, ...current.recentNodeIds.filter((id) => id !== nodeId)].slice(0, 8);
+          return { progress: { ...s.progress, [slug]: { ...current, recentNodeIds } } };
         }),
     }),
     { name: "campusflow-roadmaps-v1" }

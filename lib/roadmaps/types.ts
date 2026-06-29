@@ -246,6 +246,8 @@ export type Roadmap = RoadmapDefinition & {
 export type RoadmapProgress = {
   completedNodeIds: string[];
   bookmarked: boolean;
+  bookmarkedNodeIds: string[];
+  recentNodeIds: string[];
   quizScores: Record<string, number>;
   lastVisitedAt: string | null;
   studyMinutes: number;

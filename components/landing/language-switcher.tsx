@@ -1,46 +1,55 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { Globe } from "lucide-react";
+import { motion } from "framer-motion";
 import { useI18n } from "@/lib/i18n/provider";
 import type { Locale } from "@/lib/i18n/types";
 import { cn } from "@/lib/utils";
 
 const LOCALES: { code: Locale; label: string }[] = [
   { code: "en", label: "EN" },
-  { code: "bn", label: "বাং" },
+  { code: "bn", label: "বাংলা" },
 ];
 
 type LanguageSwitcherProps = {
   scrolled?: boolean;
+  lightNav?: boolean;
   compact?: boolean;
   className?: string;
 };
 
-export function LanguageSwitcher({ scrolled = true, compact = false, className }: LanguageSwitcherProps) {
+export function LanguageSwitcher({ scrolled, lightNav, compact: _compact, className }: LanguageSwitcherProps) {
   const { locale, setLocale, t } = useI18n();
   const [mounted, setMounted] = useState(false);
+  const onLight = lightNav ?? scrolled ?? true;
 
   useEffect(() => setMounted(true), []);
-  if (!mounted) return null;
+
+  if (!mounted) {
+    return <div className={cn("h-10 w-[104px] rounded-xl border border-border", className)} aria-hidden />;
+  }
 
   return (
-    <div className={cn("relative", className)} role="group" aria-label={t("common", "language.switch")}>
+    <div
+      className={cn("relative", className)}
+      role="group"
+      aria-label={t("common", "language.switch")}
+    >
       <div
         className={cn(
-          "flex items-center rounded-xl border p-0.5 min-h-[44px]",
-          scrolled
-            ? "border-border bg-muted/50"
-            : "border-white/20 bg-white/10"
+          "relative flex h-10 rounded-xl border p-1",
+          onLight ? "border-border/60 bg-muted/40" : "border-white/15 bg-white/8 backdrop-blur-md"
         )}
       >
-        {!compact && (
-          <Globe
-            size={14}
-            className={cn("ml-2 shrink-0", scrolled ? "text-muted-foreground" : "text-white/70")}
-            aria-hidden
-          />
-        )}
+        <motion.div
+          className={cn(
+            "absolute top-1 bottom-1 rounded-lg",
+            onLight ? "bg-background shadow-sm" : "bg-white/20"
+          )}
+          style={{ width: "calc(50% - 2px)" }}
+          animate={{ left: locale === "bn" ? "calc(50% + 1px)" : "4px" }}
+          transition={{ type: "spring", stiffness: 500, damping: 32 }}
+        />
         {LOCALES.map((l) => (
           <button
             key={l.code}
@@ -48,14 +57,11 @@ export function LanguageSwitcher({ scrolled = true, compact = false, className }
             onClick={() => setLocale(l.code)}
             aria-pressed={locale === l.code}
             className={cn(
-              "px-2.5 py-1.5 rounded-lg text-xs font-semibold transition-all min-h-[36px] min-w-[36px]",
+              "relative z-10 flex-1 min-w-[48px] text-xs font-semibold transition-colors duration-200 rounded-lg",
+              "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand/40",
               locale === l.code
-                ? scrolled
-                  ? "bg-background text-foreground shadow-sm"
-                  : "bg-white/20 text-white"
-                : scrolled
-                  ? "text-muted-foreground hover:text-foreground"
-                  : "text-white/60 hover:text-white"
+                ? onLight ? "text-foreground" : "text-white"
+                : onLight ? "text-muted-foreground hover:text-foreground" : "text-white/55 hover:text-white/80"
             )}
           >
             {l.label}
@@ -74,9 +80,11 @@ export function LanguageSwitcherLink({ className }: { className?: string }) {
     <button
       type="button"
       onClick={() => setLocale(next)}
-      className={cn("inline-flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground transition-colors min-h-[44px]", className)}
+      className={cn(
+        "inline-flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground transition-colors min-h-11",
+        className
+      )}
     >
-      <Globe size={16} aria-hidden />
       {locale === "en" ? "বাংলা" : "English"}
     </button>
   );

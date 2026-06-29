@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react";
 import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
-import { X, Mail } from "lucide-react";
+import { X, Mail, Flame } from "lucide-react";
 import { useTranslation } from "@/lib/i18n/provider";
 
 const STORAGE_KEY = "campusflow-announcement-dismissed";
@@ -41,60 +41,61 @@ export function AnnouncementBar() {
       {visible && (
         <motion.div
           initial={{ height: 0, opacity: 0 }}
-          animate={{ height: "auto", opacity: 1 }}
+          animate={{ height: 36, opacity: 1 }}
           exit={{ height: 0, opacity: 0 }}
           className="overflow-hidden bg-brand-dark border-b border-white/10 text-white"
           role="region"
           aria-label="Announcement"
         >
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-2.5 flex items-center gap-3 text-sm">
+          <div className="max-w-[1280px] mx-auto px-6 h-9 flex items-center gap-3 text-xs">
             <a
               href="https://bornosoftnr.com"
               target="_blank"
               rel="noopener noreferrer"
-              className="shrink-0 flex items-center min-h-[36px]"
+              className="shrink-0 hidden sm:flex items-center"
               aria-label="BornoSoft"
             >
               <Image
                 src={BORNOSOFT_LOGO}
                 alt={t("announcement.logoAlt")}
-                width={28}
-                height={28}
-                className="rounded-lg object-contain"
+                width={20}
+                height={20}
+                className="rounded object-contain"
                 unoptimized
               />
             </a>
 
-            <div className="flex-1 min-w-0 flex flex-col sm:flex-row sm:items-center sm:gap-2 text-white/90">
+            <Flame size={14} className="text-brand-accent shrink-0" aria-hidden />
+
+            <div className="flex-1 min-w-0 flex items-center gap-2 text-white/90">
               <AnimatePresence mode="wait">
                 <motion.p
                   key={index}
-                  initial={{ opacity: 0, y: 8 }}
+                  initial={{ opacity: 0, y: 4 }}
                   animate={{ opacity: 1, y: 0 }}
-                  exit={{ opacity: 0, y: -8 }}
-                  transition={{ duration: 0.3 }}
-                  className="font-medium truncate sm:whitespace-normal text-xs sm:text-sm"
+                  exit={{ opacity: 0, y: -4 }}
+                  transition={{ duration: 0.2 }}
+                  className="font-medium truncate text-xs"
                 >
                   {announcements[index] ?? t("announcement.text")}
                 </motion.p>
               </AnimatePresence>
               <a
                 href={`mailto:${t("announcement.email")}`}
-                className="inline-flex items-center gap-1 text-brand-accent hover:underline shrink-0 text-xs sm:text-sm font-semibold min-h-[32px]"
+                className="hidden sm:inline-flex items-center gap-1 text-brand-accent hover:underline shrink-0 font-semibold"
               >
-                <Mail size={13} aria-hidden />
+                <Mail size={12} aria-hidden />
                 {t("announcement.email")}
               </a>
-              <span className="hidden sm:inline text-white/50 text-xs">· {t("announcement.signature")}</span>
             </div>
 
             <button
               type="button"
               onClick={dismiss}
               aria-label={t("announcement.dismiss")}
-              className="shrink-0 p-1.5 rounded-lg hover:bg-white/10 text-white/60 min-h-[32px] min-w-[32px] flex items-center justify-center focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-accent"
+              className="shrink-0 p-1 rounded-md hover:bg-white/10 text-white/60 min-h-7 min-w-7 flex items-center justify-center focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-accent"
             >
-              <X size={16} aria-hidden />
+              <X size={14} aria-hidden />
             </button>
           </div>
         </motion.div>

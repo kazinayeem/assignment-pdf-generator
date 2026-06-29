@@ -39,9 +39,9 @@ export function RoadmapsNav() {
   return (
     <header className="sticky top-0 z-50 px-3 sm:px-4 pt-3 pb-2">
       <div className="max-w-[1400px] mx-auto flex items-center gap-2 sm:gap-3 h-14 px-3 sm:px-4 rounded-2xl bg-card/90 backdrop-blur-xl border border-border shadow-sm">
-        <Link href="/" className="flex items-center shrink-0" aria-label="CampusFlow home">
+        <Link href="/" className="flex items-center shrink-0" aria-label="BornoFlow home">
           <Home size={18} className="text-muted-foreground sm:hidden" />
-          <Image src="/logo_navbar.png" alt="CampusFlow" width={100} height={26} className="h-7 w-auto hidden sm:block" />
+          <Image src="/logo_navbar.png" alt="BornoFlow" width={100} height={26} className="h-7 w-auto hidden sm:block" />
         </Link>
 
         <ChevronRight size={14} className="text-muted-foreground shrink-0 hidden sm:block" aria-hidden />

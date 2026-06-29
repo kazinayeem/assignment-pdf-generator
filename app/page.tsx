@@ -6,22 +6,20 @@ import { Metadata } from "next";
 const SITE_URL = "https://bornosoft-cover.vercel.app";
 
 export const metadata: Metadata = {
-  title: "CampusFlow | Your Complete Academic Productivity Platform",
+  title: "BornoFlow | Learning & Career Platform for CS Students",
   description:
-    "CampusFlow is the all-in-one platform for CSE & SWE students in Bangladesh. Assignment covers, lab reports, ATS resumes, CS learning, interview prep, career hub, and 100+ developer tools — free forever.",
+    "BornoFlow is the all-in-one learning and career platform for CSE & SWE students. Roadmaps, assignment tools, ATS resumes, CS learning, interview prep, career hub, and 100+ developer tools — free forever.",
   keywords: [
-    "CampusFlow",
-    "CampusFlow V5",
-    "Daffodil International University",
-    "DIU",
-    "DIU Student Portal",
+    "BornoFlow",
     "Bornosoft",
-    "DIU Assignment Cover",
-    "Lab Report Generator",
+    "BornoMaps",
+    "BornoCareer",
+    "BornoUni",
+    "BornoDev",
+    "Career Roadmaps",
     "CV Builder",
     "ATS Resume",
     "Interview Preparation",
-    "Career Hub",
     "CS Learning Platform",
     "Developer Tools",
     "CSE",
@@ -29,19 +27,19 @@ export const metadata: Metadata = {
     "Bangladesh",
   ],
   openGraph: {
-    title: "CampusFlow | Academic Productivity Platform for Students",
+    title: "BornoFlow | Learning & Career Platform",
     description:
-      "Generate DIU-ready documents, master CS interactively, ace interviews, and launch your career — all in one beautiful platform.",
+      "Structured roadmaps, interactive learning, interview prep, developer tools, and university guidance — built by Bornosoft.",
     type: "website",
     url: SITE_URL,
-    siteName: "CampusFlow",
+    siteName: "BornoFlow",
     locale: "en_US",
   },
   twitter: {
     card: "summary_large_image",
-    title: "CampusFlow | Built for CSE & SWE Students",
+    title: "BornoFlow | Built for CSE & SWE Students",
     description:
-      "Assignment covers, lab reports, ATS CVs, learning tools, interview hub, and 100+ dev utilities — free for students.",
+      "Roadmaps, learning tools, interview hub, assignment studio, and 100+ dev utilities — free for students.",
   },
   alternates: {
     canonical: SITE_URL,
@@ -52,7 +50,7 @@ export const metadata: Metadata = {
   },
 };
 
-export default function Home() {
+export default function HomePage() {
   return (
     <>
       <FaqSchema />

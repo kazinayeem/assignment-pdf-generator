@@ -454,4 +454,16 @@
 @media print {
   .kb-prose details { display: block !important; }
   .kb-prose details summary { display: none; }
+  nav, footer, .no-print { display: none !important; }
+  .print-author { display: block !important; border: none !important; background: transparent !important; padding: 0 !important; }
+  body::after {
+    content: "© 2026 BornoFlow · A product of Bornosoft · Built with ❤️ by Mohammad Ali Nayeem";
+    display: block;
+    margin-top: 2rem;
+    padding-top: 1rem;
+    border-top: 1px solid #e2e8f0;
+    font-size: 10px;
+    color: #64748b;
+    text-align: center;
+  }
 }

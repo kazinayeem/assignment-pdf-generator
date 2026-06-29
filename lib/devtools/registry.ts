@@ -185,7 +185,7 @@ const SVG = mapTools(SVG_TOOLS, "svg", "svg", { acceptsFile: true, fileTypes: ".
 const IMAGE = mapTools(IMAGE_TOOLS, "image", "image", { ui: "media", acceptsFile: true, fileTypes: "image/*" });
 const ENCODING = ENCODING_TOOLS.map(([slug, title, description, operation]) => {
   const op = operation as DevToolOperation;
-  return d({ slug, title, description, category: "encoding", engine: "encoding", operation: op, popular: slug.includes("base64"), sampleInput: "Hello, CampusFlow!" });
+  return d({ slug, title, description, category: "encoding", engine: "encoding", operation: op, popular: slug.includes("base64"), sampleInput: "Hello, BornoFlow!" });
 });
 const GENERATORS = GENERATOR_TOOLS.map(([slug, title, description, operation, popular, featured]) =>
   d({

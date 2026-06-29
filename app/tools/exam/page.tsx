@@ -3,7 +3,7 @@ import { GraduationCap, Trophy, TrendingUp } from "lucide-react";
 import { ALL_SUBJECT_REGISTRIES } from "@/lib/learning/topics-registry";
 import { getQuestionCount } from "@/lib/learning/question-bank";
 
-export const metadata = { title: "Exam Center | CampusFlow Learning" };
+export const metadata = { title: "Exam Center | BornoFlow Learning" };
 
 export default function ExamCenterPage() {
   return (

@@ -19,7 +19,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     description: `${university.name} — ${university.type} university in ${university.city}, ${university.division}. Programs, tuition, admission, and reviews.`,
     openGraph: {
       title: university.name,
-      description: `Explore ${university.name} on CampusFlow University Hub`,
+      description: `Explore ${university.name} on BornoUni University Hub`,
       type: "website",
     },
   };

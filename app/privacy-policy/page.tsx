@@ -3,7 +3,7 @@ import { PolicyPageContent } from "@/components/static-page/policy-content";
 
 export const metadata: Metadata = {
   title: "Privacy Policy",
-  description: "Your privacy matters at CampusFlow. Learn how BornoSoft protects student data and academic records.",
+  description: "Your privacy matters at BornoFlow. Learn how BornoSoft protects student data and academic records.",
 };
 
 export default function PrivacyPolicyPage() {

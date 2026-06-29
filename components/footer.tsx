@@ -1,209 +1,165 @@
 "use client";
 
-import { useState } from "react";
 import Link from "next/link";
-import {
-  Github,
-  Linkedin,
-  Globe,
-  Heart,
-  ShieldCheck,
-  ExternalLink,
-  Mail,
-  ArrowRight,
-  Sparkles,
-} from "lucide-react";
-import { motion } from "framer-motion";
+import Image from "next/image";
+import { Github, Linkedin, Globe, Mail, Facebook, ExternalLink, ShieldCheck } from "lucide-react";
 import { useTranslation } from "@/lib/i18n/provider";
 import { LanguageSwitcherLink } from "@/components/landing/language-switcher";
 import { ThemeToggle } from "@/components/landing/theme-toggle";
-import { spacing, badge } from "@/lib/design-system";
+import { BuiltBySection } from "@/components/brand/built-by";
+import { BRAND } from "@/lib/brand";
 import { cn } from "@/lib/utils";
 
+const PRODUCT_LINKS = [
+  { key: "bornoMaps", href: "/roadmaps" },
+  { key: "bornoAi", href: "/tools" },
+  { key: "bornoCareer", href: "/career" },
+  { key: "bornoUni", href: "/universities" },
+  { key: "bornoDev", href: "/developer-tools" },
+  { key: "resumeBuilder", href: "/cv-builder" },
+  { key: "assignmentStudio", href: "/assignment" },
+  { key: "labReport", href: "/lab-report" },
+  { key: "interviewHub", href: "/interview" },
+  { key: "learningHub", href: "/tools" },
+] as const;
+
+const RESOURCE_LINKS = [
+  { key: "documentation", href: "/about" },
+  { key: "roadmaps", href: "/roadmaps" },
+  { key: "learningResources", href: "/tools" },
+  { key: "interviewQuestions", href: "/interview" },
+  { key: "developerTools", href: "/developer-tools" },
+  { key: "universityExplorer", href: "/universities" },
+  { key: "blog", href: "/about" },
+  { key: "changelog", href: "/about" },
+] as const;
+
+const COMPANY_LINKS = [
+  { key: "about", href: "/about" },
+  { key: "products", href: "/about#products" },
+  { key: "careers", href: `mailto:${BRAND.email}` },
+  { key: "contact", href: `mailto:${BRAND.email}` },
+  { key: "privacy", href: "/privacy-policy" },
+  { key: "terms", href: "/cookie-policy" },
+  { key: "support", href: `mailto:${BRAND.email}` },
+] as const;
+
 export default function Footer() {
-  const currentYear = new Date().getFullYear();
-  const [email, setEmail] = useState("");
   const { t } = useTranslation("footer");
 
-  const handleNewsletter = (e: React.FormEvent) => {
-    e.preventDefault();
-    setEmail("");
-  };
-
-  const columns = [
-    {
-      title: t("columns.product"),
-      links: [
-        { label: t("links.assignment"), href: "/assignment" },
-        { label: t("links.cvBuilder"), href: "/cv-builder" },
-        { label: t("links.labReport"), href: "/lab-report" },
-        { label: t("links.learningTools"), href: "/tools" },
-        { label: t("links.universities"), href: "/universities" },
-        { label: t("links.calculators"), href: "/calculators" },
-        { label: t("links.devTools"), href: "/developer-tools" },
-      ],
-    },
-    {
-      title: t("columns.learning"),
-      links: [
-        { label: t("links.learningTools"), href: "/tools" },
-        { label: t("links.exam"), href: "/tools/exam" },
-        { label: t("links.progress"), href: "/tools/learning/progress" },
-        { label: t("links.interviewKb"), href: "/interview" },
-      ],
-    },
-    {
-      title: t("columns.career"),
-      links: [
-        { label: t("links.careerHub"), href: "/career" },
-        { label: t("links.resume"), href: "/career" },
-        { label: t("links.ats"), href: "/career/ats-checker" },
-        { label: t("links.portfolio"), href: "/career/portfolio" },
-        { label: t("links.interview"), href: "/career/interview" },
-        { label: t("links.roadmaps"), href: "/roadmaps" },
-      ],
-    },
-    {
-      title: t("columns.resources"),
-      links: [
-        { label: t("links.allTools"), href: "/tools" },
-        { label: t("links.about"), href: "/about" },
-        { label: t("links.bornosoft"), href: "https://bornosoftnr.com", external: true },
-      ],
-    },
-    {
-      title: t("columns.legal"),
-      links: [
-        { label: t("links.privacy"), href: "/privacy-policy" },
-        { label: t("links.cookie"), href: "/cookie-policy" },
-        { label: t("links.refund"), href: "/refund-policy" },
-        { label: t("links.security"), href: "/security-policy" },
-      ],
-    },
-  ];
+  const connectLinks = [
+    { key: "website", href: BRAND.companyUrl, icon: Globe, external: true },
+    { key: "portfolio", href: BRAND.portfolioUrl, icon: ExternalLink, external: true },
+    { key: "github", href: BRAND.github, icon: Github, external: true },
+    { key: "linkedin", href: BRAND.linkedin, icon: Linkedin, external: true },
+    { key: "facebook", href: BRAND.facebook, icon: Facebook, external: true },
+    { key: "email", href: `mailto:${BRAND.email}`, icon: Mail, external: true },
+  ] as const;
 
   return (
-    <footer className="bg-[#0F172A] text-slate-400 pt-14 pb-8 px-4 sm:px-6 overflow-hidden relative border-t border-white/10">
-      <div className="blur-orb w-[400px] h-[400px] bg-brand/10 -top-40 right-0" aria-hidden />
-      <div className="blur-orb w-[300px] h-[300px] bg-brand-accent/10 bottom-0 left-0" aria-hidden />
-
-      <div className={cn(spacing.container, "relative")}>
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-6 gap-10 lg:gap-8 mb-12">
-          <div className="sm:col-span-2 lg:col-span-2 space-y-6">
-            <div className="flex items-center gap-3">
-              <div className="w-11 h-11 gradient-primary rounded-2xl flex items-center justify-center shadow-lg shadow-brand/25">
-                <Sparkles className="w-5 h-5 text-white" aria-hidden />
-              </div>
+    <footer className="bg-[#0B1120] text-slate-400 border-t border-white/[0.06]">
+      <div className="max-w-[1280px] mx-auto px-6 pt-14 pb-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-12 gap-10 lg:gap-8 mb-12">
+          {/* Brand */}
+          <div className="lg:col-span-4 space-y-5">
+            <Link href="/" className="inline-flex items-center gap-3 group">
+              <Image
+                src={BRAND.logoUrl}
+                alt={BRAND.company}
+                width={40}
+                height={40}
+                className="h-10 w-10 rounded-xl object-contain bg-white/5 p-1"
+                unoptimized
+              />
               <div>
-                <span className="font-extrabold text-xl tracking-tight text-white">
-                  Campus<span className="text-brand-secondary">Flow</span>
+                <span className="block text-xl font-bold text-white tracking-tight group-hover:text-brand-accent transition-colors">
+                  {BRAND.platform}
                 </span>
-                <p className="text-xs font-medium text-slate-500 tracking-wide">Bornosoft</p>
+                <span className="block text-[11px] text-slate-500">{t("brand.companyLine")}</span>
               </div>
-            </div>
-            <p className="text-slate-400 max-w-sm text-sm leading-relaxed">
-              {t("brand.description")}
-            </p>
-            <div className="flex items-center gap-2.5">
-              {[
-                { href: "https://bornosoftnr.com", icon: Globe, label: "Website" },
-                { href: "https://github.com/kazinayeem", icon: Github, label: "GitHub" },
-                { href: "https://www.linkedin.com/in/kazi-nayeem/", icon: Linkedin, label: "LinkedIn" },
-              ].map((s) => (
-                <a
-                  key={s.href}
-                  href={s.href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  aria-label={s.label}
-                  className="p-3 bg-white/5 rounded-xl hover:bg-brand/20 text-slate-400 hover:text-white transition-all border border-white/10 min-h-[44px] min-w-[44px] flex items-center justify-center"
-                >
-                  <s.icon className="w-5 h-5" />
-                </a>
-              ))}
-            </div>
-
-            <div className="space-y-3 pt-1">
-              <h4 className="text-xs font-bold uppercase tracking-widest text-slate-500">
-                {t("newsletter.title")}
-              </h4>
-              <p className="text-sm text-slate-400 leading-relaxed">{t("newsletter.subtitle")}</p>
-              <form onSubmit={handleNewsletter} className="space-y-3">
-                <div className="relative">
-                  <Mail size={16} className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-500" aria-hidden />
-                  <input
-                    type="email"
-                    value={email}
-                    onChange={(e) => setEmail(e.target.value)}
-                    placeholder={t("newsletter.placeholder")}
-                    aria-label={t("newsletter.placeholder")}
-                    className="w-full pl-11 pr-4 py-3 rounded-xl bg-white/5 border border-white/10 text-sm text-white placeholder:text-slate-500 outline-none focus:border-brand/50 focus:ring-2 focus:ring-brand/20 transition-colors min-h-[44px]"
-                  />
-                </div>
-                <button
-                  type="submit"
-                  className="btn-premium w-full flex items-center justify-center gap-2 py-3 rounded-xl gradient-primary text-white text-sm font-semibold hover:shadow-lg hover:shadow-brand/25 transition cursor-pointer min-h-[44px]"
-                >
-                  {t("newsletter.cta")} <ArrowRight size={16} aria-hidden />
-                </button>
-              </form>
-            </div>
+            </Link>
+            <p className="text-sm font-medium text-slate-300 leading-snug">{t("brand.tagline")}</p>
+            <p className="text-sm text-slate-500 leading-relaxed max-w-sm">{t("brand.description")}</p>
+            <BuiltBySection variant="footer" />
           </div>
 
-          {columns.map((col) => (
-            <div key={col.title} className="space-y-4">
-              <h4 className="text-xs font-bold uppercase tracking-widest text-slate-500">{col.title}</h4>
-              <ul className="space-y-1">
-                {col.links.map((link) => (
-                  <li key={link.label}>
-                    {"external" in link && link.external ? (
-                      <a
-                        href={link.href}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="text-sm text-slate-400 hover:text-white transition-colors flex items-center gap-2 group min-h-[40px]"
-                      >
-                        {link.label}
-                        <ExternalLink className="w-3 h-3 opacity-0 group-hover:opacity-100 transition-opacity" />
-                      </a>
-                    ) : (
-                      <Link
-                        href={link.href}
-                        className="text-sm text-slate-400 hover:text-white transition-colors flex items-center gap-2 min-h-[40px]"
-                      >
-                        {link.label}
-                      </Link>
-                    )}
-                  </li>
-                ))}
-              </ul>
-            </div>
-          ))}
+          {/* Product */}
+          <div className="lg:col-span-2">
+            <h4 className="text-xs font-semibold uppercase tracking-wider text-slate-500 mb-4">{t("columns.product")}</h4>
+            <ul className="space-y-2">
+              {PRODUCT_LINKS.map((link) => (
+                <li key={link.key}>
+                  <Link href={link.href} className="text-sm text-slate-400 hover:text-white transition-colors duration-200 min-h-[36px] flex items-center">
+                    {t(`products.${link.key}`)}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {/* Resources */}
+          <div className="lg:col-span-2">
+            <h4 className="text-xs font-semibold uppercase tracking-wider text-slate-500 mb-4">{t("columns.resources")}</h4>
+            <ul className="space-y-2">
+              {RESOURCE_LINKS.map((link) => (
+                <li key={link.key}>
+                  <Link href={link.href} className="text-sm text-slate-400 hover:text-white transition-colors duration-200 min-h-[36px] flex items-center">
+                    {t(`resources.${link.key}`)}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {/* Company */}
+          <div className="lg:col-span-2">
+            <h4 className="text-xs font-semibold uppercase tracking-wider text-slate-500 mb-4">{t("columns.company")}</h4>
+            <ul className="space-y-2">
+              {COMPANY_LINKS.map((link) => (
+                <li key={link.key}>
+                  <Link href={link.href} className="text-sm text-slate-400 hover:text-white transition-colors duration-200 min-h-[36px] flex items-center">
+                    {t(`company.${link.key}`)}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {/* Connect */}
+          <div className="lg:col-span-2">
+            <h4 className="text-xs font-semibold uppercase tracking-wider text-slate-500 mb-4">{t("columns.connect")}</h4>
+            <ul className="space-y-2">
+              {connectLinks.map((link) => (
+                <li key={link.key}>
+                  <a
+                    href={link.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-sm text-slate-400 hover:text-white transition-colors duration-200 flex items-center gap-2 min-h-[36px] group"
+                  >
+                    <link.icon size={14} className="opacity-60 group-hover:opacity-100" />
+                    {t(`connect.${link.key}`)}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </div>
         </div>
 
-        <div className="pt-8 border-t border-white/10 flex flex-col lg:flex-row items-center justify-between gap-6">
-          <p className="text-xs text-slate-500 text-center lg:text-left">
-            © {currentYear} CampusFlow by Bornosoft. {t("copyright")}
+        <div className="pt-8 border-t border-white/[0.06] flex flex-col lg:flex-row items-center justify-between gap-4">
+          <p className="text-xs text-slate-500 text-center lg:text-left leading-relaxed">
+            © {BRAND.copyrightYear} {BRAND.platform}. {t("brand.companyLine")}.<br className="sm:hidden" />
+            <span className="hidden sm:inline"> </span>
+            {t("builtBy")} ❤️ {BRAND.author}. {t("copyright")}
           </p>
-
-          <motion.div
-            whileHover={{ scale: 1.02 }}
-            className="flex items-center gap-2 px-5 py-2.5 bg-white/5 rounded-2xl border border-white/10"
-          >
-            <p className="text-xs text-slate-400 flex items-center gap-2">
-              {t("developed")}{" "}
-              <Heart className="w-3 h-3 text-destructive fill-destructive" aria-hidden /> Mohammad Ali Nayeem
-            </p>
-          </motion.div>
-
           <div className="flex flex-wrap items-center justify-center gap-3">
-            <LanguageSwitcherLink />
-            <ThemeToggle scrolled className="!text-slate-400 hover:!text-white" />
-            <span className={cn(badge.success, "text-[10px] !bg-success/15 !text-success !border-success/25")}>
-              <ShieldCheck className="w-3.5 h-3.5" aria-hidden />
+            <LanguageSwitcherLink className="!text-slate-500 hover:!text-white" />
+            <ThemeToggle scrolled className="!border-white/10 !bg-white/5 !text-slate-400 hover:!text-white" />
+            <span className={cn("inline-flex items-center gap-1.5 text-[10px] font-medium px-2.5 py-1 rounded-lg bg-success/10 text-success border border-success/20")}>
+              <ShieldCheck size={12} aria-hidden />
               {t("status")}
             </span>
-            <span className="text-[10px] text-slate-500 font-mono bg-white/5 px-2.5 py-1 rounded-md border border-white/10">{t("version")} 5.0</span>
+            <span className="text-[10px] text-slate-600 font-mono">{t("version")} 1.0</span>
           </div>
         </div>
       </div>

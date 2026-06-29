@@ -2,12 +2,12 @@
   "universities": {
     "badge": "Trusted nationwide",
     "title": "Used by students across Bangladesh",
-    "subtitle": "From Dhaka to Chittagong — CSE and SWE students rely on CampusFlow daily."
+    "subtitle": "From Dhaka to Chittagong — CSE and SWE students rely on BornoFlow daily."
   },
   "universityList": ["DIU", "BRAC", "NSU", "AIUB", "EWU", "UIU", "IUB", "RUET", "KUET", "CUET", "SUST", "BUET"],
   "demo": {
     "badge": "Product Demo",
-    "title": "See CampusFlow in action",
+    "title": "See BornoFlow in action",
     "subtitle": "Watch how students generate covers, build resumes, and master CS topics in minutes.",
     "watchDemo": "Watch Demo",
     "startTour": "Start Free Tour",
@@ -15,11 +15,11 @@
     "browserTitle": "campusflow.app — Dashboard"
   },
   "comparison": {
-    "badge": "Why CampusFlow",
+    "badge": "Why BornoFlow",
     "title": "Stop juggling five different tools",
     "subtitle": "One platform beats manual work and generic resume builders.",
     "feature": "Feature",
-    "campusflow": "CampusFlow",
+    "campusflow": "BornoFlow",
     "manual": "Manual Work",
     "generic": "Generic Tools",
     "rows": [
@@ -60,7 +60,7 @@
   "changelog": {
     "badge": "Changelog",
     "title": "Release notes",
-    "subtitle": "Latest improvements to CampusFlow.",
+    "subtitle": "Latest improvements to BornoFlow.",
     "versions": [
       {
         "version": "v5.0",
@@ -81,7 +81,7 @@
   },
   "community": {
     "badge": "Community",
-    "title": "Join the CampusFlow community",
+    "title": "Join the BornoFlow community",
     "subtitle": "Connect, contribute, and shape the future of student tools.",
     "discord": "Discord",
     "github": "GitHub",
@@ -95,7 +95,7 @@
   "github": {
     "badge": "Open Source",
     "title": "Built in the open",
-    "subtitle": "CampusFlow is open source. Star, fork, and contribute on GitHub.",
+    "subtitle": "BornoFlow is open source. Star, fork, and contribute on GitHub.",
     "stars": "Stars",
     "forks": "Forks",
     "contributors": "Contributors",
@@ -138,7 +138,7 @@
   "announcements": [
     "🚀 Interview Hub Released — 789+ real questions",
     "🔥 100+ Developer Tools now live",
-    "🎉 CampusFlow Beta — Free for all students"
+    "🎉 BornoFlow Beta — Free for all students"
   ],
   "empty": {
     "noResults": "No results found",

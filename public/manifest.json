@@ -1,8 +1,8 @@
 {
-  "name": "CampusFlow University Hub",
-  "short_name": "CampusFlow",
-  "description": "Bangladesh's comprehensive university discovery platform",
-  "start_url": "/universities",
+  "name": "BornoFlow",
+  "short_name": "BornoFlow",
+  "description": "Complete learning and career platform for Computer Science students by Bornosoft",
+  "start_url": "/",
   "display": "standalone",
   "background_color": "#ffffff",
   "theme_color": "#6D5DF6",

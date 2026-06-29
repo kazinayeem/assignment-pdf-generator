@@ -1,4 +1,5 @@
 import type { InterviewCategory, RoadmapDifficulty } from "../types";
+import { PDF_BRAND } from "@/lib/brand";
 
 export const INTERVIEW_CATEGORIES: { id: InterviewCategory; label: string }[] = [
   { id: "theory", label: "Theory Questions" },
@@ -72,7 +73,9 @@ export const READINESS_KEYS = [
   "mockInterviewCompleted",
 ] as const;
 
-export const PDF_VERSION = "CampusFlow Roadmaps V1.1";
-export const PDF_AUTHOR = "Kazinayeem";
-export const PDF_AUTHOR_URL = "https://kazinayeem.site";
-export const PDF_GITHUB = "https://github.com/kazinayeem/assignment-pdf-generator";
+export const PDF_VERSION = PDF_BRAND.version;
+export const PDF_AUTHOR = PDF_BRAND.author;
+export const PDF_AUTHOR_URL = PDF_BRAND.authorUrl;
+export const PDF_GITHUB = PDF_BRAND.github;
+export const PDF_PLATFORM = PDF_BRAND.platform;
+export const PDF_COMPANY = PDF_BRAND.company;

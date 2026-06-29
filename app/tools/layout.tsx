@@ -80,8 +80,8 @@ export default function ToolsLayout({ children }: { children: React.ReactNode })
             {collapsed ? <PanelLeft size={18} className="text-slate-400" /> : <PanelLeftClose size={18} className="text-slate-400" />}
           </button>
 
-          <Link href="/" className="flex items-center shrink-0" aria-label="CampusFlow home">
-            <Image src="/logo_navbar.png" alt="CampusFlow" width={120} height={30} className="h-7 w-auto" />
+          <Link href="/" className="flex items-center shrink-0" aria-label="BornoFlow home">
+            <Image src="/logo_navbar.png" alt="BornoFlow" width={120} height={30} className="h-7 w-auto" />
           </Link>
 
           <nav className="hidden md:flex items-center gap-1 text-sm text-slate-400 min-w-0" aria-label="Breadcrumb">

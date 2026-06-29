@@ -223,7 +223,7 @@ export function RoadmapNodePanel({
                 className="w-full h-40 text-xs font-mono bg-muted rounded-xl p-3 border border-border resize-y"
                 spellCheck={false}
               />
-              <button type="button" className="mt-3 text-xs font-semibold text-brand hover:underline">Run in CampusFlow Playground (coming soon)</button>
+              <button type="button" className="mt-3 text-xs font-semibold text-brand hover:underline">Run in BornoFlow Playground (coming soon)</button>
             </div>
           )}
 

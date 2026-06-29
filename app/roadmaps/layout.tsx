@@ -5,7 +5,7 @@ export const metadata: Metadata = {
   title: "Roadmaps",
   description:
     "Interactive career roadmaps for CS students — structured learning paths from beginner to job-ready with projects, quizzes, and interview prep.",
-  keywords: ["career roadmaps", "CS learning paths", "frontend roadmap", "backend roadmap", "CampusFlow"],
+  keywords: ["career roadmaps", "CS learning paths", "frontend roadmap", "backend roadmap", "BornoFlow"],
 };
 
 export default function RoadmapsLayout({ children }: { children: React.ReactNode }) {

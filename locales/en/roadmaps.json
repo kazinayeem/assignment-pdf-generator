@@ -5,7 +5,7 @@
     "dashboard": "Dashboard"
   },
   "hub": {
-    "badge": "CampusFlow Roadmaps V1",
+    "badge": "BornoFlow Roadmaps V1",
     "title": "Choose Your Career Roadmap",
     "subtitle": "Master Computer Science with structured learning paths, projects, interview preparation, coding challenges and real-world resources.",
     "roadmapCount": "interactive career roadmaps",
@@ -46,7 +46,7 @@
     "graph": "Interactive Roadmap",
     "graphHint": "Click nodes · Pan · Zoom",
     "certificate": "Certificate Progress",
-    "certReady": "Eligible for CampusFlow certificate",
+    "certReady": "Eligible for BornoFlow certificate",
     "certProgress": "{{pct}}% more to unlock certificate"
   },
   "graph": {

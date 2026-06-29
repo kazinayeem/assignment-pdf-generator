@@ -35,7 +35,7 @@ export function CTASection() {
               Ready to start learning?
             </h2>
             <p className="text-base sm:text-lg text-white/80 mb-10 max-w-lg mx-auto leading-relaxed">
-              All tools and study materials in one place. Join thousands of DIU students already using CampusFlow.
+              All tools and study materials in one place. Join thousands of CS students already using BornoFlow.
             </p>
 
             <div className="flex flex-col sm:flex-row gap-3 justify-center">

@@ -33,7 +33,7 @@ export function HeroSection() {
           >
             <div className="inline-flex items-center gap-2 px-4 py-1.5 bg-white/10 backdrop-blur-md rounded-full text-sm font-medium mb-6 border border-white/12">
               <Sparkles size={14} className="text-[#06B6D4]" aria-hidden />
-              CampusFlow v2.0
+              BornoFlow
             </div>
 
             <h1 className="text-hero font-extrabold mb-6">
@@ -103,7 +103,7 @@ export function HeroSection() {
                 <div className="w-3 h-3 rounded-full bg-red-400/80" />
                 <div className="w-3 h-3 rounded-full bg-amber-400/80" />
                 <div className="w-3 h-3 rounded-full bg-emerald-400/80" />
-                <span className="ml-3 text-xs text-slate-400 font-medium">CampusFlow Dashboard</span>
+                <span className="ml-3 text-xs text-slate-400 font-medium">BornoFlow Dashboard</span>
               </div>
 
               <div className="grid grid-cols-2 gap-4">

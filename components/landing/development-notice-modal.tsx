@@ -65,7 +65,7 @@ export function DevelopmentNoticeModal() {
         >
           <DialogHeader className="space-y-4">
             <DialogTitle className="text-xl sm:text-2xl font-extrabold text-foreground pr-8">
-              🚧 CampusFlow is Under Active Development
+              🚧 BornoFlow is Under Active Development
             </DialogTitle>
 
             <Badge
@@ -78,7 +78,7 @@ export function DevelopmentNoticeModal() {
 
             <DialogDescription asChild>
               <div className="space-y-3 text-left text-sm text-muted-foreground leading-relaxed">
-                <p>Thank you for visiting CampusFlow.</p>
+                <p>Thank you for visiting BornoFlow.</p>
                 <p>
                   We are continuously building new features, improving the user experience,
                   fixing bugs, and adding more learning resources.
@@ -87,7 +87,7 @@ export function DevelopmentNoticeModal() {
                   Some tools or pages may still be incomplete or change over time.
                 </p>
                 <p>
-                  We appreciate your patience and support while we make CampusFlow better
+                  We appreciate your patience and support while we make BornoFlow better
                   every day.
                 </p>
               </div>

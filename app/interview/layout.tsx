@@ -4,7 +4,7 @@ import { KnowledgeSidebar } from "@/components/knowledge/knowledge-sidebar";
 
 export const metadata: Metadata = {
   title: "Interview Knowledge Base",
-  description: "Bangladesh tech company interview questions, notes, and preparation resources — imported into CampusFlow.",
+  description: "Bangladesh tech company interview questions, notes, and preparation resources — imported into BornoFlow.",
 };
 
 export default function InterviewLayout({ children }: { children: React.ReactNode }) {

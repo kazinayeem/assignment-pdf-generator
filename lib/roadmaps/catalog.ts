@@ -62,7 +62,7 @@ function seedToDefinition(seed: RoadmapSeed): RoadmapDefinition {
           "Tutorial-only learning without practice",
           "Ignoring interview-style problem solving",
         ],
-        codeExample: `// ${topic} — practice starter\n// Replace with hands-on exercises from CampusFlow tools\nconsole.log("Learning: ${topic}");`,
+        codeExample: `// ${topic} — practice starter\n// Replace with hands-on exercises from BornoFlow tools\nconsole.log("Learning: ${topic}");`,
         cheatSheet: [`${topic} key concepts`, "Common patterns", "Interview talking points"],
         resources: DEFAULT_RESOURCES,
         projects: [

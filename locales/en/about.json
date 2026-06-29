@@ -1,32 +1,59 @@
 {
-  "title": "About CampusFlow",
+  "title": "About BornoFlow",
   "back": "Back to home",
-  "hero": {
-    "title": "Empowering CSE & SWE Students",
-    "subtitle": "CampusFlow is a dedicated toolkit built by BornoSoft for students. Our mission is to simplify academic workflows at Daffodil International University and beyond."
+  "bornoFlow": {
+    "title": "About BornoFlow",
+    "body": "BornoFlow is a comprehensive learning, career, and productivity platform designed specifically for Computer Science, Software Engineering, and IT students.",
+    "mission": "Our mission is to provide structured roadmaps, interactive learning, interview preparation, developer tools, university guidance, and career resources—all in one platform."
   },
-  "cards": {
-    "automation": {
-      "title": "Precision Automation",
-      "desc": "Stop wasting time manually typing course details. CampusFlow automates your cover pages with accuracy based on official university standards."
-    },
-    "security": {
-      "title": "Data Integrity",
-      "desc": "Your academic records are safe. We use secure cloud infrastructure to ensure your profile data is available whenever you need it."
-    }
+  "bornosoft": {
+    "title": "About Bornosoft",
+    "body": "Bornosoft is a software company focused on building modern web applications, educational platforms, automation tools, SaaS products, and AI-powered solutions that help students, developers, and businesses succeed."
+  },
+  "vision": {
+    "title": "Vision",
+    "body": "Empower every student with the tools, knowledge, and guidance needed to become a world-class software engineer."
+  },
+  "mission": {
+    "title": "Mission",
+    "body": "Build high-quality educational software that bridges the gap between academic learning and real-world industry skills."
+  },
+  "highlights": {
+    "title": "Platform Highlights",
+    "items": [
+      "Interactive Career Roadmaps",
+      "AI Learning Assistant",
+      "Resume Builder",
+      "ATS Resume Checker",
+      "Developer Tools",
+      "University Explorer",
+      "Career Hub",
+      "Interview Hub",
+      "Project-Based Learning",
+      "Coding Challenges",
+      "Professional PDF Export"
+    ]
+  },
+  "products": {
+    "title": "Bornosoft Products",
+    "bornoMaps": "Interactive career roadmaps with 75+ learning paths",
+    "bornoAi": "AI-powered learning assistant and study tools",
+    "bornoCareer": "Resume, ATS checker, interview prep & career hub",
+    "bornoUni": "180+ Bangladesh university explorer & rankings",
+    "bornoDev": "100+ developer utilities and formatters"
   },
   "founder": {
-    "title": "Built by Mohammad Ali Nayeem",
-    "desc": "As a fellow student, I know the struggle of formatting reports. CampusFlow was born to help our community thrive through technology and better design.",
-    "cta": "Visit BornoSoft"
+    "title": "Built with ❤️ by Mohammad Ali Nayeem",
+    "role": "Founder & Software Engineer",
+    "creator": "Creator of BornoFlow",
+    "powered": "Powered by Bornosoft",
+    "portfolio": "Portfolio",
+    "company": "Company Website"
   },
   "contact": {
-    "title": "Contact Us",
+    "title": "Contact",
     "subtitle": "Questions, feedback, or partnership — we'd love to hear from you.",
     "email": "bornosoftnr@gmail.com",
-    "website": "bornosoftnr.com",
-    "emailLabel": "Email",
-    "websiteLabel": "Website",
-    "stayWithUs": "Stay with BornoSoft — we're building CampusFlow for you."
+    "website": "bornosoftnr.com"
   }
 }

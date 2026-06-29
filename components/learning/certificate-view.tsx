@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
+import { BRAND } from "@/lib/brand";
 import type { Certificate } from "@/lib/learning/types";
 
 export function CertificateView({ cert }: { cert: Certificate }) {
@@ -12,7 +13,7 @@ export function CertificateView({ cert }: { cert: Certificate }) {
     >
       <div className="absolute top-4 right-4 text-xs text-slate-400 font-mono">{cert.id}</div>
       <div className="text-center">
-        <p className="text-sm font-semibold text-brand uppercase tracking-widest mb-2">CampusFlow Certificate</p>
+        <p className="text-sm font-semibold text-brand uppercase tracking-widest mb-2">{BRAND.platform} Certificate</p>
         <h2 className="text-2xl sm:text-3xl font-extrabold text-slate-900 dark:text-white mb-6">Certificate of Completion</h2>
         <p className="text-slate-500 mb-2">This certifies that</p>
         <p className="text-2xl font-bold text-slate-800 dark:text-slate-100 mb-4">{cert.studentName}</p>
@@ -26,7 +27,10 @@ export function CertificateView({ cert }: { cert: Certificate }) {
         <div className="mt-8 w-20 h-20 mx-auto rounded-xl bg-slate-100 dark:bg-white/5 flex items-center justify-center text-xs text-slate-400 font-mono">
           QR
         </div>
-        <p className="text-[10px] text-slate-400 mt-2">Verify at campusflow.app/verify/{cert.id}</p>
+        <p className="text-[10px] text-slate-400 mt-4">
+          {BRAND.companyTagline} · Built with ❤️ by {BRAND.author}
+        </p>
+        <p className="text-[10px] text-slate-400 mt-1">Verify at /verify/{cert.id}</p>
       </div>
     </motion.div>
   );

@@ -1,53 +1,66 @@
 {
-  "newsletter": {
-    "title": "আপডেট থাকুন",
-    "subtitle": "সর্বশেষ ফিচার, টুলস ও লার্নিং রিসোর্স পান।",
-    "placeholder": "আপনার ইমেইল লিখুন",
-    "cta": "সাবস্ক্রাইব",
-    "success": "সাবস্ক্রাইব করার জন্য ধন্যবাদ!"
+  "brand": {
+    "platform": "BornoFlow",
+    "company": "Bornosoft",
+    "tagline": "কম্পিউটার সায়েন্স শিক্ষার্থীদের জন্য সম্পূর্ণ লার্নিং ও ক্যারিয়ার প্ল্যাটফর্ম।",
+    "description": "শিক্ষার্থীদের শেখা, প্রজেক্ট তৈরি, ইন্টারভিউ প্রস্তুতি এবং সফল সফটওয়্যার ইঞ্জিনিয়ারিং ক্যারিয়ার শুরু করতে সাহায্য করতে তৈরি।",
+    "companyLine": "Bornosoft-এর একটি প্রোডাক্ট"
   },
   "columns": {
     "product": "প্রোডাক্ট",
-    "learning": "লার্নিং",
-    "career": "ক্যারিয়ার",
-    "devtools": "ডেভেলপার টুলস",
     "resources": "রিসোর্স",
     "company": "কোম্পানি",
-    "support": "সাপোর্ট",
-    "legal": "আইনি"
+    "connect": "সংযোগ"
   },
-  "links": {
-    "assignment": "অ্যাসাইনমেন্ট কভার",
-    "cvBuilder": "সিভি বিল্ডার",
-    "labReport": "ল্যাব রিপোর্ট",
-    "learningTools": "লার্নিং টুলস",
-    "universities": "বিশ্ববিদ্যালয় হাব",
-    "careerHub": "ক্যারিয়ার হাব",
-    "interviewKb": "ইন্টারভিউ KB",
-    "calculators": "ক্যালকুলেটর",
-    "devTools": "ডেভেলপার টুলস",
-    "labPerformance": "ল্যাব পারফরম্যান্স",
-    "allTools": "সব টুলস",
-    "about": "আমাদের সম্পর্কে",
-    "bornosoft": "bornosoftnr.com",
-    "dhaka": "ঢাকা, বাংলাদেশ",
+  "products": {
+    "bornoMaps": "BornoMaps",
+    "bornoAi": "Borno AI",
+    "bornoCareer": "BornoCareer",
+    "bornoUni": "BornoUni",
+    "bornoDev": "BornoDev",
+    "resumeBuilder": "রিজিউমে বিল্ডার",
+    "assignmentStudio": "অ্যাসাইনমেন্ট স্টুডিও",
+    "labReport": "ল্যাব রিপোর্ট জেনারেটর",
+    "interviewHub": "ইন্টারভিউ হাব",
+    "learningHub": "লার্নিং হাব"
+  },
+  "resources": {
+    "documentation": "ডকুমেন্টেশন",
+    "roadmaps": "রোডম্যাপ",
+    "learningResources": "শেখার সম্পদ",
+    "interviewQuestions": "ইন্টারভিউ প্রশ্ন",
+    "developerTools": "ডেভেলপার টুলস",
+    "universityExplorer": "বিশ্ববিদ্যালয় এক্সপ্লোরার",
+    "blog": "ব্লগ",
+    "changelog": "চেঞ্জলগ"
+  },
+  "company": {
+    "about": "Bornosoft সম্পর্কে",
+    "products": "প্রোডাক্ট",
+    "careers": "ক্যারিয়ার",
+    "contact": "যোগাযোগ",
     "privacy": "গোপনীয়তা নীতি",
-    "cookie": "কুকি নীতি",
-    "refund": "রিফান্ড নীতি",
-    "security": "নিরাপদ ডেটা",
-    "resume": "রিজিউমে বিল্ডার",
-    "ats": "ATS চেকার",
-    "portfolio": "পোর্টফোলিও",
-    "interview": "ইন্টারভিউ প্রস্তুতি",
-    "roadmaps": "ক্যারিয়ার রোডম্যাপ",
-    "exam": "পরীক্ষা সিস্টেম",
-    "progress": "লার্নিং প্রগ্রেস"
+    "terms": "সেবার শর্তাবলী",
+    "support": "সাপোর্ট"
   },
-  "brand": {
-    "description": "CSE ও SWE শিক্ষার্থীদের জন্য সম্পূর্ণ একাডেমিক প্রোডাক্টিভিটি প্ল্যাটফর্ম। Bornosoft দ্বারা ❤️ দিয়ে তৈরি।"
+  "connect": {
+    "website": "ওয়েবসাইট",
+    "portfolio": "পোর্টফোলিও",
+    "github": "GitHub",
+    "linkedin": "LinkedIn",
+    "facebook": "Facebook",
+    "email": "ইমেইল"
   },
   "copyright": "সর্বস্বত্ব সংরক্ষিত।",
-  "developed": "তৈরি করা হয়েছে",
-  "version": "সংস্করণ",
-  "status": "সব সিস্টেম চালু"
+  "builtBy": "তৈরি করেছেন",
+  "authorSection": {
+    "builtWith": "ভালোবাসা দিয়ে তৈরি",
+    "by": "",
+    "title": "প্রতিষ্ঠাতা ও সফটওয়্যার ইঞ্জিনিয়ার",
+    "role": "BornoFlow-এর স্রষ্টা",
+    "poweredBy": "Powered by Bornosoft",
+    "portfolio": "পোর্টফোলিও"
+  },
+  "status": "সব সিস্টেম চালু",
+  "version": "সংস্করণ"
 }

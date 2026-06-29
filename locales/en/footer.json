@@ -1,53 +1,66 @@
 {
-  "newsletter": {
-    "title": "Stay updated",
-    "subtitle": "Get the latest features, tools, and learning resources.",
-    "placeholder": "Enter your email",
-    "cta": "Subscribe",
-    "success": "Thanks for subscribing!"
+  "brand": {
+    "platform": "BornoFlow",
+    "company": "Bornosoft",
+    "tagline": "Complete Learning & Career Platform for Computer Science Students.",
+    "description": "Built to help students learn, build projects, prepare for interviews, and launch successful software engineering careers.",
+    "companyLine": "A product of Bornosoft"
   },
   "columns": {
     "product": "Product",
-    "learning": "Learning",
-    "career": "Career",
-    "devtools": "Developer Tools",
     "resources": "Resources",
     "company": "Company",
-    "support": "Support",
-    "legal": "Legal"
+    "connect": "Connect"
   },
-  "links": {
-    "assignment": "Assignment Cover",
-    "cvBuilder": "CV Builder",
-    "labReport": "Lab Report",
-    "learningTools": "Learning Tools",
-    "universities": "University Hub",
-    "careerHub": "Career Hub",
-    "interviewKb": "Interview KB",
-    "calculators": "Calculators",
-    "devTools": "Developer Tools",
-    "labPerformance": "Lab Performance",
-    "allTools": "All Tools",
-    "about": "About Us",
-    "bornosoft": "bornosoftnr.com",
-    "dhaka": "Dhaka, Bangladesh",
+  "products": {
+    "bornoMaps": "BornoMaps",
+    "bornoAi": "Borno AI",
+    "bornoCareer": "BornoCareer",
+    "bornoUni": "BornoUni",
+    "bornoDev": "BornoDev",
+    "resumeBuilder": "Resume Builder",
+    "assignmentStudio": "Assignment Studio",
+    "labReport": "Lab Report Generator",
+    "interviewHub": "Interview Hub",
+    "learningHub": "Learning Hub"
+  },
+  "resources": {
+    "documentation": "Documentation",
+    "roadmaps": "Roadmaps",
+    "learningResources": "Learning Resources",
+    "interviewQuestions": "Interview Questions",
+    "developerTools": "Developer Tools",
+    "universityExplorer": "University Explorer",
+    "blog": "Blog",
+    "changelog": "Changelog"
+  },
+  "company": {
+    "about": "About Bornosoft",
+    "products": "Products",
+    "careers": "Careers",
+    "contact": "Contact",
     "privacy": "Privacy Policy",
-    "cookie": "Cookie Policy",
-    "refund": "Refund Policy",
-    "security": "Secure Data",
-    "resume": "Resume Builder",
-    "ats": "ATS Checker",
+    "terms": "Terms of Service",
+    "support": "Support"
+  },
+  "connect": {
+    "website": "Website",
     "portfolio": "Portfolio",
-    "interview": "Interview Prep",
-    "roadmaps": "Career Roadmaps",
-    "exam": "Exam System",
-    "progress": "Learning Progress"
+    "github": "GitHub",
+    "linkedin": "LinkedIn",
+    "facebook": "Facebook",
+    "email": "Email"
   },
-  "brand": {
-    "description": "The complete academic productivity platform for CSE and SWE students. Built with ❤️ by Bornosoft."
+  "copyright": "All Rights Reserved.",
+  "builtBy": "Built with",
+  "authorSection": {
+    "builtWith": "Built with",
+    "by": "by",
+    "title": "Founder & Software Engineer",
+    "role": "Creator of BornoFlow",
+    "poweredBy": "Powered by Bornosoft",
+    "portfolio": "Portfolio"
   },
-  "copyright": "All rights reserved.",
-  "developed": "Developed with",
-  "version": "Version",
-  "status": "All systems operational"
+  "status": "All systems operational",
+  "version": "Version"
 }

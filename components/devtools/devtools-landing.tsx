@@ -65,7 +65,7 @@ export function DevToolsLanding() {
               Developer Tools
             </h1>
             <p className="text-base sm:text-lg text-slate-500 dark:text-slate-400 max-w-2xl leading-relaxed mb-8">
-              JSON, YAML, CSS, colors, encoders, generators, and playgrounds — a premium dev toolbox built into CampusFlow.
+              JSON, YAML, CSS, colors, encoders, generators, and playgrounds — a premium dev toolbox built into BornoFlow.
             </p>
             <div className="relative max-w-lg">
               <Search size={18} className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-400" aria-hidden />

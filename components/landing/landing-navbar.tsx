@@ -91,7 +91,7 @@ export function LandingNavbar({ onSearchOpen, onMobileOpen, stacked = false }: L
               <Menu size={20} />
             </button>
 
-            <Link href="/" className="flex items-center gap-2.5 shrink-0 group pl-0" aria-label="CampusFlow home">
+            <Link href="/" className="flex items-center gap-2.5 shrink-0 group pl-0" aria-label="BornoFlow home">
               <Image
                 src="/logo_navbar.png"
                 alt=""
@@ -109,7 +109,7 @@ export function LandingNavbar({ onSearchOpen, onMobileOpen, stacked = false }: L
                   lightNav ? "text-foreground" : "text-white"
                 )}
               >
-                CampusFlow
+                Borno<span className="text-brand-accent">Flow</span>
               </span>
             </Link>
 

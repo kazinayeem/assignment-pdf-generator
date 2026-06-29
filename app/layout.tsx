@@ -25,26 +25,23 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   title: {
-    default: "CampusFlow V2 | Academic Productivity Platform for DIU",
-    template: "%s | CampusFlow V2",
+    default: "BornoFlow | Learning & Career Platform for CS Students",
+    template: "%s | BornoFlow",
   },
   description:
-    "CampusFlow V2 by Bornosoft is the complete academic productivity platform for Daffodil International University students. Assignment covers, lab reports, ATS CVs, CS learning tools, interview prep, and career hub — all in one place.",
+    "BornoFlow by Bornosoft is the complete learning, career, and productivity platform for Computer Science students. Roadmaps, interview prep, developer tools, university guidance, and more.",
   keywords: [
-    "CampusFlow",
-    "CampusFlow V2",
+    "BornoFlow",
     "Bornosoft",
-    "Daffodil International University",
-    "DIU",
-    "DIU Assignment Cover Generator",
-    "DIU Lab Report Generator",
-    "ATS CV Builder",
-    "Interview Preparation",
-    "Career Hub",
+    "BornoMaps",
+    "BornoCareer",
+    "BornoUni",
+    "BornoDev",
     "CS Learning Platform",
-    "CSE",
-    "SWE",
-    "Academic Productivity",
+    "Career Roadmaps",
+    "Interview Preparation",
+    "Developer Tools",
+    "University Hub",
     "Mohammad Ali Nayeem",
   ],
   authors: [{ name: "Mohammad Ali Nayeem" }],
@@ -52,19 +49,19 @@ export const metadata: Metadata = {
   publisher: "Bornosoft",
   metadataBase: new URL(SITE_URL),
   openGraph: {
-    title: "CampusFlow V2 | Academic Productivity Platform for DIU",
+    title: "BornoFlow | Learning & Career Platform",
     description:
-      "Assignment covers, lab reports, ATS CVs, CS learning modules, interview knowledge base, and career tools — built for DIU students by Bornosoft.",
+      "Structured roadmaps, interactive learning, interview prep, developer tools, and university guidance — built by Bornosoft.",
     type: "website",
     locale: "en_US",
-    siteName: "CampusFlow V2",
+    siteName: "BornoFlow",
     url: SITE_URL,
   },
   twitter: {
     card: "summary_large_image",
-    title: "CampusFlow V2 | DIU Student Platform",
+    title: "BornoFlow | CS Learning Platform",
     description:
-      "The all-in-one academic and career platform for DIU students. Learning, tools, interview prep, and more.",
+      "The all-in-one learning and career platform for CS students. Roadmaps, tools, interview prep, and more.",
   },
   robots: {
     index: true,
@@ -80,9 +77,9 @@ const structuredData = {
   "@graph": [
     {
       "@type": "WebSite",
-      name: "CampusFlow V2",
+      name: "BornoFlow",
       url: SITE_URL,
-      description: "Academic productivity and career platform for DIU students.",
+      description: "Learning and career platform for CS students by Bornosoft.",
       publisher: { "@type": "Organization", name: "Bornosoft" },
       potentialAction: {
         "@type": "SearchAction",
@@ -92,7 +89,7 @@ const structuredData = {
     },
     {
       "@type": "SoftwareApplication",
-      name: "CampusFlow V2",
+      name: "BornoFlow",
       applicationCategory: "EducationalApplication",
       operatingSystem: "Web",
       offers: { "@type": "Offer", price: "0", priceCurrency: "BDT" },

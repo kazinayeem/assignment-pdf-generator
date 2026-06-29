@@ -15,7 +15,7 @@ export const metadata: Metadata = {
     "NSU",
     "BUET",
     "university comparison",
-    "CampusFlow",
+    "BornoFlow",
   ],
   manifest: "/manifest.json",
 };

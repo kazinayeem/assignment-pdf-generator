@@ -11,7 +11,7 @@ export function WhyChooseSection() {
       <div className="blur-orb w-[300px] h-[300px] bg-brand/10 top-0 right-0" aria-hidden />
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
         <SectionHeader
-          badge="Why CampusFlow?"
+          badge="Why BornoFlow?"
           badgeIcon={Crown}
           title="Built for DIU Students"
           description="Everything you need for academic success — from covers to CS mastery."

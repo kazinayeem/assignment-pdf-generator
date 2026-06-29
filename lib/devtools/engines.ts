@@ -2,13 +2,13 @@ import * as yaml from "js-yaml";
 import type { DevToolDefinition, DevToolEngine, DevToolOperation, ToolResult, ToolTransformOptions } from "./types";
 
 const SAMPLE_JSON = `{
-  "name": "CampusFlow",
+  "name": "BornoFlow",
   "version": "2.0",
   "features": ["tools", "calculators", "devtools"],
   "active": true
 }`;
 
-const SAMPLE_YAML = `name: CampusFlow
+const SAMPLE_YAML = `name: BornoFlow
 version: "2.0"
 features:
   - tools
@@ -17,12 +17,12 @@ active: true`;
 
 const SAMPLE_XML = `<?xml version="1.0" encoding="UTF-8"?>
 <root>
-  <name>CampusFlow</name>
+  <name>BornoFlow</name>
   <version>2.0</version>
 </root>`;
 
 const SAMPLE_CSV = `name,role,active
-CampusFlow,platform,true
+BornoFlow,platform,true
 DevTools,module,true`;
 
 export function getSampleInput(tool: DevToolDefinition): string {
@@ -32,7 +32,7 @@ export function getSampleInput(tool: DevToolDefinition): string {
   if (tool.engine === "xml") return SAMPLE_XML;
   if (tool.engine === "csv") return SAMPLE_CSV;
   if (tool.engine === "css") return `.card {\n  padding: 1rem;\n  border-radius: 12px;\n  background: #fff;\n}`;
-  if (tool.engine === "encoding") return "Hello, CampusFlow!";
+  if (tool.engine === "encoding") return "Hello, BornoFlow!";
   if (tool.engine === "jwt") return "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkNhbXB1c0Zsb3ciLCJpYXQiOjE1MTYyMzkwMjJ9.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c";
   return "";
 }

@@ -4,8 +4,8 @@ import { DevToolsNav } from "@/components/devtools/devtools-nav";
 export const metadata: Metadata = {
   title: "Developer Tools",
   description:
-    "100+ free developer utilities — JSON, YAML, CSS, encoders, generators, QR codes, and playgrounds. Premium dev toolbox by CampusFlow.",
-  keywords: ["JSON formatter", "Base64 encoder", "UUID generator", "CSS generator", "CampusFlow"],
+    "100+ free developer utilities — JSON, YAML, CSS, encoders, generators, QR codes, and playgrounds. Premium dev toolbox by BornoFlow.",
+  keywords: ["JSON formatter", "Base64 encoder", "UUID generator", "CSS generator", "BornoFlow"],
 };
 
 export default function DevToolsLayout({ children }: { children: React.ReactNode }) {

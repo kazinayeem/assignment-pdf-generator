@@ -41,7 +41,7 @@ export function SubjectHero({
   description,
   accent: _accent = "indigo",
   difficulty,
-  instructor = "CampusFlow Team",
+  instructor = "BornoFlow Team",
   lastUpdated = "Updated 2026",
   progress = 0,
   lessonsCompleted,

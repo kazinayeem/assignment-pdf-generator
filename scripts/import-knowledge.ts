@@ -146,7 +146,7 @@ function extractTitle(content: string, fallback: string): string {
 function extractSummary(content: string): string {
   const lines = content.split("\n").filter((l) => l.trim() && !l.startsWith("#") && !l.startsWith("|") && !l.startsWith("---"));
   const para = lines.find((l) => l.length > 40 && !l.startsWith("!") && !l.startsWith("<"));
-  return para?.replace(/\[([^\]]+)\]\([^)]+\)/g, "$1").replace(/[*_`]/g, "").slice(0, 220) || "Interview preparation content from the CampusFlow knowledge base.";
+  return para?.replace(/\[([^\]]+)\]\([^)]+\)/g, "$1").replace(/[*_`]/g, "").slice(0, 220) || "Interview preparation content from the BornoFlow knowledge base.";
 }
 
 function extractHeadings(content: string) {

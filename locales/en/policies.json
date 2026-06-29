@@ -3,25 +3,25 @@
     "title": "Privacy Policy",
     "effective": "Effective May 2026",
     "heading": "How we protect your data",
-    "intro": "At CampusFlow (BornoSoft), we prioritize your privacy. This policy explains how we collect, use, and protect your information.",
+    "intro": "At BornoFlow (BornoSoft), we prioritize your privacy. This policy explains how we collect, use, and protect your information.",
     "collection": { "title": "Data Collection", "desc": "We collect your Name, Student ID, Department, and academic details purely to automate PDF generation. This data is never sold or shared." },
     "storage": { "title": "Secure Storage", "desc": "Your profile is stored securely using Firebase Firestore with strict access controls and encryption at rest." },
-    "cloud": { "title": "Cloud Infrastructure", "desc": "CampusFlow uses Google Cloud and Vercel infrastructure. We do not track your personal browsing history or off-site activities." },
+    "cloud": { "title": "Cloud Infrastructure", "desc": "BornoFlow uses Google Cloud and Vercel infrastructure. We do not track your personal browsing history or off-site activities." },
     "rights": { "title": "Your Rights", "desc": "You can access, update, or delete your data anytime via your Profile page. For permanent deletion, contact bornosoftnr@gmail.com." }
   },
   "cookie": {
     "title": "Cookie Policy",
     "heading": "Essential Cookies Only",
-    "intro": "We use minimal cookies to ensure CampusFlow works smoothly. Here is exactly what we use and why.",
+    "intro": "We use minimal cookies to ensure BornoFlow works smoothly. Here is exactly what we use and why.",
     "auth": { "title": "Authentication Cookies", "desc": "Used to keep you signed in. Essential for the site to function and cannot be switched off." },
     "security": { "title": "Security Cookies", "desc": "Helps prevent fraudulent activity and protect your data from unauthorized access." },
     "thirdParty": { "title": "Third-Party Cookies", "desc": "We use Google Firebase for authentication. Google may set cookies for session security. We do not use advertising or tracking cookies." },
-    "consent": "By using CampusFlow, you consent to our use of these essential cookies. You can manage preferences through your browser settings."
+    "consent": "By using BornoFlow, you consent to our use of these essential cookies. You can manage preferences through your browser settings."
   },
   "refund": {
     "title": "Refund Policy",
     "heading": "100% Free Service",
-    "intro": "CampusFlow (BornoSoft) is provided free for the student community. Because there are no charges, no refunds are applicable.",
+    "intro": "BornoFlow (BornoSoft) is provided free for the student community. Because there are no charges, no refunds are applicable.",
     "pdf": { "title": "PDF Generation", "desc": "Unlimited PDF generation is free. If you encounter technical issues, please contact our support team." },
     "premium": { "title": "Premium Features", "desc": "Should we introduce paid features in the future, a clear refund policy will be established at that time." },
     "footer": "Helping students excel without the financial burden."
@@ -29,7 +29,7 @@
   "security": {
     "title": "Security Policy",
     "heading": "Built for Trust",
-    "intro": "Your academic data is sensitive. CampusFlow (BornoSoft) is engineered with industry-standard security protocols.",
+    "intro": "Your academic data is sensitive. BornoFlow (BornoSoft) is engineered with industry-standard security protocols.",
     "encryption": { "title": "Encryption", "desc": "All data transferred between your browser and our servers is encrypted using TLS/SSL protocols." },
     "cloud": { "title": "Cloud Security", "desc": "Your profile is hosted on Google Cloud infrastructure with world-class physical and network security." },
     "access": { "title": "Access Control", "desc": "We implement strict Firebase Security Rules. Only you can read or write your own profile data." },

@@ -22,7 +22,7 @@ export function InterviewLanding() {
           Interview Hub
         </h1>
         <p className="text-lg text-slate-500 leading-relaxed mb-8">
-          Crowd-sourced interview questions from {stats.companiesDetected}+ Bangladesh tech companies — {stats.questionsExtracted}+ questions, notes, and resources imported from the CampusFlow docs library.
+          Crowd-sourced interview questions from {stats.companiesDetected}+ Bangladesh tech companies — {stats.questionsExtracted}+ questions, notes, and resources imported from the BornoFlow docs library.
         </p>
 
         <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 mb-10">

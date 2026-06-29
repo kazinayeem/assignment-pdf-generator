@@ -1,13 +1,13 @@
 {
   "announcement": {
-    "text": "BornoSoft-এর সাথে থাকুন — CampusFlow আপনাদের জন্য গড়ে উঠছে।",
+    "text": "BornoSoft-এর সাথে থাকুন — BornoFlow আপনাদের জন্য গড়ে উঠছে।",
     "email": "bornosoftnr@gmail.com",
     "signature": "নাঈম",
     "dismiss": "ঘোষণা বন্ধ করুন",
     "logoAlt": "BornoSoft লোগো"
   },
   "hero": {
-    "badge": "CampusFlow V5 — CSE ও SWE শিক্ষার্থীদের জন্য",
+    "badge": "BornoFlow — CSE ও SWE শিক্ষার্থীদের জন্য",
     "title": "আপনার পুরো একাডেমিক জীবন।",
     "titleHighlight": "একটি সুন্দর প্ল্যাটফর্মে।",
     "subtitle": "DIU-রেডি ডকুমেন্ট তৈরি করুন, CS ইন্টারঅ্যাক্টিভভাবে শিখুন, ইন্টারভিউয়ে সাফল্য পান এবং ক্যারিয়ার শুরু করুন — পাঁচটা টুল জুগিয়ে না চলেই।",
@@ -21,7 +21,7 @@
     "statsStudents": "শিক্ষার্থী",
     "statsUniversities": "বিশ্ববিদ্যালয়",
     "statsTools": "টুলস",
-    "dashboardLabel": "CampusFlow ড্যাশবোর্ড",
+    "dashboardLabel": "BornoFlow ড্যাশবোর্ড",
     "cards": {
       "assignment": { "label": "অ্যাসাইনমেন্ট কভার", "sub": "DIU ফরম্যাট" },
       "cv": { "label": "ATS সিভি বিল্ডার", "sub": "ইউরোপাস স্টাইল" },
@@ -32,7 +32,7 @@
   "trust": {
     "badge": "শিক্ষার্থীদের বিশ্বস্ত",
     "title": "সংখ্যাই সব বলে দেয়",
-    "subtitle": "CampusFlow বাংলাদেশ ও বিদেশে একাডেমিক কাজকে সহজ করছে।",
+    "subtitle": "BornoFlow বাংলাদেশ ও বিদেশে একাডেমিক কাজকে সহজ করছে।",
     "students": "শিক্ষার্থী",
     "universities": "বিশ্ববিদ্যালয়",
     "projects": "প্রজেক্ট তৈরি",
@@ -127,7 +127,7 @@
     "title": "শিক্ষার্থীদের প্রিয়",
     "subtitle": "বাংলাদেশের CSE ও SWE শিক্ষার্থীরা কী বলছেন দেখুন।",
     "items": [
-      { "name": "রহিম আহমেদ", "role": "CSE, DIU", "university": "DIU", "department": "CSE", "text": "CampusFlow আমার প্রতি সপ্তাহে ঘণ্টার পর ঘণ্টা বাঁচিয়েছে। অ্যাসাইনমেন্ট কভার ও ল্যাব রিপোর্ট এখন এক ক্লিকে।", "rating": 5 },
+      { "name": "রহিম আহমেদ", "role": "CSE, DIU", "university": "DIU", "department": "CSE", "text": "BornoFlow আমার প্রতি সপ্তাহে ঘণ্টার পর ঘণ্টা বাঁচিয়েছে। অ্যাসাইনমেন্ট কভার ও ল্যাব রিপোর্ট এখন এক ক্লিকে।", "rating": 5 },
       { "name": "ফাতিমা খান", "role": "SWE, BRAC", "university": "BRAC", "department": "SWE", "text": "ইন্টারভিউ হাব আমার প্রথম টেক ইন্টারভিউয়ের প্রস্তুতিতে সাহায্য করেছে। কোম্পানি-নির্দিষ্ট প্রশ্নগুলো অমূল্য।", "rating": 5 },
       { "name": "তানভীর হাসান", "role": "CSE, NSU", "university": "NSU", "department": "CSE", "text": "বাংলাদেশে CS শিক্ষার্থীদের জন্য সেরা বিনামূল্যে প্ল্যাটফর্ম। লার্নিং টুলস ও ডেভ ইউটিলিটি অসাধারণ।", "rating": 5 },
       { "name": "সাদিয়া ইসলাম", "role": "CSE, AIUB", "university": "AIUB", "department": "CSE", "text": "ATS রিজিউমে বিল্ডার দিয়ে তিনটা ইন্টারভিউ কল পেয়েছি। ডিপার্টমেন্টের সব জুনিয়রকে রেকমেন্ড করি।", "rating": 5 },
@@ -157,7 +157,7 @@
   },
   "cta": {
     "title": "আপনার একাডেমিক কাজকে আরও শক্তিশালী করতে প্রস্তুত?",
-    "subtitle": "প্রতিদিন CampusFlow ব্যবহার করা হাজার হাজার CSE ও SWE শিক্ষার্থীর সাথে যোগ দিন।",
+    "subtitle": "প্রতিদিন BornoFlow ব্যবহার করা হাজার হাজার CSE ও SWE শিক্ষার্থীর সাথে যোগ দিন।",
     "primary": "বিনামূল্যে শুরু করুন",
     "secondary": "টুলস দেখুন"
   }

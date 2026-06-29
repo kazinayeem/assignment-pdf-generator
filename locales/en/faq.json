@@ -12,33 +12,33 @@
   },
   "search": "Search questions...",
   "title": "Frequently Asked Questions",
-  "subtitle": "Everything you need to know about CampusFlow.",
+  "subtitle": "Everything you need to know about BornoFlow.",
   "emptyTitle": "No results found",
   "emptyDesc": "Try a different search term or category.",
   "items": [
     {
       "category": "general",
-      "question": "What is CampusFlow?",
-      "answer": "CampusFlow is a complete academic productivity platform for CSE and SWE students. It includes assignment cover generation, lab reports, CV builder, CS learning tools, interview preparation, career hub, developer tools, and more."
+      "question": "What is BornoFlow?",
+      "answer": "BornoFlow is a complete academic productivity platform for CSE and SWE students. It includes assignment cover generation, lab reports, CV builder, CS learning tools, interview preparation, career hub, developer tools, and more."
     },
     {
       "category": "general",
-      "question": "Who is CampusFlow built for?",
-      "answer": "CampusFlow is designed for computer science and software engineering students in Bangladesh — especially DIU, BRAC, NSU, and other universities — but anyone learning CS can benefit."
+      "question": "Who is BornoFlow built for?",
+      "answer": "BornoFlow is designed for computer science and software engineering students in Bangladesh — especially DIU, BRAC, NSU, and other universities — but anyone learning CS can benefit."
     },
     {
       "category": "general",
-      "question": "Can I contribute to CampusFlow?",
-      "answer": "Yes! CampusFlow is open source on GitHub. You can star the repo, report bugs, suggest features, or submit pull requests. We welcome community contributions."
+      "question": "Can I contribute to BornoFlow?",
+      "answer": "Yes! BornoFlow is open source on GitHub. You can star the repo, report bugs, suggest features, or submit pull requests. We welcome community contributions."
     },
     {
       "category": "learning",
       "question": "What CS topics can I learn?",
-      "answer": "CampusFlow covers 13+ topics including Data Structures, Algorithms, Operating Systems, Databases, Networking, Web Development, and more — with interactive simulators and lessons."
+      "answer": "BornoFlow covers 13+ topics including Data Structures, Algorithms, Operating Systems, Databases, Networking, Web Development, and more — with interactive simulators and lessons."
     },
     {
       "category": "learning",
-      "question": "Does CampusFlow have exams and quizzes?",
+      "question": "Does BornoFlow have exams and quizzes?",
       "answer": "Yes. The exam system lets you test your knowledge with timed quizzes, track scores, and compete on the leaderboard across CS topics."
     },
     {
@@ -54,7 +54,7 @@
     {
       "category": "resume",
       "question": "What resume formats are supported?",
-      "answer": "CampusFlow supports Europass-style CVs with sections for education, experience, skills, projects, and certifications. Export as PDF with one click."
+      "answer": "BornoFlow supports Europass-style CVs with sections for education, experience, skills, projects, and certifications. Export as PDF with one click."
     },
     {
       "category": "resume",
@@ -79,7 +79,7 @@
     {
       "category": "devtools",
       "question": "What developer tools are included?",
-      "answer": "CampusFlow offers 100+ browser-based tools: JSON formatter, CSS generators, Tailwind playground, image converters, encoding tools, color pickers, and more."
+      "answer": "BornoFlow offers 100+ browser-based tools: JSON formatter, CSS generators, Tailwind playground, image converters, encoding tools, color pickers, and more."
     },
     {
       "category": "devtools",
@@ -88,8 +88,8 @@
     },
     {
       "category": "payments",
-      "question": "Is CampusFlow free?",
-      "answer": "Yes! CampusFlow is completely free for students. No credit card required. All core features including assignment covers, lab reports, CV builder, and learning tools are available at no cost."
+      "question": "Is BornoFlow free?",
+      "answer": "Yes! BornoFlow is completely free for students. No credit card required. All core features including assignment covers, lab reports, CV builder, and learning tools are available at no cost."
     },
     {
       "category": "payments",
@@ -108,8 +108,8 @@
     },
     {
       "category": "support",
-      "question": "Can I use CampusFlow on mobile?",
-      "answer": "Yes. CampusFlow is fully responsive and works on phones, tablets, and desktops with touch-friendly controls and a mobile-optimized layout."
+      "question": "Can I use BornoFlow on mobile?",
+      "answer": "Yes. BornoFlow is fully responsive and works on phones, tablets, and desktops with touch-friendly controls and a mobile-optimized layout."
     },
     {
       "category": "support",

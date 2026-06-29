@@ -35,8 +35,8 @@ export function CareerNav() {
   return (
     <header className="sticky top-0 z-50 px-3 sm:px-4 pt-3 pb-2">
       <div className="max-w-[1280px] mx-auto flex items-center gap-2 sm:gap-3 h-14 px-3 sm:px-4 rounded-2xl bg-white/80 dark:bg-background/80 backdrop-blur-xl border border-border/80 dark:border-white/10 shadow-sm">
-        <Link href="/" className="flex items-center shrink-0" aria-label="CampusFlow home">
-          <Image src="/logo_navbar.png" alt="CampusFlow" width={100} height={26} className="h-7 w-auto hidden sm:block" />
+        <Link href="/" className="flex items-center shrink-0" aria-label="BornoFlow home">
+          <Image src="/logo_navbar.png" alt="BornoFlow" width={100} height={26} className="h-7 w-auto hidden sm:block" />
         </Link>
 
         <nav className="flex items-center gap-1 text-sm text-slate-400 min-w-0" aria-label="Breadcrumb">

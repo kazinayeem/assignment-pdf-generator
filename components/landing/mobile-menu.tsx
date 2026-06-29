@@ -37,7 +37,7 @@ export function MobileMenu({ open, onClose }: MobileMenuProps) {
             className="absolute left-0 top-0 h-full w-[min(320px,88vw)] bg-card/95 backdrop-blur-xl border-r border-border shadow-2xl flex flex-col"
           >
             <div className="px-5 h-[72px] border-b border-border flex items-center justify-between shrink-0">
-              <Image src="/logo_navbar.png" alt="CampusFlow" width={130} height={36} className="h-9 w-auto" />
+              <Image src="/logo_navbar.png" alt="BornoFlow" width={130} height={36} className="h-9 w-auto" />
               <button
                 type="button"
                 onClick={onClose}

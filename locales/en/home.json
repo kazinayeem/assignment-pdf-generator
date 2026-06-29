@@ -1,13 +1,13 @@
 {
   "announcement": {
-    "text": "Stay with BornoSoft — CampusFlow is growing for you.",
+    "text": "Stay with BornoSoft — BornoFlow is growing for you.",
     "email": "bornosoftnr@gmail.com",
     "signature": "Nayeem",
     "dismiss": "Dismiss announcement",
     "logoAlt": "BornoSoft logo"
   },
   "hero": {
-    "badge": "CampusFlow V5 — Built for CSE & SWE Students",
+    "badge": "BornoFlow — Built for CSE & SWE Students",
     "title": "Your entire academic life.",
     "titleHighlight": "One beautiful platform.",
     "subtitle": "Generate DIU-ready documents, master CS interactively, ace interviews, and launch your career — all without juggling five different tools.",
@@ -21,7 +21,7 @@
     "statsStudents": "Students",
     "statsUniversities": "Universities",
     "statsTools": "Tools",
-    "dashboardLabel": "CampusFlow Dashboard",
+    "dashboardLabel": "BornoFlow Dashboard",
     "cards": {
       "assignment": { "label": "Assignment Cover", "sub": "DIU Format" },
       "cv": { "label": "ATS CV Builder", "sub": "Europass Style" },
@@ -32,7 +32,7 @@
   "trust": {
     "badge": "Trusted by students",
     "title": "Numbers that speak for themselves",
-    "subtitle": "CampusFlow powers academic workflows across Bangladesh and beyond.",
+    "subtitle": "BornoFlow powers academic workflows across Bangladesh and beyond.",
     "students": "Students",
     "universities": "Universities",
     "projects": "Projects Generated",
@@ -127,7 +127,7 @@
     "title": "Loved by students",
     "subtitle": "See what CSE and SWE students across Bangladesh are saying.",
     "items": [
-      { "name": "Rahim Ahmed", "role": "CSE, DIU", "university": "DIU", "department": "CSE", "text": "CampusFlow saved me hours every week. Assignment covers and lab reports are now one click away.", "rating": 5 },
+      { "name": "Rahim Ahmed", "role": "CSE, DIU", "university": "DIU", "department": "CSE", "text": "BornoFlow saved me hours every week. Assignment covers and lab reports are now one click away.", "rating": 5 },
       { "name": "Fatima Khan", "role": "SWE, BRAC", "university": "BRAC", "department": "SWE", "text": "The Interview Hub helped me prepare for my first tech interview. The company-specific questions are gold.", "rating": 5 },
       { "name": "Tanvir Hassan", "role": "CSE, NSU", "university": "NSU", "department": "CSE", "text": "Best free platform for CS students in Bangladesh. The learning tools and dev utilities are incredible.", "rating": 5 },
       { "name": "Sadia Islam", "role": "CSE, AIUB", "university": "AIUB", "department": "CSE", "text": "The ATS resume builder got me three interview callbacks. I recommend it to every junior in my department.", "rating": 5 },
@@ -157,7 +157,7 @@
   },
   "cta": {
     "title": "Ready to supercharge your academics?",
-    "subtitle": "Join thousands of CSE and SWE students using CampusFlow every day.",
+    "subtitle": "Join thousands of CSE and SWE students using BornoFlow every day.",
     "primary": "Get Started Free",
     "secondary": "Explore Tools"
   }

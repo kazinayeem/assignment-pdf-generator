@@ -1,6 +1,7 @@
 import type { MetadataRoute } from "next";
 import { getAllRoutes } from "@/lib/knowledge/loader";
 import { getUniversitySlugs } from "@/lib/universities";
+import { ROADMAP_SLUGS } from "@/lib/roadmaps";
 
 const BASE_URL = "https://bornosoft-cover.vercel.app";
 
@@ -41,6 +42,8 @@ const STATIC_ROUTES = [
   "/career/salary-calculator",
   "/career/interview",
   "/career/roadmaps",
+  "/roadmaps",
+  "/roadmaps/dashboard",
   "/career/analytics",
   "/interview",
   "/interview/companies",
@@ -79,5 +82,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.7,
   }));
 
-  return [...staticEntries, ...universityEntries, ...knowledgeEntries];
+  const roadmapEntries = ROADMAP_SLUGS.map((slug) => ({
+    url: `${BASE_URL}/roadmaps/${slug}`,
+    lastModified: now,
+    changeFrequency: "monthly" as const,
+    priority: 0.75,
+  }));
+
+  return [...staticEntries, ...universityEntries, ...roadmapEntries, ...knowledgeEntries];
 }

@@ -23,6 +23,10 @@ const UniversitiesSection = dynamic(
   () => import("./landing/v5/universities-section").then((m) => ({ default: m.UniversitiesSection })),
   { ssr: true }
 );
+const RoadmapsLandingSection = dynamic(
+  () => import("./roadmaps/roadmaps-landing-section").then((m) => ({ default: m.RoadmapsLandingSection })),
+  { ssr: true }
+);
 const ProductDemoSection = dynamic(
   () => import("./landing/v5/product-demo-section").then((m) => ({ default: m.ProductDemoSection })),
   { ssr: true }
@@ -99,6 +103,7 @@ export default function LandingView() {
           <HeroSectionV4 />
           <TrustSection />
           <UniversitiesSection />
+          <RoadmapsLandingSection />
           <FeatureShowcase />
           <ProductDemoSection />
           <LearningExplorer />

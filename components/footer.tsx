@@ -60,7 +60,7 @@ export default function Footer() {
         { label: t("links.ats"), href: "/career/ats-checker" },
         { label: t("links.portfolio"), href: "/career/portfolio" },
         { label: t("links.interview"), href: "/career/interview" },
-        { label: t("links.roadmaps"), href: "/career/roadmaps" },
+        { label: t("links.roadmaps"), href: "/roadmaps" },
       ],
     },
     {

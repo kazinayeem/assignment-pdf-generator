@@ -8,6 +8,7 @@ import enAbout from "@/locales/en/about.json";
 import enPolicies from "@/locales/en/policies.json";
 import enV5 from "@/locales/en/v5.json";
 import enUniversities from "@/locales/en/universities.json";
+import enRoadmaps from "@/locales/en/roadmaps.json";
 import bnCommon from "@/locales/bn/common.json";
 import bnHome from "@/locales/bn/home.json";
 import bnFooter from "@/locales/bn/footer.json";
@@ -16,6 +17,7 @@ import bnAbout from "@/locales/bn/about.json";
 import bnPolicies from "@/locales/bn/policies.json";
 import bnV5 from "@/locales/bn/v5.json";
 import bnUniversities from "@/locales/bn/universities.json";
+import bnRoadmaps from "@/locales/bn/roadmaps.json";
 
 export const messages: Record<Locale, Record<Namespace, Messages>> = {
   en: {
@@ -27,6 +29,7 @@ export const messages: Record<Locale, Record<Namespace, Messages>> = {
     policies: enPolicies as Messages,
     v5: enV5 as Messages,
     universities: enUniversities as Messages,
+    roadmaps: enRoadmaps as Messages,
   },
   bn: {
     common: bnCommon as Messages,
@@ -37,5 +40,6 @@ export const messages: Record<Locale, Record<Namespace, Messages>> = {
     policies: bnPolicies as Messages,
     v5: bnV5 as Messages,
     universities: bnUniversities as Messages,
+    roadmaps: bnRoadmaps as Messages,
   },
 };

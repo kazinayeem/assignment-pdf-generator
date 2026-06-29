@@ -16,6 +16,7 @@ const NAV_ITEMS = [
   { key: "universities", href: "/universities" },
   { key: "interview", href: "/interview" },
   { key: "career", href: "/career" },
+  { key: "roadmaps", href: "/roadmaps" },
   { key: "calculators", href: "/calculators" },
   { key: "devtools", href: "/developer-tools" },
   { key: "assignment", href: "/assignment" },

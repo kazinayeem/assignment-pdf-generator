@@ -1,0 +1,86 @@
+{
+  "nav": {
+    "hub": "Roadmaps",
+    "explore": "Explore",
+    "dashboard": "Dashboard"
+  },
+  "hub": {
+    "badge": "CampusFlow Roadmaps V1",
+    "title": "Choose Your Career Roadmap",
+    "subtitle": "Master Computer Science with structured learning paths, projects, interview preparation, coding challenges and real-world resources.",
+    "roadmapCount": "interactive career roadmaps",
+    "featured": "Featured Roadmaps",
+    "recommended": "Recommended for You",
+    "bookmarks": "Your Bookmarks",
+    "allRoadmaps": "All Roadmaps"
+  },
+  "landing": {
+    "badge": "Interactive Career Roadmaps",
+    "title": "Choose Your Career Roadmap",
+    "subtitle": "Master Computer Science with structured learning paths, projects, interview preparation, coding challenges and real-world resources.",
+    "cta": "Explore All Roadmaps",
+    "paths": "learning paths"
+  },
+  "search": {
+    "placeholder": "Search roadmaps, topics, skills, languages…",
+    "results": "{{count}} roadmaps found",
+    "empty": "No roadmaps match your search. Try a different keyword or filter."
+  },
+  "filters": {
+    "title": "Filters",
+    "allCategories": "All categories",
+    "allDifficulty": "All difficulty",
+    "beginnerFriendly": "Beginner friendly"
+  },
+  "detail": {
+    "hub": "Roadmaps",
+    "bookmark": "Bookmark",
+    "saved": "Saved",
+    "continue": "Continue Learning",
+    "learningTime": "Learning Time",
+    "salary": "Career Salary",
+    "demand": "Job Demand",
+    "progress": "Your Progress",
+    "prerequisites": "Prerequisites",
+    "phases": "Learning Phases",
+    "graph": "Interactive Roadmap",
+    "graphHint": "Click nodes · Pan · Zoom",
+    "certificate": "Certificate Progress",
+    "certReady": "Eligible for CampusFlow certificate",
+    "certProgress": "{{pct}}% more to unlock certificate"
+  },
+  "expansion": {
+    "interviewHub": "Interview Preparation Hub",
+    "codingProblems": "Coding Problems",
+    "resources": "Learning Resources",
+    "career": "Career & Salary Outlook",
+    "learningPath": "What to Learn Next",
+    "portfolio": "Portfolio Checklist",
+    "readiness": "Job Readiness Score",
+    "onThisPage": "On this page",
+    "export": "Export",
+    "markPracticed": "Mark as practiced",
+    "markSolved": "Mark solved",
+    "roadmapComplete": "Roadmap Complete",
+    "completeAll": "Complete all sections for 100%"
+  },
+  "dashboard": {
+    "title": "Learning Dashboard",
+    "subtitle": "Track progress, goals, bookmarks, and recent activity across all roadmaps.",
+    "topicsDone": "Topics Completed",
+    "quizScore": "Avg Quiz Score",
+    "streak": "Learning Streak",
+    "studyToday": "Study Time Today",
+    "goals": "Daily & Weekly Goals",
+    "dailyGoal": "Daily goal",
+    "weeklyGoal": "Weekly goal",
+    "careerGoal": "Career Goal",
+    "careerGoalPlaceholder": "e.g. Frontend Developer, AI Engineer",
+    "careerGoalHint": "We use your goal to recommend the best roadmaps for you.",
+    "continue": "Continue Learning",
+    "bookmarks": "Bookmarked Roadmaps",
+    "noBookmarks": "No bookmarks yet. Save roadmaps from any detail page.",
+    "recent": "Recent Activity",
+    "noRecent": "No recent roadmaps. Start exploring!"
+  }
+}

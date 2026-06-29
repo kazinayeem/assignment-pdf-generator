@@ -2,8 +2,9 @@ import type { MetadataRoute } from "next";
 import { getAllRoutes } from "@/lib/knowledge/loader";
 import { getUniversitySlugs } from "@/lib/universities";
 import { ROADMAP_SLUGS } from "@/lib/roadmaps";
+import { BRAND } from "@/lib/brand";
 
-const BASE_URL = "https://bornosoft-cover.vercel.app";
+const BASE_URL = BRAND.siteUrl;
 
 const STATIC_ROUTES = [
   "/",
@@ -17,6 +18,9 @@ const STATIC_ROUTES = [
   "/result",
   "/login",
   "/privacy-policy",
+  "/about",
+  "/changelog",
+  "/contact",
   "/tools",
   "/tools/os",
   "/tools/dsa",

@@ -74,8 +74,7 @@ export const READINESS_KEYS = [
 ] as const;
 
 export const PDF_VERSION = PDF_BRAND.version;
-export const PDF_AUTHOR = PDF_BRAND.author;
-export const PDF_AUTHOR_URL = PDF_BRAND.authorUrl;
 export const PDF_GITHUB = PDF_BRAND.github;
 export const PDF_PLATFORM = PDF_BRAND.platform;
 export const PDF_COMPANY = PDF_BRAND.company;
+export const PDF_COMPANY_URL = PDF_BRAND.companyUrl;

@@ -27,8 +27,8 @@ export function CertificateView({ cert }: { cert: Certificate }) {
         <div className="mt-8 w-20 h-20 mx-auto rounded-xl bg-slate-100 dark:bg-white/5 flex items-center justify-center text-xs text-slate-400 font-mono">
           QR
         </div>
-        <p className="text-[10px] text-slate-400 mt-4">
-          {BRAND.companyTagline} · Built with ❤️ by {BRAND.authors}
+        <p className="text-[10px] text-muted-foreground mt-4">
+          {BRAND.platform} · {BRAND.companyTagline}
         </p>
         <p className="text-[10px] text-slate-400 mt-1">Verify at /verify/{cert.id}</p>
       </div>

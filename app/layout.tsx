@@ -10,7 +10,9 @@ import { I18nProvider } from "@/lib/i18n/provider";
 import { Toaster } from "react-hot-toast";
 import { Analytics } from "@vercel/analytics/next";
 
-const SITE_URL = "https://bornosoft-cover.vercel.app";
+import { BRAND } from "@/lib/brand";
+
+const SITE_URL = BRAND.siteUrl;
 
 const plusJakarta = Plus_Jakarta_Sans({
   variable: "--font-jakarta",
@@ -42,10 +44,9 @@ export const metadata: Metadata = {
     "Interview Preparation",
     "Developer Tools",
     "University Hub",
-    "Mohammad Ali Nayeem",
   ],
-  authors: [{ name: "Mohammad Ali Nayeem" }],
-  creator: "Mohammad Ali Nayeem",
+  authors: [{ name: "Bornosoft", url: BRAND.companyUrl }],
+  creator: "Bornosoft",
   publisher: "Bornosoft",
   metadataBase: new URL(SITE_URL),
   openGraph: {
@@ -70,6 +71,15 @@ export const metadata: Metadata = {
   alternates: {
     canonical: "/",
   },
+  manifest: "/manifest.json",
+  icons: {
+    icon: "/logo_navbar.png",
+    apple: "/logo_navbar.png",
+  },
+  themeColor: [
+    { media: "(prefers-color-scheme: light)", color: "#ffffff" },
+    { media: "(prefers-color-scheme: dark)", color: "#0B1120" },
+  ],
 };
 
 const structuredData = {

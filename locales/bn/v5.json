@@ -12,7 +12,7 @@
     "watchDemo": "ডেমো দেখুন",
     "startTour": "ফ্রি ট্যুর শুরু",
     "livePreview": "লাইভ প্রিভিউ",
-    "browserTitle": "campusflow.app — ড্যাশবোর্ড"
+    "browserTitle": "BornoFlow — ড্যাশবোর্ড"
   },
   "comparison": {
     "badge": "কেন BornoFlow",
@@ -38,7 +38,7 @@
   "roadmap": {
     "badge": "পাবলিক রোডম্যাপ",
     "title": "আমরা পরবর্তীতে কী বানাচ্ছি",
-    "subtitle": "আপনার প্রয়োজনীয় ফিচারে স্বচ্ছ অগ্রগতি।",
+    "subtitle": "কী আসছে সেটা খোলামেলা দেখুন।",
     "status": {
       "completed": "সম্পন্ন",
       "inProgress": "চলমান",
@@ -82,7 +82,7 @@
   "community": {
     "badge": "কমিউনিটি",
     "title": "BornoFlow কমিউনিটিতে যোগ দিন",
-    "subtitle": "সংযুক্ত হন, অবদান রাখুন, ভবিষ্যৎ গড়ুন।",
+    "subtitle": "সংযুক্ত হোন, কন্ট্রিবিউট করুন, একসাথে গড়ুন।",
     "discord": "Discord",
     "github": "GitHub",
     "facebook": "Facebook গ্রুপ",
@@ -115,7 +115,7 @@
     "benefits": ["সাপ্তাহিক আপডেট", "নতুন লার্নিং", "ক্যারিয়ার টিপস", "ইন্টারভিউ প্রশ্ন", "ডেভ টুলস"]
   },
   "socialProof": {
-    "dailyActive": "দৈনিক সক্রিয় ব্যবহারকারী",
+    "dailyActive": "প্রতিদিন অ্যাক্টিভ",
     "avgRating": "গড় রেটিং",
     "labReports": "ল্যাব রিপোর্ট"
   },

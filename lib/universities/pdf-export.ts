@@ -37,7 +37,7 @@ export function exportUniversityPdf(university: University) {
     y += 7;
   });
 
-  doc.save(`${university.slug}-campusflow.pdf`);
+  doc.save(`${university.slug}-bornoflow.pdf`);
 }
 
 export function exportComparisonPdf(universities: University[]) {
@@ -63,7 +63,7 @@ export function exportComparisonPdf(universities: University[]) {
     headStyles: { fillColor: [109, 93, 246] },
   });
 
-  doc.save("university-comparison-campusflow.pdf");
+  doc.save("university-comparison-bornoflow.pdf");
 }
 
 export function exportTuitionPdf(university: University, result: TuitionCalculationResult) {

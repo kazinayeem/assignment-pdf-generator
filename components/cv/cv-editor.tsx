@@ -204,7 +204,7 @@ function ProjectsEditor() {
       {cv.projects.map((p) => (
         <ItemCard key={p.id} title={p.name || "New Project"} onRemove={() => removeProject(p.id)}>
           <div className="grid grid-cols-2 gap-3">
-            <div className="col-span-2"><label className={labelCls}>Project Name *</label><Input className={inputCls} value={p.name} onChange={(e) => updateProject(p.id, { name: e.target.value })} placeholder="CoverGen" /></div>
+            <div className="col-span-2"><label className={labelCls}>Project Name *</label><Input className={inputCls} value={p.name} onChange={(e) => updateProject(p.id, { name: e.target.value })} placeholder="BornoFlow" /></div>
             <div className="col-span-2"><label className={labelCls}>Tech Stack</label><Input className={inputCls} value={p.tech} onChange={(e) => updateProject(p.id, { tech: e.target.value })} placeholder="Next.js, TypeScript, Firebase" /></div>
             <div className="col-span-2"><label className={labelCls}>Description</label><textarea className={textareaCls} rows={2} value={p.description} onChange={(e) => updateProject(p.id, { description: e.target.value })} placeholder="Built a platform that..." /></div>
             <div><label className={labelCls}>Start Date</label><Input className={inputCls} type="month" value={p.startDate} onChange={(e) => updateProject(p.id, { startDate: e.target.value })} /></div>

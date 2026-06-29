@@ -23,13 +23,13 @@ const PRODUCT_LINKS = [
 ] as const;
 
 const RESOURCE_LINKS = [
-  { key: "documentation", href: "/about" },
+  { key: "documentation", href: "/changelog" },
   { key: "roadmaps", href: "/roadmaps" },
   { key: "learningResources", href: "/tools" },
   { key: "interviewQuestions", href: "/interview" },
   { key: "developerTools", href: "/developer-tools" },
   { key: "universityExplorer", href: "/universities" },
-  { key: "blog", href: "/about" },
+  { key: "blog", href: "/changelog" },
   { key: "changelog", href: "/changelog" },
 ] as const;
 

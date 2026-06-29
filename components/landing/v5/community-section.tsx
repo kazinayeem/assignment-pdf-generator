@@ -11,16 +11,17 @@ import {
   Users,
 } from "lucide-react";
 import { useTranslation } from "@/lib/i18n/provider";
+import { BRAND } from "@/lib/brand";
 import { spacing, animation, card, sectionBg } from "@/lib/design-system";
 import { SectionHeader } from "../v4/section-header";
 import { SectionCta } from "./section-cta";
 import { cn } from "@/lib/utils";
 
 const LINKS = [
-  { key: "discord", icon: MessageCircle, href: "https://discord.gg/campusflow", color: "from-indigo-500 to-violet-600" },
+  { key: "discord", icon: MessageCircle, href: "https://github.com/kazinayeem/assignment-pdf-generator/discussions", color: "from-indigo-500 to-violet-600" },
   { key: "github", icon: Github, href: "https://github.com/kazinayeem/assignment-pdf-generator", color: "from-slate-600 to-slate-800" },
-  { key: "facebook", icon: Users, href: "https://facebook.com/groups/campusflow", color: "from-blue-500 to-blue-700" },
-  { key: "linkedin", icon: Linkedin, href: "https://linkedin.com/company/campusflow", color: "from-sky-500 to-blue-600" },
+  { key: "facebook", icon: Users, href: BRAND.facebook, color: "from-blue-500 to-blue-700" },
+  { key: "linkedin", icon: Linkedin, href: BRAND.linkedin, color: "from-sky-500 to-blue-600" },
   { key: "email", icon: Mail, href: "mailto:bornosoftnr@gmail.com", color: "from-brand to-brand-secondary" },
   { key: "featureRequests", icon: Lightbulb, href: "https://github.com/kazinayeem/assignment-pdf-generator/issues", color: "from-amber-500 to-orange-600" },
   { key: "bugReports", icon: Bug, href: "https://github.com/kazinayeem/assignment-pdf-generator/issues", color: "from-red-500 to-rose-600" },

@@ -14,8 +14,7 @@ export function AboutFoundersV2() {
   const { tArray } = useTranslation("about");
 
   return (
-    <section id="founders" className="py-24 sm:py-32 bg-muted/20 scroll-mt-20">
-      <span id="team" className="sr-only" aria-hidden />
+    <section id="team" className="py-24 sm:py-32 bg-muted/20 scroll-mt-20">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         <SectionReveal className="text-center mb-16">
           <SectionLabel>{t("founders.label")}</SectionLabel>

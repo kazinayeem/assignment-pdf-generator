@@ -1,4 +1,4 @@
-const CACHE = "campusflow-uni-v1";
+const CACHE = "bornoflow-uni-v1";
 const OFFLINE_URLS = ["/universities", "/universities/circulars"];
 
 self.addEventListener("install", (event) => {
@@ -34,7 +34,7 @@ self.addEventListener("fetch", (event) => {
 });
 
 self.addEventListener("push", (event) => {
-  const data = event.data?.json() ?? { title: "CampusFlow", body: "University update" };
+  const data = event.data?.json() ?? { title: "BornoFlow", body: "Platform update" };
   event.waitUntil(
     self.registration.showNotification(data.title, {
       body: data.body,

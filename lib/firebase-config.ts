@@ -20,7 +20,7 @@ function getFirebaseApp(): FirebaseApp {
   const apiKey = process.env.NEXT_PUBLIC_FIREBASE_API_KEY;
   if (!apiKey) {
     throw new Error(
-      "[CoverGen] Firebase env vars are not set. " +
+      "[BornoFlow] Firebase env vars are not set. " +
         "Add NEXT_PUBLIC_FIREBASE_* variables in Vercel → Settings → Environment Variables."
     );
   }

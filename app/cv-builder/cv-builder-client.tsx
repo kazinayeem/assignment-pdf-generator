@@ -152,7 +152,7 @@ export default function CVBuilderClient() {
 
       const opt = {
         margin: 0,
-        filename: `${cv.personal.fullName || "cv"}-campusflow.pdf`,
+        filename: `${cv.personal.fullName || "cv"}-bornoflow.pdf`,
         image: { type: "jpeg" as const, quality: 0.98 },
         html2canvas: { scale: 2, useCORS: true, letterRendering: true },
         jsPDF: { unit: "mm" as const, format: "a4", orientation: "portrait" as const },

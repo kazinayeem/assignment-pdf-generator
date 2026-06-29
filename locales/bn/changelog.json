@@ -3,23 +3,23 @@
   "hero": {
     "badge": "🚀 BornoFlow চেঞ্জলগ",
     "title": "BornoFlow চেঞ্জলগ",
-    "subtitle": "সর্বশেষ ফিচার, উন্নতি, বাগ ফিক্স, সিকিউরিটি প্যাচ, রোডম্যাপ আপডেট এবং প্রোডাক্ট রিলিজের সাথে আপডেট থাকুন।",
-    "currentVersion": "বর্তমান সংস্করণ",
+    "subtitle": "নতুন ফিচার, আপডেট, বাগ ফিক্স ও রিলিজ নোট — সব এক জায়গায়।",
+    "currentVersion": "বর্তমান ভার্সন",
     "latestRelease": "সর্বশেষ রিলিজ",
     "totalReleases": "মোট রিলিজ",
-    "statusStable": "স্থিতিশীল",
-    "searchPlaceholder": "ফিচার, সংস্করণ, বাগ খুঁজুন…",
+    "statusStable": "স্টেবল",
+    "searchPlaceholder": "ফিচার, ভার্সন, বাগ খুঁজুন…",
     "subscribe": "সাবস্ক্রাইব"
   },
   "stats": {
-    "title": "প্ল্যাটফর্ম পরিসংখ্যান",
+    "title": "প্ল্যাটফর্ম স্ট্যাট",
     "totalReleases": "মোট রিলিজ",
     "totalFeatures": "মোট ফিচার",
     "bugFixes": "বাগ ফিক্স",
     "performanceImprovements": "পারফরম্যান্স",
-    "contributors": "অবদানকারী",
+    "contributors": "কন্ট্রিবিউটর",
     "commits": "কমিট",
-    "linesChanged": "লাইন পরিবর্তন",
+    "linesChanged": "লাইন চেঞ্জ",
     "roadmapsAdded": "রোডম্যাপ যোগ",
     "devToolsAdded": "ডেভেলপার টুলস",
     "universitiesAdded": "বিশ্ববিদ্যালয় যোগ",
@@ -30,16 +30,16 @@
     "title": "ফিল্টার",
     "results": "রিলিজ পাওয়া গেছে",
     "all": "সব",
-    "version": "সংস্করণ",
+    "version": "ভার্সন",
     "category": "ক্যাটাগরি",
     "releaseType": "রিলিজ টাইপ",
     "product": "প্রোডাক্ট",
     "year": "বছর",
     "month": "মাস",
-    "reset": "ফিল্টার রিসেট"
+    "reset": "রিসেট করুন"
   },
   "releaseTypes": {
-    "stable": "স্থিতিশীল",
+    "stable": "স্টেবল",
     "beta": "বিটা",
     "alpha": "আলফা",
     "hotfix": "হটফিক্স",
@@ -48,25 +48,25 @@
     "patch": "প্যাচ"
   },
   "status": {
-    "released": "রিলিজড",
+    "released": "রিলিজ হয়েছে",
     "beta": "বিটা",
     "alpha": "আলফা",
-    "deprecated": "অবহেলিত",
+    "deprecated": "পুরনো",
     "archived": "আর্কাইভ"
   },
   "versionHistory": {
-    "title": "সংস্করণ ইতিহাস"
+    "title": "ভার্সন হিস্ট্রি"
   },
   "timeline": {
     "title": "রিলিজ টাইমলাইন",
-    "empty": "আপনার ফিল্টারের সাথে কোনো রিলিজ মিলছে না। অনুসন্ধান পরিবর্তন করে দেখুন।"
+    "empty": "ফিল্টারে কোনো রিলিজ মিলছে না। সার্চ বা ফিল্টার বদলিয়ে দেখুন।"
   },
   "release": {
-    "overview": "সংক্ষিপ্ত বিবরণ",
+    "overview": "সংক্ষেপে",
     "breaking": "ব্রেকিং চেঞ্জ",
     "migration": "মাইগ্রেশন গাইড",
-    "knownIssues": "পরিচিত সমস্যা",
-    "devNotes": "ডেভেলপার নোট",
+    "knownIssues": "জানা সমস্যা",
+    "devNotes": "ডেভ নোট",
     "documentation": "ডকুমেন্টেশন",
     "download": "ডাউনলোড",
     "print": "প্রিন্ট",
@@ -74,12 +74,12 @@
   },
   "upcoming": {
     "title": "আসন্ন রিলিজ",
-    "subtitle": "BornoFlow ও Bornosoft প্রোডাক্টে আগামীতে যা আসছে।",
+    "subtitle": "BornoFlow ও Bornosoft-এ আগামীতে যা আসছে।",
     "status": {
       "comingSoon": "শীঘ্রই আসছে",
       "inDevelopment": "ডেভেলপমেন্টে",
-      "planned": "পরিকল্পিত",
-      "research": "গবেষণা",
+      "planned": "প্ল্যান করা",
+      "research": "রিসার্চে",
       "ideas": "আইডিয়া"
     }
   },
@@ -88,19 +88,19 @@
     "hide": "আর্কাইভ লুকান"
   },
   "subscribe": {
-    "title": "আপডেট সাবস্ক্রাইব করুন",
-    "subtitle": "নতুন BornoFlow রিলিজ ও ফিচার সম্পর্কে নোটিফিকেশন পান।",
-    "emailLabel": "ইমেইল ঠিকানা",
+    "title": "আপডেট পেতে সাবস্ক্রাইব করুন",
+    "subtitle": "নতুন রিলিজ ও ফিচারের নোটিফিকেশন পান।",
+    "emailLabel": "ইমেইল",
     "emailPlaceholder": "you@university.edu",
     "email": "ইমেইল আপডেট",
     "rss": "RSS ফিড",
     "push": "পুশ নোটিফিকেশন",
     "browser": "ব্রাউজার নোটিফিকেশন",
     "close": "বন্ধ",
-    "success": "আপনি রিলিজ আপডেটে সাবস্ক্রাইব করেছেন!",
-    "emailRequired": "অনুগ্রহ করে ইমেইল দিন।",
+    "success": "সাবস্ক্রাইব হয়ে গেছে!",
+    "emailRequired": "ইমেইল দিন।",
     "browserEnabled": "ব্রাউজার নোটিফিকেশন চালু হয়েছে।",
-    "browserDenied": "নোটিফিকেশন অনুমতি প্রত্যাখ্যান করা হয়েছে।",
+    "browserDenied": "নোটিফিকেশন পারমিশন দেননি।",
     "pushSoon": "পুশ নোটিফিকেশন শীঘ্রই আসছে।"
   },
   "contributors": {

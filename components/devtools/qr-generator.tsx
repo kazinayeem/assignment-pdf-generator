@@ -9,7 +9,7 @@ const QR_TYPES = ["text", "url", "email", "phone", "wifi", "vcard"] as const;
 
 export function QrGenerator() {
   const [type, setType] = useState<(typeof QR_TYPES)[number]>("url");
-  const [value, setValue] = useState("https://campusflow.app");
+  const [value, setValue] = useState("https://bornosoftnr.com");
   const [size, setSize] = useState(256);
   const canvasRef = useRef<HTMLCanvasElement>(null);
 

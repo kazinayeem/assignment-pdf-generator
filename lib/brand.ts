@@ -7,6 +7,10 @@ export const BRAND = {
   productLine: "BornoFlow is a product of Bornosoft.",
   logoUrl: "https://bornosoftnr.com/logo.png",
   companyUrl: "https://bornosoftnr.com",
+  /** Canonical site URL for metadata, sitemap, RSS */
+  siteUrl:
+    (typeof process !== "undefined" && process.env.NEXT_PUBLIC_SITE_URL) ||
+    "https://bornosoftnr.com",
   email: "bornosoftnr@gmail.com",
   github: "https://github.com/kazinayeem",
   linkedin: "https://www.linkedin.com/in/kazi-nayeem/",
@@ -63,13 +67,11 @@ export const SUB_PRODUCTS = [
   { id: "dev", emoji: "💻", name: "BornoDev", desc: "Developer Tools", href: "/developer-tools" },
 ] as const;
 
-/** PDF & certificate branding */
+/** PDF & certificate branding — company only (founders appear on About page) */
 export const PDF_BRAND = {
   platform: BRAND.platform,
   company: BRAND.company,
   version: "BornoFlow V1.0",
-  author: BRAND.authors,
-  authorUrl: FOUNDERS[0].portfolioUrl,
   companyUrl: BRAND.companyUrl,
   github: "https://github.com/kazinayeem/assignment-pdf-generator",
 } as const;

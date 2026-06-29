@@ -4,7 +4,7 @@ import type { Release } from "./types";
 import { CATEGORY_META } from "./constants";
 import { groupChangesByCategory, computeStats } from "./utils";
 import { CHANGELOG_RELEASES } from "./catalog";
-import { BRAND, FOUNDERS } from "@/lib/brand";
+import { BRAND } from "@/lib/brand";
 
 const BRAND_RGB: [number, number, number] = [109, 93, 246];
 const MARGIN = 18;
@@ -18,9 +18,8 @@ function addFooter(doc: jsPDF) {
     doc.setPage(i);
     doc.setFontSize(7);
     doc.setTextColor(120);
-    doc.text(`Built with ❤️ by ${BRAND.authors} · ${BRAND.companyTagline}`, MARGIN, PAGE_H - 18);
+    doc.text(`${BRAND.platform} · ${BRAND.companyTagline}`, MARGIN, PAGE_H - 18);
     doc.text(BRAND.companyUrl, MARGIN, PAGE_H - 13);
-    doc.text(`${FOUNDERS[0].portfolioUrl} · ${FOUNDERS[1].portfolioUrl}`, MARGIN, PAGE_H - 8);
     doc.text(`Page ${i} of ${pages}`, PAGE_W - MARGIN, PAGE_H - 8, { align: "right" });
   }
 }

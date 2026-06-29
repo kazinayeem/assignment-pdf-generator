@@ -2,7 +2,7 @@ import { CHANGELOG_RELEASES } from "@/lib/changelog/catalog";
 import { BRAND } from "@/lib/brand";
 
 export async function GET() {
-  const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "https://bornosoft-cover.vercel.app";
+  const siteUrl = BRAND.siteUrl;
 
   const items = CHANGELOG_RELEASES.map((release) => {
     const description = `${release.overview} (${release.changes.length} changes)`;

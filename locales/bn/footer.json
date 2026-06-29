@@ -2,15 +2,15 @@
   "brand": {
     "platform": "BornoFlow",
     "company": "Bornosoft",
-    "tagline": "কম্পিউটার সায়েন্স শিক্ষার্থীদের জন্য সম্পূর্ণ লার্নিং ও ক্যারিয়ার প্ল্যাটফর্ম।",
-    "description": "শিক্ষার্থীদের শেখা, প্রজেক্ট তৈরি, ইন্টারভিউ প্রস্তুতি এবং সফল সফটওয়্যার ইঞ্জিনিয়ারিং ক্যারিয়ার শুরু করতে সাহায্য করতে তৈরি।",
+    "tagline": "CS শিক্ষার্থীদের লার্নিং ও ক্যারিয়ার প্ল্যাটফর্ম।",
+    "description": "শেখা, প্রজেক্ট, ইন্টারভিউ প্রস্তুতি ও ক্যারিয়ার শুরু — সব এক জায়গায়।",
     "companyLine": "Bornosoft-এর একটি প্রোডাক্ট"
   },
   "columns": {
     "product": "প্রোডাক্ট",
     "resources": "রিসোর্স",
     "company": "কোম্পানি",
-    "connect": "সংযোগ"
+    "connect": "কানেক্ট"
   },
   "products": {
     "bornoMaps": "BornoMaps",
@@ -20,14 +20,14 @@
     "bornoDev": "BornoDev",
     "resumeBuilder": "রিজিউমে বিল্ডার",
     "assignmentStudio": "অ্যাসাইনমেন্ট স্টুডিও",
-    "labReport": "ল্যাব রিপোর্ট জেনারেটর",
+    "labReport": "ল্যাব রিপোর্ট",
     "interviewHub": "ইন্টারভিউ হাব",
     "learningHub": "লার্নিং হাব"
   },
   "resources": {
     "documentation": "ডকুমেন্টেশন",
     "roadmaps": "রোডম্যাপ",
-    "learningResources": "শেখার সম্পদ",
+    "learningResources": "লার্নিং রিসোর্স",
     "interviewQuestions": "ইন্টারভিউ প্রশ্ন",
     "developerTools": "ডেভেলপার টুলস",
     "universityExplorer": "বিশ্ববিদ্যালয় এক্সপ্লোরার",
@@ -35,13 +35,13 @@
     "changelog": "চেঞ্জলগ"
   },
   "company": {
-    "about": "Bornosoft সম্পর্কে",
+    "about": "আমাদের সম্পর্কে",
     "team": "টিম",
     "products": "প্রোডাক্ট",
     "careers": "ক্যারিয়ার",
     "contact": "যোগাযোগ",
-    "privacy": "গোপনীয়তা নীতি",
-    "terms": "সেবার শর্তাবলী",
+    "privacy": "প্রাইভেসি পলিসি",
+    "terms": "টার্মস",
     "support": "সাপোর্ট"
   },
   "connect": {
@@ -53,5 +53,5 @@
   },
   "copyright": "সর্বস্বত্ব সংরক্ষিত।",
   "status": "সব সিস্টেম চালু",
-  "version": "সংস্করণ"
+  "version": "ভার্সন"
 }

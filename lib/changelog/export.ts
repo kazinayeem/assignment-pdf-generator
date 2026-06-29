@@ -1,7 +1,7 @@
 import type { Release } from "./types";
 import { CATEGORY_META } from "./constants";
 import { groupChangesByCategory } from "./utils";
-import { BRAND, FOUNDERS, PDF_BRAND } from "@/lib/brand";
+import { BRAND, PDF_BRAND } from "@/lib/brand";
 
 export function releaseToMarkdown(release: Release): string {
   const groups = groupChangesByCategory(release);
@@ -29,7 +29,7 @@ export function releaseToMarkdown(release: Release): string {
     md += `## Known Issues\n\n${release.knownIssues.map((k) => `- ${k}`).join("\n")}\n\n`;
   }
 
-  md += `---\n\nBuilt with ❤️ by ${BRAND.authors} · ${BRAND.companyTagline}\n`;
+  md += `---\n\n${BRAND.platform} · ${BRAND.companyTagline} · ${BRAND.companyUrl}\n`;
   return md;
 }
 
@@ -53,7 +53,7 @@ export function releaseToHtml(release: Release): string {
 h1{color:#6D5DF6}h2{margin-top:1.5rem;border-bottom:1px solid #e2e8f0;padding-bottom:.25rem}
 footer{margin-top:3rem;padding-top:1rem;border-top:1px solid #e2e8f0;font-size:.85rem;color:#64748b}</style></head>
 <body>${body}
-<footer>Built with ❤️ by ${BRAND.authors} · ${BRAND.companyTagline} · ${BRAND.companyUrl}</footer></body></html>`;
+<footer>${BRAND.platform} · ${BRAND.companyTagline} · ${BRAND.companyUrl}</footer></body></html>`;
 }
 
 export function releaseToJson(release: Release): string {
@@ -81,11 +81,9 @@ export function printRelease(release: Release) {
 
 export function getPdfFooterLines(): string[] {
   return [
-    `Built with ❤️ by ${BRAND.authors}`,
+    BRAND.platform,
     BRAND.companyTagline,
     BRAND.companyUrl,
-    FOUNDERS[0].portfolioUrl,
-    FOUNDERS[1].portfolioUrl,
     PDF_BRAND.github,
   ];
 }

@@ -3,7 +3,9 @@ import LandingView from "@/components/landing-view";
 import { FaqSchema } from "@/components/landing/v5/faq-schema";
 import { Metadata } from "next";
 
-const SITE_URL = "https://bornosoft-cover.vercel.app";
+import { BRAND } from "@/lib/brand";
+
+const SITE_URL = BRAND.siteUrl;
 
 export const metadata: Metadata = {
   title: "BornoFlow | Learning & Career Platform for CS Students",

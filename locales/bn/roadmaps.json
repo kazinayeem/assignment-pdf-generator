@@ -49,6 +49,23 @@
     "certReady": "CampusFlow সার্টিফিকেটের জন্য যোগ্য",
     "certProgress": "সার্টিফিকেট আনলক করতে আর {{pct}}%"
   },
+  "graph": {
+    "learningPath": "শেখার পথ",
+    "searchPlaceholder": "টপিক, প্রজেক্ট, ইন্টারভিউ, টুল খুঁজুন…",
+    "filters": "ফিল্টার",
+    "resetFilters": "ফিল্টার রিসেট",
+    "matched": "{{count}}টি টপিক মিলেছে",
+    "complete": "{{pct}}% সম্পূর্ণ",
+    "recommendedNext": "পরবর্তী সুপারিশ",
+    "phaseComplete": "{{pct}}% সম্পূর্ণ",
+    "currentTopic": "বর্তমান টপিক",
+    "continueLearning": "শেখা চালিয়ে যান",
+    "bookmarks": "বুকমার্ক",
+    "recentTopics": "সাম্প্রতিক টপিক",
+    "share": "শেয়ার",
+    "print": "প্রিন্ট",
+    "viewReadiness": "প্রস্তুতি স্কোর দেখুন →"
+  },
   "expansion": {
     "interviewHub": "ইন্টারভিউ প্রস্তুতি হাব",
     "codingProblems": "কোডিং সমস্যা",

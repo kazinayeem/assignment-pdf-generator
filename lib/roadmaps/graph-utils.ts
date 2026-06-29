@@ -39,7 +39,7 @@ export function computeNodeStats(node: RoadmapNode): NodeStats {
     projects: node.projects.length,
     interviewQuestions: node.interviewQuestions.length,
     mcqs: node.quizzes.length,
-    codeExamples: node.codeExample ? 1 : 0 + node.codingProblems.length,
+    codeExamples: (node.codeExample ? 1 : 0) + node.codingProblems.length,
     videos: node.videos?.length ?? Math.min(3, node.learningResources.filter((r) => r.type === "video").length),
     articles: node.resources.filter((r) => r.type === "article").length + node.learningResources.filter((r) => r.type === "article").length,
     documentation: node.learningResources.filter((r) => r.type === "docs").length,
@@ -204,11 +204,17 @@ export function getEdgePath(source: RoadmapNode, target: RoadmapNode, boundsMinX
   const w = GRAPH_NODE_SIZE.width;
   const h = GRAPH_NODE_SIZE.height;
   const sx = source.position.x - boundsMinX + w / 2;
-  const sy = source.position.y - boundsMinY + h;
+  const syBottom = source.position.y - boundsMinY + h;
   const tx = target.position.x - boundsMinX + w / 2;
-  const ty = target.position.y - boundsMinY;
-  const my = (sy + ty) / 2;
-  return `M ${sx} ${sy} C ${sx} ${my}, ${tx} ${my}, ${tx} ${ty}`;
+  const tyTop = target.position.y - boundsMinY;
+
+  if (source.phaseId === target.phaseId) {
+    const my = (syBottom + tyTop) / 2;
+    return `M ${sx} ${syBottom} C ${sx} ${my}, ${tx} ${my}, ${tx} ${tyTop}`;
+  }
+
+  const mx = (sx + tx) / 2;
+  return `M ${sx} ${syBottom} C ${mx} ${syBottom}, ${mx} ${tyTop}, ${tx} ${tyTop}`;
 }
 
 export const DEFAULT_GRAPH_FILTERS: GraphFilters = {

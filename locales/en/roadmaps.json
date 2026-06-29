@@ -49,6 +49,23 @@
     "certReady": "Eligible for CampusFlow certificate",
     "certProgress": "{{pct}}% more to unlock certificate"
   },
+  "graph": {
+    "learningPath": "Learning Path",
+    "searchPlaceholder": "Search topics, projects, interview questions, tools…",
+    "filters": "Filters",
+    "resetFilters": "Reset filters",
+    "matched": "{{count}} topics matched",
+    "complete": "{{pct}}% complete",
+    "recommendedNext": "Recommended next",
+    "phaseComplete": "{{pct}}% complete",
+    "currentTopic": "Current Topic",
+    "continueLearning": "Continue Learning",
+    "bookmarks": "Bookmarks",
+    "recentTopics": "Recent Topics",
+    "share": "Share",
+    "print": "Print",
+    "viewReadiness": "View readiness score →"
+  },
   "expansion": {
     "interviewHub": "Interview Preparation Hub",
     "codingProblems": "Coding Problems",

@@ -65,6 +65,8 @@ export function RoadmapGraphV2({
   const recommendedId = useMemo(() => getRecommendedNodeId(roadmap, isNodeComplete), [roadmap, isNodeComplete]);
 
   const viewport = useGraphViewport({ containerRef, bounds: { width: bounds.width, height: bounds.height } });
+  const fitRef = useRef(viewport.fitToScreen);
+  fitRef.current = viewport.fitToScreen;
 
   const searchResults = useMemo(
     () => searchRoadmapNodes(roadmap, searchQuery),
@@ -101,10 +103,10 @@ export function RoadmapGraphV2({
 
   useEffect(() => {
     if (!hasFit && containerSize.w > 0) {
-      viewport.fitToScreen();
+      fitRef.current();
       setHasFit(true);
     }
-  }, [containerSize.w, hasFit, viewport]);
+  }, [containerSize.w, hasFit]);
 
   const focusNode = useCallback(
     (node: RoadmapNode) => {

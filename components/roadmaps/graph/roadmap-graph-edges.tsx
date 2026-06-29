@@ -3,7 +3,6 @@
 import { motion } from "framer-motion";
 import type { Roadmap, RoadmapNode } from "@/lib/roadmaps/types";
 import { getEdgePath, getEdgeVisualState, EDGE_COLORS } from "@/lib/roadmaps/graph-utils";
-import { GRAPH_NODE_SIZE } from "@/lib/roadmaps/builder";
 
 type RoadmapGraphEdgesProps = {
   roadmap: Roadmap;

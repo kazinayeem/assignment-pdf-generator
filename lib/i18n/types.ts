@@ -4,7 +4,7 @@ export const LOCALES: Locale[] = ["en", "bn"];
 export const DEFAULT_LOCALE: Locale = "en";
 export const LOCALE_STORAGE_KEY = "campusflow-locale";
 
-export type Namespace = "common" | "home" | "footer" | "faq" | "about" | "policies" | "v5" | "universities" | "roadmaps";
+export type Namespace = "common" | "home" | "footer" | "faq" | "about" | "policies" | "v5" | "universities" | "roadmaps" | "changelog";
 
 export type Messages = Record<string, unknown>;
 

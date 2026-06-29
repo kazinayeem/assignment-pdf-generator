@@ -1,0 +1,118 @@
+{
+  "back": "Back to home",
+  "hero": {
+    "badge": "🚀 BornoFlow Changelog",
+    "title": "BornoFlow Changelog",
+    "subtitle": "Stay up to date with the latest features, improvements, bug fixes, security patches, roadmap updates, and product releases.",
+    "currentVersion": "Current Version",
+    "latestRelease": "Latest Release",
+    "totalReleases": "Total Releases",
+    "statusStable": "Stable",
+    "searchPlaceholder": "Search features, versions, bugs…",
+    "subscribe": "Subscribe"
+  },
+  "stats": {
+    "title": "Platform Statistics",
+    "totalReleases": "Total Releases",
+    "totalFeatures": "Total Features",
+    "bugFixes": "Bug Fixes",
+    "performanceImprovements": "Performance",
+    "contributors": "Contributors",
+    "commits": "Commits",
+    "linesChanged": "Lines Changed",
+    "roadmapsAdded": "Roadmaps Added",
+    "devToolsAdded": "Developer Tools",
+    "universitiesAdded": "Universities Added",
+    "interviewQuestionsAdded": "Interview Questions",
+    "learningTopicsAdded": "Learning Topics"
+  },
+  "filters": {
+    "title": "Filters",
+    "results": "releases found",
+    "all": "All",
+    "version": "Version",
+    "category": "Category",
+    "releaseType": "Release Type",
+    "product": "Product",
+    "year": "Year",
+    "month": "Month",
+    "reset": "Reset filters"
+  },
+  "releaseTypes": {
+    "stable": "Stable",
+    "beta": "Beta",
+    "alpha": "Alpha",
+    "hotfix": "Hotfix",
+    "major": "Major",
+    "minor": "Minor",
+    "patch": "Patch"
+  },
+  "status": {
+    "released": "Released",
+    "beta": "Beta",
+    "alpha": "Alpha",
+    "deprecated": "Deprecated",
+    "archived": "Archived"
+  },
+  "versionHistory": {
+    "title": "Version History"
+  },
+  "timeline": {
+    "title": "Release Timeline",
+    "empty": "No releases match your filters. Try adjusting your search."
+  },
+  "release": {
+    "overview": "Overview",
+    "breaking": "Breaking Changes",
+    "migration": "Migration Guide",
+    "knownIssues": "Known Issues",
+    "devNotes": "Developer Notes",
+    "documentation": "Documentation",
+    "download": "Download",
+    "print": "Print",
+    "archived": "Archived"
+  },
+  "upcoming": {
+    "title": "Upcoming Releases",
+    "subtitle": "What's coming next to BornoFlow and Bornosoft products.",
+    "status": {
+      "comingSoon": "Coming Soon",
+      "inDevelopment": "In Development",
+      "planned": "Planned",
+      "research": "Research",
+      "ideas": "Ideas"
+    }
+  },
+  "archive": {
+    "show": "Show archive",
+    "hide": "Hide archive"
+  },
+  "subscribe": {
+    "title": "Subscribe to Updates",
+    "subtitle": "Get notified about new BornoFlow releases and features.",
+    "emailLabel": "Email address",
+    "emailPlaceholder": "you@university.edu",
+    "email": "Email Updates",
+    "rss": "RSS Feed",
+    "push": "Push Notifications",
+    "browser": "Browser Notifications",
+    "close": "Close",
+    "success": "You're subscribed to release updates!",
+    "emailRequired": "Please enter your email address.",
+    "browserEnabled": "Browser notifications enabled.",
+    "browserDenied": "Notification permission denied.",
+    "pushSoon": "Push notifications coming soon."
+  },
+  "contributors": {
+    "title": "Built By",
+    "poweredBy": "Powered by",
+    "nayeem": {
+      "role": "Co-Founder",
+      "title": "Software Engineer"
+    },
+    "reduan": {
+      "role": "Co-Founder",
+      "title": "Software Engineer"
+    }
+  }
+}

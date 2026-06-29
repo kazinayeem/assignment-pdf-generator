@@ -1,7 +1,8 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Bug, Rocket, Zap } from "lucide-react";
+import Link from "next/link";
+import { Bug, Rocket, Zap, ArrowRight } from "lucide-react";
 import { useTranslation } from "@/lib/i18n/provider";
 import { spacing, animation, card, sectionBg } from "@/lib/design-system";
 import { SectionHeader } from "../v4/section-header";
@@ -27,6 +28,16 @@ export function ChangelogSection() {
           title={t("changelog.title")}
           subtitle={t("changelog.subtitle")}
         />
+
+        <div className="flex justify-end mb-4">
+          <Link
+            href="/changelog"
+            className="inline-flex items-center gap-1.5 text-sm font-semibold text-brand hover:underline"
+          >
+            View full changelog
+            <ArrowRight size={14} aria-hidden />
+          </Link>
+        </div>
 
         <div className="space-y-6">
           {versions.map((ver, i) => (

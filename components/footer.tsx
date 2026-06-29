@@ -31,7 +31,7 @@ const RESOURCE_LINKS = [
   { key: "developerTools", href: "/developer-tools" },
   { key: "universityExplorer", href: "/universities" },
   { key: "blog", href: "/about" },
-  { key: "changelog", href: "/about" },
+  { key: "changelog", href: "/changelog" },
 ] as const;
 
 const COMPANY_LINKS = [

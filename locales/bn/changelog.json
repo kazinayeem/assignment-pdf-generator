@@ -1,0 +1,118 @@
+{
+  "back": "হোমে ফিরুন",
+  "hero": {
+    "badge": "🚀 BornoFlow চেঞ্জলগ",
+    "title": "BornoFlow চেঞ্জলগ",
+    "subtitle": "সর্বশেষ ফিচার, উন্নতি, বাগ ফিক্স, সিকিউরিটি প্যাচ, রোডম্যাপ আপডেট এবং প্রোডাক্ট রিলিজের সাথে আপডেট থাকুন।",
+    "currentVersion": "বর্তমান সংস্করণ",
+    "latestRelease": "সর্বশেষ রিলিজ",
+    "totalReleases": "মোট রিলিজ",
+    "statusStable": "স্থিতিশীল",
+    "searchPlaceholder": "ফিচার, সংস্করণ, বাগ খুঁজুন…",
+    "subscribe": "সাবস্ক্রাইব"
+  },
+  "stats": {
+    "title": "প্ল্যাটফর্ম পরিসংখ্যান",
+    "totalReleases": "মোট রিলিজ",
+    "totalFeatures": "মোট ফিচার",
+    "bugFixes": "বাগ ফিক্স",
+    "performanceImprovements": "পারফরম্যান্স",
+    "contributors": "অবদানকারী",
+    "commits": "কমিট",
+    "linesChanged": "লাইন পরিবর্তন",
+    "roadmapsAdded": "রোডম্যাপ যোগ",
+    "devToolsAdded": "ডেভেলপার টুলস",
+    "universitiesAdded": "বিশ্ববিদ্যালয় যোগ",
+    "interviewQuestionsAdded": "ইন্টারভিউ প্রশ্ন",
+    "learningTopicsAdded": "লার্নিং টপিক"
+  },
+  "filters": {
+    "title": "ফিল্টার",
+    "results": "রিলিজ পাওয়া গেছে",
+    "all": "সব",
+    "version": "সংস্করণ",
+    "category": "ক্যাটাগরি",
+    "releaseType": "রিলিজ টাইপ",
+    "product": "প্রোডাক্ট",
+    "year": "বছর",
+    "month": "মাস",
+    "reset": "ফিল্টার রিসেট"
+  },
+  "releaseTypes": {
+    "stable": "স্থিতিশীল",
+    "beta": "বিটা",
+    "alpha": "আলফা",
+    "hotfix": "হটফিক্স",
+    "major": "মেজর",
+    "minor": "মাইনর",
+    "patch": "প্যাচ"
+  },
+  "status": {
+    "released": "রিলিজড",
+    "beta": "বিটা",
+    "alpha": "আলফা",
+    "deprecated": "অবহেলিত",
+    "archived": "আর্কাইভ"
+  },
+  "versionHistory": {
+    "title": "সংস্করণ ইতিহাস"
+  },
+  "timeline": {
+    "title": "রিলিজ টাইমলাইন",
+    "empty": "আপনার ফিল্টারের সাথে কোনো রিলিজ মিলছে না। অনুসন্ধান পরিবর্তন করে দেখুন।"
+  },
+  "release": {
+    "overview": "সংক্ষিপ্ত বিবরণ",
+    "breaking": "ব্রেকিং চেঞ্জ",
+    "migration": "মাইগ্রেশন গাইড",
+    "knownIssues": "পরিচিত সমস্যা",
+    "devNotes": "ডেভেলপার নোট",
+    "documentation": "ডকুমেন্টেশন",
+    "download": "ডাউনলোড",
+    "print": "প্রিন্ট",
+    "archived": "আর্কাইভ"
+  },
+  "upcoming": {
+    "title": "আসন্ন রিলিজ",
+    "subtitle": "BornoFlow ও Bornosoft প্রোডাক্টে আগামীতে যা আসছে।",
+    "status": {
+      "comingSoon": "শীঘ্রই আসছে",
+      "inDevelopment": "ডেভেলপমেন্টে",
+      "planned": "পরিকল্পিত",
+      "research": "গবেষণা",
+      "ideas": "আইডিয়া"
+    }
+  },
+  "archive": {
+    "show": "আর্কাইভ দেখুন",
+    "hide": "আর্কাইভ লুকান"
+  },
+  "subscribe": {
+    "title": "আপডেট সাবস্ক্রাইব করুন",
+    "subtitle": "নতুন BornoFlow রিলিজ ও ফিচার সম্পর্কে নোটিফিকেশন পান।",
+    "emailLabel": "ইমেইল ঠিকানা",
+    "emailPlaceholder": "you@university.edu",
+    "email": "ইমেইল আপডেট",
+    "rss": "RSS ফিড",
+    "push": "পুশ নোটিফিকেশন",
+    "browser": "ব্রাউজার নোটিফিকেশন",
+    "close": "বন্ধ",
+    "success": "আপনি রিলিজ আপডেটে সাবস্ক্রাইব করেছেন!",
+    "emailRequired": "অনুগ্রহ করে ইমেইল দিন।",
+    "browserEnabled": "ব্রাউজার নোটিফিকেশন চালু হয়েছে।",
+    "browserDenied": "নোটিফিকেশন অনুমতি প্রত্যাখ্যান করা হয়েছে।",
+    "pushSoon": "পুশ নোটিফিকেশন শীঘ্রই আসছে।"
+  },
+  "contributors": {
+    "title": "তৈরি করেছেন",
+    "poweredBy": "Powered by",
+    "nayeem": {
+      "role": "সহ-প্রতিষ্ঠাতা",
+      "title": "সফটওয়্যার ইঞ্জিনিয়ার"
+    },
+    "reduan": {
+      "role": "সহ-প্রতিষ্ঠাতা",
+      "title": "সফটওয়্যার ইঞ্জিনিয়ার"
+    }
+  }
+}
